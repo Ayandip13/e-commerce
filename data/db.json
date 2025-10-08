@@ -1,0 +1,129 @@
+{
+  "todos": [
+    {
+      "id": 1,
+      "title": "Buy groceries",
+      "completed": false
+    },
+    {
+      "id": 2,
+      "title": "Walk the dog",
+      "completed": true
+    },
+    {
+      "id": 3,
+      "title": "Read a book",
+      "completed": false
+    },
+    {
+      "id": 4,
+      "title": "Write code",
+      "completed": true
+    },
+    {
+      "id": 5,
+      "title": "Exercise",
+      "completed": false
+    },
+    {
+      "id": 6,
+      "title": "Call mom",
+      "completed": true
+    },
+    {
+      "id": 7,
+      "title": "Plan vacation",
+      "completed": false
+    },
+    {
+      "id": 8,
+      "title": "Clean the house",
+      "completed": true
+    },
+    {
+      "id": 9,
+      "title": "Pay bills",
+      "completed": false
+    },
+    {
+      "id": 10,
+      "title": "Attend meeting",
+      "completed": true
+    },
+    {
+      "id": 11,
+      "title": "Meditate",
+      "completed": false
+    },
+    {
+      "id": 12,
+      "title": "Cook dinner",
+      "completed": true
+    },
+    {
+      "id": 13,
+      "title": "Study for exam",
+      "completed": false
+    },
+    {
+      "id": 14,
+      "title": "Fix the car",
+      "completed": true
+    },
+    {
+      "id": 15,
+      "title": "Gardening",
+      "completed": false
+    },
+    {
+      "id": 16,
+      "title": "Watch a movie",
+      "completed": true
+    },
+    {
+      "id": 17,
+      "title": "Write a blog post",
+      "completed": false
+    },
+    {
+      "id": 18,
+      "title": "Learn a new skill",
+      "completed": true
+    },
+    {
+      "id": 19,
+      "title": "Volunteer",
+      "completed": false
+    },
+    {
+      "id": 20,
+      "title": "Organize files",
+      "completed": true
+    },
+    {
+      "id": 21,
+      "title": "Practice guitar",
+      "completed": false
+    },
+    {
+      "id": 22,
+      "title": "Go for a run",
+      "completed": true
+    },
+    {
+      "id": 23,
+      "title": "Attend a workshop",
+      "completed": false
+    },
+    {
+      "id": 24,
+      "title": "Update resume",
+      "completed": true
+    },
+    {
+      "id": 25,
+      "title": "Network with colleagues",
+      "completed": false
+    }
+  ]
+}
