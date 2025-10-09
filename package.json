@@ -10,6 +10,8 @@
   },
   "dependencies": {
     "@tanstack/react-query": "^5.90.2",
+    "axios": "^1.12.2",
+    "dotenv": "^17.2.3",
     "expo": "~54.0.12",
     "expo-status-bar": "~3.0.8",
     "json-server": "^1.0.0-beta.3",
