@@ -1,15 +1,23 @@
 import {
   Image,
   KeyboardAvoidingView,
+  Platform,
   StyleSheet,
   Text,
   TextInput,
+  TouchableOpacity,
   View,
 } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import { MaterialIcons } from "@expo/vector-icons";
+import { AntDesign } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
 
 const LoginScreen = () => {
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [hidePassword, setHidePassword] = useState<boolean>(true);
+  const navigation = useNavigation();
   return (
     <View
       style={{
@@ -24,7 +32,9 @@ const LoginScreen = () => {
           style={{ width: 170, height: 70 }}
         />
       </View>
-      <KeyboardAvoidingView>
+      <KeyboardAvoidingView
+        behavior={Platform.OS === "ios" ? "padding" : "height"}
+      >
         <View style={{ alignItems: "center" }}>
           <Text style={{ fontSize: 17, fontWeight: "600" }}>
             Login in to your account
@@ -37,11 +47,110 @@ const LoginScreen = () => {
               flexDirection: "row",
               alignItems: "center",
               gap: 5,
+              backgroundColor: "#d0d0d0",
+              borderRadius: 5,
+              marginTop: 10,
             }}
           >
-            <MaterialIcons name="email" size={24} color="black" />
-            <TextInput placeholder="Enter your Email" />
+            <MaterialIcons
+              name="email"
+              size={24}
+              color="gray"
+              style={{ marginLeft: 10 }}
+            />
+            <TextInput
+              style={{
+                color: "gray",
+                marginVertical: 5,
+                width: 300,
+                fontSize: email ? 14 : 16,
+              }}
+              autoCapitalize="none"
+              keyboardType="email-address"
+              placeholder="Enter your Email"
+              value={email}
+              onChangeText={setEmail}
+            />
           </View>
+        </View>
+
+        <View style={{ marginTop: 20 }}>
+          <View
+            style={{
+              flexDirection: "row",
+              alignItems: "center",
+              gap: 5,
+              backgroundColor: "#d0d0d0",
+              borderRadius: 5,
+              marginTop: 10,
+            }}
+          >
+            <TouchableOpacity>
+              <AntDesign
+                onPress={() => setHidePassword(!hidePassword)}
+                name={hidePassword ? "lock" : "unlock"}
+                size={24}
+                color="gray"
+                style={{ marginLeft: 10 }}
+              />
+            </TouchableOpacity>
+            <TextInput
+              style={{
+                color: "gray",
+                marginVertical: 5,
+                width: 300,
+                fontSize: password ? 14 : 16,
+              }}
+              secureTextEntry={hidePassword}
+              autoCapitalize="none"
+              placeholder="Enter your Password"
+              value={password}
+              onChangeText={setPassword}
+            />
+          </View>
+        </View>
+
+        <View
+          style={{
+            marginTop: 20,
+            alignItems: "center",
+            flexDirection: "row",
+            justifyContent: "space-between",
+          }}
+        >
+          <Text>Keep me logged in</Text>
+          <Text style={{ color: "#007fff", fontWeight: "600" }}>
+            Forgot Password?
+          </Text>
+        </View>
+
+        <View style={{ marginTop: 40, alignItems: "center" }} />
+        <TouchableOpacity
+          style={{
+            backgroundColor: "#febe10",
+            paddingVertical: 15,
+            alignItems: "center",
+            borderRadius: 5,
+            marginHorizontal: 80,
+          }}
+        >
+          <Text style={{ color: "white", fontWeight: "600" }}>Login</Text>
+        </TouchableOpacity>
+
+        <View style={{ marginTop: 20, alignItems: "center" }}>
+          <Text style={{ color: "gray" }}>
+            Don't have an account?{" "}
+            <Text
+              style={{
+                color: "#007fff",
+                fontWeight: "600",
+                textDecorationLine: "underline",
+              }}
+              onPress={() => navigation.navigate("Register" as never)}
+            >
+              Sign Up
+            </Text>
+          </Text>
         </View>
       </KeyboardAvoidingView>
     </View>

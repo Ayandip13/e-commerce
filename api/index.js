@@ -1,10 +1,10 @@
-const expres = require("express");
+const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const crypto = require("crypto");
 const nodemailer = require("nodemailer");
 
-const app = expres();
+const app = express();
 const PORT = 8000;
 const cors = require("cors");
 
@@ -29,3 +29,5 @@ mongoose
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
+
+//endpoints to register and login the user
