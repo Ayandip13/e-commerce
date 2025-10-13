@@ -1,4 +1,6 @@
 import {
+  ActivityIndicator,
+  Alert,
   Image,
   KeyboardAvoidingView,
   Platform,
@@ -12,13 +14,55 @@ import React, { useState } from "react";
 import { MaterialIcons } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
+import axios from "axios";
 
-const LoginScreen = () => {
+const RegisterScreen = () => {
   const [name, setName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [hidePassword, setHidePassword] = useState<boolean>(true);
+  const [loading, setLoading] = useState<boolean>(false);
   const navigation = useNavigation();
+
+  const handleRegister = async () => {
+    try {
+      //check if email valid or not
+      if (email) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+          Alert.alert("Invalid Email", "Please enter a valid email address.");
+          return;
+        }
+      }
+
+      setLoading(true);
+      if (!name.trim() || !email.trim() || !password.trim()) {
+        Alert.alert("Please fill in all the fields.");
+        return;
+      }
+      const user = {
+        name,
+        email,
+        password,
+      };
+      const response = await axios.post(
+        "http://192.168.0.100:8000/register",
+        user
+      );
+      console.log(response.data);
+      Alert.alert("Registration Successful", "You can now log in.");
+      setEmail("");
+      setPassword("");
+      setName("");
+    } catch (error) {
+      console.log(error);
+      Alert.alert("Registration Failed", "Please try again.");
+      setLoading(false);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <View
       style={{
@@ -66,7 +110,6 @@ const LoginScreen = () => {
                 width: 300,
                 fontSize: name ? 14 : 16,
               }}
-              autoCapitalize="none"
               keyboardType="default"
               placeholder="Enter your Name"
               value={name}
@@ -136,6 +179,7 @@ const LoginScreen = () => {
                 fontSize: password ? 14 : 16,
               }}
               secureTextEntry={hidePassword}
+              keyboardType="email-address"
               autoCapitalize="none"
               placeholder="Enter your Password"
               value={password}
@@ -144,22 +188,9 @@ const LoginScreen = () => {
           </View>
         </View>
 
-        {/* <View
-          style={{
-            marginTop: 20,
-            alignItems: "center",
-            flexDirection: "row",
-            justifyContent: "space-between",
-          }}
-        >
-          <Text>Keep me logged in</Text>
-          <Text style={{ color: "#007fff", fontWeight: "600" }}>
-            Forgot Password?
-          </Text>
-        </View> */}
-
         <View style={{ marginTop: 40, alignItems: "center" }} />
         <TouchableOpacity
+          onPress={handleRegister}
           style={{
             backgroundColor: "#febe10",
             paddingVertical: 15,
@@ -168,7 +199,11 @@ const LoginScreen = () => {
             marginHorizontal: 80,
           }}
         >
-          <Text style={{ color: "white", fontWeight: "600" }}>Sign Up</Text>
+          {loading ? (
+            <ActivityIndicator size="large" color="white" />
+          ) : (
+            <Text style={{ color: "white", fontWeight: "600" }}>Sign Up</Text>
+          )}
         </TouchableOpacity>
 
         <View style={{ marginTop: 20, alignItems: "center" }}>
@@ -191,6 +226,6 @@ const LoginScreen = () => {
   );
 };
 
-export default LoginScreen;
+export default RegisterScreen;
 
 const styles = StyleSheet.create({});
