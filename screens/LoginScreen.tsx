@@ -1,4 +1,5 @@
 import {
+  ActivityIndicator,
   Alert,
   Image,
   KeyboardAvoidingView,
@@ -13,7 +14,7 @@ import {
 import React, { useState } from "react";
 import { MaterialIcons } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, CommonActions } from "@react-navigation/native";
 import axios from "axios";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Toast } from "toastify-react-native";
@@ -22,6 +23,7 @@ const LoginScreen = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [hidePassword, setHidePassword] = useState<boolean>(true);
+  const [loading, setLoading] = useState<boolean>(false);
   const navigation = useNavigation();
 
   const handleLogin = async () => {
@@ -38,6 +40,7 @@ const LoginScreen = () => {
         }
       }
 
+      setLoading(true);
       const user = {
         email: email.trim(),
         password: password.trim(),
@@ -49,14 +52,24 @@ const LoginScreen = () => {
       const token = response.data.token;
       await AsyncStorage.setItem("authToken", token);
 
-      console.log(response.data);
+      console.log(response);
       Toast.success("Login Successful! Welcome back.");
       setEmail("");
       setPassword("");
-      
+
+      //Completely reset the navigation stack — remove all previous screens.
+      //TODO:Use different stack for authentication and main app
+      navigation.dispatch(
+        CommonActions.reset({
+          index: 0,
+          routes: [{ name: "Home" }],
+        })
+      );
     } catch (error) {
       console.log(error);
       Alert.alert("Login Failed", "Please try again.");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -168,6 +181,7 @@ const LoginScreen = () => {
 
         <View style={{ marginTop: 40, alignItems: "center" }} />
         <TouchableOpacity
+          onPress={handleLogin}
           style={{
             backgroundColor: "#febe10",
             paddingVertical: 15,
@@ -176,7 +190,11 @@ const LoginScreen = () => {
             marginHorizontal: 80,
           }}
         >
-          <Text style={{ color: "white", fontWeight: "600" }}>Login</Text>
+          {loading ? (
+            <ActivityIndicator size="small" color="white" />
+          ) : (
+            <Text style={{ color: "white", fontWeight: "600" }}>Login</Text>
+          )}
         </TouchableOpacity>
 
         <View style={{ marginTop: 20, alignItems: "center" }}>
