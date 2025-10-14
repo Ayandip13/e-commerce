@@ -1,10 +1,12 @@
 import {
+  Alert,
   Image,
   KeyboardAvoidingView,
   Platform,
   StyleSheet,
   Text,
   TextInput,
+  ToastAndroid,
   TouchableOpacity,
   View,
 } from "react-native";
@@ -12,12 +14,52 @@ import React, { useState } from "react";
 import { MaterialIcons } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
+import axios from "axios";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { Toast } from "toastify-react-native";
 
 const LoginScreen = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [hidePassword, setHidePassword] = useState<boolean>(true);
   const navigation = useNavigation();
+
+  const handleLogin = async () => {
+    try {
+      if (!email || !password) {
+        ToastAndroid.show("Please fill in all the fields.", ToastAndroid.SHORT);
+        return;
+      }
+      if (email) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+          ToastAndroid.show("Invalid Email", ToastAndroid.SHORT);
+          return;
+        }
+      }
+
+      const user = {
+        email: email.trim(),
+        password: password.trim(),
+      };
+      const response = await axios.post(
+        "http://192.168.0.100:8000/login",
+        user
+      );
+      const token = response.data.token;
+      await AsyncStorage.setItem("authToken", token);
+
+      console.log(response.data);
+      Toast.success("Login Successful! Welcome back.");
+      setEmail("");
+      setPassword("");
+      
+    } catch (error) {
+      console.log(error);
+      Alert.alert("Login Failed", "Please try again.");
+    }
+  };
+
   return (
     <View
       style={{

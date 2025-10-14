@@ -109,3 +109,35 @@ app.get("/verify/:token", async (req, res) => {
     res.status(500).json({ message: "Email verification failed" });
   }
 });
+
+const generateSecretKey = () => {
+  const secretKey = crypto.randomBytes(32).toString("hex");
+  return secretKey;
+};
+
+const secretKey = generateSecretKey();
+
+//endpoint to login the user
+app.post("/login", async (req, res) => {
+  try {
+    const { email, password } = req.body;
+
+    //check if user exists
+    const user = await User.findOne({ email });
+    if (!user) {
+      return res.status(401).json({ message: "User does not exist" });
+    }
+
+    //check if password is correct
+    if (user.password !== password) {
+      return res.status(401).json({ message: "Invalid password" });
+    }
+
+    const token = jwt.sign({ userId: user._id }, secretKey);
+
+    //login successful
+    res.status(200).json({ message: "Login successful", token });
+  } catch (error) {
+    res.status(500).json({ message: "Login failed" });
+  }
+});

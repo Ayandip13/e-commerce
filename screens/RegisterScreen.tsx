@@ -7,6 +7,7 @@ import {
   StyleSheet,
   Text,
   TextInput,
+  ToastAndroid,
   TouchableOpacity,
   View,
 } from "react-native";
@@ -15,6 +16,7 @@ import { MaterialIcons } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import axios from "axios";
+import { Toast } from "toastify-react-native";
 
 const RegisterScreen = () => {
   const [name, setName] = useState<string>("");
@@ -26,34 +28,35 @@ const RegisterScreen = () => {
 
   const handleRegister = async () => {
     try {
+      if (!name.trim() || !email.trim() || !password.trim()) {
+        ToastAndroid.show("Please fill in all the fields.", ToastAndroid.SHORT);
+        return;
+      }
       //check if email valid or not
       if (email) {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailRegex.test(email)) {
-          Alert.alert("Invalid Email", "Please enter a valid email address.");
+          ToastAndroid.show("Invalid Email", ToastAndroid.SHORT);
           return;
         }
       }
 
       setLoading(true);
-      if (!name.trim() || !email.trim() || !password.trim()) {
-        Alert.alert("Please fill in all the fields.");
-        return;
-      }
       const user = {
-        name,
-        email,
-        password,
+        name: name.trim(),
+        email: email.trim(),
+        password: password.trim(),
       };
       const response = await axios.post(
         "http://192.168.0.100:8000/register",
         user
       );
       console.log(response.data);
-      Alert.alert("Registration Successful", "You can now log in.");
+      Toast.success("Registration Successful! Please log in.");
       setEmail("");
       setPassword("");
       setName("");
+      navigation.navigate("Login" as never);
     } catch (error) {
       console.log(error);
       Alert.alert("Registration Failed", "Please try again.");
@@ -200,7 +203,7 @@ const RegisterScreen = () => {
           }}
         >
           {loading ? (
-            <ActivityIndicator size="large" color="white" />
+            <ActivityIndicator size="small" color="white" />
           ) : (
             <Text style={{ color: "white", fontWeight: "600" }}>Sign Up</Text>
           )}
