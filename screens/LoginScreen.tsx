@@ -26,26 +26,6 @@ const LoginScreen = () => {
   const navigation = useNavigation();
 
   // TODO:Use different stack for authentication and main app.. and move this logic to root navigator
-  useEffect(() => {
-    const checkLoginStatus = async () => {
-      try {
-        const token = await AsyncStorage.getItem("authToken");
-        if (token) {
-          navigation.dispatch(
-            CommonActions.reset({
-              index: 0,
-              routes: [{ name: "Main" }],
-            })
-          );
-        }
-      } catch (error) {
-        console.log(error);
-        Alert.alert("Error", "An error occurred while checking login status.");
-      }
-    };
-
-    checkLoginStatus();
-  }, []);
 
   const handleLogin = async () => {
     try {
