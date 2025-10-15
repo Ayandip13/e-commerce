@@ -11,13 +11,12 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { MaterialIcons } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
 import { useNavigation, CommonActions } from "@react-navigation/native";
 import axios from "axios";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { Toast } from "toastify-react-native";
 
 const LoginScreen = () => {
   const [email, setEmail] = useState<string>("");
@@ -25,6 +24,28 @@ const LoginScreen = () => {
   const [hidePassword, setHidePassword] = useState<boolean>(true);
   const [loading, setLoading] = useState<boolean>(false);
   const navigation = useNavigation();
+
+  // TODO:Use different stack for authentication and main app.. and move this logic to root navigator
+  useEffect(() => {
+    const checkLoginStatus = async () => {
+      try {
+        const token = await AsyncStorage.getItem("authToken");
+        if (token) {
+          navigation.dispatch(
+            CommonActions.reset({
+              index: 0,
+              routes: [{ name: "Main" }],
+            })
+          );
+        }
+      } catch (error) {
+        console.log(error);
+        Alert.alert("Error", "An error occurred while checking login status.");
+      }
+    };
+
+    checkLoginStatus();
+  }, []);
 
   const handleLogin = async () => {
     try {
@@ -53,7 +74,10 @@ const LoginScreen = () => {
       await AsyncStorage.setItem("authToken", token);
 
       console.log(response);
-      ToastAndroid.show("Logged in successfully! Welcome back.", ToastAndroid.SHORT);
+      ToastAndroid.show(
+        "Logged in successfully! Welcome back.",
+        ToastAndroid.SHORT
+      );
       setEmail("");
       setPassword("");
 
