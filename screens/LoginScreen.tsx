@@ -53,7 +53,7 @@ const LoginScreen = () => {
       await AsyncStorage.setItem("authToken", token);
 
       console.log(response);
-      Toast.success("Login Successful! Welcome back.");
+      ToastAndroid.show("Logged in successfully! Welcome back.", ToastAndroid.SHORT);
       setEmail("");
       setPassword("");
 
@@ -62,7 +62,7 @@ const LoginScreen = () => {
       navigation.dispatch(
         CommonActions.reset({
           index: 0,
-          routes: [{ name: "Home" }],
+          routes: [{ name: "Main" }],
         })
       );
     } catch (error) {
