@@ -1,5 +1,6 @@
 import {
   FlatList,
+  Image,
   Platform,
   Pressable,
   ScrollView,
@@ -20,33 +21,33 @@ const HomeScreen = () => {
 
   const list: Product[] = [
     {
-      id: 1,
-      image: "",
+      id: 0,
+      image: require("../assets/home.jpg"),
       name: "Home",
     },
     {
-      id: 2,
-      image: "",
+      id: 1,
+      image: require("../assets/deals.jpg"),
       name: "Deals",
     },
     {
-      id: 3,
-      image: "",
+      id: 2,
+      image: require("../assets/electronics.jpg"),
       name: "Electronics",
     },
     {
-      id: 4,
-      image: "",
+      id: 3,
+      image: require("../assets/mobiles.jpg"),
       name: "Mobiles",
     },
     {
-      id: 5,
-      image: "",
+      id: 4,
+      image: require("../assets/music.jpg"),
       name: "Music",
     },
     {
-      id: 6,
-      image: "",
+      id: 5,
+      image: require("../assets/fashion.jpg"),
       name: "Fashion",
     },
   ];
@@ -86,7 +87,9 @@ const HomeScreen = () => {
             <TextInput placeholder="Search Amazon.in" />
           </View>
         </Pressable>
-        <Feather name="mic" size={20} color="black" />
+        <TouchableOpacity>
+          <Feather name="mic" size={20} color="black" />
+        </TouchableOpacity>
       </View>
 
       <View
@@ -104,15 +107,42 @@ const HomeScreen = () => {
             Deliver to Ayandip - Kolkata, 743165
           </Text>
         </TouchableOpacity>
-        <MaterialIcons name="keyboard-arrow-down" size={24} color="black" />
+        <TouchableOpacity>
+          <MaterialIcons name="keyboard-arrow-down" size={24} color="black" />
+        </TouchableOpacity>
       </View>
 
       <FlatList
         data={list}
         renderItem={({ item }) => (
-          <View>
-            <Text>{item.name}</Text>
-          </View>
+          <TouchableOpacity
+            style={{
+              alignItems: "center",
+              justifyContent: "space-between",
+              // margin: 5,
+              padding: 10,
+              // backgroundColor: "red",
+            }}
+          >
+            <Image
+              source={item.image as any}
+              style={{
+                width: 50,
+                height: 50,
+                resizeMode: "contain",
+                borderRadius: 50,
+              }}
+            />
+            <Text
+              style={{
+                fontSize: 13,
+                textAlign: "center",
+                marginTop: 5,
+              }}
+            >
+              {item.name}
+            </Text>
+          </TouchableOpacity>
         )}
         horizontal
         showsHorizontalScrollIndicator={false}
