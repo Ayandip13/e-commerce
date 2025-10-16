@@ -48,7 +48,7 @@ const RegisterScreen = () => {
         password: password.trim(),
       };
       const response = await axios.post(
-        "http://192.168.0.100:8000/register",
+        "http://192.168.0.102:8000/register",
         user
       );
       console.log(response.data);
