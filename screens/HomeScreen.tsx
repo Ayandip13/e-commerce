@@ -1,4 +1,5 @@
 import {
+  FlatList,
   Platform,
   Pressable,
   ScrollView,
@@ -11,6 +12,44 @@ import React from "react";
 import { Feather, MaterialIcons, Ionicons } from "@expo/vector-icons";
 
 const HomeScreen = () => {
+  interface Product {
+    id: number;
+    image: string;
+    name: string;
+  }
+
+  const list: Product[] = [
+    {
+      id: 1,
+      image: "",
+      name: "Home",
+    },
+    {
+      id: 2,
+      image: "",
+      name: "Deals",
+    },
+    {
+      id: 3,
+      image: "",
+      name: "Electronics",
+    },
+    {
+      id: 4,
+      image: "",
+      name: "Mobiles",
+    },
+    {
+      id: 5,
+      image: "",
+      name: "Music",
+    },
+    {
+      id: 6,
+      image: "",
+      name: "Fashion",
+    },
+  ];
   return (
     <ScrollView style={{ marginTop: Platform.OS === "android" ? 25 : 0 }}>
       <View
@@ -67,6 +106,17 @@ const HomeScreen = () => {
         </TouchableOpacity>
         <MaterialIcons name="keyboard-arrow-down" size={24} color="black" />
       </View>
+
+      <FlatList
+        data={list}
+        renderItem={({ item }) => (
+          <View>
+            <Text>{item.name}</Text>
+          </View>
+        )}
+        horizontal
+        showsHorizontalScrollIndicator={false}
+      />
     </ScrollView>
   );
 };
