@@ -330,10 +330,22 @@ const HomeScreen = () => {
 
       <FlatList
         data={offers}
+        horizontal
+        contentContainerStyle={{ marginHorizontal: 10 }}
+        showsHorizontalScrollIndicator={false}
         renderItem={({ item, index }) => {
           return (
-            <TouchableOpacity>
-              <Image source={{ uri: item.image }} />
+            <TouchableOpacity
+              style={{
+                marginVertical: 5,
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <Image
+                source={{ uri: item.image }}
+                style={{ height: 150, width: 150, resizeMode: "contain" }}
+              />
             </TouchableOpacity>
           );
         }}
