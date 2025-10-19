@@ -11,6 +11,7 @@ import {
 } from "react-native";
 import React from "react";
 import { Feather, MaterialIcons, Ionicons } from "@expo/vector-icons";
+import CustomSlider from "../hooks/CustomSlider";
 
 const HomeScreen = () => {
   interface Product {
@@ -50,6 +51,12 @@ const HomeScreen = () => {
       image: require("../assets/fashion.jpg"),
       name: "Fashion",
     },
+  ];
+
+  const images = [
+    require("../assets/photo(1).webp"),
+    require("../assets/photo(2).gif"),
+    require("../assets/photo(3).jpg"),
   ];
   return (
     <ScrollView style={{ marginTop: Platform.OS === "android" ? 25 : 0 }}>
@@ -119,9 +126,7 @@ const HomeScreen = () => {
             style={{
               alignItems: "center",
               justifyContent: "space-between",
-              // margin: 5,
               padding: 10,
-              // backgroundColor: "red",
             }}
           >
             <Image
@@ -146,6 +151,13 @@ const HomeScreen = () => {
         )}
         horizontal
         showsHorizontalScrollIndicator={false}
+      />
+
+      <CustomSlider
+        images={images}
+        autoPlay={true}
+        interval={3000}
+        onImagePress={(index) => console.log("Pressed image:", index)}
       />
     </ScrollView>
   );
