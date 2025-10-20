@@ -10,15 +10,70 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import React from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { Feather, MaterialIcons, Ionicons } from "@expo/vector-icons";
 import CustomSlider from "../hooks/CustomSlider";
+import axios from "axios";
+import ProductItem from "../hooks/ProductItem";
+import DropDownPicker from "react-native-dropdown-picker";
 
 const HomeScreen = () => {
+  const [products, setProducts] = useState<ProductApi[]>([]);
+  const [open, setOpen] = useState<boolean>(false);
+  const [category, setCategory] = useState<string>("jewelery");
+  const [items, setItems] = useState([
+    { label: "Men's clothing", value: "men's clothing" },
+    { label: "Jewelery", value: "jewelery" },
+    { label: "Electronics", value: "electronics" },
+    { label: "Women's clothing", value: "women's clothing" },
+  ]);
+  const filteredProducts = products?.filter(
+    (item) => item.category == category
+  );
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("https://fakestoreapi.com/products");
+        setProducts(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  const onGenderOpen = useCallback(() => {
+    setOpen(true);
+  }, []);
+  interface ProductApi {
+    id: number;
+    title: string;
+    price: number;
+    description: string;
+    category: string;
+    image: string;
+    rating: {
+      rate: number;
+      count: number;
+    };
+  }
   interface Product {
     id: number;
     image: string;
     name: string;
+  }
+
+  interface Deal {
+    id: string;
+    title: string;
+    oldPrice: number;
+    price: number;
+    image: string;
+    carouselImages: string[];
+    color: string;
+    size: string;
   }
 
   const list: Product[] = [
@@ -54,7 +109,7 @@ const HomeScreen = () => {
     },
   ];
 
-  const deals = [
+  const deals: Deal[] = [
     {
       id: "20",
       title: "OnePlus Nord CE 3 Lite 5G (Pastel Lime, 8GB RAM, 128GB Storage)",
@@ -183,6 +238,8 @@ const HomeScreen = () => {
       size: "8GB RAM, 128GB Storage",
     },
   ];
+
+  console.log("Products are", products);
 
   const images = [
     require("../assets/photo(1).webp"),
@@ -346,8 +403,80 @@ const HomeScreen = () => {
                 source={{ uri: item.image }}
                 style={{ height: 150, width: 150, resizeMode: "contain" }}
               />
+
+              <View
+                style={{
+                  backgroundColor: "#e31837",
+                  paddingVertical: 5,
+                  width: 130,
+                  justifyContent: "center",
+                  alignItems: "center",
+                  marginTop: 10,
+                  borderRadius: 5,
+                }}
+              >
+                <Text
+                  style={{
+                    color: "white",
+                    textAlign: "center",
+                    fontSize: 13,
+                    fontWeight: "600",
+                  }}
+                >
+                  Upto {item?.offer}
+                </Text>
+              </View>
             </TouchableOpacity>
           );
+        }}
+      />
+      <View
+        style={{
+          height: 1,
+          borderColor: "#d0d0d0",
+          borderWidth: 2,
+          marginVertical: 10,
+        }}
+      />
+
+      <View
+        style={{
+          marginHorizontal: 10,
+          width: "45%",
+          marginBottom: 10,
+          marginTop: 10,
+        }}
+      >
+        <DropDownPicker
+          style={{
+            borderColor: "#B7B7B7",
+            height: 30,
+            marginBottom: open ? 120 : 15,
+          }}
+          open={open}
+          value={category} //genderValue
+          items={items}
+          setOpen={setOpen}
+          setValue={setCategory}
+          setItems={setItems}
+          placeholder="choose category"
+          placeholderStyle={{ color: "#B7B7B7" }}
+          onOpen={onGenderOpen}
+          zIndex={3000}
+          zIndexInverse={1000}
+        />
+      </View>
+
+      <FlatList
+        keyExtractor={(item) => item.id.toString()}
+        data={filteredProducts}
+        contentContainerStyle={{
+          flexDirection: "row",
+          flexWrap: "wrap",
+          alignItems: "center",
+        }}
+        renderItem={({ item, index }) => {
+          return <ProductItem item={item} key={index} />;
         }}
       />
     </ScrollView>
