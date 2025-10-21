@@ -456,7 +456,7 @@ const HomeScreen = () => {
 
       <View
         style={{
-          marginHorizontal: 10,
+          marginHorizontal: 20,
           width: "45%",
           marginBottom: 10,
           marginTop: 10,
@@ -489,6 +489,7 @@ const HomeScreen = () => {
           flexDirection: "row",
           flexWrap: "wrap",
           alignItems: "center",
+          justifyContent: "center", 
         }}
         renderItem={({ item, index }) => {
           return <ProductItem item={item} key={index} />;
