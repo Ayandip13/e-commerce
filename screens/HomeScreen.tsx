@@ -16,8 +16,10 @@ import CustomSlider from "../hooks/CustomSlider";
 import axios from "axios";
 import ProductItem from "../hooks/ProductItem";
 import DropDownPicker from "react-native-dropdown-picker";
+import { useNavigation } from "@react-navigation/native";
 
 const HomeScreen = () => {
+  const navigation = useNavigation();
   const [products, setProducts] = useState<ProductApi[]>([]);
   const [open, setOpen] = useState<boolean>(false);
   const [category, setCategory] = useState<string>("jewelery");
@@ -355,8 +357,9 @@ const HomeScreen = () => {
       <View
         style={{
           flexDirection: "row",
-          alignItems: "center",
+          justifyContent: "space-between",
           flexWrap: "wrap",
+          marginHorizontal: 20,
           rowGap: 10,
         }}
       >
@@ -393,6 +396,18 @@ const HomeScreen = () => {
         renderItem={({ item, index }) => {
           return (
             <TouchableOpacity
+              onPress={() =>
+                navigation.navigate("ProductInfoScreen", {
+                  id: item?.id,
+                  title: item?.title,
+                  price: item?.price,
+                  carouselImages: item?.carouselImages,
+                  color: item?.color,
+                  size: item?.size,
+                  oldPrice: item?.oldPrice,
+                  item: item,
+                })
+              }
               style={{
                 marginVertical: 5,
                 alignItems: "center",

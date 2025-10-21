@@ -40,7 +40,7 @@ const ProductItem = ({ item, key }: ProductItemProps) => {
           flexDirection: "row",
         }}
       >
-        <Text style={{ fontWeight: "bold", fontSize: 16 }}>{item?.price}</Text>
+        <Text style={{ fontWeight: "bold", fontSize: 16 }}>₹{item?.price}</Text>
         <Text style={{ fontWeight: "bold", color: "#ffc72c" }}>
           {item?.rating.rate} ratings
         </Text>
