@@ -16,10 +16,9 @@ interface itemprop {
 
 interface ProductItemProps {
   item: itemprop;
-  key: number;
 }
 
-const ProductItem = ({ item, key }: ProductItemProps) => {
+const ProductItem = ({ item }: ProductItemProps) => {
   return (
     <TouchableOpacity
       activeOpacity={0.5}
