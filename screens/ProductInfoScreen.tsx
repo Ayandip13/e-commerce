@@ -9,7 +9,7 @@ import {
   View,
 } from "react-native";
 import React from "react";
-import { Feather, MaterialCommunityIcons } from "@expo/vector-icons";
+import { Feather, MaterialCommunityIcons, Ionicons } from "@expo/vector-icons";
 import { useNavigation, useRoute } from "@react-navigation/native";
 
 const ProductInfoScreen = () => {
@@ -151,14 +151,98 @@ const ProductInfoScreen = () => {
         >
           {route?.params.title}
         </Text>
+
         <Text
           style={{
             fontSize: 15,
             fontWeight: "500",
           }}
         >
-          {route?.params.price}
+          ₹{route?.params.price}
         </Text>
+
+        <View
+          style={{
+            backgroundColor: "#aaaaaa",
+            width: "100%",
+            height: 1,
+            marginTop: 5,
+          }}
+        />
+
+        <View
+          style={{ flexDirection: "row", marginTop: 10, alignItems: "center" }}
+        >
+          <Text>Color: </Text>
+          <Text style={{ fontWeight: "bold", fontSize: 15 }}>
+            {route?.params.color}
+          </Text>
+        </View>
+
+        <View
+          style={{ flexDirection: "row", marginTop: 5, alignItems: "center" }}
+        >
+          <Text>Size: </Text>
+          <Text style={{ fontWeight: "bold", fontSize: 15 }}>
+            {route?.params.size}
+          </Text>
+        </View>
+
+        <View
+          style={{
+            backgroundColor: "#aaaaaa",
+            width: "100%",
+            height: 1,
+            marginTop: 5,
+          }}
+        />
+        <View style={{ marginTop: 10 }}>
+          <Text style={{ fontSize: 15 }}>Total: {route?.params.price}</Text>
+          <Text style={{ fontSize: 15, color: "#00ced1" }}>
+            Free delivery tomorrow by 3PM. Order within 10 hours 30 minutes
+          </Text>
+
+          <View
+            style={{
+              flexDirection: "row",
+              alignItems: "center",
+              gap: 5,
+              marginVertical: 5,
+            }}
+          >
+            <Ionicons name="location-outline" size={24} color="black" />
+            <Text style={{ fontSize: 15, fontWeight: "500" }}>
+              Deliver to Ayandip - Kolkata 743165
+            </Text>
+          </View>
+          <Text style={{ fontSize: 15, fontWeight: "500", color: "green" }}>
+            In Stock
+          </Text>
+
+          <TouchableOpacity
+            style={{
+              padding: 10,
+              marginTop: 10,
+              backgroundColor: "#ffc72c",
+              borderRadius: 10,
+              alignItems: "center",
+            }}
+          >
+            <Text>Add to Cart</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={{
+              padding: 10,
+              marginTop: 10,
+              backgroundColor: "#ffac1c",
+              borderRadius: 10,
+              alignItems: "center",
+            }}
+          >
+            <Text>Buy Now</Text>
+          </TouchableOpacity>
+        </View>
       </View>
     </ScrollView>
   );
