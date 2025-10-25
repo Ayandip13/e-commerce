@@ -1,5 +1,5 @@
 import {
-    Dimensions,
+  Dimensions,
   ImageBackground,
   ScrollView,
   StyleSheet,
@@ -9,12 +9,14 @@ import {
   View,
 } from "react-native";
 import React from "react";
-import { Feather } from "@expo/vector-icons";
-import { useRoute } from "@react-navigation/native";
+import { Feather, MaterialCommunityIcons } from "@expo/vector-icons";
+import { useNavigation, useRoute } from "@react-navigation/native";
 
 const ProductInfoScreen = () => {
   const route = useRoute();
-  const { width } = Dimensions.get("window")
+  const { width } = Dimensions.get("window");
+  const height = (width * 100) / 100;
+  const navigation = useNavigation();
 
   return (
     <ScrollView
@@ -63,16 +65,101 @@ const ProductInfoScreen = () => {
       <ScrollView showsHorizontalScrollIndicator={false} horizontal>
         {route.params.carouselImages.map((item, index) => (
           <ImageBackground
-            style={{ width: 500, height: 500, marginTop: 25 }}
+            style={{ width, height, marginTop: 25 }}
             key={index}
             source={{ uri: item }}
           >
-            <View>
-              <Text>{item}</Text>
+            <View
+              style={{
+                padding: 20,
+                flexDirection: "row",
+                alignItems: "center",
+                justifyContent: "space-between",
+              }}
+            >
+              <View
+                style={{
+                  height: 40,
+                  width: 40,
+                  borderRadius: 20,
+                  backgroundColor: "#c60c30",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  flexDirection: "row",
+                }}
+              >
+                <Text
+                  style={{
+                    color: "white",
+                    textAlign: "center",
+                    fontSize: 12,
+                    fontWeight: "bold",
+                  }}
+                >
+                  20% off
+                </Text>
+              </View>
+              <View
+                style={{
+                  height: 40,
+                  width: 40,
+                  borderRadius: 20,
+                  backgroundColor: "#e0e0e0",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  flexDirection: "row",
+                }}
+              >
+                <MaterialCommunityIcons
+                  name="share-variant"
+                  size={24}
+                  color="#000"
+                />
+              </View>
+            </View>
+            <View
+              style={{
+                height: 40,
+                width: 40,
+                borderRadius: 20,
+                backgroundColor: "#e0e0e0",
+                justifyContent: "center",
+                alignItems: "center",
+                flexDirection: "row",
+                marginTop: "auto",
+                marginBottom: 20,
+                marginLeft: 20,
+              }}
+            >
+              <MaterialCommunityIcons
+                name="heart-outline"
+                size={24}
+                color="#000"
+              />
             </View>
           </ImageBackground>
         ))}
       </ScrollView>
+
+      <View style={{ padding: 10 }}>
+        <Text
+          style={{
+            fontSize: 15,
+            fontWeight: "500",
+            marginBottom: 10,
+          }}
+        >
+          {route?.params.title}
+        </Text>
+        <Text
+          style={{
+            fontSize: 15,
+            fontWeight: "500",
+          }}
+        >
+          {route?.params.price}
+        </Text>
+      </View>
     </ScrollView>
   );
 };
