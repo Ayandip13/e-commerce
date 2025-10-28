@@ -154,7 +154,7 @@ const ProductInfoScreen = () => {
 
         <Text
           style={{
-            fontSize: 15,
+            fontSize: 20,
             fontWeight: "500",
           }}
         >
@@ -196,9 +196,15 @@ const ProductInfoScreen = () => {
             marginTop: 5,
           }}
         />
-        <View style={{ marginTop: 10 }}>
-          <Text style={{ fontSize: 15 }}>Total: {route?.params.price}</Text>
-          <Text style={{ fontSize: 15, color: "#00ced1" }}>
+        <View style={{ marginTop: 10, marginBottom: 50 }}>
+          <Text style={{ fontSize: 15 }}>Total: ₹{route?.params.price}</Text>
+          <Text
+            style={{
+              fontSize: 15,
+              color: "#00ced1",
+              marginTop: 5,
+            }}
+          >
             Free delivery tomorrow by 3PM. Order within 10 hours 30 minutes
           </Text>
 
@@ -215,7 +221,14 @@ const ProductInfoScreen = () => {
               Deliver to Ayandip - Kolkata 743165
             </Text>
           </View>
-          <Text style={{ fontSize: 15, fontWeight: "500", color: "green" }}>
+          <Text
+            style={{
+              fontSize: 15,
+              fontWeight: "500",
+              color: "green",
+              marginVertical: 5,
+            }}
+          >
             In Stock
           </Text>
 
@@ -234,10 +247,11 @@ const ProductInfoScreen = () => {
           <TouchableOpacity
             style={{
               padding: 10,
-              marginTop: 10,
+              marginTop: 15,
               backgroundColor: "#ffac1c",
               borderRadius: 10,
               alignItems: "center",
+              // marginBottom: 20,
             }}
           >
             <Text>Buy Now</Text>
