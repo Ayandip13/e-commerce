@@ -17,7 +17,7 @@ import axios from "axios";
 import ProductItem from "../hooks/ProductItem";
 import DropDownPicker from "react-native-dropdown-picker";
 import { useNavigation } from "@react-navigation/native";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 interface ProductApi {
   id: number;
@@ -253,6 +253,7 @@ const HomeScreen = () => {
   ];
   const cart = useSelector((state: any) => state.cart.cart);
   //state is the store object, state.cart is the cart slice, state.cart.cart is the cart array
+  console.log(cart);
   return (
     <ScrollView style={{ marginTop: Platform.OS === "android" ? 25 : 0 }}>
       <View
