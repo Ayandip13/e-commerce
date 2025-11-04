@@ -8,7 +8,7 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import { Feather, MaterialCommunityIcons, Ionicons } from "@expo/vector-icons";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import { useDispatch, useSelector } from "react-redux";
@@ -21,9 +21,14 @@ const ProductInfoScreen = () => {
   const navigation = useNavigation();
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart.cart);
+  const [addedToCart, setAddedToCart] = useState(false);
 
   const addItemToCart = (item) => {
+    setAddedToCart(true);
     dispatch(addToCart(item));
+    setTimeout(() => {
+      setAddedToCart(false);
+    }, 1000);
   };
   console.log(cart);
 
@@ -251,7 +256,11 @@ const ProductInfoScreen = () => {
               alignItems: "center",
             }}
           >
-            <Text>Add to Cart</Text>
+            {addedToCart ? (
+              <Text>Added to Cart</Text>
+            ) : (
+              <Text>Add to Cart</Text>
+            )}
           </TouchableOpacity>
 
           <TouchableOpacity

@@ -1,6 +1,7 @@
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import React from "react";
-
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../redux/CartReducer";
 
 interface itemprop {
   id: number;
@@ -20,6 +21,15 @@ interface ProductItemProps {
 }
 
 const ProductItem = ({ item }: ProductItemProps) => {
+  const dispatch = useDispatch();
+  const [addedToCart, setAddedToCart] = useState(false);
+  const addItemToCart = (item) => {
+    setAddedToCart(true);
+    dispatch(addToCart(item));
+    setTimeout(() => {
+      setAddedToCart(false);
+    }, 1000);
+  };
   return (
     <TouchableOpacity
       activeOpacity={0.5}
@@ -46,6 +56,7 @@ const ProductItem = ({ item }: ProductItemProps) => {
         </Text>
       </View>
       <TouchableOpacity
+        onPress={() => addItemToCart(item)}
         style={{
           backgroundColor: "#ffc72c",
           padding: 10,
@@ -54,7 +65,7 @@ const ProductItem = ({ item }: ProductItemProps) => {
           marginTop: 10,
         }}
       >
-        <Text>Add to Cart</Text>
+        {addedToCart ? <Text>Added to Cart</Text> : <Text>Add to Cart</Text>}
       </TouchableOpacity>
     </TouchableOpacity>
   );

@@ -17,6 +17,7 @@ import axios from "axios";
 import DropDownPicker from "react-native-dropdown-picker";
 import { useNavigation } from "@react-navigation/native";
 import { useDispatch, useSelector } from "react-redux";
+import ProductItem from "../hooks/ProductItem";
 
 interface ProductApi {
   id: number;
@@ -244,7 +245,6 @@ const HomeScreen = () => {
   }, []);
 
   // console.log("Products are", products);
-
   const images = [
     require("../assets/photo(1).webp"),
     require("../assets/photo(2).gif"),
@@ -369,6 +369,18 @@ const HomeScreen = () => {
       >
         {deals.map((item, index) => (
           <TouchableOpacity
+            onPress={() =>
+              navigation.navigate("ProductInfoScreen", {
+                id: item?.id,
+                title: item?.title,
+                price: item?.price,
+                carouselImages: item?.carouselImages,
+                color: item?.color,
+                size: item?.size,
+                oldPrice: item?.oldPrice,
+                item: item,
+              })
+            }
             key={index}
             style={{
               width: "48%",
@@ -514,48 +526,7 @@ const HomeScreen = () => {
         }}
         numColumns={2}
         renderItem={({ item }) => {
-          return (
-            <>
-              <TouchableOpacity
-                activeOpacity={0.5}
-                style={{ marginHorizontal: 20, marginVertical: 10 }}
-              >
-                <Image
-                  style={{ width: 150, height: 150, resizeMode: "stretch" }}
-                  source={{ uri: item?.image }}
-                />
-                <Text numberOfLines={1} style={{ width: 150, marginTop: 10 }}>
-                  {item?.title}
-                </Text>
-
-                <View
-                  style={{
-                    justifyContent: "space-between",
-                    alignItems: "center",
-                    flexDirection: "row",
-                  }}
-                >
-                  <Text style={{ fontWeight: "bold", fontSize: 16 }}>
-                    ₹{item?.price}
-                  </Text>
-                  <Text style={{ fontWeight: "bold", color: "#ffc72c" }}>
-                    {item?.rating.rate} ratings
-                  </Text>
-                </View>
-                <TouchableOpacity
-                  style={{
-                    backgroundColor: "#ffc72c",
-                    padding: 10,
-                    borderRadius: 10,
-                    alignItems: "center",
-                    marginTop: 10,
-                  }}
-                >
-                  <Text>Add to Cart</Text>
-                </TouchableOpacity>
-              </TouchableOpacity>
-            </>
-          );
+          return <ProductItem item={item} />;
         }}
       />
     </ScrollView>
