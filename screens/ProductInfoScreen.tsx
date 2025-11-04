@@ -11,12 +11,21 @@ import {
 import React from "react";
 import { Feather, MaterialCommunityIcons, Ionicons } from "@expo/vector-icons";
 import { useNavigation, useRoute } from "@react-navigation/native";
+import { useDispatch, useSelector } from "react-redux";
+import { addToCart } from "../redux/CartReducer";
 
 const ProductInfoScreen = () => {
   const route = useRoute();
   const { width } = Dimensions.get("window");
   const height = (width * 100) / 100;
   const navigation = useNavigation();
+  const dispatch = useDispatch();
+  const cart = useSelector((state) => state.cart.cart);
+
+  const addItemToCart = (item) => {
+    dispatch(addToCart(item));
+  };
+  console.log(cart);
 
   return (
     <ScrollView
@@ -233,6 +242,7 @@ const ProductInfoScreen = () => {
           </Text>
 
           <TouchableOpacity
+            onPress={() => addItemToCart(route?.params?.item)}
             style={{
               padding: 10,
               marginTop: 10,

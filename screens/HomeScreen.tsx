@@ -14,7 +14,6 @@ import React, { useCallback, useEffect, useState } from "react";
 import { Feather, MaterialIcons, Ionicons } from "@expo/vector-icons";
 import CustomSlider from "../hooks/CustomSlider";
 import axios from "axios";
-import ProductItem from "../hooks/ProductItem";
 import DropDownPicker from "react-native-dropdown-picker";
 import { useNavigation } from "@react-navigation/native";
 import { useDispatch, useSelector } from "react-redux";
@@ -244,7 +243,7 @@ const HomeScreen = () => {
     return () => controller.abort();
   }, []);
 
-  console.log("Products are", products);
+  // console.log("Products are", products);
 
   const images = [
     require("../assets/photo(1).webp"),
@@ -515,7 +514,48 @@ const HomeScreen = () => {
         }}
         numColumns={2}
         renderItem={({ item }) => {
-          return <ProductItem item={item} />;
+          return (
+            <>
+              <TouchableOpacity
+                activeOpacity={0.5}
+                style={{ marginHorizontal: 20, marginVertical: 10 }}
+              >
+                <Image
+                  style={{ width: 150, height: 150, resizeMode: "stretch" }}
+                  source={{ uri: item?.image }}
+                />
+                <Text numberOfLines={1} style={{ width: 150, marginTop: 10 }}>
+                  {item?.title}
+                </Text>
+
+                <View
+                  style={{
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                    flexDirection: "row",
+                  }}
+                >
+                  <Text style={{ fontWeight: "bold", fontSize: 16 }}>
+                    ₹{item?.price}
+                  </Text>
+                  <Text style={{ fontWeight: "bold", color: "#ffc72c" }}>
+                    {item?.rating.rate} ratings
+                  </Text>
+                </View>
+                <TouchableOpacity
+                  style={{
+                    backgroundColor: "#ffc72c",
+                    padding: 10,
+                    borderRadius: 10,
+                    alignItems: "center",
+                    marginTop: 10,
+                  }}
+                >
+                  <Text>Add to Cart</Text>
+                </TouchableOpacity>
+              </TouchableOpacity>
+            </>
+          );
         }}
       />
     </ScrollView>
