@@ -18,6 +18,7 @@ import DropDownPicker from "react-native-dropdown-picker";
 import { useNavigation } from "@react-navigation/native";
 import { useDispatch, useSelector } from "react-redux";
 import ProductItem from "../hooks/ProductItem";
+import { BottomModal, SlideAnimation, ModalContent } from "react-native-modals";
 
 interface ProductApi {
   id: number;
@@ -226,6 +227,7 @@ const offers: offer[] = [
 ];
 
 const HomeScreen = () => {
+  const [modalVisible, setModalVisible] = useState(false);
   const navigation = useNavigation();
   const [products, setProducts] = useState<ProductApi[]>([]);
   const [open, setOpen] = useState<boolean>(false);
@@ -267,181 +269,122 @@ const HomeScreen = () => {
   //state is the store object, state.cart is the cart slice, state.cart.cart is the cart array
   console.log(cart);
   return (
-    <ScrollView style={{ marginTop: Platform.OS === "android" ? 25 : 0 }}>
-      <View
-        style={{
-          backgroundColor: "#00ced1",
-          padding: 10,
-          flexDirection: "row",
-          alignItems: "center",
-          paddingRight: 15,
-        }}
-      >
-        <Pressable
+    <>
+      <ScrollView style={{ marginTop: Platform.OS === "android" ? 25 : 0 }}>
+        <View
           style={{
+            backgroundColor: "#00ced1",
+            padding: 10,
             flexDirection: "row",
             alignItems: "center",
-            marginHorizontal: 7,
-            backgroundColor: "white",
-            gap: 10,
-            borderRadius: 5,
-            height: 40,
-            flex: 1,
-            paddingHorizontal: 15,
-            justifyContent: "space-between",
+            paddingRight: 15,
           }}
         >
-          <View
+          <Pressable
             style={{
               flexDirection: "row",
               alignItems: "center",
+              marginHorizontal: 7,
+              backgroundColor: "white",
               gap: 10,
-            }}
-          >
-            <Feather name="search" size={20} color="black" />
-            <TextInput placeholder="Search Amazon.in" />
-          </View>
-        </Pressable>
-        <TouchableOpacity>
-          <Feather name="mic" size={20} color="black" />
-        </TouchableOpacity>
-      </View>
-
-      <View
-        style={{
-          flexDirection: "row",
-          alignItems: "center",
-          gap: 5,
-          padding: 10,
-          backgroundColor: "#afeeee",
-        }}
-      >
-        <Ionicons name="location-outline" size={24} color="black" />
-        <TouchableOpacity>
-          <Text style={{ fontSize: 13, fontWeight: "500" }}>
-            Deliver to Ayandip - Kolkata, 743165
-          </Text>
-        </TouchableOpacity>
-        <TouchableOpacity>
-          <MaterialIcons name="keyboard-arrow-down" size={24} color="black" />
-        </TouchableOpacity>
-      </View>
-
-      <FlatList
-        data={list}
-        renderItem={({ item }) => (
-          <TouchableOpacity
-            style={{
-              alignItems: "center",
+              borderRadius: 5,
+              height: 40,
+              flex: 1,
+              paddingHorizontal: 15,
               justifyContent: "space-between",
-              padding: 10,
             }}
           >
-            <Image
-              source={item.image as any}
+            <View
               style={{
-                width: 50,
-                height: 50,
-                resizeMode: "contain",
-                borderRadius: 50,
-              }}
-            />
-            <Text
-              style={{
-                fontSize: 13,
-                textAlign: "center",
-                marginTop: 5,
+                flexDirection: "row",
+                alignItems: "center",
+                gap: 10,
               }}
             >
-              {item.name}
+              <Feather name="search" size={20} color="black" />
+              <TextInput placeholder="Search Amazon.in" />
+            </View>
+          </Pressable>
+          <TouchableOpacity>
+            <Feather name="mic" size={20} color="black" />
+          </TouchableOpacity>
+        </View>
+
+        <TouchableOpacity
+          onPress={() => setModalVisible(!modalVisible)}
+          style={{
+            flexDirection: "row",
+            alignItems: "center",
+            gap: 5,
+            padding: 10,
+            backgroundColor: "#afeeee",
+          }}
+        >
+          <Ionicons name="location-outline" size={24} color="black" />
+          <View>
+            <Text style={{ fontSize: 13, fontWeight: "500" }}>
+              Deliver to Ayandip - Kolkata, 743165
             </Text>
-          </TouchableOpacity>
-        )}
-        horizontal
-        showsHorizontalScrollIndicator={false}
-      />
+          </View>
+          <View>
+            <MaterialIcons name="keyboard-arrow-down" size={24} color="black" />
+          </View>
+        </TouchableOpacity>
 
-      <CustomSlider
-        images={images}
-        autoPlay={true}
-        interval={3000}
-        onImagePress={(index) => console.log("Pressed image:", index)}
-      />
-
-      <Text style={{ fontSize: 18, fontWeight: "600", padding: 10 }}>
-        Trending Deals of the week
-      </Text>
-
-      <View
-        style={{
-          flexDirection: "row",
-          flexWrap: "wrap",
-          justifyContent: "space-between",
-          marginHorizontal: 10,
-        }}
-      >
-        {deals.map((item, index) => (
-          <TouchableOpacity
-            onPress={() =>
-              navigation.navigate("ProductInfoScreen", {
-                id: item?.id,
-                title: item?.title,
-                price: item?.price,
-                carouselImages: item?.carouselImages,
-                color: item?.color,
-                size: item?.size,
-                oldPrice: item?.oldPrice,
-                item: item,
-              })
-            }
-            key={index}
-            style={{
-              width: "48%",
-              marginBottom: 15,
-              alignItems: "center",
-              backgroundColor: "#fff",
-              borderRadius: 8,
-              padding: 5,
-            }}
-          >
-            <Image
-              source={{ uri: item.image }}
+        <FlatList
+          data={list}
+          renderItem={({ item }) => (
+            <TouchableOpacity
               style={{
-                width: "100%",
-                height: 180,
-                resizeMode: "contain",
-                borderRadius: 8,
+                alignItems: "center",
+                justifyContent: "space-between",
+                padding: 10,
               }}
-            />
-          </TouchableOpacity>
-        ))}
-      </View>
+            >
+              <Image
+                source={item.image as any}
+                style={{
+                  width: 50,
+                  height: 50,
+                  resizeMode: "contain",
+                  borderRadius: 50,
+                }}
+              />
+              <Text
+                style={{
+                  fontSize: 13,
+                  textAlign: "center",
+                  marginTop: 5,
+                }}
+              >
+                {item.name}
+              </Text>
+            </TouchableOpacity>
+          )}
+          horizontal
+          showsHorizontalScrollIndicator={false}
+        />
 
-      <View
-        style={{
-          height: 1,
-          borderColor: "#d0d0d0",
-          borderWidth: 2,
-          marginVertical: 10,
-        }}
-      />
-      <Text
-        style={{
-          fontSize: 18,
-          fontWeight: "600",
-          paddingHorizontal: 10,
-        }}
-      >
-        Today's Deals
-      </Text>
+        <CustomSlider
+          images={images}
+          autoPlay={true}
+          interval={3000}
+          onImagePress={(index) => console.log("Pressed image:", index)}
+        />
 
-      <FlatList
-        data={offers}
-        horizontal
-        contentContainerStyle={{ marginHorizontal: 10 }}
-        showsHorizontalScrollIndicator={false}
-        renderItem={({ item, index }) => {
-          return (
+        <Text style={{ fontSize: 18, fontWeight: "600", padding: 10 }}>
+          Trending Deals of the week
+        </Text>
+
+        <View
+          style={{
+            flexDirection: "row",
+            flexWrap: "wrap",
+            justifyContent: "space-between",
+            marginHorizontal: 10,
+          }}
+        >
+          {deals.map((item, index) => (
             <TouchableOpacity
               onPress={() =>
                 navigation.navigate("ProductInfoScreen", {
@@ -455,94 +398,175 @@ const HomeScreen = () => {
                   item: item,
                 })
               }
+              key={index}
               style={{
-                marginVertical: 5,
+                width: "48%",
+                marginBottom: 15,
                 alignItems: "center",
-                justifyContent: "center",
+                backgroundColor: "#fff",
+                borderRadius: 8,
+                padding: 5,
               }}
             >
               <Image
                 source={{ uri: item.image }}
-                style={{ height: 150, width: 150, resizeMode: "contain" }}
-              />
-
-              <View
                 style={{
-                  backgroundColor: "#e31837",
-                  paddingVertical: 5,
-                  width: 130,
-                  justifyContent: "center",
+                  width: "100%",
+                  height: 180,
+                  resizeMode: "contain",
+                  borderRadius: 8,
+                }}
+              />
+            </TouchableOpacity>
+          ))}
+        </View>
+
+        <View
+          style={{
+            height: 1,
+            borderColor: "#d0d0d0",
+            borderWidth: 2,
+            marginVertical: 10,
+          }}
+        />
+        <Text
+          style={{
+            fontSize: 18,
+            fontWeight: "600",
+            paddingHorizontal: 10,
+          }}
+        >
+          Today's Deals
+        </Text>
+
+        <FlatList
+          data={offers}
+          horizontal
+          contentContainerStyle={{ marginHorizontal: 10 }}
+          showsHorizontalScrollIndicator={false}
+          renderItem={({ item, index }) => {
+            return (
+              <TouchableOpacity
+                onPress={() =>
+                  navigation.navigate("ProductInfoScreen", {
+                    id: item?.id,
+                    title: item?.title,
+                    price: item?.price,
+                    carouselImages: item?.carouselImages,
+                    color: item?.color,
+                    size: item?.size,
+                    oldPrice: item?.oldPrice,
+                    item: item,
+                  })
+                }
+                style={{
+                  marginVertical: 5,
                   alignItems: "center",
-                  marginTop: 10,
-                  borderRadius: 5,
+                  justifyContent: "center",
                 }}
               >
-                <Text
+                <Image
+                  source={{ uri: item.image }}
+                  style={{ height: 150, width: 150, resizeMode: "contain" }}
+                />
+
+                <View
                   style={{
-                    color: "white",
-                    textAlign: "center",
-                    fontSize: 13,
-                    fontWeight: "600",
+                    backgroundColor: "#e31837",
+                    paddingVertical: 5,
+                    width: 130,
+                    justifyContent: "center",
+                    alignItems: "center",
+                    marginTop: 10,
+                    borderRadius: 5,
                   }}
                 >
-                  Upto {item?.offer}
-                </Text>
-              </View>
-            </TouchableOpacity>
-          );
-        }}
-      />
-      <View
-        style={{
-          height: 1,
-          borderColor: "#d0d0d0",
-          borderWidth: 2,
-          marginVertical: 10,
-        }}
-      />
-
-      <View
-        style={{
-          marginHorizontal: 20,
-          width: "45%",
-          marginBottom: 10,
-          marginTop: 10,
-        }}
-      >
-        <DropDownPicker
-          style={{
-            borderColor: "#B7B7B7",
-            height: 30,
-            marginBottom: open ? 120 : 15,
+                  <Text
+                    style={{
+                      color: "white",
+                      textAlign: "center",
+                      fontSize: 13,
+                      fontWeight: "600",
+                    }}
+                  >
+                    Upto {item?.offer}
+                  </Text>
+                </View>
+              </TouchableOpacity>
+            );
           }}
-          open={open}
-          value={category} //genderValue
-          items={items}
-          setOpen={setOpen}
-          setValue={setCategory}
-          setItems={setItems}
-          placeholder="choose category"
-          placeholderStyle={{ color: "#B7B7B7" }}
-          zIndex={3000}
-          zIndexInverse={1000}
         />
-      </View>
+        <View
+          style={{
+            height: 1,
+            borderColor: "#d0d0d0",
+            borderWidth: 2,
+            marginVertical: 10,
+          }}
+        />
 
-      <FlatList
-        keyExtractor={(item) => item.id.toString()}
-        data={filteredProducts}
-        contentContainerStyle={{
-          flexDirection: "row",
-          flexWrap: "wrap",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-        numColumns={2}
-        renderItem={({ item }) => {
-          return <ProductItem item={item} />;
-        }}
-      />
-    </ScrollView>
+        <View
+          style={{
+            marginHorizontal: 20,
+            width: "45%",
+            marginBottom: 10,
+            marginTop: 10,
+          }}
+        >
+          <DropDownPicker
+            style={{
+              borderColor: "#B7B7B7",
+              height: 30,
+              marginBottom: open ? 120 : 15,
+            }}
+            open={open}
+            value={category} //genderValue
+            items={items}
+            setOpen={setOpen}
+            setValue={setCategory}
+            setItems={setItems}
+            placeholder="choose category"
+            placeholderStyle={{ color: "#B7B7B7" }}
+            zIndex={3000}
+            zIndexInverse={1000}
+          />
+        </View>
+
+        <FlatList
+          keyExtractor={(item) => item.id.toString()}
+          data={filteredProducts}
+          contentContainerStyle={{
+            flexDirection: "row",
+            flexWrap: "wrap",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+          numColumns={2}
+          renderItem={({ item }) => {
+            return <ProductItem item={item} />;
+          }}
+        />
+      </ScrollView>
+      <BottomModal
+        // onBackdropPress={() => setModalVisible(!modalVisible)}
+        swipeDirection={["up", "down"]}
+        swipeThreshold={200}
+        modalAnimation={
+          new SlideAnimation({
+            slideFrom: "bottom",
+          })
+        }
+        onHardwareBackPress={() => setModalVisible(!modalVisible)}
+        visible={modalVisible}
+        onTouchOutside={() => setModalVisible(!modalVisible)}
+      >
+        <ModalContent style={{ width: "100%", height: 300 }}>
+          <View>
+            <Text>Choose your location</Text>
+          </View>
+        </ModalContent>
+      </BottomModal>
+    </>
   );
 };
 

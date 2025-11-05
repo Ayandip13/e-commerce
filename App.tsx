@@ -3,12 +3,20 @@ import StackNavigator from "./navigation/StackNavigator";
 import ToastManager from "toastify-react-native";
 import { Provider } from "react-redux";
 import store from "./redux/store";
+import { ModalPortal } from "react-native-modals";
+import { BackHandler } from "react-native";
+
+// Temporary fix for react-native-modals BackHandler issue
+if (!BackHandler.removeEventListener) {
+  BackHandler.removeEventListener = (eventName, handler) => {};
+}
 
 const App = () => {
   return (
     <>
       <Provider store={store}>
         <StackNavigator />
+        <ModalPortal />
         <ToastManager
           position="top"
           style={{
