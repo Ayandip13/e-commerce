@@ -47,6 +47,19 @@ interface Deal {
   color: string;
   size: string;
 }
+
+interface offer {
+  id: string;
+  title: string;
+  offer: string;
+  oldPrice: number;
+  price: number;
+  image: string;
+  carouselImages: string[];
+  color: string;
+  size: string;
+}
+
 const list: Product[] = [
   {
     id: 0,
@@ -148,7 +161,7 @@ const deals: Deal[] = [
   },
 ];
 
-const offers = [
+const offers: offer[] = [
   {
     id: "0",
     title:
