@@ -11,7 +11,13 @@ import {
   View,
 } from "react-native";
 import React, { useCallback, useEffect, useState } from "react";
-import { Feather, MaterialIcons, Ionicons } from "@expo/vector-icons";
+import {
+  Feather,
+  MaterialIcons,
+  Ionicons,
+  Entypo,
+  AntDesign,
+} from "@expo/vector-icons";
 import CustomSlider from "../hooks/CustomSlider";
 import axios from "axios";
 import DropDownPicker from "react-native-dropdown-picker";
@@ -548,9 +554,7 @@ const HomeScreen = () => {
         />
       </ScrollView>
       <BottomModal
-        // onBackdropPress={() => setModalVisible(!modalVisible)}
         swipeDirection={["up", "down"]}
-        swipeThreshold={200}
         modalAnimation={
           new SlideAnimation({
             slideFrom: "bottom",
@@ -560,9 +564,67 @@ const HomeScreen = () => {
         visible={modalVisible}
         onTouchOutside={() => setModalVisible(!modalVisible)}
       >
-        <ModalContent style={{ width: "100%", height: 300 }}>
+        <ModalContent style={{ width: "100%", height: 430 }}>
           <View>
-            <Text>Choose your location</Text>
+            <Text style={{ fontSize: 18, fontWeight: "600" }}>
+              Choose your location
+            </Text>
+            <Text style={{ marginTop: 5, color: "#666", fontSize: 15 }}>
+              Select a delivery location to see product availability and
+              delivery options
+            </Text>
+          </View>
+          <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+            <TouchableOpacity
+              style={{
+                marginTop: 10,
+                borderWidth: 1,
+                padding: 10,
+                borderColor: "#aaa",
+                borderRadius: 5,
+                justifyContent: "center",
+                alignItems: "center",
+                height: 160,
+                width: 160,
+              }}
+            >
+              <Text
+                style={{
+                  fontSize: 15,
+                  textAlign: "center",
+                  fontWeight: "500",
+                  color: "#0066b2",
+                }}
+              >
+                Add an address {"\n"} or pickup point
+              </Text>
+            </TouchableOpacity>
+          </ScrollView>
+          <View style={{ marginBottom: 35, gap: 10 }}>
+            <View
+              style={{ flexDirection: "row", alignItems: "center", gap: 7 }}
+            >
+              <Entypo name="location-pin" color="#0066b2" size={25} />
+              <Text style={{ fontSize: 15, gap: 10, color: "#0066b2" }}>
+                Enter an Indian pincode
+              </Text>
+            </View>
+            <View
+              style={{ flexDirection: "row", alignItems: "center", gap: 7 }}
+            >
+              <Ionicons name="locate-sharp" color="#0066b2" size={25} />
+              <Text style={{ fontSize: 15, gap: 10, color: "#0066b2" }}>
+                Use my current location
+              </Text>
+            </View>
+            <View
+              style={{ flexDirection: "row", alignItems: "center", gap: 7 }}
+            >
+              <Ionicons name="globe" color="#0066b2" size={25} />
+              <Text style={{ fontSize: 15, gap: 10, color: "#0066b2" }}>
+                Deliver outside India
+              </Text>
+            </View>
           </View>
         </ModalContent>
       </BottomModal>
