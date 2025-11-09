@@ -576,6 +576,10 @@ const HomeScreen = () => {
           </View>
           <ScrollView horizontal showsHorizontalScrollIndicator={false}>
             <TouchableOpacity
+              onPress={() => {
+                navigation.navigate("Address");
+                setModalVisible(false);
+              }}
               style={{
                 marginTop: 10,
                 borderWidth: 1,
@@ -600,27 +604,34 @@ const HomeScreen = () => {
               </Text>
             </TouchableOpacity>
           </ScrollView>
-          <View style={{ marginBottom: 35, gap: 10 }}>
+          <View
+            style={{
+              marginBottom: 35,
+              gap: 10,
+              marginLeft: -5,
+              alignItems: "flex-start",
+            }}
+          >
             <View
-              style={{ flexDirection: "row", alignItems: "center", gap: 7 }}
+              style={{ flexDirection: "row", alignItems: "center", gap: 5 }}
             >
-              <Entypo name="location-pin" color="#0066b2" size={25} />
+              <Entypo name="location-pin" color="#0066b2" size={22} />
               <Text style={{ fontSize: 15, gap: 10, color: "#0066b2" }}>
                 Enter an Indian pincode
               </Text>
             </View>
             <View
-              style={{ flexDirection: "row", alignItems: "center", gap: 7 }}
+              style={{ flexDirection: "row", alignItems: "center", gap: 5 }}
             >
-              <Ionicons name="locate-sharp" color="#0066b2" size={25} />
+              <Ionicons name="locate-sharp" color="#0066b2" size={22} />
               <Text style={{ fontSize: 15, gap: 10, color: "#0066b2" }}>
                 Use my current location
               </Text>
             </View>
             <View
-              style={{ flexDirection: "row", alignItems: "center", gap: 7 }}
+              style={{ flexDirection: "row", alignItems: "center", gap: 5 }}
             >
-              <Ionicons name="globe" color="#0066b2" size={25} />
+              <Ionicons name="globe" color="#0066b2" size={22} />
               <Text style={{ fontSize: 15, gap: 10, color: "#0066b2" }}>
                 Deliver outside India
               </Text>
