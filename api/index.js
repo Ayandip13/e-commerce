@@ -141,3 +141,38 @@ app.post("/login", async (req, res) => {
     res.status(500).json({ message: "Login failed" });
   }
 });
+
+//endpoint to store the user's addresses in the database
+app.post("/addresses", async (req, res) => {
+  try {
+    const { userId, address } = req.body;
+
+    //check if user exists
+    const user = await User.findById(userId);
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+    //add new addresses to the user's addresses array
+    user.addresses.push(address);
+    //save the updated user document to the database
+    await user.save();
+    res.status(200).json({ message: "Address created successfully" });
+  } catch (error) {
+    res.status(500).json({ message: "Error adding address" });
+  }
+});
+
+//endpoint to get the user's addresses from the database
+app.get("/addresses/:userId", async (req, res) => {
+  try {
+    const userId = req.params.userId;
+    const user = await User.findById(userId);
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+    const addresses = user.addresses;
+    res.status(200).json({ addresses });
+  } catch (error) {
+    res.status(500).json({ message: "Error getting addresses" });
+  }
+});

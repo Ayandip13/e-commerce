@@ -16,6 +16,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { ActivityIndicator, Alert, View } from "react-native";
 import ProductInfoScreen from "../screens/ProductInfoScreen";
 import AddAddressScreen from "../screens/AddAddressScreen";
+import Address from "../screens/Address";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -109,6 +110,7 @@ const StackNavigator = () => {
         <Stack.Screen name="Main" component={BottomTabs} />
         <Stack.Screen name="ProductInfoScreen" component={ProductInfoScreen} />
         <Stack.Screen name="Address" component={AddAddressScreen} />
+        <Stack.Screen name="Add" component={Address} />
       </Stack.Navigator>
     </NavigationContainer>
   );

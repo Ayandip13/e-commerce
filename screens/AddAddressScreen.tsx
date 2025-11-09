@@ -1,5 +1,5 @@
 import {
-    Platform,
+  Platform,
   Pressable,
   ScrollView,
   StyleSheet,
@@ -9,9 +9,11 @@ import {
   View,
 } from "react-native";
 import React from "react";
-import { Feather } from "@expo/vector-icons";
+import { Feather, MaterialIcons } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
 
 const AddAddressScreen = () => {
+  const navigation = useNavigation();
   return (
     <ScrollView style={{ marginTop: Platform.OS === "android" ? 25 : 0 }}>
       <View
@@ -50,6 +52,33 @@ const AddAddressScreen = () => {
         </Pressable>
         <TouchableOpacity>
           <Feather name="mic" size={20} color="black" />
+        </TouchableOpacity>
+      </View>
+      <View>
+        <Text
+          style={{
+            fontSize: 20,
+            fontWeight: "bold",
+            marginTop: 10,
+            marginHorizontal: 10,
+            marginBottom: 5,
+          }}
+        >
+          Your Addresses
+        </Text>
+        <TouchableOpacity
+          onPress={() => navigation.navigate("Add" as never)}
+          style={{
+            marginVertical: 5,
+            borderWidth: 1,
+            flexDirection: "row",
+            padding: 10,
+            borderColor: "#d0d0d0",
+            justifyContent: "space-between",
+          }}
+        >
+          <Text>Add a new Address</Text>
+          <MaterialIcons name="keyboard-arrow-right" size={24} color="black" />
         </TouchableOpacity>
       </View>
     </ScrollView>

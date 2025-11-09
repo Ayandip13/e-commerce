@@ -577,7 +577,7 @@ const HomeScreen = () => {
           <ScrollView horizontal showsHorizontalScrollIndicator={false}>
             <TouchableOpacity
               onPress={() => {
-                navigation.navigate("Address");
+                navigation.navigate("Address" as never);
                 setModalVisible(false);
               }}
               style={{
