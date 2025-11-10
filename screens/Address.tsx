@@ -8,7 +8,10 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import jwt_decode from "jwt-decode";
+import { UserType } from "../UserContext";
 
 const Address = () => {
   const [address, setAddress] = useState<string>("");
@@ -18,6 +21,21 @@ const Address = () => {
   const [street, setStreet] = useState<string>("");
   const [landmark, setLandmark] = useState<string>("");
   const [pincode, setPincode] = useState<number>();
+  const {userId, setUserId} = useContext(UserType)
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      const token = await AsyncStorage.getItem("authToken");
+      const decodedToken = jwt_decode(token);
+      const userId = decodedToken.userId;
+      setUserId(userId)
+    };
+    fetchUser();
+  }, []);
+
+  console.log(userId);
+  
+
   return (
     <View style={{ marginTop: Platform.OS === "android" ? 25 : 0 }}>
       <View
@@ -179,6 +197,7 @@ const Address = () => {
           </View>
         </ScrollView>
         <TouchableOpacity
+          //   onPress={handleAddAddress}
           style={{
             backgroundColor: "#ffc72c",
             padding: 15,
