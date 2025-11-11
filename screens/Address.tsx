@@ -17,11 +17,11 @@ import { Toast } from "toastify-react-native";
 
 const Address = () => {
   const [name, setName] = useState<string>("");
-  const [phone, setPhone] = useState<number | null>(null);
+  const [phone, setPhone] = useState<string>("");
   const [housingNo, setHousingNo] = useState<string>("");
   const [street, setStreet] = useState<string>("");
   const [landmark, setLandmark] = useState<string>("");
-  const [pincode, setPincode] = useState<number | null>(0);
+  const [pincode, setPincode] = useState<string>("");
   const { userId, setUserId } = useContext(UserType);
   const [loading, setLoading] = useState<boolean>(false);
 
@@ -30,24 +30,17 @@ const Address = () => {
   }
 
   const handleAddAddress = async () => {
-    if (
-      !name ||
-      !phone ||
-      !housingNo ||
-      !street ||
-      !landmark ||
-      !pincode
-    ) {
+    if (!name || !phone || !housingNo || !street || !landmark || !pincode) {
       ToastAndroid.show("All fields are required", ToastAndroid.SHORT);
       return;
     }
     const addresses = {
       name,
-      mobileNo: phone,
+      mobileNo: Number(phone),
       houseNo: housingNo,
       street,
       landmark,
-      postalCode: pincode,
+      postalCode: Number(pincode),
     };
     try {
       setLoading(true);
@@ -58,11 +51,11 @@ const Address = () => {
       if (response) {
         Toast.success("Addresses added successfully");
         setName("");
-        setPhone(0);
+        setPhone("");
         setHousingNo("");
         setStreet("");
         setLandmark("");
-        setPincode(0);
+        setPincode("");
       }
     } catch (error: any) {
       ToastAndroid.show(
