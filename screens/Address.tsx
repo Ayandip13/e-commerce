@@ -2,39 +2,97 @@ import {
   KeyboardAvoidingView,
   Platform,
   ScrollView,
-  StyleSheet,
   Text,
   TextInput,
+  ToastAndroid,
   TouchableOpacity,
   View,
 } from "react-native";
 import React, { useContext, useEffect, useState } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import jwt_decode from "jwt-decode";
+import { jwtDecode } from "jwt-decode";
 import { UserType } from "../UserContext";
+import axios from "axios";
+import { Toast } from "toastify-react-native";
 
 const Address = () => {
-  const [address, setAddress] = useState<string>("");
   const [name, setName] = useState<string>("");
-  const [phone, setPhone] = useState<number>();
+  const [phone, setPhone] = useState<number | null>(null);
   const [housingNo, setHousingNo] = useState<string>("");
   const [street, setStreet] = useState<string>("");
   const [landmark, setLandmark] = useState<string>("");
-  const [pincode, setPincode] = useState<number>();
-  const {userId, setUserId} = useContext(UserType)
+  const [pincode, setPincode] = useState<number | null>(0);
+  const { userId, setUserId } = useContext(UserType);
+  const [loading, setLoading] = useState<boolean>(false);
+
+  interface DecodedToken {
+    userId: string;
+  }
+
+  const handleAddAddress = async () => {
+    if (
+      !name ||
+      !phone ||
+      !housingNo ||
+      !street ||
+      !landmark ||
+      !pincode
+    ) {
+      ToastAndroid.show("All fields are required", ToastAndroid.SHORT);
+      return;
+    }
+    const addresses = {
+      name,
+      mobileNo: phone,
+      houseNo: housingNo,
+      street,
+      landmark,
+      postalCode: pincode,
+    };
+    try {
+      setLoading(true);
+      const response = await axios.post("http://192.168.0.102:8000/addresses", {
+        userId,
+        address: addresses,
+      });
+      if (response) {
+        Toast.success("Addresses added successfully");
+        setName("");
+        setPhone(0);
+        setHousingNo("");
+        setStreet("");
+        setLandmark("");
+        setPincode(0);
+      }
+    } catch (error: any) {
+      ToastAndroid.show(
+        error?.response?.data?.message || "Error",
+        ToastAndroid.SHORT
+      );
+    } finally {
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
     const fetchUser = async () => {
-      const token = await AsyncStorage.getItem("authToken");
-      const decodedToken = jwt_decode(token);
-      const userId = decodedToken.userId;
-      setUserId(userId)
+      try {
+        const token = await AsyncStorage.getItem("authToken");
+        if (token) {
+          const decodedToken = jwtDecode<DecodedToken>(token);
+          const userId = decodedToken?.userId;
+          setUserId(userId);
+        } else {
+          console.log("No token found");
+        }
+      } catch (error) {
+        console.log("error decoding token", error);
+      }
     };
     fetchUser();
   }, []);
 
   console.log(userId);
-  
 
   return (
     <View style={{ marginTop: Platform.OS === "android" ? 25 : 0 }}>
@@ -60,9 +118,8 @@ const Address = () => {
               Add a new Address
             </Text>
             <TextInput
-              value={address}
-              onChangeText={(text) => setAddress(text)}
               placeholder="India"
+              readOnly
               style={{
                 borderWidth: 1,
                 borderColor: "#d0d0d0",
@@ -71,7 +128,7 @@ const Address = () => {
                 borderRadius: 5,
                 paddingHorizontal: 15,
               }}
-              placeholderTextColor={"#000"}
+              placeholderTextColor={"#6b6b6bff"}
             />
           </View>
 
@@ -82,7 +139,7 @@ const Address = () => {
             <TextInput
               value={name}
               onChangeText={(text) => setName(text)}
-              placeholderTextColor={"#000"}
+              placeholderTextColor={"#6b6b6bff"}
               placeholder="enter full name"
               style={{
                 borderWidth: 1,
@@ -100,7 +157,7 @@ const Address = () => {
               Mobile number
             </Text>
             <TextInput
-              placeholderTextColor={"#000"}
+              placeholderTextColor={"#6b6b6bff"}
               value={phone}
               onChangeText={(text) => setPhone(Number(text))}
               placeholder="enter mobile number"
@@ -123,7 +180,7 @@ const Address = () => {
             <TextInput
               value={housingNo}
               onChangeText={(text) => setHousingNo(text)}
-              placeholderTextColor={"#d0d0d0"}
+              placeholderTextColor={"#6b6b6bff"}
               placeholder="..."
               style={{
                 borderWidth: 1,
@@ -144,7 +201,7 @@ const Address = () => {
             <TextInput
               value={street}
               onChangeText={(text) => setStreet(text)}
-              placeholderTextColor={"#d0d0d0"}
+              placeholderTextColor={"#6b6b6bff"}
               placeholder="..."
               style={{
                 borderWidth: 1,
@@ -163,7 +220,7 @@ const Address = () => {
             <TextInput
               value={landmark}
               onChangeText={(text) => setLandmark(text)}
-              placeholderTextColor={"#000"}
+              placeholderTextColor={"#6b6b6bff"}
               placeholder="Eg. Near Metro Station"
               style={{
                 borderWidth: 1,
@@ -182,7 +239,7 @@ const Address = () => {
             <TextInput
               value={pincode}
               onChangeText={(text) => setPincode(Number(text))}
-              placeholderTextColor={"#000"}
+              placeholderTextColor={"#6b6b6bff"}
               placeholder="enter pincode"
               style={{
                 borderWidth: 1,
@@ -197,7 +254,7 @@ const Address = () => {
           </View>
         </ScrollView>
         <TouchableOpacity
-          //   onPress={handleAddAddress}
+          onPress={handleAddAddress}
           style={{
             backgroundColor: "#ffc72c",
             padding: 15,
@@ -209,7 +266,9 @@ const Address = () => {
             right: 15,
           }}
         >
-          <Text style={{ fontSize: 17, fontWeight: "500" }}>Add Address</Text>
+          <Text style={{ fontSize: 17, fontWeight: "500" }}>
+            {loading ? "Adding the data.." : "Add Address"}
+          </Text>
         </TouchableOpacity>
       </KeyboardAvoidingView>
     </View>
