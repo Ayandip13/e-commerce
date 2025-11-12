@@ -14,8 +14,10 @@ import { jwtDecode } from "jwt-decode";
 import { UserType } from "../UserContext";
 import axios from "axios";
 import { Toast } from "toastify-react-native";
+import { useNavigation } from "@react-navigation/native";
 
 const Address = () => {
+  const navigation = useNavigation();
   const [name, setName] = useState<string>("");
   const [phone, setPhone] = useState<string>("");
   const [housingNo, setHousingNo] = useState<string>("");
@@ -34,7 +36,7 @@ const Address = () => {
       ToastAndroid.show("All fields are required", ToastAndroid.SHORT);
       return;
     }
-    const addresses = {
+    const address = {
       name,
       mobileNo: Number(phone),
       houseNo: housingNo,
@@ -46,7 +48,7 @@ const Address = () => {
       setLoading(true);
       const response = await axios.post("http://192.168.0.102:8000/addresses", {
         userId,
-        address: addresses,
+        address,
       });
       if (response) {
         Toast.success("Addresses added successfully");
@@ -56,12 +58,16 @@ const Address = () => {
         setStreet("");
         setLandmark("");
         setPincode("");
+        setTimeout(() => {
+          navigation.goBack();
+        }, 500);
       }
     } catch (error: any) {
       ToastAndroid.show(
         error?.response?.data?.message || "Error",
         ToastAndroid.SHORT
       );
+      console.log("Error adding address", error);
     } finally {
       setLoading(false);
     }
