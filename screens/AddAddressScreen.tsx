@@ -8,12 +8,36 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Feather, MaterialIcons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
+import axios from "axios";
+import { UserType } from "../UserContext";
 
 const AddAddressScreen = () => {
+  const { userId, setUserId } = useContext(UserType);
+  const [address, setAddress] = useState([]);
   const navigation = useNavigation();
+  useEffect(() => {
+    fetchAddresses();
+  }, []);
+
+  const fetchAddresses = async () => {
+    try {
+      const response = await axios.get(
+        `http://192.168.0.102:8000/addresses/${userId}`
+      );
+      const { addresses } = response.data;
+      // 'response' is the full Axios response; 'response.data' is the backend data.
+      // This line extracts the 'addresses' field (an array) from that data.
+      setAddress(addresses);
+    } catch (error) {
+      console.log("Error fetching addresses:", error);
+    }
+  };
+  console.log('addresses', address);
+  console.log(userId);  
+
   return (
     <ScrollView style={{ marginTop: Platform.OS === "android" ? 25 : 0 }}>
       <View
