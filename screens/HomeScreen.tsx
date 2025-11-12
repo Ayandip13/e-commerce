@@ -10,7 +10,7 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useContext, useEffect, useState } from "react";
 import {
   Feather,
   MaterialIcons,
@@ -25,6 +25,9 @@ import { useNavigation } from "@react-navigation/native";
 import { useDispatch, useSelector } from "react-redux";
 import ProductItem from "../hooks/ProductItem";
 import { BottomModal, SlideAnimation, ModalContent } from "react-native-modals";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { jwtDecode } from "jwt-decode";
+import { UserType } from "../UserContext";
 
 interface ProductApi {
   id: number;
@@ -233,6 +236,8 @@ const offers: offer[] = [
 ];
 
 const HomeScreen = () => {
+  const { userId, setUserId } = useContext(UserType);
+  const [address, setAddress] = useState([]);
   const [modalVisible, setModalVisible] = useState(false);
   const navigation = useNavigation();
   const [products, setProducts] = useState<ProductApi[]>([]);
@@ -248,6 +253,45 @@ const HomeScreen = () => {
     (item) => item.category == category
   );
 
+  interface DecodedToken {
+    userId: string;
+  }
+
+  const fetchUser = async () => {
+    try {
+      const token = await AsyncStorage.getItem("authToken");
+      if (token) {
+        const decodedToken = jwtDecode<DecodedToken>(token);
+        const userId = decodedToken?.userId;
+        setUserId(userId);
+        console.log(userId);
+      } else {
+        console.log("No token found");
+      }
+    } catch (error) {
+      console.log("error decoding token", error);
+    }
+  };
+
+  useEffect(() => {
+    if (userId) {
+      fetchAddress();
+    }
+  }, [userId]);
+
+  const fetchAddress = async () => {
+    try {
+      const response = await axios.get(
+        `http://192.168.0.102:8000/addresses/${userId}`
+      );
+      setAddress(response.data.addresses);
+      // 'response' is the full Axios response; 'response.data' is the backend data.
+      // This line extracts the 'addresses' field (an array) from that data.
+    } catch (error) {
+      console.log("Error fetching addresses:", error);
+    }
+  };
+
   useEffect(() => {
     const controller = new AbortController();
     const fetchData = async () => {
@@ -262,6 +306,7 @@ const HomeScreen = () => {
       }
     };
     fetchData();
+    fetchUser();
     return () => controller.abort();
   }, []);
 
