@@ -567,6 +567,7 @@ const HomeScreen = () => {
           <DropDownPicker
             style={{
               borderColor: "#B7B7B7",
+              borderWidth: 0.5,
               height: 30,
               marginBottom: open ? 120 : 15,
             }}
