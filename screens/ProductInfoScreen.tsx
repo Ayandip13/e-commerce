@@ -20,10 +20,10 @@ const ProductInfoScreen = () => {
   const height = (width * 100) / 100;
   const navigation = useNavigation();
   const dispatch = useDispatch();
-  const cart = useSelector((state) => state.cart.cart);
+  const cart = useSelector((state: number) => state.cart.cart);
   const [addedToCart, setAddedToCart] = useState(false);
 
-  const addItemToCart = (item) => {
+  const addItemToCart = (item: number) => {
     setAddedToCart(true);
     dispatch(addToCart(item));
     setTimeout(() => {

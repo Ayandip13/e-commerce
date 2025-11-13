@@ -10,14 +10,8 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import React, { useCallback, useContext, useEffect, useState } from "react";
-import {
-  Feather,
-  MaterialIcons,
-  Ionicons,
-  Entypo,
-  AntDesign,
-} from "@expo/vector-icons";
+import React, { useContext, useEffect, useState } from "react";
+import { Feather, MaterialIcons, Ionicons, Entypo } from "@expo/vector-icons";
 import CustomSlider from "../hooks/CustomSlider";
 import axios from "axios";
 import DropDownPicker from "react-native-dropdown-picker";
@@ -316,8 +310,10 @@ const HomeScreen = () => {
     require("../assets/photo(2).gif"),
     require("../assets/photo(3).jpg"),
   ];
+
   const cart = useSelector((state: any) => state.cart.cart);
   //state is the store object, state.cart is the cart slice, state.cart.cart is the cart array
+
   console.log(cart);
   return (
     <>
@@ -374,7 +370,8 @@ const HomeScreen = () => {
           <Ionicons name="location-outline" size={24} color="black" />
           <View>
             <Text style={{ fontSize: 13, fontWeight: "500" }}>
-              Deliver to Ayandip - Kolkata, 743165
+              Deliver to {address[0]?.name} - {address[0].street},
+              {address[0].postalCode}
             </Text>
           </View>
           <View>
@@ -621,6 +618,73 @@ const HomeScreen = () => {
             </Text>
           </View>
           <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+            {address.map((item, index) => (
+              <TouchableOpacity
+                key={index}
+                style={{
+                  marginTop: 10,
+                  borderWidth: 1,
+                  borderColor: "#aaa",
+                  borderRadius: 5,
+                  justifyContent: "center",
+                  alignItems: "center",
+                  height: 160,
+                  width: 160,
+                  marginRight: 10,
+                }}
+              >
+                <View style={{ flexDirection: "row" }}>
+                  <Text
+                    style={{
+                      fontSize: 16,
+                      textAlign: "center",
+                      fontWeight: "500",
+                    }}
+                  >
+                    {item?.name}
+                  </Text>
+                  <Entypo name="location-pin" size={24} color="red" />
+                </View>
+                <View style={{ marginHorizontal: 10 }}>
+                  <Text
+                    numberOfLines={1}
+                    style={{ fontSize: 15, color: "#181818" }}
+                  >
+                    <Text style={{ fontWeight: "500" }}>House No: </Text>#
+                    {item?.houseNo},
+                  </Text>
+                </View>
+                <View style={{ marginHorizontal: 10 }}>
+                  <Text
+                    numberOfLines={1}
+                    style={{
+                      fontSize: 15,
+                      color: "#181818",
+                    }}
+                  >
+                    <Text
+                      style={{
+                        fontWeight: "500",
+                        color: "#181818",
+                      }}
+                    >
+                      {" "}
+                      Landmark:{" "}
+                    </Text>
+                    {item?.landmark}
+                  </Text>
+                  <Text
+                    style={{
+                      fontSize: 15,
+                      color: "#181818",
+                      textAlign: "center",
+                    }}
+                  >
+                    {item?.street}
+                  </Text>
+                </View>
+              </TouchableOpacity>
+            ))}
             <TouchableOpacity
               onPress={() => {
                 navigation.navigate("Address" as never);
