@@ -371,14 +371,18 @@ const HomeScreen = () => {
         >
           <Ionicons name="location-outline" size={24} color="black" />
           <View>
-            <Text style={{ fontSize: 13, fontWeight: "500" }}>
-              Deliver to{" "}
-              {selectedAddress ? selectedAddress?.name : address[0]?.name} -{" "}
-              {selectedAddress ? selectedAddress.street : address[0]?.street},
-              {selectedAddress
-                ? selectedAddress.postalCode
-                : address[0]?.postalCode}
-            </Text>
+            {selectedAddress ? (
+              <Text style={{ fontSize: 13, fontWeight: "500" }}>
+                Deliver to{" "}
+                {selectedAddress ? selectedAddress?.name : address[0]?.name} -{" "}
+                {selectedAddress ? selectedAddress.street : address[0]?.street},
+                {selectedAddress
+                  ? selectedAddress.postalCode
+                  : address[0]?.postalCode}
+              </Text>
+            ) : (
+              <Text>Add Addresses</Text>
+            )}
           </View>
           <View>
             <MaterialIcons name="keyboard-arrow-down" size={24} color="black" />
@@ -575,7 +579,7 @@ const HomeScreen = () => {
               marginBottom: open ? 120 : 15,
             }}
             open={open}
-            value={category} //genderValue
+            value={category}
             items={items}
             setOpen={setOpen}
             setValue={setCategory}
@@ -628,7 +632,9 @@ const HomeScreen = () => {
               <TouchableOpacity
                 onPress={() => {
                   setSelectedAddress(item);
-                  setActiveIndex((prevIndex) => (prevIndex === index ? null : index));
+                  setActiveIndex((prevIndex) =>
+                    prevIndex === index ? null : index
+                  );
                 }}
                 key={index}
                 style={{
@@ -642,7 +648,7 @@ const HomeScreen = () => {
                   width: 160,
                   marginRight: 10,
                   backgroundColor:
-                    activeIndex === index ? "#D6F4ED" : "#F8F4EC",
+                    activeIndex === index ? "#dbfaffff" : "#ffffff",
                 }}
               >
                 <View style={{ flexDirection: "row" }}>
