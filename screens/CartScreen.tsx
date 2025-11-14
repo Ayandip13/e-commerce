@@ -1,4 +1,6 @@
 import {
+  FlatList,
+  Image,
   Pressable,
   ScrollView,
   Text,
@@ -98,6 +100,91 @@ const CartScreen = () => {
           width: "100%",
         }}
       />
+      <View style={{ padding: 15 }}>
+        <FlatList
+          data={cart}
+          ListEmptyComponent={() => {
+            return (
+              <View
+                style={{
+                  flex: 1,
+                  justifyContent: "center",
+                  alignItems: "center",
+                  marginTop: 30,
+                }}
+              >
+                <Text style={{ fontSize: 20, fontWeight: "bold" }}>
+                  No Items in Cart 🛒
+                </Text>
+              </View>
+            );
+          }}
+          keyExtractor={(item) => item.id}
+          renderItem={({ item, index }) => {
+            return (
+              <View
+                style={{
+                  marginVertical: 10,
+                  borderBottomColor: "#ddd",
+                  borderBottomWidth: 0.5,
+                  marginRight: 15,
+                }}
+                key={index}
+              >
+                <TouchableOpacity
+                  style={{
+                    marginVertical: 5,
+                    flexDirection: "row",
+                  }}
+                  activeOpacity={0.5}
+                >
+                  <View>
+                    <Image
+                      source={{ uri: item?.image }}
+                      style={{ width: 140, height: 140 }}
+                    />
+                  </View>
+                  <View
+                    style={{
+                      marginHorizontal: 10,
+                      flex: 1,
+                      width: "100%",
+                    }}
+                  >
+                    <Text
+                      style={{
+                        fontSize: 16,
+                        fontWeight: "400",
+                      }}
+                      numberOfLines={3}
+                    >
+                      {item?.title}
+                    </Text>
+                    <Text style={{ fontSize: 18, fontWeight: "bold" }}>
+                      {item?.price}
+                    </Text>
+                    <Image
+                      style={{ width: 30, height: 30 }}
+                      source={{
+                        uri: "https://assets.stickpng.com/thumbs/5f4924cc68ecc70004ae7065.png",
+                      }}
+                    />
+                    <Text
+                      style={{
+                        fontSize: 16,
+                        fontWeight: "500",
+                        color: "green",
+                      }}
+                    >
+                      In Stock
+                    </Text>
+                  </View>
+                </TouchableOpacity>
+              </View>
+            );
+          }}
+        />
+      </View>
     </ScrollView>
   );
 };
