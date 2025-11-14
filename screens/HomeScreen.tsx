@@ -236,6 +236,8 @@ const HomeScreen = () => {
   const navigation = useNavigation();
   const [products, setProducts] = useState<ProductApi[]>([]);
   const [open, setOpen] = useState<boolean>(false);
+  const [selectedAddress, setSelectedAddress] = useState("");
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const [category, setCategory] = useState<string>("jewelery");
   const [items, setItems] = useState([
     { label: "men's clothing", value: "men's clothing" },
@@ -250,7 +252,7 @@ const HomeScreen = () => {
   interface DecodedToken {
     userId: string;
   }
-
+  console.log("Ayadreses", selectedAddress);
   const fetchUser = async () => {
     try {
       const token = await AsyncStorage.getItem("authToken");
@@ -370,8 +372,12 @@ const HomeScreen = () => {
           <Ionicons name="location-outline" size={24} color="black" />
           <View>
             <Text style={{ fontSize: 13, fontWeight: "500" }}>
-              Deliver to {address[0]?.name} - {address[0].street},
-              {address[0].postalCode}
+              Deliver to{" "}
+              {selectedAddress ? selectedAddress?.name : address[0]?.name} -{" "}
+              {selectedAddress ? selectedAddress.street : address[0]?.street},
+              {selectedAddress
+                ? selectedAddress.postalCode
+                : address[0]?.postalCode}
             </Text>
           </View>
           <View>
@@ -620,6 +626,10 @@ const HomeScreen = () => {
           <ScrollView horizontal showsHorizontalScrollIndicator={false}>
             {address.map((item, index) => (
               <TouchableOpacity
+                onPress={() => {
+                  setSelectedAddress(item);
+                  setActiveIndex((prevIndex) => (prevIndex === index ? null : index));
+                }}
                 key={index}
                 style={{
                   marginTop: 10,
@@ -631,6 +641,8 @@ const HomeScreen = () => {
                   height: 160,
                   width: 160,
                   marginRight: 10,
+                  backgroundColor:
+                    activeIndex === index ? "#D6F4ED" : "#F8F4EC",
                 }}
               >
                 <View style={{ flexDirection: "row" }}>
