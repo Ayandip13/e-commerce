@@ -318,7 +318,7 @@ const HomeScreen = () => {
 
   console.log(cart);
   return (
-    <>
+    <View style={{ backgroundColor: "white" }}>
       <ScrollView style={{ marginTop: Platform.OS === "android" ? 25 : 0 }}>
         <View
           style={{
@@ -371,7 +371,7 @@ const HomeScreen = () => {
         >
           <Ionicons name="location-outline" size={24} color="black" />
           <View>
-            {selectedAddress ? (
+            {address ? (
               <Text style={{ fontSize: 13, fontWeight: "500" }}>
                 Deliver to{" "}
                 {selectedAddress ? selectedAddress?.name : address[0]?.name} -{" "}
@@ -767,7 +767,7 @@ const HomeScreen = () => {
           </View>
         </ModalContent>
       </BottomModal>
-    </>
+    </View>
   );
 };
 

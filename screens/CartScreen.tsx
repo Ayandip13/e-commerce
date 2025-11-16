@@ -9,19 +9,33 @@ import {
   View,
 } from "react-native";
 import React from "react";
-import { Feather } from "@expo/vector-icons";
-import { useSelector } from "react-redux";
+import { AntDesign, Entypo, Feather } from "@expo/vector-icons";
+import { useDispatch, useSelector } from "react-redux";
+import { addToCart, decrement, removeCart } from "../redux/CartReducer";
 
 const CartScreen = () => {
   const cart = useSelector((state: any) => state.cart.cart);
+  const dispatch = useDispatch();
+  const incrementQuantity = (item: any) => {
+    dispatch(addToCart(item));
+  };
+
+  const decrementQuantity = (item: any) => {
+    dispatch(removeCart(item));
+  };
+
+  const removeFromCart = (item: any) => {
+    dispatch(decrement(item));
+  };
+
   // console.log("Cart is", cart);
   const totalPrice = cart
-    .map((item) => item.price * item.quantity)
-    .reduce((current, prev) => current + prev, 0);
+    .map((item: any) => item.price * item.quantity)
+    .reduce((current: any, prev: any) => current + prev, 0);
   console.log(totalPrice);
   //state is the store object, state.cart is the cart slice, state.cart.cart is the cart array
   return (
-    <ScrollView style={{ marginTop: 40, flex: 1, backgroundColor: "white" }}>
+    <ScrollView style={{ marginTop: 25, flex: 1, backgroundColor: "white" }}>
       <View
         style={{
           backgroundColor: "#00ced1",
@@ -180,6 +194,94 @@ const CartScreen = () => {
                     </Text>
                   </View>
                 </TouchableOpacity>
+
+                <View
+                  style={{
+                    flexDirection: "row",
+                    alignItems: "center",
+                    columnGap: 10,
+                  }}
+                >
+                  <TouchableOpacity
+                    onPress={() => decrementQuantity(item)}
+                    style={{
+                      backgroundColor: "#d0d0d0",
+                      padding: 3,
+                      borderRadius: 5,
+                      width: 50,
+                      alignItems: "center",
+                      marginTop: 5,
+                      marginLeft: 15,
+                      marginBottom: 5,
+                    }}
+                  >
+                    <AntDesign name="delete" size={22} color="black" />
+                  </TouchableOpacity>
+                  <Text style={{ fontSize: 18, fontWeight: "bold" }}>
+                    {item?.quantity}
+                  </Text>
+                  <TouchableOpacity
+                    onPress={() => incrementQuantity(item)}
+                    style={{
+                      backgroundColor: "#d0d0d0",
+                      padding: 3,
+                      borderRadius: 5,
+                      width: 50,
+                      alignItems: "center",
+                      marginTop: 5,
+                      marginBottom: 5,
+                    }}
+                  >
+                    <AntDesign name="plus" size={22} color="black" />
+                  </TouchableOpacity>
+                  <TouchableOpacity
+                    onPress={() => removeFromCart(item)}
+                    style={{
+                      borderWidth: 0.5,
+                      borderColor: "#bbe4ffff",
+                      paddingHorizontal: 7,
+                      paddingVertical: 5,
+                      borderRadius: 5,
+                    }}
+                  >
+                    <Text>Remove</Text>
+                  </TouchableOpacity>
+                </View>
+
+                <View
+                  style={{
+                    flexDirection: "row",
+                    columnGap: 10,
+                    marginTop: 5,
+                    marginBottom: 5,
+                    marginLeft: 15,
+                  }}
+                >
+                  <TouchableOpacity
+                    style={{
+                      borderWidth: 0.5,
+                      borderColor: "#bbe4ffff",
+                      paddingHorizontal: 12,
+                      paddingVertical: 7,
+                      borderRadius: 5,
+                      backgroundColor: "#d3eeffff",
+                    }}
+                  >
+                    <Text>Save for later</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity
+                    style={{
+                      borderWidth: 0.5,
+                      borderColor: "#bbe4ffff",
+                      paddingHorizontal: 12,
+                      paddingVertical: 7,
+                      borderRadius: 5,
+                      backgroundColor: "#d3eeffff",
+                    }}
+                  >
+                    <Text>See more like this</Text>
+                  </TouchableOpacity>
+                </View>
               </View>
             );
           }}
