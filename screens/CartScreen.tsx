@@ -202,28 +202,46 @@ const CartScreen = () => {
                     columnGap: 10,
                   }}
                 >
-                  <TouchableOpacity
-                    onPress={() => decrementQuantity(item)}
-                    style={{
-                      backgroundColor: "#d0d0d0",
-                      padding: 3,
-                      borderRadius: 5,
-                      width: 50,
-                      alignItems: "center",
-                      marginTop: 5,
-                      marginLeft: 15,
-                      marginBottom: 5,
-                    }}
-                  >
-                    <AntDesign name="delete" size={22} color="black" />
-                  </TouchableOpacity>
+                  {item?.quantity === 1 ? (
+                    <TouchableOpacity
+                      onPress={() => removeFromCart(item)}
+                      style={{
+                        backgroundColor: "#e5f5ffff",
+                        padding: 3,
+                        borderRadius: 5,
+                        width: 50,
+                        alignItems: "center",
+                        marginTop: 5,
+                        marginLeft: 15,
+                        marginBottom: 5,
+                      }}
+                    >
+                      <AntDesign name="delete" size={22} color="black" />
+                    </TouchableOpacity>
+                  ) : (
+                    <TouchableOpacity
+                      onPress={() => decrementQuantity(item)}
+                      style={{
+                        backgroundColor: "#e5f5ffff",
+                        padding: 3,
+                        borderRadius: 5,
+                        width: 50,
+                        alignItems: "center",
+                        marginTop: 5,
+                        marginLeft: 15,
+                        marginBottom: 5,
+                      }}
+                    >
+                      <AntDesign name="minus" size={22} color="black" />
+                    </TouchableOpacity>
+                  )}
                   <Text style={{ fontSize: 18, fontWeight: "bold" }}>
                     {item?.quantity}
                   </Text>
                   <TouchableOpacity
                     onPress={() => incrementQuantity(item)}
                     style={{
-                      backgroundColor: "#d0d0d0",
+                      backgroundColor: "#e5f5ffff",
                       padding: 3,
                       borderRadius: 5,
                       width: 50,
