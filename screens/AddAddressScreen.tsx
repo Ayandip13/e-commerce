@@ -7,9 +7,9 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useCallback, useContext, useEffect, useState } from "react";
 import { Entypo, Feather, MaterialIcons } from "@expo/vector-icons";
-import { useNavigation } from "@react-navigation/native";
+import { useFocusEffect, useNavigation } from "@react-navigation/native";
 import axios from "axios";
 import { UserType } from "../UserContext";
 
@@ -20,6 +20,14 @@ const AddAddressScreen = () => {
   useEffect(() => {
     fetchAddresses();
   }, []);
+
+  //We are using the useFocusEffect hook to refetch the addresses when the screen is comes into focus
+  useFocusEffect(
+    useCallback(() => {
+      fetchAddresses();
+    }, [])
+  );
+  //refresh the addresses when the component comes into focus ie basically when we navigate back
 
   interface fetchedAddress {
     _id: string;
@@ -48,7 +56,10 @@ const AddAddressScreen = () => {
   console.log(userId);
 
   return (
-    <ScrollView style={{ marginTop: Platform.OS === "android" ? 25 : 0 }}>
+    <ScrollView
+      style={{ marginTop: Platform.OS === "android" ? 25 : 0 }}
+      showsVerticalScrollIndicator={false}
+    >
       <View
         style={{
           backgroundColor: "#00ced1",

@@ -5,6 +5,7 @@ import {
   ScrollView,
   Text,
   TextInput,
+  ToastAndroid,
   TouchableOpacity,
   View,
 } from "react-native";
@@ -12,8 +13,10 @@ import React from "react";
 import { AntDesign, Entypo, Feather } from "@expo/vector-icons";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart, decrement, removeCart } from "../redux/CartReducer";
+import { useNavigation } from "@react-navigation/native";
 
 const CartScreen = () => {
+  const navigation = useNavigation();
   const cart = useSelector((state: any) => state.cart.cart);
   const dispatch = useDispatch();
   const incrementQuantity = (item: any) => {
@@ -89,6 +92,13 @@ const CartScreen = () => {
         <View style={{ marginTop: 10 }}>
           <Text style={{ fontSize: 16 }}>EMI details Available</Text>
           <TouchableOpacity
+            onPress={() => {
+              if (cart.length > 0) {
+                navigation.navigate("Confirm" as never);
+              } else {
+                ToastAndroid.show("Please Add Items ", ToastAndroid.SHORT);
+              }
+            }}
             style={{
               marginTop: 10,
               backgroundColor: "#ffc72c",
