@@ -46,7 +46,7 @@ const Address = () => {
     };
     try {
       setLoading(true);
-      const response = await axios.post("http://192.168.0.102:8000/addresses", {
+      const response = await axios.post("http://192.168.0.100:8000/addresses", {
         userId,
         address,
       });
