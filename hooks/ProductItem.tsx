@@ -23,7 +23,7 @@ interface ProductItemProps {
 const ProductItem = ({ item }: ProductItemProps) => {
   const dispatch = useDispatch();
   const [addedToCart, setAddedToCart] = useState(false);
-  const addItemToCart = (item) => {
+  const addItemToCart = (item : itemprop) => {
     setAddedToCart(true);
     dispatch(addToCart(item));
     setTimeout(() => {

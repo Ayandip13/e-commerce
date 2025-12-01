@@ -8,7 +8,7 @@ export const CartSlice = createSlice({
   reducers: {
     addToCart: (state, action) => {
       const itemPresent = state.cart.find(
-        (item) => item.id === action.payload.id
+        (item) => item.id === action.payload.id //find() method returns the first matching element in an array
       );
       if (itemPresent) {
         itemPresent.quantity += 1;

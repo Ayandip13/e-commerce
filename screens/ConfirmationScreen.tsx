@@ -51,7 +51,7 @@ const ConfirmationScreen = () => {
     <ScrollView
       style={{
         marginTop: 50,
-        paddingHorizontal: 30,
+        paddingHorizontal: 15,
         paddingTop: 15,
       }}
     >
@@ -121,94 +121,118 @@ const ConfirmationScreen = () => {
 
       {currentStep === 0 && (
         <View>
-          <Text style={{ fontSize: 16, fontWeight: "bold" }}>
+          <Text
+            style={{
+              fontSize: 17,
+              fontWeight: "bold",
+            }}
+          >
             Select delivery Address:
           </Text>
-          <TouchableOpacity>
+          <Pressable>
             {addresses.map((item, index) => {
               return (
-                <View>
+                <TouchableOpacity
+                  key={index}
+                  style={{
+                    marginTop: 10,
+                    backgroundColor: "#f1f1f1",
+                    borderRadius: 5,
+                    padding: 6,
+                    elevation: 2,
+                    shadowColor: "#00b7ffff",
+                  }}
+                >
                   <Entypo name="circle" size={24} color="black" />
                   <View
                     style={{
-                      flexDirection: "row",
-                      alignItems: "center",
-                      gap: 5,
-                      marginTop: 10,
+                      // backgroundColor: "red",
+                      borderRadius: 5,
+                      // padding: 10,
                     }}
                   >
-                    <Text style={{ fontWeight: "bold", fontSize: 17 }}>
-                      {item?.name}
+                    <View
+                      style={{
+                        flexDirection: "row",
+                        alignItems: "center",
+                        // gap: 5,
+                      }}
+                    >
+                      <Text style={{ fontWeight: "bold", fontSize: 17 }}>
+                        {item?.name}
+                      </Text>
+                      <Entypo size={25} name="location-pin" color="red" />
+                    </View>
+                    <Text style={{ fontSize: 15, color: "#181818" }}>
+                      <Text style={{ fontWeight: "500" }}>House No: </Text>#
+                      {item?.houseNo},
+                      <Text style={{ fontWeight: "500" }}> Landmark: </Text>
+                      {item?.landmark}
                     </Text>
-                    <Entypo size={25} name="location-pin" color="red" />
+                    <Text style={{ fontSize: 15, color: "#181818" }}>
+                      <Text style={{ fontWeight: "500" }}>Street: </Text>
+                      {item?.street}
+                    </Text>
+                    <Text style={{ fontSize: 15, color: "#181818" }}>
+                      India
+                    </Text>
+                    <Text style={{ fontSize: 15, color: "#181818" }}>
+                      <Text style={{ fontWeight: "500" }}>Mobile No: </Text>
+                      {item?.mobileNo}
+                    </Text>
+                    <Text style={{ fontSize: 15, color: "#181818" }}>
+                      <Text style={{ fontWeight: "500" }}>Postal Code: </Text>
+                      {item?.postalCode}
+                    </Text>
+                    <View style={{ flexDirection: "row" }}>
+                      <TouchableOpacity
+                        style={{
+                          marginVertical: 5,
+                          gap: 5,
+                          marginRight: 10,
+                          borderColor: "#435663",
+                          borderWidth: 0.5,
+                          paddingHorizontal: 20,
+                          borderRadius: 5,
+                          paddingVertical: 5,
+                        }}
+                      >
+                        <Text style={{ fontSize: 15 }}>Edit</Text>
+                      </TouchableOpacity>
+                      <TouchableOpacity
+                        style={{
+                          marginVertical: 5,
+                          gap: 5,
+                          marginRight: 10,
+                          borderColor: "#435663",
+                          borderWidth: 0.5,
+                          paddingHorizontal: 20,
+                          borderRadius: 5,
+                          paddingVertical: 5,
+                        }}
+                      >
+                        <Text style={{ fontSize: 15 }}>Remove</Text>
+                      </TouchableOpacity>
+                      <TouchableOpacity
+                        style={{
+                          marginVertical: 5,
+                          gap: 5,
+                          marginRight: 10,
+                          borderColor: "#435663",
+                          borderWidth: 0.5,
+                          paddingHorizontal: 20,
+                          borderRadius: 5,
+                          paddingVertical: 5,
+                        }}
+                      >
+                        <Text style={{ fontSize: 15 }}>Set as Default</Text>
+                      </TouchableOpacity>
+                    </View>
                   </View>
-                  <Text style={{ fontSize: 15, color: "#181818" }}>
-                    <Text style={{ fontWeight: "500" }}>House No: </Text>#
-                    {item?.houseNo},
-                    <Text style={{ fontWeight: "500" }}> Landmark: </Text>
-                    {item?.landmark}
-                  </Text>
-                  <Text style={{ fontSize: 15, color: "#181818" }}>
-                    <Text style={{ fontWeight: "500" }}>Street: </Text>
-                    {item?.street}
-                  </Text>
-                  <Text style={{ fontSize: 15, color: "#181818" }}>India</Text>
-                  <Text style={{ fontSize: 15, color: "#181818" }}>
-                    <Text style={{ fontWeight: "500" }}>Mobile No: </Text>
-                    {item?.mobileNo}
-                  </Text>
-                  <Text style={{ fontSize: 15, color: "#181818" }}>
-                    <Text style={{ fontWeight: "500" }}>Postal Code: </Text>
-                    {item?.postalCode}
-                  </Text>
-                  <View style={{ flexDirection: "row" }}>
-                    <TouchableOpacity
-                      style={{
-                        marginVertical: 5,
-                        gap: 5,
-                        marginRight: 10,
-                        borderColor: "#435663",
-                        borderWidth: 0.5,
-                        paddingHorizontal: 20,
-                        borderRadius: 5,
-                        paddingVertical: 5,
-                      }}
-                    >
-                      <Text style={{ fontSize: 15 }}>Edit</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity
-                      style={{
-                        marginVertical: 5,
-                        gap: 5,
-                        marginRight: 10,
-                        borderColor: "#435663",
-                        borderWidth: 0.5,
-                        paddingHorizontal: 20,
-                        borderRadius: 5,
-                        paddingVertical: 5,
-                      }}
-                    >
-                      <Text style={{ fontSize: 15 }}>Remove</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity
-                      style={{
-                        marginVertical: 5,
-                        gap: 5,
-                        marginRight: 10,
-                        borderColor: "#435663",
-                        borderWidth: 0.5,
-                        paddingHorizontal: 20,
-                        borderRadius: 5,
-                        paddingVertical: 5,
-                      }}
-                    >
-                      <Text style={{ fontSize: 15 }}>Set as Default</Text>
-                    </TouchableOpacity>
-                  </View>
-                </View>
+                </TouchableOpacity>
               );
             })}
-          </TouchableOpacity>
+          </Pressable>
         </View>
       )}
     </ScrollView>
