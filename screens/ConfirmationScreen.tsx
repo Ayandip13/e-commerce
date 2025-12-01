@@ -129,90 +129,82 @@ const ConfirmationScreen = () => {
               return (
                 <View>
                   <Entypo name="circle" size={24} color="black" />
-                  <Pressable
-                    key={index}
+                  <View
                     style={{
-                      marginVertical: 5,
-                      borderRadius: 5,
-                      borderWidth: 1,
-                      padding: 10,
-                      borderColor: "#d0d0d0",
+                      flexDirection: "row",
+                      alignItems: "center",
+                      gap: 5,
+                      marginTop: 10,
                     }}
                   >
-                    <View
-                      style={{ flexDirection: "row", alignItems: "center" }}
+                    <Text style={{ fontWeight: "bold", fontSize: 17 }}>
+                      {item?.name}
+                    </Text>
+                    <Entypo size={25} name="location-pin" color="red" />
+                  </View>
+                  <Text style={{ fontSize: 15, color: "#181818" }}>
+                    <Text style={{ fontWeight: "500" }}>House No: </Text>#
+                    {item?.houseNo},
+                    <Text style={{ fontWeight: "500" }}> Landmark: </Text>
+                    {item?.landmark}
+                  </Text>
+                  <Text style={{ fontSize: 15, color: "#181818" }}>
+                    <Text style={{ fontWeight: "500" }}>Street: </Text>
+                    {item?.street}
+                  </Text>
+                  <Text style={{ fontSize: 15, color: "#181818" }}>India</Text>
+                  <Text style={{ fontSize: 15, color: "#181818" }}>
+                    <Text style={{ fontWeight: "500" }}>Mobile No: </Text>
+                    {item?.mobileNo}
+                  </Text>
+                  <Text style={{ fontSize: 15, color: "#181818" }}>
+                    <Text style={{ fontWeight: "500" }}>Postal Code: </Text>
+                    {item?.postalCode}
+                  </Text>
+                  <View style={{ flexDirection: "row" }}>
+                    <TouchableOpacity
+                      style={{
+                        marginVertical: 5,
+                        gap: 5,
+                        marginRight: 10,
+                        borderColor: "#435663",
+                        borderWidth: 0.5,
+                        paddingHorizontal: 20,
+                        borderRadius: 5,
+                        paddingVertical: 5,
+                      }}
                     >
-                      <Text style={{ fontWeight: "bold", fontSize: 17 }}>
-                        {item?.name}
-                      </Text>
-                      <Entypo size={25} name="location-pin" color="red" />
-                    </View>
-                    <Text style={{ fontSize: 15, color: "#181818" }}>
-                      <Text style={{ fontWeight: "500" }}>House No: </Text>#
-                      {item?.houseNo},
-                      <Text style={{ fontWeight: "500" }}> Landmark: </Text>
-                      {item?.landmark}
-                    </Text>
-                    <Text style={{ fontSize: 15, color: "#181818" }}>
-                      <Text style={{ fontWeight: "500" }}>Street: </Text>
-                      {item?.street}
-                    </Text>
-                    <Text style={{ fontSize: 15, color: "#181818" }}>
-                      India
-                    </Text>
-                    <Text style={{ fontSize: 15, color: "#181818" }}>
-                      <Text style={{ fontWeight: "500" }}>Mobile No: </Text>
-                      {item?.mobileNo}
-                    </Text>
-                    <Text style={{ fontSize: 15, color: "#181818" }}>
-                      <Text style={{ fontWeight: "500" }}>Postal Code: </Text>
-                      {item?.postalCode}
-                    </Text>
-                    <View style={{ flexDirection: "row" }}>
-                      <TouchableOpacity
-                        style={{
-                          marginVertical: 5,
-                          gap: 5,
-                          marginRight: 10,
-                          borderColor: "#435663",
-                          borderWidth: 0.5,
-                          paddingHorizontal: 20,
-                          borderRadius: 5,
-                          paddingVertical: 5,
-                        }}
-                      >
-                        <Text style={{ fontSize: 15 }}>Edit</Text>
-                      </TouchableOpacity>
-                      <TouchableOpacity
-                        style={{
-                          marginVertical: 5,
-                          gap: 5,
-                          marginRight: 10,
-                          borderColor: "#435663",
-                          borderWidth: 0.5,
-                          paddingHorizontal: 20,
-                          borderRadius: 5,
-                          paddingVertical: 5,
-                        }}
-                      >
-                        <Text style={{ fontSize: 15 }}>Remove</Text>
-                      </TouchableOpacity>
-                      <TouchableOpacity
-                        style={{
-                          marginVertical: 5,
-                          gap: 5,
-                          marginRight: 10,
-                          borderColor: "#435663",
-                          borderWidth: 0.5,
-                          paddingHorizontal: 20,
-                          borderRadius: 5,
-                          paddingVertical: 5,
-                        }}
-                      >
-                        <Text style={{ fontSize: 15 }}>Set as Default</Text>
-                      </TouchableOpacity>
-                    </View>
-                  </Pressable>
+                      <Text style={{ fontSize: 15 }}>Edit</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity
+                      style={{
+                        marginVertical: 5,
+                        gap: 5,
+                        marginRight: 10,
+                        borderColor: "#435663",
+                        borderWidth: 0.5,
+                        paddingHorizontal: 20,
+                        borderRadius: 5,
+                        paddingVertical: 5,
+                      }}
+                    >
+                      <Text style={{ fontSize: 15 }}>Remove</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity
+                      style={{
+                        marginVertical: 5,
+                        gap: 5,
+                        marginRight: 10,
+                        borderColor: "#435663",
+                        borderWidth: 0.5,
+                        paddingHorizontal: 20,
+                        borderRadius: 5,
+                        paddingVertical: 5,
+                      }}
+                    >
+                      <Text style={{ fontSize: 15 }}>Set as Default</Text>
+                    </TouchableOpacity>
+                  </View>
                 </View>
               );
             })}
