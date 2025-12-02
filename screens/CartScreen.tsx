@@ -185,7 +185,7 @@ const CartScreen = () => {
                       {item?.title}
                     </Text>
                     <Text style={{ fontSize: 18, fontWeight: "bold" }}>
-                      {item?.price}
+                      {item?.price} ₹
                     </Text>
                     <Image
                       style={{ width: 30, height: 30 }}

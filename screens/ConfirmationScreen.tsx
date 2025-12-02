@@ -9,7 +9,7 @@ import {
 import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { UserType } from "../UserContext";
-import { Entypo } from "@expo/vector-icons";
+import { Entypo, FontAwesome } from "@expo/vector-icons";
 
 const ConfirmationScreen = () => {
   interface fetchedAddress {
@@ -30,6 +30,9 @@ const ConfirmationScreen = () => {
   const [currentStep, setCurrentStep] = useState(0);
   const [addresses, setAddresses] = useState<any[]>([]);
   const { userId, setUserId } = useContext(UserType);
+  const [selectedAddress, setSelectedAddress] = useState<string | null>("");
+  const [options, setOptions] = useState<boolean>(false);
+  const [selectedOption, setSelectedOption] = useState<string>("");
   useEffect(() => {
     fetchAddresses();
   }, []);
@@ -53,6 +56,7 @@ const ConfirmationScreen = () => {
         marginTop: 50,
         paddingHorizontal: 15,
         paddingTop: 15,
+        backgroundColor: "white",
       }}
     >
       <View style={{ flex: 1 }}>
@@ -76,7 +80,7 @@ const ConfirmationScreen = () => {
                   style={[
                     { position: "absolute" },
                     index <= currentStep && {
-                      backgroundColor: "green",
+                      backgroundColor: "#ffffff",
                       width: 50,
                       height: 2,
                       marginBottom: 5,
@@ -129,33 +133,44 @@ const ConfirmationScreen = () => {
           >
             Select delivery Address:
           </Text>
-          <Pressable>
+          <Pressable style={{ marginBottom: 50 }}>
             {addresses.map((item, index) => {
               return (
                 <TouchableOpacity
+                  activeOpacity={0.8}
+                  onPress={() => setSelectedAddress(item)}
                   key={index}
                   style={{
+                    flexDirection: "row",
+                    alignItems: "center",
+                    gap: 15,
                     marginTop: 10,
-                    backgroundColor: "#f1f1f1",
-                    borderRadius: 5,
-                    padding: 6,
-                    elevation: 2,
+                    backgroundColor: "#ffffff",
+                    borderRadius: 10,
+                    paddingVertical: 8,
+                    elevation: 4,
                     shadowColor: "#00b7ffff",
+                    paddingHorizontal: 10,
                   }}
                 >
-                  <Entypo name="circle" size={24} color="black" />
+                  {selectedAddress?._id === item._id ? (
+                    <FontAwesome
+                      name="dot-circle-o"
+                      size={27.5}
+                      color="#008e97"
+                    />
+                  ) : (
+                    <Entypo name="circle" size={24} color="#008e97" />
+                  )}
                   <View
                     style={{
-                      // backgroundColor: "red",
                       borderRadius: 5,
-                      // padding: 10,
                     }}
                   >
                     <View
                       style={{
                         flexDirection: "row",
                         alignItems: "center",
-                        // gap: 5,
                       }}
                     >
                       <Text style={{ fontWeight: "bold", fontSize: 17 }}>
@@ -228,11 +243,144 @@ const ConfirmationScreen = () => {
                         <Text style={{ fontSize: 15 }}>Set as Default</Text>
                       </TouchableOpacity>
                     </View>
+                    {selectedAddress?._id === item._id && (
+                      <TouchableOpacity
+                        onPress={() => setCurrentStep(1)}
+                        style={{
+                          alignItems: "center",
+                          backgroundColor: "#008e97",
+                          paddingVertical: 10,
+                          borderRadius: 20,
+                          marginTop: 5,
+                          alignSelf: "center",
+                          paddingHorizontal: 30,
+                        }}
+                      >
+                        <Text style={{ color: "#ffffff", fontWeight: "bold" }}>
+                          Deliver to this address
+                        </Text>
+                      </TouchableOpacity>
+                    )}
                   </View>
                 </TouchableOpacity>
               );
             })}
           </Pressable>
+        </View>
+      )}
+
+      {currentStep === 1 && (
+        <View>
+          <Text style={{ fontSize: 18, fontWeight: "600" }}>
+            Choose your delivery options
+          </Text>
+
+          <TouchableOpacity
+            activeOpacity={0.8}
+            onPress={() => setOptions(!options)}
+            style={{
+              flexDirection: "row",
+              alignItems: "center",
+              marginTop: 20,
+              backgroundColor: "#ffffff",
+              padding: 10,
+              borderRadius: 5,
+              elevation: 5,
+              shadowColor: "#00b7ffff",
+              gap: 10,
+            }}
+          >
+            {options ? (
+              <FontAwesome name="dot-circle-o" size={27.5} color="#008e97" />
+            ) : (
+              <Entypo name="circle" size={24} color="#aaaaaa" />
+            )}
+
+            <Text style={{ flex: 1 }}>
+              <Text style={{ fontWeight: "500", color: "green" }}>
+                Tomorrow by 10:00 AM
+              </Text>
+              - Free Delivery with Prime membership
+            </Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            onPress={() => setCurrentStep(2)} //TODO: Change this to only work when an option is selected(implement validation)
+            style={{
+              backgroundColor: "#ffc72c",
+              padding: 10,
+              borderRadius: 8,
+              alignItems: "center",
+              marginTop: 20,
+            }}
+          >
+            <Text>Continue</Text>
+          </TouchableOpacity>
+        </View>
+      )}
+
+      {currentStep === 2 && (
+        <View style={{ marginBottom: 50 }}>
+          <Text style={{ fontSize: 18, fontWeight: "600" }}>
+            Select your payment method
+          </Text>
+
+          <TouchableOpacity
+            onPress={() => setSelectedOption("cash")}
+            style={{
+              flexDirection: "row",
+              gap: 10,
+              backgroundColor: "#ffffff",
+              padding: 10,
+              borderRadius: 5,
+              elevation: 5,
+              shadowColor: "#00b7ffff",
+              marginTop: 10,
+              alignItems: "center",
+            }}
+          >
+            {selectedOption === "cash" ? (
+              <FontAwesome name="dot-circle-o" size={27.5} color="#008e97" />
+            ) : (
+              <Entypo name="circle" size={24} color="#aaaaaa" />
+            )}
+            <Text>Cash on Delivery</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            onPress={() => setSelectedOption("upi/card")}
+            style={{
+              flexDirection: "row",
+              gap: 10,
+              backgroundColor: "#ffffff",
+              padding: 10,
+              borderRadius: 5,
+              elevation: 5,
+              shadowColor: "#00b7ffff",
+              marginTop: 10,
+              alignItems: "center",
+            }}
+          >
+            {selectedOption === "upi/card" ? (
+              <FontAwesome name="dot-circle-o" size={27.5} color="#008e97" />
+            ) : (
+              <Entypo name="circle" size={24} color="#aaaaaa" />
+            )}
+            <Text>UPI / Debit or Credit Card</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            onPress={() => setCurrentStep(3)} //TODO: Change this to only work when an option is selected(implement validation)
+            style={{
+              backgroundColor: "#ffc72c",
+              padding: 10,
+              borderRadius: 8,
+              alignItems: "center",
+              marginTop: 20,
+            }}
+          >
+            <Text>Continue</Text>
+          </TouchableOpacity>
         </View>
       )}
     </ScrollView>
