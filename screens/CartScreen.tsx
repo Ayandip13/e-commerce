@@ -10,7 +10,7 @@ import {
   View,
 } from "react-native";
 import React from "react";
-import { AntDesign, Entypo, Feather } from "@expo/vector-icons";
+import { AntDesign, Feather } from "@expo/vector-icons";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart, decrement, removeCart } from "../redux/CartReducer";
 import { useNavigation } from "@react-navigation/native";

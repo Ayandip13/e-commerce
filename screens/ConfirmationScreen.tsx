@@ -9,7 +9,8 @@ import {
 import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { UserType } from "../UserContext";
-import { Entypo, FontAwesome } from "@expo/vector-icons";
+import { Entypo, FontAwesome, MaterialIcons } from "@expo/vector-icons";
+import { useSelector } from "react-redux";
 
 const ConfirmationScreen = () => {
   interface fetchedAddress {
@@ -33,6 +34,8 @@ const ConfirmationScreen = () => {
   const [selectedAddress, setSelectedAddress] = useState<string | null>("");
   const [options, setOptions] = useState<boolean>(false);
   const [selectedOption, setSelectedOption] = useState<string>("");
+  const cartItems = useSelector((state: any) => state.cart.cart);
+  //state is the store object, state.cart is the cart slice, state.cart.cart is the cart array
   useEffect(() => {
     fetchAddresses();
   }, []);
@@ -49,7 +52,8 @@ const ConfirmationScreen = () => {
       console.log("Error fetching addresses:", error);
     }
   };
-  console.log(addresses);
+  // const totalPrice = cartItems.map((item)=>)
+  // console.log("cartItems",cartItems);
   return (
     <ScrollView
       style={{
@@ -381,6 +385,56 @@ const ConfirmationScreen = () => {
           >
             <Text>Continue</Text>
           </TouchableOpacity>
+        </View>
+      )}
+
+      {currentStep === 3 && selectedOption === "cash" && (
+        <View>
+          <Text style={{ fontSize: 20, fontWeight: "700" }}>Order Now</Text>
+          <View>
+            <TouchableOpacity
+              style={{
+                padding: 10,
+                alignItems: "center",
+                marginTop: 10,
+                borderWidth: 1,
+                borderColor: "#aaaaaa",
+                flexDirection: "row",
+                alignSelf: "center",
+                width: "100%",
+                justifyContent: "space-between",
+                borderRadius: 4,
+              }}
+            >
+              <View style={{ gap: 5 }}>
+                <Text style={{ fontWeight: "bold", fontSize: 16 }}>
+                  Save 5% and never run out
+                </Text>
+                <Text style={{ color: "#999999" }}>
+                  Turn on auto deliveries
+                </Text>
+              </View>
+              <MaterialIcons
+                name="keyboard-arrow-right"
+                size={28}
+                color="#aaaaaa"
+              />
+            </TouchableOpacity>
+          </View>
+          <View
+            style={{
+              marginTop: 20,
+              padding: 10,
+              elevation: 5,
+              shadowColor: "#00b7ffff",
+              borderRadius: 4,
+              backgroundColor: "#ffffff",
+              borderWidth: 0.1,
+              borderColor: "#00b7ffff",
+            }}
+          >
+            <Text>Shipping to {selectedAddress?.name}</Text>
+          </View>
         </View>
       )}
     </ScrollView>
