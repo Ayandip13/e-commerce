@@ -52,8 +52,10 @@ const ConfirmationScreen = () => {
       console.log("Error fetching addresses:", error);
     }
   };
-  // const totalPrice = cartItems.map((item)=>)
-  // console.log("cartItems",cartItems);
+  const totalPrice = cartItems
+    .map((item: any) => item.price * item.quantity)
+    .reduce((acc: string, curr: string) => acc + curr, 0)
+    .toFixed(2);
   return (
     <ScrollView
       style={{
@@ -434,6 +436,12 @@ const ConfirmationScreen = () => {
             }}
           >
             <Text>Shipping to {selectedAddress?.name}</Text>
+          </View>
+          <View
+            style={{ flexDirection: "row", justifyContent: "space-between" }}
+          >
+            <Text style={{ fontWeight: "bold" }}>Items</Text>
+            <Text style={{ fontWeight: "bold" }}>Subtotal:{totalPrice}</Text>
           </View>
         </View>
       )}
