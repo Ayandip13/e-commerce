@@ -176,3 +176,41 @@ app.get("/addresses/:userId", async (req, res) => {
     res.status(500).json({ message: "Error getting addresses" });
   }
 });
+
+//endpoint to store all of the orders
+
+app.post("/orders", async (req, res) => {
+  try {
+    const { userId, cartItems, totalPrice, shippingAddress, paymentMethod } =
+      req.body;
+    const user = await User.findById(userId);
+
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    //create an array of product objects from the cart items
+    const products = cartItems.map((item) => ({
+      name: item.name,
+      price: item.price,
+      quantity: item.quantity,
+      image: item.image,
+    }));
+
+    //create a new order
+    const order = new Order({
+      user: userId,
+      products,
+      totalPrice,
+      shippingAddress,
+      paymentMethod,
+    });
+
+    //save the order to the database
+    await order.save();
+    res.status(201).json({ message: "Order created successfully!" });
+  } catch (error) {
+    console.log("Error creating order", error);
+    res.status(500).json({ message: "Error creating order" });
+  }
+});

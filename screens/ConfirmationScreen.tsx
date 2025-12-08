@@ -436,13 +436,74 @@ const ConfirmationScreen = () => {
             }}
           >
             <Text>Shipping to {selectedAddress?.name}</Text>
+            <View
+              style={{
+                flexDirection: "row",
+                justifyContent: "space-between",
+                marginTop: 20,
+              }}
+            >
+              <Text style={{ fontWeight: "400", fontSize: 16 }}>Items</Text>
+              <Text style={{ color: "#999999" }}>&#x20B9; {totalPrice}</Text>
+            </View>
+
+            <View
+              style={{
+                flexDirection: "row",
+                justifyContent: "space-between",
+                marginTop: 20,
+              }}
+            >
+              <Text style={{ fontWeight: "400", fontSize: 16 }}>Delivery</Text>
+              <Text style={{ color: "#999999" }}>&#x20B9; 0</Text>
+            </View>
+
+            <View
+              style={{
+                flexDirection: "row",
+                justifyContent: "space-between",
+                marginTop: 20,
+              }}
+            >
+              <Text style={{ fontWeight: "700", fontSize: 16 }}>
+                Order Total
+              </Text>
+              <Text
+                style={{ color: "#c60c30", fontWeight: "bold", fontSize: 16 }}
+              >
+                &#x20B9; {totalPrice}
+              </Text>
+            </View>
           </View>
+
           <View
-            style={{ flexDirection: "row", justifyContent: "space-between" }}
+            style={{
+              backgroundColor: "white",
+              padding: 10,
+              marginTop: 20,
+              borderRadius: 4,
+              elevation: 2,
+              shadowColor: "#00b7ffff",
+              gap: 8,
+            }}
           >
-            <Text style={{ fontWeight: "bold" }}>Items</Text>
-            <Text style={{ fontWeight: "bold" }}>Subtotal:{totalPrice}</Text>
+            <Text style={{ fontSize: 16, color: "#999999" }}>Pay With</Text>
+            <Text style={{ fontSize: 16, fontWeight: "600" }}>
+              Pay on Delivery (Cash)
+            </Text>
           </View>
+
+          <TouchableOpacity
+            style={{
+              backgroundColor: "#ffc72c",
+              padding: 10,
+              borderRadius: 5,
+              alignItems: "center",
+              marginTop: 20,
+            }}
+          >
+            <Text style={{ fontWeight: "600" }}>Place your order</Text>
+          </TouchableOpacity>
         </View>
       )}
     </ScrollView>
