@@ -42,7 +42,7 @@ const ConfirmationScreen = () => {
   const fetchAddresses = async () => {
     try {
       const response = await axios.get<{ addresses: fetchedAddress[] }>(
-        `http://192.168.0.100:8000/addresses/${userId}`
+        `http://192.168.0.102:8000/addresses/${userId}`
       );
       const { addresses } = response.data;
       // 'response' is the full Axios response; 'response.data' is the backend data.

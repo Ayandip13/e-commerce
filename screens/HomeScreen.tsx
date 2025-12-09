@@ -278,7 +278,7 @@ const HomeScreen = () => {
   const fetchAddress = async () => {
     try {
       const response = await axios.get(
-        `http://192.168.0.100:8000/addresses/${userId}`
+        `http://192.168.0.102:8000/addresses/${userId}`
       );
       setAddress(response.data.addresses);
       // 'response' is the full Axios response; 'response.data' is the backend data.
