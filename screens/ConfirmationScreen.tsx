@@ -1,7 +1,6 @@
 import {
   Pressable,
   ScrollView,
-  StyleSheet,
   Text,
   TouchableOpacity,
   View,
@@ -10,7 +9,9 @@ import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { UserType } from "../UserContext";
 import { Entypo, FontAwesome, MaterialIcons } from "@expo/vector-icons";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigation } from "@react-navigation/native";
+import { cleanCart } from "../redux/CartReducer";
 
 const ConfirmationScreen = () => {
   interface fetchedAddress {
@@ -29,12 +30,14 @@ const ConfirmationScreen = () => {
     { title: "Place Order", content: "Order Summary" },
   ];
   const [currentStep, setCurrentStep] = useState(0);
+  const dispatch = useDispatch();
   const [addresses, setAddresses] = useState<any[]>([]);
   const { userId, setUserId } = useContext(UserType);
   const [selectedAddress, setSelectedAddress] = useState<string | null>("");
   const [options, setOptions] = useState<boolean>(false);
   const [selectedOption, setSelectedOption] = useState<string>("");
   const cartItems = useSelector((state: any) => state.cart.cart);
+  const navigation = useNavigation();
   //state is the store object, state.cart is the cart slice, state.cart.cart is the cart array
   useEffect(() => {
     fetchAddresses();
@@ -56,6 +59,32 @@ const ConfirmationScreen = () => {
     .map((item: any) => item.price * item.quantity)
     .reduce((acc: string, curr: string) => acc + curr, 0)
     .toFixed(2);
+
+  const handlePlaceOrder = async () => {
+    try {
+      const orderData = {
+        userId,
+        cartItems,
+        totalPrice,
+        shippingAddress: selectedAddress,
+        paymentMethod: selectedOption,
+      };
+      const response = await axios.post(
+        "http://192.168.0.102:8000/orders",
+        orderData
+      );
+      if (response.status === 201) {
+        navigation.navigate("OrderScreen" as never);
+        dispatch(cleanCart());
+        console.log("Order placed successfully", response.data);
+      } else {
+        console.log("Error placing order", response.data);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <ScrollView
       style={{
@@ -494,6 +523,7 @@ const ConfirmationScreen = () => {
           </View>
 
           <TouchableOpacity
+            onPress={handlePlaceOrder}
             style={{
               backgroundColor: "#ffc72c",
               padding: 10,
