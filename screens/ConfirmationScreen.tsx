@@ -38,6 +38,7 @@ const ConfirmationScreen = () => {
   const [selectedOption, setSelectedOption] = useState<string>("");
   const cartItems = useSelector((state: any) => state.cart.cart);
   const navigation = useNavigation();
+  const [loading, setLoading] = useState<boolean>(false);
   //state is the store object, state.cart is the cart slice, state.cart.cart is the cart array
   useEffect(() => {
     fetchAddresses();
@@ -62,6 +63,7 @@ const ConfirmationScreen = () => {
 
   const handlePlaceOrder = async () => {
     try {
+      setLoading(true);
       const orderData = {
         userId,
         cartItems,
@@ -82,6 +84,8 @@ const ConfirmationScreen = () => {
       }
     } catch (error) {
       console.log(error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -532,7 +536,11 @@ const ConfirmationScreen = () => {
               marginTop: 20,
             }}
           >
-            <Text style={{ fontWeight: "600" }}>Place your order</Text>
+            {loading ? (
+              <Text>Placing order...</Text>
+            ) : (
+              <Text style={{ fontWeight: "600" }}>Place your order</Text>
+            )}
           </TouchableOpacity>
         </View>
       )}
