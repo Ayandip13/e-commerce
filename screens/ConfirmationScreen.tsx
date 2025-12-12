@@ -1,4 +1,5 @@
 import {
+  Alert,
   Pressable,
   ScrollView,
   Text,
@@ -88,6 +89,14 @@ const ConfirmationScreen = () => {
       setLoading(false);
     }
   };
+
+  const pay = async () => {
+    try {
+      
+    } catch (error) {
+      console.log("error", error);
+    }
+  }
 
   return (
     <ScrollView
@@ -365,7 +374,9 @@ const ConfirmationScreen = () => {
           </Text>
 
           <TouchableOpacity
-            onPress={() => setSelectedOption("cash")}
+            onPress={() => {
+              setSelectedOption("cash");
+            }}
             style={{
               flexDirection: "row",
               gap: 10,
@@ -387,7 +398,21 @@ const ConfirmationScreen = () => {
           </TouchableOpacity>
 
           <TouchableOpacity
-            onPress={() => setSelectedOption("upi/card")}
+            onPress={() => {
+              setSelectedOption("upi/card");
+              Alert.alert("UPI / Debit or Credit Card", "Pay online", [
+                {
+                  text: "Cancel",
+                  onPress: () => {
+                    console.log("Cancel Pressed");
+                  },
+                },
+                {
+                  text: "OK",
+                  onPress: () => pay()
+                }
+              ]);
+            }}
             style={{
               flexDirection: "row",
               gap: 10,
