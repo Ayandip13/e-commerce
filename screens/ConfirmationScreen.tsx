@@ -92,7 +92,7 @@ const ConfirmationScreen = () => {
 
   const pay = async () => {
     try {
-      
+      //payment gateway due
     } catch (error) {
       console.log("error", error);
     }
