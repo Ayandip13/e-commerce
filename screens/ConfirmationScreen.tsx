@@ -92,11 +92,25 @@ const ConfirmationScreen = () => {
 
   const pay = async () => {
     try {
-      //payment gateway due
+      const options = {
+        description: "Adding to wallet",
+        currency: "INR",
+        name: "Amazon",
+        key: "rzp_test_Rt8PpDIRVoaieq",
+        amount: totalPrice * 100,
+        prefill: {
+          email: "batman@gotham.com",
+          contact: "0000000000",
+          name: "Razorpay Software",
+        },
+        theme: {
+          color: "#F37254",
+        },
+      };
     } catch (error) {
       console.log("error", error);
     }
-  }
+  };
 
   return (
     <ScrollView
@@ -409,8 +423,8 @@ const ConfirmationScreen = () => {
                 },
                 {
                   text: "OK",
-                  onPress: () => pay()
-                }
+                  onPress: () => pay(),
+                },
               ]);
             }}
             style={{
