@@ -48,7 +48,7 @@ const ConfirmationScreen = () => {
   const fetchAddresses = async () => {
     try {
       const response = await axios.get<{ addresses: fetchedAddress[] }>(
-        `http://192.168.0.100:8000/addresses/${userId}`
+        `http://192.168.0.101:8000/addresses/${userId}`
       );
       const { addresses } = response.data;
       // 'response' is the full Axios response; 'response.data' is the backend data.
@@ -74,7 +74,7 @@ const ConfirmationScreen = () => {
         paymentMethod: selectedOption,
       };
       const response = await axios.post(
-        "http://192.168.0.100:8000/orders",
+        "http://192.168.0.101:8000/orders",
         orderData
       );
       if (response.status === 201) {
@@ -119,7 +119,7 @@ const ConfirmationScreen = () => {
       };
 
       const response = await axios.post(
-        "http://192.168.0.100:8000/orders",
+        "http://192.168.0.101:8000/orders",
         orderData
       );
       if (response.status === 201) {

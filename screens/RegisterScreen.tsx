@@ -48,7 +48,7 @@ const RegisterScreen = () => {
         password: password.trim(),
       };
       const response = await axios.post(
-        "http://192.168.0.100:8000/register",
+        "http://192.168.0.101:8000/register",
         user
       );
       console.log(response.data);
@@ -117,6 +117,8 @@ const RegisterScreen = () => {
               placeholder="Enter your Name"
               value={name}
               onChangeText={setName}
+              autoCapitalize="words"
+              placeholderTextColor="#ffffff"
             />
           </View>
         </View>
@@ -150,6 +152,7 @@ const RegisterScreen = () => {
               placeholder="Enter your Email"
               value={email}
               onChangeText={setEmail}
+              placeholderTextColor="#ffffff"
             />
           </View>
         </View>
@@ -186,6 +189,7 @@ const RegisterScreen = () => {
               autoCapitalize="none"
               placeholder="Enter your Password"
               value={password}
+              placeholderTextColor="#ffffff"
               onChangeText={setPassword}
             />
           </View>

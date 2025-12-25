@@ -47,7 +47,7 @@ const LoginScreen = () => {
         password: password.trim(),
       };
       const response = await axios.post(
-        "http://192.168.0.100:8000/login",
+        "http://192.168.0.101:8000/login",
         user
       );
       const token = response.data.token;
@@ -127,6 +127,7 @@ const LoginScreen = () => {
               autoCapitalize="none"
               keyboardType="email-address"
               placeholder="Enter your Email"
+              placeholderTextColor="#ffffff"
               value={email}
               onChangeText={setEmail}
             />
@@ -163,6 +164,7 @@ const LoginScreen = () => {
               secureTextEntry={hidePassword}
               autoCapitalize="none"
               placeholder="Enter your Password"
+              placeholderTextColor="#ffffff"
               value={password}
               onChangeText={setPassword}
             />
