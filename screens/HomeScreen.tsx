@@ -22,6 +22,7 @@ import { BottomModal, SlideAnimation, ModalContent } from "react-native-modals";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { jwtDecode } from "jwt-decode";
 import { UserType } from "../UserContext";
+import { StatusBar } from "expo-status-bar";
 
 interface ProductApi {
   id: number;
@@ -318,12 +319,16 @@ const HomeScreen = () => {
 
   console.log(cart);
   return (
-    <View style={{ backgroundColor: "white" }}>
-      <ScrollView style={{ marginTop: Platform.OS === "android" ? 25 : 0 }}>
+    <View style={{ backgroundColor: "white", flex: 1 }}>
+      <StatusBar style="dark" />
+
+      <ScrollView style={{ marginTop: Platform.OS === "android" ? 0 : 0 }}>
         <View
           style={{
             backgroundColor: "#00ced1",
-            padding: 10,
+            paddingHorizontal: 10,
+            paddingBottom: 10,
+            paddingTop: 30,
             flexDirection: "row",
             alignItems: "center",
             paddingRight: 15,
@@ -351,7 +356,10 @@ const HomeScreen = () => {
               }}
             >
               <Feather name="search" size={20} color="black" />
-              <TextInput placeholder="Search Amazon.in" />
+              <TextInput
+                placeholder="Search Amazon.in"
+                placeholderTextColor="#000"
+              />
             </View>
           </Pressable>
           <TouchableOpacity>
