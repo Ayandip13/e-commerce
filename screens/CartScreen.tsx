@@ -14,6 +14,7 @@ import { AntDesign, Feather } from "@expo/vector-icons";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart, decrement, removeCart } from "../redux/CartReducer";
 import { useNavigation } from "@react-navigation/native";
+import { StatusBar } from "expo-status-bar";
 
 const CartScreen = () => {
   const navigation = useNavigation();
@@ -38,11 +39,14 @@ const CartScreen = () => {
   console.log(totalPrice);
   //state is the store object, state.cart is the cart slice, state.cart.cart is the cart array
   return (
-    <ScrollView style={{ marginTop: 25, flex: 1, backgroundColor: "white" }}>
+    <ScrollView style={{ flex: 1, backgroundColor: "white" }}>
+      <StatusBar style="dark" />
       <View
         style={{
           backgroundColor: "#00ced1",
-          padding: 10,
+          paddingHorizontal: 10,
+          paddingBottom: 10,
+          paddingTop: 30,
           flexDirection: "row",
           alignItems: "center",
           paddingRight: 15,
@@ -70,7 +74,7 @@ const CartScreen = () => {
             }}
           >
             <Feather name="search" size={20} color="black" />
-            <TextInput placeholder="Search Amazon.in" />
+            <TextInput placeholder="Search Amazon.in" placeholderTextColor={"black"}/>
           </View>
         </Pressable>
         <TouchableOpacity>
