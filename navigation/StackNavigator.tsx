@@ -25,10 +25,11 @@ const Stack = createNativeStackNavigator();
 
 function BottomTabs() {
   return (
-    <Tab.Navigator screenOptions={{ headerShown: false }}>
+    <Tab.Navigator>
       <Tab.Screen
         name="Home"
         options={{
+          headerShown: false,
           tabBarLabel: "Home",
           tabBarLabelStyle: { color: "#008e97" },
           tabBarIcon: ({ focused }) =>
@@ -58,6 +59,7 @@ function BottomTabs() {
         name="Cart"
         options={{
           tabBarLabel: "Cart",
+          headerShown: false,
           tabBarLabelStyle: { color: "#008e97" },
           tabBarIcon: ({ focused }) =>
             focused ? (

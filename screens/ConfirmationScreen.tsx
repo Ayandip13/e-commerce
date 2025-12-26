@@ -107,7 +107,7 @@ const ConfirmationScreen = () => {
           name: "Razorpay Software",
         },
         theme: {
-          color: "#F37254",
+          color: "#4bbdff5b",
         },
       };
       const data = await RazorpayCheckout.open(options);
