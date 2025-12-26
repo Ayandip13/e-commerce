@@ -3,6 +3,7 @@ import {
   Pressable,
   ScrollView,
   Text,
+  ToastAndroid,
   TouchableOpacity,
   View,
 } from "react-native";
@@ -14,6 +15,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigation } from "@react-navigation/native";
 import { cleanCart } from "../redux/CartReducer";
 import RazorpayCheckout from "react-native-razorpay";
+import { StatusBar } from "expo-status-bar";
 
 const ConfirmationScreen = () => {
   interface fetchedAddress {
@@ -137,13 +139,14 @@ const ConfirmationScreen = () => {
   return (
     <ScrollView
       style={{
-        marginTop: 50,
         paddingHorizontal: 15,
-        paddingTop: 15,
+        paddingTop: 50,
         backgroundColor: "white",
+        flex: 1,
       }}
     >
-      <View style={{ flex: 1 }}>
+      <StatusBar style="dark" />
+      <View>
         <View
           style={{
             flexDirection: "row",
@@ -329,7 +332,14 @@ const ConfirmationScreen = () => {
                     </View>
                     {selectedAddress?._id === item._id && (
                       <TouchableOpacity
-                        onPress={() => setCurrentStep(1)}
+                        onPress={() => {
+                          selectedAddress
+                            ? setCurrentStep(1)
+                            : ToastAndroid.show(
+                                "Please select an address",
+                                ToastAndroid.SHORT
+                              );
+                        }}
                         style={{
                           alignItems: "center",
                           backgroundColor: "#008e97",
@@ -389,7 +399,11 @@ const ConfirmationScreen = () => {
           </TouchableOpacity>
 
           <TouchableOpacity
-            onPress={() => setCurrentStep(2)} //TODO: Change this to only work when an option is selected(implement validation)
+            onPress={() => {
+              options
+                ? setCurrentStep(2)
+                : ToastAndroid.show("Select an option", ToastAndroid.SHORT);
+            }} //TODO: Change this to only work when an option is selected(implement validation)
             style={{
               backgroundColor: "#ffc72c",
               padding: 10,
@@ -470,7 +484,11 @@ const ConfirmationScreen = () => {
           </TouchableOpacity>
 
           <TouchableOpacity
-            onPress={() => setCurrentStep(3)} //TODO: Change this to only work when an option is selected(implement validation)
+            onPress={() => {
+              selectedOption
+                ? setCurrentStep(3)
+                : ToastAndroid.show("Select an option", ToastAndroid.SHORT);
+            }} //TODO: Change this to only work when an option is selected(implement validation)
             style={{
               backgroundColor: "#ffc72c",
               padding: 10,

@@ -13,6 +13,7 @@ import { Feather, MaterialCommunityIcons, Ionicons } from "@expo/vector-icons";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../redux/CartReducer";
+import { StatusBar } from "expo-status-bar";
 
 const ProductInfoScreen = () => {
   const route = useRoute();
@@ -35,12 +36,15 @@ const ProductInfoScreen = () => {
   return (
     <ScrollView
       showsVerticalScrollIndicator={false}
-      style={{ flex: 1, marginTop: 45, backgroundColor: "white" }}
+      style={{ flex: 1, backgroundColor: "white" }}
     >
+      <StatusBar style="dark" />
       <View
         style={{
           backgroundColor: "#00ced1",
-          padding: 10,
+          paddingHorizontal: 10,
+          paddingBottom: 10,
+          paddingTop: 30,
           flexDirection: "row",
           alignItems: "center",
           paddingRight: 15,
