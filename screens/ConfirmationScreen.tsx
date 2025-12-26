@@ -111,13 +111,16 @@ const ConfirmationScreen = () => {
         },
       };
       const data = await RazorpayCheckout.open(options);
-
+      // console.log('paymentdata',data); it gives just payment id
+      setCurrentStep(3);
       const orderData = {
         userId,
         cartItems,
         totalPrice,
         shippingAddress: selectedAddress,
-        paymentMethod: selectedOption,
+        paymentMethod: 'card',
+        paymentStatus: "paid",
+        paymentId: data.razorpay_payment_id,
       };
 
       const response = await axios.post(

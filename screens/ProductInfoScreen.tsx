@@ -268,13 +268,13 @@ const ProductInfoScreen = () => {
           </TouchableOpacity>
 
           <TouchableOpacity
+            onPress={() => navigation.navigate("Confirm" as never)}
             style={{
               padding: 10,
               marginTop: 15,
               backgroundColor: "#ffac1c",
               borderRadius: 10,
               alignItems: "center",
-              // marginBottom: 20,
             }}
           >
             <Text>Buy Now</Text>
