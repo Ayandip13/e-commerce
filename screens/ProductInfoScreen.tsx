@@ -31,7 +31,7 @@ const ProductInfoScreen = () => {
       setAddedToCart(false);
     }, 1000);
   };
-  console.log(cart);
+  // console.log(cart);
 
   return (
     <ScrollView

@@ -49,11 +49,11 @@ const AddAddressScreen = () => {
       // This line extracts the 'addresses' field (an array) from that data.
       setAddress(addresses);
     } catch (error) {
-      console.log("Error fetching addresses:", error);
+      // console.log("Error fetching addresses:", error);
     }
   };
-  console.log("addresses", address);
-  console.log(userId);
+  // console.log("addresses", address);
+  // console.log(userId);
 
   return (
     <ScrollView

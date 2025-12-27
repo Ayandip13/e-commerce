@@ -36,7 +36,7 @@ const CartScreen = () => {
   const totalPrice = cart
     .map((item: any) => item.price * item.quantity)
     .reduce((current: any, prev: any) => current + prev, 0);
-  console.log(totalPrice);
+  // console.log(totalPrice);
   //state is the store object, state.cart is the cart slice, state.cart.cart is the cart array
   return (
     <ScrollView style={{ flex: 1, backgroundColor: "white" }}>

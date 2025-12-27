@@ -253,7 +253,7 @@ const HomeScreen = () => {
   interface DecodedToken {
     userId: string;
   }
-  console.log("Ayadreses", selectedAddress);
+  // console.log("Ayadreses", selectedAddress);
   const fetchUser = async () => {
     try {
       const token = await AsyncStorage.getItem("authToken");
@@ -261,7 +261,7 @@ const HomeScreen = () => {
         const decodedToken = jwtDecode<DecodedToken>(token);
         const userId = decodedToken?.userId;
         setUserId(userId);
-        console.log(userId);
+        // console.log(userId);
       } else {
         console.log("No token found");
       }
@@ -317,7 +317,7 @@ const HomeScreen = () => {
   const cart = useSelector((state: any) => state.cart.cart);
   //state is the store object, state.cart is the cart slice, state.cart.cart is the cart array
 
-  console.log(cart);
+  // console.log(cart);
   return (
     <View style={{ backgroundColor: "white", flex: 1 }}>
       <StatusBar style="dark" />

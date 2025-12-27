@@ -82,7 +82,7 @@ const ConfirmationScreen = () => {
       if (response.status === 201) {
         navigation.navigate("OrderScreen" as never);
         dispatch(cleanCart());
-        console.log("Order placed successfully", response.data);
+        // console.log("Order placed successfully", response.data);
       } else {
         console.log("Error placing order", response.data);
       }
@@ -130,9 +130,9 @@ const ConfirmationScreen = () => {
       if (response.status === 201) {
         navigation.navigate("OrderScreen" as never);
         dispatch(cleanCart());
-        console.log("Order placed successfully", response.data);
+        // console.log("Order placed successfully", response.data);
       } else {
-        console.log("Error placing order", response.data);
+        // console.log("Error placing order", response.data);
       }
     } catch (error) {
       console.log("error", error);

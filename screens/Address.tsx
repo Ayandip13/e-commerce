@@ -67,7 +67,7 @@ const Address = () => {
         error?.response?.data?.message || "Error",
         ToastAndroid.SHORT
       );
-      console.log("Error adding address", error);
+      // console.log("Error adding address", error);
     } finally {
       setLoading(false);
     }
@@ -82,16 +82,16 @@ const Address = () => {
           const userId = decodedToken?.userId;
           setUserId(userId);
         } else {
-          console.log("No token found");
+          // console.log("No token found");
         }
       } catch (error) {
-        console.log("error decoding token", error);
+        // console.log("error decoding token", error);
       }
     };
     fetchUser();
   }, []);
 
-  console.log(userId);
+  // console.log(userId);
 
   return (
     <View style={{ marginTop: Platform.OS === "android" ? 25 : 0 }}>
