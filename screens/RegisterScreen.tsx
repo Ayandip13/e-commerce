@@ -17,6 +17,7 @@ import { AntDesign } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import axios from "axios";
 import { Toast } from "toastify-react-native";
+import { API_URL } from "../api";
 
 const RegisterScreen = () => {
   const [name, setName] = useState<string>("");
@@ -47,10 +48,7 @@ const RegisterScreen = () => {
         email: email.trim(),
         password: password.trim(),
       };
-      const response = await axios.post(
-        "http://192.168.0.101:8000/register",
-        user
-      );
+      const response = await axios.post(`${API_URL}register`, user);
       console.log(response.data);
       Toast.success("Registration Successful! Please log in.");
       setEmail("");

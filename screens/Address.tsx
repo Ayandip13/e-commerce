@@ -15,6 +15,8 @@ import { UserType } from "../UserContext";
 import axios from "axios";
 import { Toast } from "toastify-react-native";
 import { useNavigation } from "@react-navigation/native";
+import { API_URL } from "../api";
+import { StatusBar } from "expo-status-bar";
 
 const Address = () => {
   const navigation = useNavigation();
@@ -46,7 +48,7 @@ const Address = () => {
     };
     try {
       setLoading(true);
-      const response = await axios.post("http://192.168.0.101:8000/addresses", {
+      const response = await axios.post(`${API_URL}addresses`, {
         userId,
         address,
       });
@@ -94,11 +96,10 @@ const Address = () => {
   // console.log(userId);
 
   return (
-    <View style={{ marginTop: Platform.OS === "android" ? 25 : 0 }}>
+    <View style={{ marginTop: Platform.OS === "android" ? 0 : 0 }}>
+      <StatusBar style="dark" />
       <View
         style={{
-          backgroundColor: "#00ced1",
-          padding: 28,
           flexDirection: "row",
           alignItems: "center",
           paddingRight: 15,

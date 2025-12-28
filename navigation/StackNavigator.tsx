@@ -141,12 +141,28 @@ const StackNavigator = () => {
         <Stack.Screen
           name="Address"
           component={AddAddressScreen}
-          options={{ headerShown: false }}
+          options={{
+            headerTitle: "",
+            headerStyle: {
+              backgroundColor: "#00ced1",
+            },
+            headerTitleStyle: {
+              color: "#00ced1",
+            },
+          }}
         />
         <Stack.Screen
           name="Add"
           component={Address}
-          options={{ headerShown: false }}
+          options={{
+            headerTitle: "",
+            headerStyle: {
+              backgroundColor: "#00ced1",
+            },
+            headerTitleStyle: {
+              color: "#00ced1",
+            },
+          }}
         />
         <Stack.Screen
           name="Confirm"

@@ -12,6 +12,7 @@ import { Entypo, Feather, MaterialIcons } from "@expo/vector-icons";
 import { useFocusEffect, useNavigation } from "@react-navigation/native";
 import axios from "axios";
 import { UserType } from "../UserContext";
+import { API_URL } from "../api";
 
 const AddAddressScreen = () => {
   const { userId, setUserId } = useContext(UserType);
@@ -42,7 +43,7 @@ const AddAddressScreen = () => {
   const fetchAddresses = async () => {
     try {
       const response = await axios.get<{ addresses: fetchedAddress[] }>(
-        `http://192.168.0.101:8000/addresses/${userId}`
+        `${API_URL}addresses/${userId}`
       );
       const { addresses } = response.data;
       // 'response' is the full Axios response; 'response.data' is the backend data.
@@ -57,47 +58,9 @@ const AddAddressScreen = () => {
 
   return (
     <ScrollView
-      style={{ marginTop: Platform.OS === "android" ? 25 : 0 }}
+      style={{ marginTop: Platform.OS === "android" ? 0 : 0 }}
       showsVerticalScrollIndicator={false}
     >
-      <View
-        style={{
-          backgroundColor: "#00ced1",
-          padding: 10,
-          flexDirection: "row",
-          alignItems: "center",
-          paddingRight: 15,
-        }}
-      >
-        <Pressable
-          style={{
-            flexDirection: "row",
-            alignItems: "center",
-            marginHorizontal: 7,
-            backgroundColor: "white",
-            gap: 10,
-            borderRadius: 5,
-            height: 40,
-            flex: 1,
-            paddingHorizontal: 15,
-            justifyContent: "space-between",
-          }}
-        >
-          <View
-            style={{
-              flexDirection: "row",
-              alignItems: "center",
-              gap: 10,
-            }}
-          >
-            <Feather name="search" size={20} color="black" />
-            <TextInput placeholder="Search Amazon.in" />
-          </View>
-        </Pressable>
-        <TouchableOpacity>
-          <Feather name="mic" size={20} color="black" />
-        </TouchableOpacity>
-      </View>
       <View>
         <Text
           style={{

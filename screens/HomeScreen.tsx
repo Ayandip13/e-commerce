@@ -23,6 +23,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { jwtDecode } from "jwt-decode";
 import { UserType } from "../UserContext";
 import { StatusBar } from "expo-status-bar";
+import { API_URL } from "../api";
 
 interface ProductApi {
   id: number;
@@ -279,7 +280,7 @@ const HomeScreen = () => {
   const fetchAddress = async () => {
     try {
       const response = await axios.get(
-        `http://192.168.0.101:8000/addresses/${userId}`
+        `${API_URL}addresses/${userId}`
       );
       setAddress(response.data.addresses);
       // 'response' is the full Axios response; 'response.data' is the backend data.
@@ -327,8 +328,8 @@ const HomeScreen = () => {
           style={{
             backgroundColor: "#00ced1",
             paddingHorizontal: 10,
-            paddingBottom: 10,
-            paddingTop: 30,
+            paddingBottom: 15,
+            paddingTop: 47,
             flexDirection: "row",
             alignItems: "center",
             paddingRight: 15,

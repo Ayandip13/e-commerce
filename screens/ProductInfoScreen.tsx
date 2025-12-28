@@ -4,12 +4,11 @@ import {
   ScrollView,
   StyleSheet,
   Text,
-  TextInput,
   TouchableOpacity,
   View,
 } from "react-native";
 import React, { useState } from "react";
-import { Feather, MaterialCommunityIcons, Ionicons } from "@expo/vector-icons";
+import { MaterialCommunityIcons, Ionicons } from "@expo/vector-icons";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../redux/CartReducer";
@@ -184,7 +183,6 @@ const ProductInfoScreen = () => {
             In Stock
           </Text>
 
-          {/* Add to Cart Button */}
           <TouchableOpacity
             onPress={() => addItemToCart(route?.params?.item)}
             style={{

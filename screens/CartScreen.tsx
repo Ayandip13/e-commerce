@@ -35,7 +35,7 @@ const CartScreen = () => {
   // console.log("Cart is", cart);
   const totalPrice = cart
     .map((item: any) => item.price * item.quantity)
-    .reduce((current: any, prev: any) => current + prev, 0);
+    .reduce((current: number, prev: number) => current + prev, 0);
   // console.log(totalPrice);
   //state is the store object, state.cart is the cart slice, state.cart.cart is the cart array
   return (
@@ -45,8 +45,8 @@ const CartScreen = () => {
         style={{
           backgroundColor: "#00ced1",
           paddingHorizontal: 10,
-          paddingBottom: 10,
-          paddingTop: 30,
+          paddingBottom: 15,
+          paddingTop: 47,
           flexDirection: "row",
           alignItems: "center",
           paddingRight: 15,
@@ -74,7 +74,10 @@ const CartScreen = () => {
             }}
           >
             <Feather name="search" size={20} color="black" />
-            <TextInput placeholder="Search Amazon.in" placeholderTextColor={"black"}/>
+            <TextInput
+              placeholder="Search Amazon.in"
+              placeholderTextColor={"black"}
+            />
           </View>
         </Pressable>
         <TouchableOpacity>

@@ -16,6 +16,7 @@ import { useNavigation } from "@react-navigation/native";
 import { cleanCart } from "../redux/CartReducer";
 import RazorpayCheckout from "react-native-razorpay";
 import { StatusBar } from "expo-status-bar";
+import { API_URL } from "../api";
 
 const ConfirmationScreen = () => {
   interface fetchedAddress {
@@ -50,7 +51,7 @@ const ConfirmationScreen = () => {
   const fetchAddresses = async () => {
     try {
       const response = await axios.get<{ addresses: fetchedAddress[] }>(
-        `http://192.168.0.101:8000/addresses/${userId}`
+        `${API_URL}addresses/${userId}`
       );
       const { addresses } = response.data;
       // 'response' is the full Axios response; 'response.data' is the backend data.
@@ -75,10 +76,7 @@ const ConfirmationScreen = () => {
         shippingAddress: selectedAddress,
         paymentMethod: selectedOption,
       };
-      const response = await axios.post(
-        "http://192.168.0.101:8000/orders",
-        orderData
-      );
+      const response = await axios.post(`${API_URL}orders`, orderData);
       if (response.status === 201) {
         navigation.navigate("OrderScreen" as never);
         dispatch(cleanCart());
@@ -118,15 +116,12 @@ const ConfirmationScreen = () => {
         cartItems,
         totalPrice,
         shippingAddress: selectedAddress,
-        paymentMethod: 'card',
+        paymentMethod: "card",
         paymentStatus: "paid",
         paymentId: data.razorpay_payment_id,
       };
 
-      const response = await axios.post(
-        "http://192.168.0.101:8000/orders",
-        orderData
-      );
+      const response = await axios.post(`${API_URL}orders`, orderData);
       if (response.status === 201) {
         navigation.navigate("OrderScreen" as never);
         dispatch(cleanCart());

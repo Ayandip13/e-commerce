@@ -17,6 +17,7 @@ import { AntDesign } from "@expo/vector-icons";
 import { useNavigation, CommonActions } from "@react-navigation/native";
 import axios from "axios";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { API_URL } from "../api";
 
 const LoginScreen = () => {
   const [email, setEmail] = useState<string>("");
@@ -46,10 +47,7 @@ const LoginScreen = () => {
         email: email.trim(),
         password: password.trim(),
       };
-      const response = await axios.post(
-        "http://192.168.0.101:8000/login",
-        user
-      );
+      const response = await axios.post(`${API_URL}login`, user);
       const token = response.data.token;
       await AsyncStorage.setItem("authToken", token);
 

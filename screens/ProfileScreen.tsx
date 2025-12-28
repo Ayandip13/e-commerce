@@ -12,6 +12,7 @@ import { useNavigation } from "@react-navigation/native";
 import axios from "axios";
 import { UserType } from "../UserContext";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { API_URL } from "../api";
 
 export default function ProfileScreen() {
   const { userId } = useContext(UserType);
@@ -23,7 +24,7 @@ export default function ProfileScreen() {
   const getOrders = async () => {
     try {
       setLoading(true);
-      const res = await axios.get(`http://192.168.0.101:8000/orders/${userId}`);
+      const res = await axios.get(`${API_URL}orders/${userId}`);
       setOrders(res.data.orders);
       // console.log(res.data.orders);
     } catch (error) {
@@ -36,7 +37,7 @@ export default function ProfileScreen() {
   const getUser = async () => {
     try {
       const res = await axios.get(
-        `http://192.168.0.101:8000/profile/${userId}`
+        `${API_URL}profile/${userId}`
       );
       setUser(res.data.user);
     } catch (error) {
