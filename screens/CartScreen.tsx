@@ -93,7 +93,7 @@ const CartScreen = () => {
         >
           <Text style={{ fontWeight: "400", fontSize: 17 }}>Subtotal: </Text>
           <Text style={{ fontWeight: "bold", fontSize: 17 }}>
-            {totalPrice.toFixed(2)}
+            {totalPrice.toFixed(2)} ₹
           </Text>
         </View>
         <View style={{ marginTop: 10 }}>
@@ -126,8 +126,8 @@ const CartScreen = () => {
       </View>
       <View
         style={{
-          backgroundColor: "#333",
-          height: 1,
+          backgroundColor: "#000000",
+          height: 0.5,
           width: "100%",
         }}
       />

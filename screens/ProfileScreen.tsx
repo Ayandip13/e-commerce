@@ -36,9 +36,7 @@ export default function ProfileScreen() {
 
   const getUser = async () => {
     try {
-      const res = await axios.get(
-        `${API_URL}profile/${userId}`
-      );
+      const res = await axios.get(`${API_URL}profile/${userId}`);
       setUser(res.data.user);
     } catch (error) {
       console.log("error", error);
@@ -96,7 +94,7 @@ export default function ProfileScreen() {
         backgroundColor: "#fff",
       }}
     >
-      <Text style={{ fontSize: 20, fontWeight: "bold", marginBottom: 12 }}>
+      <Text style={{ fontSize: 20, fontWeight: "bold" }}>
         Welcome {user?.name}
       </Text>
 
@@ -166,7 +164,7 @@ export default function ProfileScreen() {
         </TouchableOpacity>
       </View>
 
-      <View style={{ flex: 1, marginTop: 20, paddingHorizontal: 10 }}>
+      <View style={{ flex: 1, marginTop: 15, paddingHorizontal: 10 }}>
         <Text style={{ fontSize: 18, fontWeight: "bold", marginBottom: 10 }}>
           Your Orders
         </Text>
