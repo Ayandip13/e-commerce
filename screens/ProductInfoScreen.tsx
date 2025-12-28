@@ -39,48 +39,7 @@ const ProductInfoScreen = () => {
       style={{ flex: 1, backgroundColor: "white" }}
     >
       <StatusBar style="dark" />
-      <View
-        style={{
-          backgroundColor: "#00ced1",
-          paddingHorizontal: 10,
-          paddingBottom: 10,
-          paddingTop: 30,
-          flexDirection: "row",
-          alignItems: "center",
-          paddingRight: 15,
-        }}
-      >
-        <TouchableOpacity
-          style={{
-            flexDirection: "row",
-            alignItems: "center",
-            marginHorizontal: 7,
-            backgroundColor: "white",
-            gap: 10,
-            borderRadius: 5,
-            height: 40,
-            flex: 1,
-            paddingHorizontal: 15,
-            justifyContent: "space-between",
-          }}
-        >
-          <View
-            style={{
-              flexDirection: "row",
-              alignItems: "center",
-              gap: 10,
-            }}
-          >
-            <Feather name="search" size={20} color="black" />
-            <TextInput placeholder="Search Amazon.in" />
-          </View>
-        </TouchableOpacity>
-        <TouchableOpacity>
-          <Feather name="mic" size={20} color="black" />
-        </TouchableOpacity>
-      </View>
-
-      <ScrollView showsHorizontalScrollIndicator={false} horizontal>
+      <ScrollView contentContainerStyle={{marginTop: 50}} showsHorizontalScrollIndicator={false} horizontal>
         {route.params.carouselImages.map((item, index) => (
           <ImageBackground
             style={{ width, height, marginTop: 25 }}

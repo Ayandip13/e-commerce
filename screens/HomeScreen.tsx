@@ -239,7 +239,7 @@ const HomeScreen = () => {
   const [open, setOpen] = useState<boolean>(false);
   const [selectedAddress, setSelectedAddress] = useState("");
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
-  const [category, setCategory] = useState<string>("jewelery");
+  const [category, setCategory] = useState<string>("electronics");
   const [items, setItems] = useState([
     { label: "men's clothing", value: "men's clothing" },
     { label: "jewelery", value: "jewelery" },
