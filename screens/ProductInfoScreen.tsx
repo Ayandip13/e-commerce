@@ -18,123 +18,101 @@ import { StatusBar } from "expo-status-bar";
 const ProductInfoScreen = () => {
   const route = useRoute();
   const { width } = Dimensions.get("window");
-  const height = (width * 100) / 100;
+  const height = width;
   const navigation = useNavigation();
   const dispatch = useDispatch();
-  const cart = useSelector((state: number) => state.cart.cart);
   const [addedToCart, setAddedToCart] = useState(false);
 
-  const addItemToCart = (item: number) => {
+  const addItemToCart = (item: any) => {
     setAddedToCart(true);
     dispatch(addToCart(item));
-    setTimeout(() => {
-      setAddedToCart(false);
-    }, 1000);
+    setTimeout(() => setAddedToCart(false), 1000);
   };
-  // console.log(cart);
 
   return (
     <ScrollView
-      showsVerticalScrollIndicator={false}
       style={{ flex: 1, backgroundColor: "white" }}
+      showsVerticalScrollIndicator={false}
     >
       <StatusBar style="dark" />
-      <ScrollView contentContainerStyle={{marginTop: 50}} showsHorizontalScrollIndicator={false} horizontal>
-        {route.params.carouselImages.map((item, index) => (
-          <ImageBackground
-            style={{ width, height, marginTop: 25 }}
-            key={index}
-            source={{ uri: item }}
-          >
-            <View
-              style={{
-                padding: 20,
-                flexDirection: "row",
-                alignItems: "center",
-                justifyContent: "space-between",
-              }}
-            >
-              <View
-                style={{
-                  height: 40,
-                  width: 40,
-                  borderRadius: 20,
-                  backgroundColor: "#c60c30",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  flexDirection: "row",
-                }}
-              >
-                <Text
-                  style={{
-                    color: "white",
-                    textAlign: "center",
-                    fontSize: 12,
-                    fontWeight: "bold",
-                  }}
-                >
-                  20% off
-                </Text>
-              </View>
-              <View
-                style={{
-                  height: 40,
-                  width: 40,
-                  borderRadius: 20,
-                  backgroundColor: "#e0e0e0",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  flexDirection: "row",
-                }}
-              >
-                <MaterialCommunityIcons
-                  name="share-variant"
-                  size={24}
-                  color="#000"
-                />
-              </View>
-            </View>
-            <View
-              style={{
-                height: 40,
-                width: 40,
-                borderRadius: 20,
-                backgroundColor: "#e0e0e0",
-                justifyContent: "center",
-                alignItems: "center",
-                flexDirection: "row",
-                marginTop: "auto",
-                marginBottom: 20,
-                marginLeft: 20,
-              }}
-            >
-              <MaterialCommunityIcons
-                name="heart-outline"
-                size={24}
-                color="#000"
-              />
-            </View>
-          </ImageBackground>
-        ))}
-      </ScrollView>
 
-      <View style={{ padding: 10 }}>
-        <Text
+      <View>
+        <View
           style={{
-            fontSize: 15,
-            fontWeight: "500",
-            marginBottom: 10,
+            position: "absolute",
+            top: 35,
+            left: 15,
+            backgroundColor: "#c60c30",
+            width: 45,
+            height: 45,
+            borderRadius: 22.5,
+            justifyContent: "center",
+            zIndex: 10,
           }}
         >
+          <Text style={{ color: "#fff", fontSize: 11, fontWeight: "bold",textAlign:"center" }}>
+            20% OFF
+          </Text>
+        </View>
+
+        <TouchableOpacity
+          style={{
+            position: "absolute",
+            top: 35,
+            right: 15,
+            backgroundColor: "#e0e0e0",
+            width: 45,
+            height: 45,
+            borderRadius: 22.5,
+            justifyContent: "center",
+            alignItems: "center",
+            zIndex: 10,
+          }}
+        >
+          <MaterialCommunityIcons name="share-variant" size={22} />
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          style={{
+            position: "absolute",
+            bottom: 20,
+            left: 15,
+            backgroundColor: "#e0e0e0",
+            width: 45,
+            height: 45,
+            borderRadius: 22.5,
+            justifyContent: "center",
+            alignItems: "center",
+            zIndex: 10,
+          }}
+        >
+          <MaterialCommunityIcons name="heart-outline" size={22} />
+        </TouchableOpacity>
+
+        {/* Horizontal Carousel */}
+        <ScrollView
+          horizontal
+          pagingEnabled
+          showsHorizontalScrollIndicator={false}
+        >
+          {route.params.carouselImages.map((item: string, index: number) => (
+            <ImageBackground
+              key={index}
+              source={{ uri: item }}
+              style={{ width, height, marginTop: 25 }}
+              resizeMode="cover"
+            />
+          ))}
+        </ScrollView>
+      </View>
+
+      {/* Product Details */}
+      <View style={{ padding: 10 }}>
+        <Text style={{ fontSize: 15, fontWeight: "500", marginBottom: 10 }}>
           {route?.params.title}
         </Text>
 
-        <Text
-          style={{
-            fontSize: 20,
-            fontWeight: "500",
-          }}
-        >
+        <Text style={{ fontSize: 20, fontWeight: "500" }}>
           ₹{route?.params.price}
         </Text>
 
@@ -173,15 +151,11 @@ const ProductInfoScreen = () => {
             marginTop: 5,
           }}
         />
+
         <View style={{ marginTop: 10, marginBottom: 50 }}>
           <Text style={{ fontSize: 15 }}>Total: ₹{route?.params.price}</Text>
-          <Text
-            style={{
-              fontSize: 15,
-              color: "#00ced1",
-              marginTop: 5,
-            }}
-          >
+
+          <Text style={{ fontSize: 15, color: "#00ced1", marginTop: 5 }}>
             Free delivery tomorrow by 3PM. Order within 10 hours 30 minutes
           </Text>
 
@@ -193,11 +167,12 @@ const ProductInfoScreen = () => {
               marginVertical: 5,
             }}
           >
-            <Ionicons name="location-outline" size={24} color="black" />
+            <Ionicons name="location-outline" size={24} />
             <Text style={{ fontSize: 15, fontWeight: "500" }}>
               Deliver to Ayandip - Kolkata 743165
             </Text>
           </View>
+
           <Text
             style={{
               fontSize: 15,
@@ -209,6 +184,7 @@ const ProductInfoScreen = () => {
             In Stock
           </Text>
 
+          {/* Add to Cart Button */}
           <TouchableOpacity
             onPress={() => addItemToCart(route?.params?.item)}
             style={{
@@ -217,15 +193,13 @@ const ProductInfoScreen = () => {
               backgroundColor: "#ffc72c",
               borderRadius: 10,
               alignItems: "center",
+              zIndex: 5,
             }}
           >
-            {addedToCart ? (
-              <Text>Added to Cart</Text>
-            ) : (
-              <Text>Add to Cart</Text>
-            )}
+            <Text>{addedToCart ? "Added to Cart" : "Add to Cart"}</Text>
           </TouchableOpacity>
 
+          {/* Buy Now Button */}
           <TouchableOpacity
             onPress={() => navigation.navigate("Confirm" as never)}
             style={{
@@ -234,6 +208,7 @@ const ProductInfoScreen = () => {
               backgroundColor: "#ffac1c",
               borderRadius: 10,
               alignItems: "center",
+              zIndex: 5,
             }}
           >
             <Text>Buy Now</Text>

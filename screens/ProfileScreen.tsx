@@ -25,7 +25,7 @@ export default function ProfileScreen() {
       setLoading(true);
       const res = await axios.get(`http://192.168.0.101:8000/orders/${userId}`);
       setOrders(res.data.orders);
-      console.log(res.data.orders);
+      // console.log(res.data.orders);
     } catch (error) {
       console.log("error", error);
     } finally {
@@ -184,12 +184,12 @@ export default function ProfileScreen() {
             </Text>
           </View>
         ) : orders.length > 0 ? (
-          <ScrollView
-            // horizontal
-            showsHorizontalScrollIndicator={false}
-          >
+          <ScrollView showsHorizontalScrollIndicator={false}>
             {orders.map((order, index) => (
               <TouchableOpacity
+                onPress={() =>
+                  navigation.navigate("OrderedItem" as never, { order })
+                }
                 key={order._id || index}
                 style={{
                   paddingVertical: 15,

@@ -19,6 +19,7 @@ import AddAddressScreen from "../screens/AddAddressScreen";
 import Address from "../screens/Address";
 import ConfirmationScreen from "../screens/ConfirmationScreen";
 import OrderScreen from "../screens/OrderScreen";
+import OrderedItem from "../screens/OrderedItem";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -106,17 +107,70 @@ const StackNavigator = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        screenOptions={{ headerShown: false }}
+        // screenOptions={{ headerShown: false }}
         initialRouteName={initialRoute}
       >
-        <Stack.Screen name="Login" component={LoginScreen} />
-        <Stack.Screen name="Register" component={RegisterScreen} />
-        <Stack.Screen name="Main" component={BottomTabs} />
-        <Stack.Screen name="ProductInfoScreen" component={ProductInfoScreen} />
-        <Stack.Screen name="Address" component={AddAddressScreen} />
-        <Stack.Screen name="Add" component={Address} />
-        <Stack.Screen name="Confirm" component={ConfirmationScreen} />
-        <Stack.Screen name="OrderScreen" component={OrderScreen} />
+        <Stack.Screen
+          name="Login"
+          component={LoginScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Register"
+          component={RegisterScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Main"
+          component={BottomTabs}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="ProductInfoScreen"
+          component={ProductInfoScreen}
+          options={{
+            headerTitle: "",
+            headerStyle: {
+              backgroundColor: "#00ced1",
+            },
+            headerTitleStyle: {
+              color: "#00ced1",
+            },
+          }}
+        />
+        <Stack.Screen
+          name="Address"
+          component={AddAddressScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Add"
+          component={Address}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Confirm"
+          component={ConfirmationScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="OrderScreen"
+          component={OrderScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="OrderedItem"
+          component={OrderedItem}
+          options={{
+            headerTitle: "",
+            headerStyle: {
+              backgroundColor: "#00ced1",
+            },
+            headerTitleStyle: {
+              color: "#00ced1",
+            },
+          }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
