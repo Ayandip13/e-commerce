@@ -39,7 +39,7 @@ const CartScreen = () => {
   // console.log(totalPrice);
   //state is the store object, state.cart is the cart slice, state.cart.cart is the cart array
   return (
-    <ScrollView style={{ flex: 1, backgroundColor: "white" }}>
+    <View style={{ flex: 1, backgroundColor: "white" }}>
       <StatusBar style="dark" />
       <View
         style={{
@@ -76,7 +76,7 @@ const CartScreen = () => {
             <Feather name="search" size={20} color="black" />
             <TextInput
               placeholder="Search Amazon.in"
-              placeholderTextColor={"black"}
+              placeholderTextColor="#808080"
             />
           </View>
         </Pressable>
@@ -131,198 +131,205 @@ const CartScreen = () => {
           width: "100%",
         }}
       />
-      <View style={{ padding: 15 }}>
-        <FlatList
-          data={cart}
-          ListEmptyComponent={() => {
-            return (
-              <View
-                style={{
-                  flex: 1,
-                  justifyContent: "center",
-                  alignItems: "center",
-                  marginTop: 30,
-                }}
-              >
-                <Text style={{ fontSize: 20, fontWeight: "bold" }}>
-                  No Items in Cart 🛒
-                </Text>
-              </View>
-            );
-          }}
-          keyExtractor={(item) => item.id}
-          renderItem={({ item, index }) => {
-            return (
-              <View
-                style={{
-                  marginVertical: 10,
-                  borderBottomColor: "#ddd",
-                  borderBottomWidth: 0.5,
-                  marginRight: 15,
-                }}
-                key={index}
-              >
-                <TouchableOpacity
-                  style={{
-                    marginVertical: 5,
-                    flexDirection: "row",
-                  }}
-                  activeOpacity={0.5}
-                >
-                  <View>
-                    <Image
-                      source={{ uri: item?.image }}
-                      style={{ width: 140, height: 140 }}
-                    />
-                  </View>
-                  <View
-                    style={{
-                      marginHorizontal: 10,
-                      flex: 1,
-                      width: "100%",
-                    }}
-                  >
-                    <Text
-                      style={{
-                        fontSize: 16,
-                        fontWeight: "400",
-                      }}
-                      numberOfLines={3}
-                    >
-                      {item?.title}
-                    </Text>
-                    <Text style={{ fontSize: 18, fontWeight: "bold" }}>
-                      {item?.price} ₹
-                    </Text>
-                    <Image
-                      style={{ width: 30, height: 30 }}
-                      source={{
-                        uri: "https://assets.stickpng.com/thumbs/5f4924cc68ecc70004ae7065.png",
-                      }}
-                    />
-                    <Text
-                      style={{
-                        fontSize: 16,
-                        fontWeight: "500",
-                        color: "green",
-                      }}
-                    >
-                      In Stock
-                    </Text>
-                  </View>
-                </TouchableOpacity>
 
+      <ScrollView style={{ flex: 1, marginVertical: 10 }}>
+        <View
+          style={{
+            paddingHorizontal: 15,
+          }}
+        >
+          <FlatList
+            data={cart}
+            ListEmptyComponent={() => {
+              return (
                 <View
                   style={{
-                    flexDirection: "row",
+                    flex: 1,
+                    justifyContent: "center",
                     alignItems: "center",
-                    columnGap: 10,
+                    marginTop: 30,
                   }}
                 >
-                  {item?.quantity === 1 ? (
+                  <Text style={{ fontSize: 20, fontWeight: "bold" }}>
+                    No Items in Cart 🛒
+                  </Text>
+                </View>
+              );
+            }}
+            keyExtractor={(item) => item.id}
+            renderItem={({ item, index }) => {
+              return (
+                <View
+                  style={{
+                    marginVertical: 10,
+                    borderBottomColor: "#ddd",
+                    borderBottomWidth: 0.5,
+                    marginRight: 15,
+                  }}
+                  key={index}
+                >
+                  <TouchableOpacity
+                    style={{
+                      marginVertical: 5,
+                      flexDirection: "row",
+                    }}
+                    activeOpacity={0.5}
+                  >
+                    <View>
+                      <Image
+                        source={{ uri: item?.image }}
+                        style={{ width: 140, height: 140 }}
+                      />
+                    </View>
+                    <View
+                      style={{
+                        marginHorizontal: 10,
+                        flex: 1,
+                        width: "100%",
+                      }}
+                    >
+                      <Text
+                        style={{
+                          fontSize: 16,
+                          fontWeight: "400",
+                        }}
+                        numberOfLines={3}
+                      >
+                        {item?.title}
+                      </Text>
+                      <Text style={{ fontSize: 18, fontWeight: "bold" }}>
+                        {item?.price} ₹
+                      </Text>
+                      <Image
+                        style={{ width: 30, height: 30 }}
+                        source={{
+                          uri: "https://assets.stickpng.com/thumbs/5f4924cc68ecc70004ae7065.png",
+                        }}
+                      />
+                      <Text
+                        style={{
+                          fontSize: 16,
+                          fontWeight: "500",
+                          color: "green",
+                        }}
+                      >
+                        In Stock
+                      </Text>
+                    </View>
+                  </TouchableOpacity>
+
+                  <View
+                    style={{
+                      flexDirection: "row",
+                      alignItems: "center",
+                      columnGap: 10,
+                    }}
+                  >
+                    {item?.quantity === 1 ? (
+                      <TouchableOpacity
+                        onPress={() => removeFromCart(item)}
+                        style={{
+                          backgroundColor: "#e5f5ffff",
+                          padding: 3,
+                          borderRadius: 5,
+                          width: 50,
+                          alignItems: "center",
+                          marginTop: 5,
+                          marginLeft: 15,
+                          marginBottom: 5,
+                        }}
+                      >
+                        <AntDesign name="delete" size={22} color="black" />
+                      </TouchableOpacity>
+                    ) : (
+                      <TouchableOpacity
+                        onPress={() => decrementQuantity(item)}
+                        style={{
+                          backgroundColor: "#e5f5ffff",
+                          padding: 3,
+                          borderRadius: 5,
+                          width: 50,
+                          alignItems: "center",
+                          marginTop: 5,
+                          marginLeft: 15,
+                          marginBottom: 5,
+                        }}
+                      >
+                        <AntDesign name="minus" size={22} color="black" />
+                      </TouchableOpacity>
+                    )}
+                    <Text style={{ fontSize: 18, fontWeight: "bold" }}>
+                      {item?.quantity}
+                    </Text>
+                    <TouchableOpacity
+                      onPress={() => incrementQuantity(item)}
+                      style={{
+                        backgroundColor: "#e5f5ffff",
+                        padding: 3,
+                        borderRadius: 5,
+                        width: 50,
+                        alignItems: "center",
+                        marginTop: 5,
+                        marginBottom: 5,
+                      }}
+                    >
+                      <AntDesign name="plus" size={22} color="black" />
+                    </TouchableOpacity>
                     <TouchableOpacity
                       onPress={() => removeFromCart(item)}
                       style={{
-                        backgroundColor: "#e5f5ffff",
-                        padding: 3,
+                        borderWidth: 0.5,
+                        borderColor: "#bbe4ffff",
+                        paddingHorizontal: 7,
+                        paddingVertical: 5,
                         borderRadius: 5,
-                        width: 50,
-                        alignItems: "center",
-                        marginTop: 5,
-                        marginLeft: 15,
-                        marginBottom: 5,
                       }}
                     >
-                      <AntDesign name="delete" size={22} color="black" />
+                      <Text>Remove</Text>
                     </TouchableOpacity>
-                  ) : (
-                    <TouchableOpacity
-                      onPress={() => decrementQuantity(item)}
-                      style={{
-                        backgroundColor: "#e5f5ffff",
-                        padding: 3,
-                        borderRadius: 5,
-                        width: 50,
-                        alignItems: "center",
-                        marginTop: 5,
-                        marginLeft: 15,
-                        marginBottom: 5,
-                      }}
-                    >
-                      <AntDesign name="minus" size={22} color="black" />
-                    </TouchableOpacity>
-                  )}
-                  <Text style={{ fontSize: 18, fontWeight: "bold" }}>
-                    {item?.quantity}
-                  </Text>
-                  <TouchableOpacity
-                    onPress={() => incrementQuantity(item)}
+                  </View>
+
+                  <View
                     style={{
-                      backgroundColor: "#e5f5ffff",
-                      padding: 3,
-                      borderRadius: 5,
-                      width: 50,
-                      alignItems: "center",
+                      flexDirection: "row",
+                      columnGap: 10,
                       marginTop: 5,
                       marginBottom: 5,
+                      marginLeft: 15,
                     }}
                   >
-                    <AntDesign name="plus" size={22} color="black" />
-                  </TouchableOpacity>
-                  <TouchableOpacity
-                    onPress={() => removeFromCart(item)}
-                    style={{
-                      borderWidth: 0.5,
-                      borderColor: "#bbe4ffff",
-                      paddingHorizontal: 7,
-                      paddingVertical: 5,
-                      borderRadius: 5,
-                    }}
-                  >
-                    <Text>Remove</Text>
-                  </TouchableOpacity>
+                    <TouchableOpacity
+                      style={{
+                        borderWidth: 0.5,
+                        borderColor: "#bbe4ffff",
+                        paddingHorizontal: 12,
+                        paddingVertical: 7,
+                        borderRadius: 5,
+                        backgroundColor: "#d3eeffff",
+                      }}
+                    >
+                      <Text>Save for later</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity
+                      style={{
+                        borderWidth: 0.5,
+                        borderColor: "#bbe4ffff",
+                        paddingHorizontal: 12,
+                        paddingVertical: 7,
+                        borderRadius: 5,
+                        backgroundColor: "#d3eeffff",
+                      }}
+                    >
+                      <Text>See more like this</Text>
+                    </TouchableOpacity>
+                  </View>
                 </View>
-
-                <View
-                  style={{
-                    flexDirection: "row",
-                    columnGap: 10,
-                    marginTop: 5,
-                    marginBottom: 5,
-                    marginLeft: 15,
-                  }}
-                >
-                  <TouchableOpacity
-                    style={{
-                      borderWidth: 0.5,
-                      borderColor: "#bbe4ffff",
-                      paddingHorizontal: 12,
-                      paddingVertical: 7,
-                      borderRadius: 5,
-                      backgroundColor: "#d3eeffff",
-                    }}
-                  >
-                    <Text>Save for later</Text>
-                  </TouchableOpacity>
-                  <TouchableOpacity
-                    style={{
-                      borderWidth: 0.5,
-                      borderColor: "#bbe4ffff",
-                      paddingHorizontal: 12,
-                      paddingVertical: 7,
-                      borderRadius: 5,
-                      backgroundColor: "#d3eeffff",
-                    }}
-                  >
-                    <Text>See more like this</Text>
-                  </TouchableOpacity>
-                </View>
-              </View>
-            );
-          }}
-        />
-      </View>
-    </ScrollView>
+              );
+            }}
+          />
+        </View>
+      </ScrollView>
+    </View>
   );
 };
 

@@ -279,9 +279,7 @@ const HomeScreen = () => {
 
   const fetchAddress = async () => {
     try {
-      const response = await axios.get(
-        `${API_URL}addresses/${userId}`
-      );
+      const response = await axios.get(`${API_URL}addresses/${userId}`);
       setAddress(response.data.addresses);
       // 'response' is the full Axios response; 'response.data' is the backend data.
       // This line extracts the 'addresses' field (an array) from that data.
@@ -323,51 +321,50 @@ const HomeScreen = () => {
     <View style={{ backgroundColor: "white", flex: 1 }}>
       <StatusBar style="dark" />
 
-      <ScrollView style={{ marginTop: Platform.OS === "android" ? 0 : 0 }}>
-        <View
+      <View
+        style={{
+          backgroundColor: "#00ced1",
+          paddingHorizontal: 10,
+          paddingBottom: 15,
+          paddingTop: 47,
+          flexDirection: "row",
+          alignItems: "center",
+          paddingRight: 15,
+        }}
+      >
+        <Pressable
           style={{
-            backgroundColor: "#00ced1",
-            paddingHorizontal: 10,
-            paddingBottom: 15,
-            paddingTop: 47,
             flexDirection: "row",
             alignItems: "center",
-            paddingRight: 15,
+            marginHorizontal: 7,
+            backgroundColor: "white",
+            gap: 10,
+            borderRadius: 5,
+            height: 40,
+            flex: 1,
+            paddingHorizontal: 15,
+            justifyContent: "space-between",
           }}
         >
-          <Pressable
+          <View
             style={{
               flexDirection: "row",
               alignItems: "center",
-              marginHorizontal: 7,
-              backgroundColor: "white",
               gap: 10,
-              borderRadius: 5,
-              height: 40,
-              flex: 1,
-              paddingHorizontal: 15,
-              justifyContent: "space-between",
             }}
           >
-            <View
-              style={{
-                flexDirection: "row",
-                alignItems: "center",
-                gap: 10,
-              }}
-            >
-              <Feather name="search" size={20} color="black" />
-              <TextInput
-                placeholder="Search Amazon.in"
-                placeholderTextColor="#000"
-              />
-            </View>
-          </Pressable>
-          <TouchableOpacity>
-            <Feather name="mic" size={20} color="black" />
-          </TouchableOpacity>
-        </View>
-
+            <Feather name="search" size={20} color="black" />
+            <TextInput
+              placeholder="Search Amazon.in"
+              placeholderTextColor="#808080"
+            />
+          </View>
+        </Pressable>
+        <TouchableOpacity>
+          <Feather name="mic" size={20} color="black" />
+        </TouchableOpacity>
+      </View>
+      <ScrollView style={{ marginTop: Platform.OS === "android" ? 0 : 0 }}>
         <TouchableOpacity
           onPress={() => setModalVisible(!modalVisible)}
           style={{
@@ -509,7 +506,6 @@ const HomeScreen = () => {
         <FlatList
           data={offers}
           horizontal
-          contentContainerStyle={{ marginHorizontal: 10 }}
           showsHorizontalScrollIndicator={false}
           renderItem={({ item, index }) => {
             return (
