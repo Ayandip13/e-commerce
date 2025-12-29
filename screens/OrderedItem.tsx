@@ -144,30 +144,11 @@ const OrderedItem = () => {
               </TouchableOpacity>
             </View>
 
-            <View
-              style={{
-                marginTop: 20,
-                flexDirection: "row",
-                alignItems: "center",
-                gap: 10,
-              }}
-            >
-              <Text style={{ fontSize: 17, fontWeight: "600" }}>
-                Payment Method:{" "}
-                <Text
-                  style={{ fontWeight: "400", fontSize: 20, color: "green" }}
-                >
-                  {route?.params?.order?.paymentMethod}
-                </Text>
-              </Text>
-              <Entypo name="credit-card" size={20} color="black" />
-            </View>
-
             <View style={{ marginTop: 10 }}>
               <View
                 style={{ flexDirection: "row", gap: 5, alignItems: "center" }}
               >
-                <Text style={{ fontWeight: "900", fontSize: 20 }}>
+                <Text style={{ fontWeight: "bold", fontSize: 20 }}>
                   Delivery Address:{" "}
                 </Text>
                 <Text style={{ fontSize: 17, fontWeight: "300" }}>
@@ -175,12 +156,69 @@ const OrderedItem = () => {
                   {route?.params?.order?.shippingAddress?.street}
                 </Text>
               </View>
-              <View>
-                <Text></Text>
+
+              <View style={{ flexDirection: "row", gap: 5, marginTop: 5 }}>
+                <Text style={{ fontSize: 17, fontWeight: "bold" }}>
+                  Pin Code:
+                </Text>
+                <Text style={{ fontSize: 17, fontWeight: "300" }}>
+                  {route?.params?.order?.shippingAddress?.postalCode}
+                </Text>
               </View>
             </View>
 
-            <View style={{ marginTop: 20 }}>
+            <View style={{ marginTop: 10, flexDirection: "row", gap: 5 }}>
+              <Text style={{ fontSize: 17, fontWeight: "bold" }}>
+                Delivery to:{" "}
+              </Text>
+              <Text style={{ fontSize: 17 }}>
+                {route?.params?.order?.shippingAddress?.name}
+              </Text>
+            </View>
+
+            <View style={{ marginTop: 10, flexDirection: "row", gap: 5,marginBottom:10 }}>
+              <Text style={{ fontSize: 17, fontWeight: "bold" }}>
+                Total amount:{" "}
+              </Text>
+              <Text style={{ fontSize: 17 }}>
+                ₹ {route?.params?.order?.totalPrice}
+              </Text>
+            </View>
+
+            <View
+              style={{
+                width: width * 0.9,
+                height: 1,
+                backgroundColor: "#E0E0E0",
+                marginVertical: 2,
+              }}
+            />
+            <View
+              style={{
+                width: width * 0.9,
+                height: 1,
+                backgroundColor: "#E0E0E0",
+              }}
+            />
+
+            <View
+              style={{
+                marginTop: 10,
+                flexDirection: "row",
+                alignItems: "center",
+                gap: 10,
+              }}
+            >
+              <Text style={{ fontSize: 17, fontWeight: "bold" }}>
+                Payment Method:{" "}
+              </Text>
+              <Text style={{ fontWeight: "400", fontSize: 20, color: "green" }}>
+                {route?.params?.order?.paymentMethod}
+              </Text>
+              <Entypo name="credit-card" size={20} color="black" />
+            </View>
+
+            <View style={{ marginTop: 10 }}>
               <Text style={{ fontSize: 17, color: "gray" }}>
                 Ordered on: {formattedDate}
               </Text>
