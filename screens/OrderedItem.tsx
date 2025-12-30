@@ -6,7 +6,7 @@ import {
   Dimensions,
   TouchableOpacity,
 } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import { useRoute } from "@react-navigation/native";
 import { Entypo } from "@expo/vector-icons";
 const { width } = Dimensions.get("window");
@@ -14,6 +14,7 @@ const { width } = Dimensions.get("window");
 const OrderedItem = () => {
   const route = useRoute();
   const itemsWithProduct = route?.params?.order?.products || [];
+  const [pressed, setPressed] = useState<boolean>(true);
 
   const formattedDate = new Date(
     route?.params?.order?.createdAt
@@ -24,7 +25,6 @@ const OrderedItem = () => {
     year: "numeric",
     hour: "numeric",
     minute: "2-digit",
-    second: "2-digit",
     hour12: true,
   });
 
@@ -45,18 +45,87 @@ const OrderedItem = () => {
           <View
             style={{
               width: width,
-              padding: 20,
+              paddingHorizontal: 20,
             }}
           >
             <Image
               source={{ uri: item?.image }}
               style={{
-                width: width * 0.8,
-                height: width * 0.8,
+                width: width * 0.85,
+                height: width * 0.85,
                 resizeMode: "contain",
                 borderRadius: 10,
+                alignSelf: "center",
+                marginBottom: -30,
               }}
             />
+
+            <View
+              style={{
+                flexDirection: "row",
+                justifyContent: "space-between",
+              }}
+            >
+              <TouchableOpacity
+                onPress={() => setPressed((pressed) => !pressed)}
+                style={{
+                  backgroundColor: "#d0d0d0",
+                  borderRadius: 50,
+                  height: width * 0.11,
+                  width: width * 0.11,
+                  justifyContent: "center",
+                  alignSelf: "center",
+                }}
+              >
+                {pressed ? (
+                  <Image
+                    source={require("../assets/heart-outline.png")}
+                    style={{
+                      position: "absolute",
+                      width: width * 0.06,
+                      height: width * 0.06,
+                      resizeMode: "contain",
+                      borderRadius: 10,
+                      alignSelf: "center",
+                    }}
+                  />
+                ) : (
+                  <Image
+                    source={require("../assets/heart-fill.png")}
+                    style={{
+                      position: "absolute",
+                      width: width * 0.06,
+                      height: width * 0.06,
+                      resizeMode: "contain",
+                      borderRadius: 10,
+                      alignSelf: "center",
+                    }}
+                  />
+                )}
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={{
+                  backgroundColor: "#d0d0d0",
+                  borderRadius: 50,
+                  height: width * 0.11,
+                  width: width * 0.11,
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <Image
+                  source={require("../assets/share.png")}
+                  style={{
+                    width: width * 0.07,
+                    height: width * 0.07,
+                    resizeMode: "contain",
+                    borderRadius: 10,
+                    alignSelf: "center",
+                    position: "absolute",
+                  }}
+                />
+              </TouchableOpacity>
+            </View>
 
             <View
               style={{
@@ -176,7 +245,14 @@ const OrderedItem = () => {
               </Text>
             </View>
 
-            <View style={{ marginTop: 10, flexDirection: "row", gap: 5,marginBottom:10 }}>
+            <View
+              style={{
+                marginTop: 10,
+                flexDirection: "row",
+                gap: 5,
+                marginBottom: 10,
+              }}
+            >
               <Text style={{ fontSize: 17, fontWeight: "bold" }}>
                 Total amount:{" "}
               </Text>
