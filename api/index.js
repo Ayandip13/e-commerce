@@ -6,6 +6,8 @@ const nodemailer = require("nodemailer");
 const jwt = require("jsonwebtoken");
 const User = require("./models/user.model.js");
 const Order = require("./models/order.model.js");
+const fs = require("fs");
+const path = require("path");
 
 const app = express();
 const PORT = 8000;
@@ -246,16 +248,28 @@ app.get("/orders/:userId", async (req, res) => {
   }
 });
 
-////////////////////////////////////////// other endpoints based on categories //////////////////////////////////////////
-
+//endpoint to get products by category
 app.get("/categories/:categoryName", async (req, res) => {
   try {
     const categoryName = req.params.categoryName;
-    if (categoryName === "electronics") {
-      
+
+    // Capitalize first letter to match file name if needed
+    const fileName = `${categoryName
+      .charAt(0)
+      .toUpperCase()}${categoryName.slice(1)}.json`;
+
+    const filePath = path.join(__dirname, "categories", fileName);
+
+    if (!fs.existsSync(filePath)) {
+      return res.status(404).json({ message: "Category not found" });
     }
-    res.status(200).json({ products });
+
+    const jsonData = fs.readFileSync(filePath, "utf-8");
+    const parsedData = JSON.parse(jsonData);
+
+    res.status(200).json({ products: parsedData });
   } catch (error) {
+    console.log(error);
     res.status(500).json({ message: "Error getting products" });
   }
 });

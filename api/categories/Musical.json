@@ -1,0 +1,272 @@
+[
+  {
+    "id": 1,
+    "title": "StratoTone Electric Guitar",
+    "price": 14999,
+    "description": "Solid-body electric guitar with dual pickups.",
+    "category": "Guitar",
+    "image": "https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg",
+    "rating": { "rate": 4.5, "count": 160 }
+  },
+  {
+    "id": 2,
+    "title": "AcoustiWave Wooden Guitar",
+    "price": 11999,
+    "description": "Full-size acoustic guitar with rich tone.",
+    "category": "Guitar",
+    "image": "https://fakestoreapi.com/img/81Zt42ioCgL._AC_SX679_.jpg",
+    "rating": { "rate": 4.4, "count": 210 }
+  },
+  {
+    "id": 3,
+    "title": "BeatMax Drum Set",
+    "price": 28999,
+    "description": "5-piece acoustic drum kit with cymbals.",
+    "category": "Drums",
+    "image": "https://fakestoreapi.com/img/71HblAHs5xL._AC_SY879_.jpg",
+    "rating": { "rate": 4.6, "count": 95 }
+  },
+  {
+    "id": 4,
+    "title": "TempoPro Keyboard 61-Key",
+    "price": 10499,
+    "description": "Electronic keyboard with learning modes.",
+    "category": "Keyboard",
+    "image": "https://fakestoreapi.com/img/81QpkIctqPL._AC_SX679_.jpg",
+    "rating": { "rate": 4.3, "count": 175 }
+  },
+  {
+    "id": 5,
+    "title": "SoulBeat Cajon Box Drum",
+    "price": 5499,
+    "description": "Birch wood cajon with adjustable snare.",
+    "category": "Percussion",
+    "image": "https://fakestoreapi.com/img/61IBBVJvSDL._AC_SY879_.jpg",
+    "rating": { "rate": 4.4, "count": 130 }
+  },
+  {
+    "id": 6,
+    "title": "Symphony Violin 4/4",
+    "price": 8999,
+    "description": "Full-size violin with bow and case.",
+    "category": "Violin",
+    "image": "https://fakestoreapi.com/img/71YXzeOuslL._AC_SY879_.jpg",
+    "rating": { "rate": 4.2, "count": 140 }
+  },
+  {
+    "id": 7,
+    "title": "BongoTwin Percussion Drums",
+    "price": 2999,
+    "description": "Smooth sound twin bongos for live jam.",
+    "category": "Percussion",
+    "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.png",
+    "rating": { "rate": 4.3, "count": 160 }
+  },
+  {
+    "id": 8,
+    "title": "WindTone Flute C",
+    "price": 1499,
+    "description": "C key flute for beginners and learners.",
+    "category": "Flute",
+    "image": "https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg",
+    "rating": { "rate": 4.1, "count": 310 }
+  },
+  {
+    "id": 9,
+    "title": "MegaBeats Electronic Drum Pad",
+    "price": 8999,
+    "description": "Portable drum pad with 9 touch sensors.",
+    "category": "Drums",
+    "image": "https://fakestoreapi.com/img/71HblAHs5xL._AC_SY879_.jpg",
+    "rating": { "rate": 4.5, "count": 120 }
+  },
+  {
+    "id": 10,
+    "title": "HarmoniX Mouth Organ",
+    "price": 799,
+    "description": "Chromatic harmonica with bright tone.",
+    "category": "Harmonica",
+    "image": "https://fakestoreapi.com/img/81QpkIctqPL._AC_SX679_.jpg",
+    "rating": { "rate": 4.2, "count": 220 }
+  },
+  {
+    "id": 11,
+    "title": "GrandTune Acoustic Bass",
+    "price": 15999,
+    "description": "Acoustic bass guitar for live acoustic sets.",
+    "category": "Bass Guitar",
+    "image": "https://fakestoreapi.com/img/71YXzeOuslL._AC_SY879_.jpg",
+    "rating": { "rate": 4.3, "count": 100 }
+  },
+  {
+    "id": 12,
+    "title": "MiniKeys Learning Keyboard",
+    "price": 3499,
+    "description": "37-key keyboard for kids and beginners.",
+    "category": "Keyboard",
+    "image": "https://fakestoreapi.com/img/61IBBVJvSDL._AC_SY879_.jpg",
+    "rating": { "rate": 4.0, "count": 280 }
+  },
+  {
+    "id": 13,
+    "title": "JazzMaster Saxophone",
+    "price": 29999,
+    "description": "Alto sax with smooth projection and tone.",
+    "category": "Saxophone",
+    "image": "https://fakestoreapi.com/img/81Zt42ioCgL._AC_SX679_.jpg",
+    "rating": { "rate": 4.4, "count": 90 }
+  },
+  {
+    "id": 14,
+    "title": "BeatStick Drum Sticks",
+    "price": 499,
+    "description": "Durable hickory wood sticks for drummers.",
+    "category": "Accessories",
+    "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.png",
+    "rating": { "rate": 4.6, "count": 300 }
+  },
+  {
+    "id": 15,
+    "title": "Tambora Tambourine",
+    "price": 599,
+    "description": "Bell jingles and comfortable grip.",
+    "category": "Percussion",
+    "image": "https://fakestoreapi.com/img/71HblAHs5xL._AC_SY879_.jpg",
+    "rating": { "rate": 4.1, "count": 200 }
+  },
+  {
+    "id": 16,
+    "title": "PitchPerfect Tuner",
+    "price": 699,
+    "description": "Digital tuner for multiple instruments.",
+    "category": "Accessories",
+    "image": "https://fakestoreapi.com/img/71YXzeOuslL._AC_SY879_.jpg",
+    "rating": { "rate": 4.5, "count": 250 }
+  },
+  {
+    "id": 17,
+    "title": "PercuBox Djembe",
+    "price": 4999,
+    "description": "African style djembe drum with strong bass.",
+    "category": "Percussion",
+    "image": "https://fakestoreapi.com/img/81QpkIctqPL._AC_SX679_.jpg",
+    "rating": { "rate": 4.4, "count": 140 }
+  },
+  {
+    "id": 18,
+    "title": "FolkVibe Ukulele 23\"",
+    "price": 2499,
+    "description": "Concert ukulele with soft nylon strings.",
+    "category": "Ukulele",
+    "image": "https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg",
+    "rating": { "rate": 4.3, "count": 175 }
+  },
+  {
+    "id": 19,
+    "title": "RhythmPad Practice Pad",
+    "price": 899,
+    "description": "Rubber practice pad with realistic rebound.",
+    "category": "Accessories",
+    "image": "https://fakestoreapi.com/img/71HblAHs5xL._AC_SY879_.jpg",
+    "rating": { "rate": 4.2, "count": 230 }
+  },
+  {
+    "id": 20,
+    "title": "EchoTone Recorder Flute",
+    "price": 399,
+    "description": "Durable recorder for school learners.",
+    "category": "Flute",
+    "image": "https://fakestoreapi.com/img/81Zt42ioCgL._AC_SX679_.jpg",
+    "rating": { "rate": 4.0, "count": 310 }
+  },
+  {
+    "id": 21,
+    "title": "GrooveMaster Electronic Metronome",
+    "price": 999,
+    "description": "Adjustable tempo and beat sound options.",
+    "category": "Accessories",
+    "image": "https://fakestoreapi.com/img/71YXzeOuslL._AC_SY879_.jpg",
+    "rating": { "rate": 4.4, "count": 200 }
+  },
+  {
+    "id": 22,
+    "title": "BrassWave Trumpet",
+    "price": 19999,
+    "description": "Brass body trumpet designed for beginners.",
+    "category": "Trumpet",
+    "image": "https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg",
+    "rating": { "rate": 4.2, "count": 110 }
+  },
+  {
+    "id": 23,
+    "title": "DrumBox Cajon Bag",
+    "price": 799,
+    "description": "Padded bag for cajon transport.",
+    "category": "Accessories",
+    "image": "https://fakestoreapi.com/img/81QpkIctqPL._AC_SX679_.jpg",
+    "rating": { "rate": 4.3, "count": 160 }
+  },
+  {
+    "id": 24,
+    "title": "MelodyMaker Harmonica Set",
+    "price": 1399,
+    "description": "Multiple keys for learning different scales.",
+    "category": "Harmonica",
+    "image": "https://fakestoreapi.com/img/61IBBVJvSDL._AC_SY879_.jpg",
+    "rating": { "rate": 4.4, "count": 135 }
+  },
+  {
+    "id": 25,
+    "title": "BassLine Electric Bass",
+    "price": 18999,
+    "description": "4-string electric bass with punchy tone.",
+    "category": "Bass Guitar",
+    "image": "https://fakestoreapi.com/img/71HblAHs5xL._AC_SY879_.jpg",
+    "rating": { "rate": 4.5, "count": 105 }
+  },
+  {
+    "id": 26,
+    "title": "StageHero Microphone",
+    "price": 1999,
+    "description": "Dynamic mic for live performances.",
+    "category": "Microphone",
+    "image": "https://fakestoreapi.com/img/71YXzeOuslL._AC_SY879_.jpg",
+    "rating": { "rate": 4.3, "count": 190 }
+  },
+  {
+    "id": 27,
+    "title": "DrumMate Drum Throne",
+    "price": 2499,
+    "description": "Height adjustable cushioned drum stool.",
+    "category": "Accessories",
+    "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.png",
+    "rating": { "rate": 4.4, "count": 85 }
+  },
+  {
+    "id": 28,
+    "title": "StudioMix Audio Interface",
+    "price": 6999,
+    "description": "2-channel interface for home recording.",
+    "category": "Studio Gear",
+    "image": "https://fakestoreapi.com/img/81Zt42ioCgL._AC_SX679_.jpg",
+    "rating": { "rate": 4.5, "count": 140 }
+  },
+  {
+    "id": 29,
+    "title": "TuneGuard Guitar Case",
+    "price": 1999,
+    "description": "Water-resistant protective guitar bag.",
+    "category": "Accessories",
+    "image": "https://fakestoreapi.com/img/61IBBVJvSDL._AC_SY879_.jpg",
+    "rating": { "rate": 4.3, "count": 220 }
+  },
+  {
+    "id": 30,
+    "title": "Symphonic Cello Kit",
+    "price": 21999,
+    "description": "Full-size cello with bow and rosin.",
+    "category": "Cello",
+    "image": "https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg",
+    "rating": { "rate": 4.4, "count": 95 }
+  }
+]

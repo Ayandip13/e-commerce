@@ -74,8 +74,8 @@ const list: Product[] = [
   },
   {
     id: 1,
-    image: require("../assets/deals.jpg"),
-    name: "Deals",
+    image: require("../assets/book.png"),
+    name: "Books",
   },
   {
     id: 2,

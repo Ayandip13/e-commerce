@@ -1,362 +1,272 @@
 [
   {
     "id": 1,
-    "title": "Smart LED Bulb",
-    "price": 499,
-    "description": "WiFi-enabled LED bulb with voice control support.",
-    "category": "Home Appliances",
-    "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_t.png",
-    "rating": {
-      "rate": 4.3,
-      "count": 120
-    }
+    "title": "CoolBreeze Air Conditioner 1.5 Ton",
+    "price": 42999,
+    "description": "Energy efficient split AC with fast cooling technology.",
+    "category": "Air Conditioner",
+    "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.png",
+    "rating": { "rate": 4.4, "count": 215 }
   },
   {
     "id": 2,
-    "title": "Electric Kettle 1.5L",
-    "price": 999,
-    "description": "Stainless steel body with auto power off.",
-    "category": "Home Appliances",
-    "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_t.png",
-    "rating": {
-      "rate": 4.4,
-      "count": 85
-    }
+    "title": "AquaPure 7L Water Purifier",
+    "price": 12999,
+    "description": "RO + UV + UF purification with mineral enhancer.",
+    "category": "Water Purifier",
+    "image": "https://fakestoreapi.com/img/61IBBVJvSDL._AC_SY879_.jpg",
+    "rating": { "rate": 4.2, "count": 120 }
   },
   {
     "id": 3,
-    "title": "Microwave Oven 20L",
-    "price": 6999,
-    "description": "Compact microwave with multiple cooking modes.",
-    "category": "Kitchen Appliances",
-    "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_t.png",
-    "rating": {
-      "rate": 4.2,
-      "count": 60
-    }
+    "title": "SmartChef Microwave Oven 28L",
+    "price": 10499,
+    "description": "Convection oven with auto-cook menus.",
+    "category": "Microwave",
+    "image": "https://fakestoreapi.com/img/81QpkIctqPL._AC_SX679_.jpg",
+    "rating": { "rate": 4.0, "count": 98 }
   },
   {
     "id": 4,
-    "title": "Air Fryer 4L",
-    "price": 5499,
-    "description": "Oil-free healthy cooking appliance.",
-    "category": "Kitchen Appliances",
-    "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_t.png",
-    "rating": {
-      "rate": 4.5,
-      "count": 230
-    }
+    "title": "HeatWave Room Heater",
+    "price": 2499,
+    "description": "Compact PTC heater with safety cut-off.",
+    "category": "Heater",
+    "image": "https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg",
+    "rating": { "rate": 4.1, "count": 180 }
   },
   {
     "id": 5,
-    "title": "Automatic Washing Machine 7kg",
-    "price": 17999,
-    "description": "Top-load washing machine with smart wash modes.",
-    "category": "Laundry Appliances",
-    "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_t.png",
-    "rating": {
-      "rate": 4.1,
-      "count": 95
-    }
+    "title": "InstaWash Fully Automatic Washing Machine 7kg",
+    "price": 22990,
+    "description": "Top load washer with smart inverter motor.",
+    "category": "Washing Machine",
+    "image": "https://fakestoreapi.com/img/71YXzeOuslL._AC_SY879_.jpg",
+    "rating": { "rate": 4.3, "count": 145 }
   },
   {
     "id": 6,
-    "title": "Vacuum Cleaner 1200W",
-    "price": 3899,
-    "description": "Portable vacuum cleaner with multiple nozzles.",
-    "category": "Cleaning Appliances",
-    "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_t.png",
-    "rating": {
-      "rate": 4.0,
-      "count": 170
-    }
+    "title": "FreezeMaster Double Door Refrigerator 260L",
+    "price": 28999,
+    "description": "Frost-free with multi-airflow cooling.",
+    "category": "Refrigerator",
+    "image": "https://fakestoreapi.com/img/81Zt42ioCgL._AC_SX679_.jpg",
+    "rating": { "rate": 4.5, "count": 210 }
   },
   {
     "id": 7,
-    "title": "Ceiling Fan 1200mm",
-    "price": 1699,
-    "description": "Energy-efficient fan with 3 blades.",
-    "category": "Home Appliances",
-    "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_t.png",
-    "rating": {
-      "rate": 4.3,
-      "count": 140
-    }
+    "title": "SwiftBlend 750W Mixer Grinder",
+    "price": 3499,
+    "description": "Stainless steel jars and overload protection.",
+    "category": "Mixer Grinder",
+    "image": "https://fakestoreapi.com/img/71HblAHs5xL._AC_SY879_.jpg",
+    "rating": { "rate": 4.3, "count": 350 }
   },
   {
     "id": 8,
-    "title": "Mixer Grinder 750W",
-    "price": 3099,
-    "description": "High speed motor with 3 stainless jars.",
-    "category": "Kitchen Appliances",
-    "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_t.png",
-    "rating": {
-      "rate": 4.4,
-      "count": 200
-    }
+    "title": "AirGuard Air Purifier",
+    "price": 8999,
+    "description": "HEPA filter with 360° air intake.",
+    "category": "Air Purifier",
+    "image": "https://fakestoreapi.com/img/61U7T1koQqL._AC_SX679_.jpg",
+    "rating": { "rate": 4.0, "count": 95 }
   },
   {
     "id": 9,
-    "title": "Induction Cooktop",
-    "price": 2499,
-    "description": "Touch control with preset cooking menus.",
-    "category": "Cooking Appliances",
-    "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_t.png",
-    "rating": {
-      "rate": 4.3,
-      "count": 150
-    }
+    "title": "SteamFresh Garment Steamer",
+    "price": 2199,
+    "description": "Quick-heat handheld steamer for wrinkle removal.",
+    "category": "Garment Care",
+    "image": "https://fakestoreapi.com/img/71Y7QIxu7lL._AC_SY879_.jpg",
+    "rating": { "rate": 3.9, "count": 75 }
   },
   {
     "id": 10,
-    "title": "Smart Air Purifier",
-    "price": 8599,
-    "description": "HEPA filter with real-time air quality monitoring.",
-    "category": "Air Care Appliances",
-    "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_t.png",
-    "rating": {
-      "rate": 4.6,
-      "count": 110
-    }
+    "title": "EcoDry 6kg Clothes Dryer",
+    "price": 16999,
+    "description": "Hot air drying with low power consumption.",
+    "category": "Dryer",
+    "image": "https://fakestoreapi.com/img/61IBBVJvSDL._AC_SY879_.jpg",
+    "rating": { "rate": 4.1, "count": 130 }
   },
   {
     "id": 11,
-    "title": "Water Purifier RO+UV",
-    "price": 12999,
-    "description": "6-stage purification with mineral booster.",
-    "category": "Water Appliances",
-    "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_t.png",
-    "rating": {
-      "rate": 4.2,
-      "count": 90
-    }
+    "title": "CrispPro 2-Slice Toaster",
+    "price": 1599,
+    "description": "Six browning levels with auto pop-up.",
+    "category": "Toaster",
+    "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.png",
+    "rating": { "rate": 4.3, "count": 250 }
   },
   {
     "id": 12,
-    "title": "Room Heater 2000W",
-    "price": 1999,
-    "description": "Instant heating with 2 power modes.",
-    "category": "Heating Appliances",
-    "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_t.png",
-    "rating": {
-      "rate": 4.0,
-      "count": 70
-    }
+    "title": "BrewStar Coffee Maker",
+    "price": 3499,
+    "description": "Drip coffee machine with aroma lock.",
+    "category": "Coffee Maker",
+    "image": "https://fakestoreapi.com/img/51Y5NI-I5jL._AC_UX679_.jpg",
+    "rating": { "rate": 4.0, "count": 110 }
   },
   {
     "id": 13,
-    "title": "Mini Refrigerator 90L",
-    "price": 8499,
-    "description": "Compact fridge ideal for small rooms.",
-    "category": "Kitchen Appliances",
-    "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_t.png",
-    "rating": {
-      "rate": 4.1,
-      "count": 65
-    }
+    "title": "QuickChop Food Processor 600W",
+    "price": 4599,
+    "description": "Multifunctional prep with multiple blades.",
+    "category": "Food Processor",
+    "image": "https://fakestoreapi.com/img/61U7T1koQqL._AC_SX679_.jpg",
+    "rating": { "rate": 3.8, "count": 70 }
   },
   {
     "id": 14,
-    "title": "Dishwasher 12 Place Setting",
-    "price": 31999,
-    "description": "Efficient cleaning with low water usage.",
-    "category": "Kitchen Appliances",
-    "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_t.png",
-    "rating": {
-      "rate": 4.3,
-      "count": 55
-    }
+    "title": "ChefMaster OTG 30L Oven",
+    "price": 5999,
+    "description": "Baking, grilling & toasting functions.",
+    "category": "Oven",
+    "image": "https://fakestoreapi.com/img/71YXzeOuslL._AC_SY879_.jpg",
+    "rating": { "rate": 4.1, "count": 160 }
   },
   {
     "id": 15,
-    "title": "Electric Rice Cooker 1.8L",
-    "price": 1499,
-    "description": "Non-stick inner pot with auto warm mode.",
-    "category": "Cooking Appliances",
-    "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_t.png",
-    "rating": {
-      "rate": 4.4,
-      "count": 100
-    }
+    "title": "SmartCool Table Fan",
+    "price": 1799,
+    "description": "High speed fan with low noise motor.",
+    "category": "Fan",
+    "image": "https://fakestoreapi.com/img/61U7T1koQqL._AC_SX679_.jpg",
+    "rating": { "rate": 4.2, "count": 250 }
   },
   {
     "id": 16,
-    "title": "Hand Blender",
-    "price": 799,
-    "description": "Lightweight and easy-to-use kitchen tool.",
-    "category": "Kitchen Appliances",
-    "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_t.png",
-    "rating": {
-      "rate": 4.1,
-      "count": 85
-    }
+    "title": "VacuumPro 1200W Vacuum Cleaner",
+    "price": 5999,
+    "description": "Powerful suction with blower function.",
+    "category": "Vacuum Cleaner",
+    "image": "https://fakestoreapi.com/img/71HblAHs5xL._AC_SY879_.jpg",
+    "rating": { "rate": 4.3, "count": 210 }
   },
   {
     "id": 17,
-    "title": "Electric Iron",
-    "price": 699,
-    "description": "Non-stick soleplate for smooth ironing.",
-    "category": "Laundry Appliances",
-    "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_t.png",
-    "rating": {
-      "rate": 4.3,
-      "count": 120
-    }
+    "title": "RiceMaster Electric Rice Cooker 2L",
+    "price": 2299,
+    "description": "Auto warm mode and non-stick inner pot.",
+    "category": "Rice Cooker",
+    "image": "https://fakestoreapi.com/img/81QpkIctqPL._AC_SX679_.jpg",
+    "rating": { "rate": 4.2, "count": 180 }
   },
   {
     "id": 18,
-    "title": "Table Fan 400mm",
-    "price": 1599,
-    "description": "Powerful airflow with adjustable height.",
-    "category": "Home Appliances",
-    "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_t.png",
-    "rating": {
-      "rate": 4.2,
-      "count": 75
-    }
+    "title": "SmoothBlend Hand Blender",
+    "price": 1450,
+    "description": "Stainless steel blade with turbo mode.",
+    "category": "Blender",
+    "image": "https://fakestoreapi.com/img/61IBBVJvSDL._AC_SY879_.jpg",
+    "rating": { "rate": 4.1, "count": 145 }
   },
   {
     "id": 19,
-    "title": "Portable Air Cooler",
-    "price": 5299,
-    "description": "Cool your room with honeycomb pads.",
-    "category": "Air Care Appliances",
-    "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_t.png",
-    "rating": {
-      "rate": 4.0,
-      "count": 65
-    }
+    "title": "AromaCook Induction Cooktop",
+    "price": 2699,
+    "description": "Touch control with preset cooking modes.",
+    "category": "Induction Cooktop",
+    "image": "https://fakestoreapi.com/img/81Zt42ioCgL._AC_SX679_.jpg",
+    "rating": { "rate": 4.4, "count": 300 }
   },
   {
     "id": 20,
-    "title": "Coffee Maker",
-    "price": 2699,
-    "description": "Brew fresh coffee in minutes.",
-    "category": "Kitchen Appliances",
-    "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_t.png",
-    "rating": {
-      "rate": 4.5,
-      "count": 110
-    }
+    "title": "FrostMini Single Door Fridge 190L",
+    "price": 18999,
+    "description": "Classic design with direct cooling.",
+    "category": "Refrigerator",
+    "image": "https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg",
+    "rating": { "rate": 4.3, "count": 140 }
   },
   {
     "id": 21,
-    "title": "Dehumidifier",
-    "price": 6999,
-    "description": "Reduce humidity and prevent mold growth.",
-    "category": "Air Care Appliances",
-    "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_t.png",
-    "rating": {
-      "rate": 4.1,
-      "count": 60
-    }
+    "title": "DishSpark Dishwasher 12 Place",
+    "price": 36499,
+    "description": "Silent wash and aqua sensor cleaning.",
+    "category": "Dishwasher",
+    "image": "https://fakestoreapi.com/img/81Zt42ioCgL._AC_SX679_.jpg",
+    "rating": { "rate": 4.5, "count": 90 }
   },
   {
     "id": 22,
-    "title": "Electric Chimney",
-    "price": 11999,
-    "description": "Powerful suction for a smoke-free kitchen.",
-    "category": "Kitchen Appliances",
-    "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_t.png",
-    "rating": {
-      "rate": 4.3,
-      "count": 77
-    }
+    "title": "IronPro Steam Iron 2000W",
+    "price": 1699,
+    "description": "Non-stick soleplate with continuous steam.",
+    "category": "Iron",
+    "image": "https://fakestoreapi.com/img/51Y5NI-I5jL._AC_UX679_.jpg",
+    "rating": { "rate": 4.0, "count": 195 }
   },
   {
     "id": 23,
-    "title": "Food Processor",
-    "price": 4399,
-    "description": "All-in-one chopping and slicing solution.",
-    "category": "Kitchen Appliances",
-    "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_t.png",
-    "rating": {
-      "rate": 4.4,
-      "count": 130
-    }
+    "title": "FreshFlow Chimney 60 cm",
+    "price": 8999,
+    "description": "High suction kitchen chimney with LED.",
+    "category": "Chimney",
+    "image": "https://fakestoreapi.com/img/71HblAHs5xL._AC_SY879_.jpg",
+    "rating": { "rate": 4.3, "count": 80 }
   },
   {
     "id": 24,
-    "title": "Electric Toaster",
-    "price": 999,
-    "description": "2-slice toaster with variable browning.",
-    "category": "Cooking Appliances",
-    "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_t.png",
-    "rating": {
-      "rate": 4.2,
-      "count": 90
-    }
+    "title": "WaterWave Geyser 15L",
+    "price": 7199,
+    "description": "Glass-lined tank for long life and faster heating.",
+    "category": "Geyser",
+    "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.png",
+    "rating": { "rate": 4.4, "count": 210 }
   },
   {
     "id": 25,
-    "title": "Cordless Electric Mop",
-    "price": 3599,
-    "description": "Rechargeable mop for quick cleaning.",
-    "category": "Cleaning Appliances",
-    "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_t.png",
-    "rating": {
-      "rate": 4.1,
-      "count": 55
-    }
+    "title": "SmartTV 43 inch LED UHD",
+    "price": 27999,
+    "description": "4K Smart TV with voice remote and HDR10.",
+    "category": "Television",
+    "image": "https://fakestoreapi.com/img/71YXzeOuslL._AC_SY879_.jpg",
+    "rating": { "rate": 4.5, "count": 450 }
   },
   {
     "id": 26,
-    "title": "Air Humidifier",
-    "price": 1599,
-    "description": "Cool mist for improved breathing.",
-    "category": "Air Care Appliances",
-    "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_t.png",
-    "rating": {
-      "rate": 4.0,
-      "count": 80
-    }
+    "title": "ChillCube Mini Refrigerator 50L",
+    "price": 8999,
+    "description": "Perfect for bedrooms, offices, and dorms.",
+    "category": "Refrigerator",
+    "image": "https://fakestoreapi.com/img/61IBBVJvSDL._AC_SY879_.jpg",
+    "rating": { "rate": 4.1, "count": 70 }
   },
   {
     "id": 27,
-    "title": "Smart Door Lock",
-    "price": 9999,
-    "description": "Keyless entry with fingerprint support.",
-    "category": "Security Appliances",
-    "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_t.png",
-    "rating": {
-      "rate": 4.5,
-      "count": 50
-    }
+    "title": "DustAway Cordless Vacuum",
+    "price": 10999,
+    "description": "Long battery life with powerful suction.",
+    "category": "Vacuum Cleaner",
+    "image": "https://fakestoreapi.com/img/81Zt42ioCgL._AC_SX679_.jpg",
+    "rating": { "rate": 4.2, "count": 132 }
   },
   {
     "id": 28,
-    "title": "Dish Drying Rack with Heater",
-    "price": 2499,
-    "description": "Quick drying for hygienic storage.",
-    "category": "Kitchen Appliances",
-    "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_t.png",
-    "rating": {
-      "rate": 4.1,
-      "count": 45
-    }
+    "title": "EcoFan Pedestal Fan",
+    "price": 2599,
+    "description": "Silent operation and remote control.",
+    "category": "Fan",
+    "image": "https://fakestoreapi.com/img/81QpkIctqPL._AC_SX679_.jpg",
+    "rating": { "rate": 4.3, "count": 210 }
   },
   {
     "id": 29,
-    "title": "Robo Vacuum Cleaner",
-    "price": 14999,
-    "description": "Automatic suction and smart navigation.",
-    "category": "Cleaning Appliances",
-    "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_t.png",
-    "rating": {
-      "rate": 4.6,
-      "count": 98
-    }
+    "title": "TurboGrill Electric BBQ Grill",
+    "price": 3499,
+    "description": "Electric indoor grill with adjustable temp.",
+    "category": "Grill",
+    "image": "https://fakestoreapi.com/img/71HblAHs5xL._AC_SY879_.jpg",
+    "rating": { "rate": 4.2, "count": 145 }
   },
   {
     "id": 30,
-    "title": "Electric Sewing Machine",
-    "price": 4499,
-    "description": "Multiple stitch patterns with auto threader.",
-    "category": "Home Appliances",
-    "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_t.png",
-    "rating": {
-      "rate": 4.3,
-      "count": 70
-    }
+    "title": "AquaFreeze Chest Freezer 200L",
+    "price": 23999,
+    "description": "Energy-efficient deep freezer with lock.",
+    "category": "Freezer",
+    "image": "https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg",
+    "rating": { "rate": 4.5, "count": 95 }
   }
 ]
