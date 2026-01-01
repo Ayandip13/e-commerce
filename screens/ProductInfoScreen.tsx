@@ -7,25 +7,40 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { MaterialCommunityIcons, Ionicons } from "@expo/vector-icons";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../redux/CartReducer";
 import { StatusBar } from "expo-status-bar";
+import { addToBookmark, removeBookmark } from "../redux/BookmarkReducer";
 
 const ProductInfoScreen = () => {
-  const route = useRoute();
+  const routeParams = useRoute();
+  const route = routeParams.params;
   const { width } = Dimensions.get("window");
   const height = width;
   const navigation = useNavigation();
   const dispatch = useDispatch();
   const [addedToCart, setAddedToCart] = useState(false);
+  const [pressedBookmark, setPressedBookmark] = useState(false);
 
   const addItemToCart = (item: any) => {
     setAddedToCart(true);
     dispatch(addToCart(item));
     setTimeout(() => setAddedToCart(false), 1000);
+  };
+
+  const handleBookmark = (item: any) => {
+    setPressedBookmark((prev) => {
+      const next = !prev;
+      if (next) {
+        dispatch(addToBookmark(item));
+      } else {
+        dispatch(removeBookmark(item));
+      }
+      return next;
+    });
   };
 
   return (
@@ -49,7 +64,14 @@ const ProductInfoScreen = () => {
             zIndex: 10,
           }}
         >
-          <Text style={{ color: "#fff", fontSize: 11, fontWeight: "bold",textAlign:"center" }}>
+          <Text
+            style={{
+              color: "#fff",
+              fontSize: 11,
+              fontWeight: "bold",
+              textAlign: "center",
+            }}
+          >
             20% OFF
           </Text>
         </View>
@@ -68,10 +90,12 @@ const ProductInfoScreen = () => {
             zIndex: 10,
           }}
         >
-          <MaterialCommunityIcons name="share-variant" size={22} />
+          <MaterialCommunityIcons name="share-variant" size={25} />
         </TouchableOpacity>
 
         <TouchableOpacity
+          activeOpacity={0.8}
+          onPress={() => handleBookmark(route?.item)}
           style={{
             position: "absolute",
             bottom: 20,
@@ -85,7 +109,10 @@ const ProductInfoScreen = () => {
             zIndex: 10,
           }}
         >
-          <MaterialCommunityIcons name="heart-outline" size={22} />
+          <MaterialCommunityIcons
+            name={pressedBookmark ? "heart" : "heart-outline"}
+            size={28}
+          />
         </TouchableOpacity>
 
         {/* Horizontal Carousel */}
@@ -94,12 +121,12 @@ const ProductInfoScreen = () => {
           pagingEnabled
           showsHorizontalScrollIndicator={false}
         >
-          {route.params.carouselImages.map((item: string, index: number) => (
+          {route?.carouselImages.map((item: string, index: number) => (
             <ImageBackground
               key={index}
               source={{ uri: item }}
               style={{ width, height, marginTop: 25 }}
-              resizeMode="cover"
+              resizeMode="contain"
             />
           ))}
         </ScrollView>
@@ -108,12 +135,10 @@ const ProductInfoScreen = () => {
       {/* Product Details */}
       <View style={{ padding: 10 }}>
         <Text style={{ fontSize: 15, fontWeight: "500", marginBottom: 10 }}>
-          {route?.params.title}
+          {route?.title}
         </Text>
 
-        <Text style={{ fontSize: 20, fontWeight: "500" }}>
-          ₹{route?.params.price}
-        </Text>
+        <Text style={{ fontSize: 20, fontWeight: "500" }}>₹{route?.price}</Text>
 
         <View
           style={{
@@ -129,7 +154,7 @@ const ProductInfoScreen = () => {
         >
           <Text>Color: </Text>
           <Text style={{ fontWeight: "bold", fontSize: 15 }}>
-            {route?.params.color}
+            {route?.color}
           </Text>
         </View>
 
@@ -138,7 +163,7 @@ const ProductInfoScreen = () => {
         >
           <Text>Size: </Text>
           <Text style={{ fontWeight: "bold", fontSize: 15 }}>
-            {route?.params.size}
+            {route?.size}
           </Text>
         </View>
 
@@ -152,7 +177,7 @@ const ProductInfoScreen = () => {
         />
 
         <View style={{ marginTop: 10, marginBottom: 50 }}>
-          <Text style={{ fontSize: 15 }}>Total: ₹{route?.params.price}</Text>
+          <Text style={{ fontSize: 15 }}>Total: ₹{route?.price}</Text>
 
           <Text style={{ fontSize: 15, color: "#00ced1", marginTop: 5 }}>
             Free delivery tomorrow by 3PM. Order within 10 hours 30 minutes
@@ -184,7 +209,7 @@ const ProductInfoScreen = () => {
           </Text>
 
           <TouchableOpacity
-            onPress={() => addItemToCart(route?.params?.item)}
+            onPress={() => addItemToCart(route?.item)}
             style={{
               padding: 10,
               marginTop: 10,

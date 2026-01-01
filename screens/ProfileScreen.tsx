@@ -118,6 +118,7 @@ export default function ProfileScreen() {
         </TouchableOpacity>
 
         <TouchableOpacity
+          onPress={() => navigation.navigate("BookmarkedItems" as never)}
           style={{
             padding: 10,
             backgroundColor: "#E0E0E0",
@@ -126,7 +127,7 @@ export default function ProfileScreen() {
           }}
         >
           <Text style={{ textAlign: "center", fontSize: 14 }}>
-            Your Account
+            Your Wishlist
           </Text>
         </TouchableOpacity>
       </View>

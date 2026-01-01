@@ -20,6 +20,7 @@ import Address from "../screens/Address";
 import ConfirmationScreen from "../screens/ConfirmationScreen";
 import OrderScreen from "../screens/OrderScreen";
 import OrderedItem from "../screens/OrderedItem";
+import BookmarkedItems from "../screens/BookmarkedItems";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -177,6 +178,19 @@ const StackNavigator = () => {
         <Stack.Screen
           name="OrderedItem"
           component={OrderedItem}
+          options={{
+            headerTitle: "",
+            headerStyle: {
+              backgroundColor: "#00ced1",
+            },
+            headerTitleStyle: {
+              color: "#00ced1",
+            },
+          }}
+        />
+        <Stack.Screen
+          name="BookmarkedItems"
+          component={BookmarkedItems}
           options={{
             headerTitle: "",
             headerStyle: {
