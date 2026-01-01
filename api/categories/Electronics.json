@@ -1,0 +1,272 @@
+[
+  {
+    "id": 1,
+    "title": "Gaming Laptop 15.6 inch",
+    "price": 69999,
+    "description": "Powerful gaming laptop with RTX graphics.",
+    "category": "Laptops",
+    "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_t.png",
+    "rating": { "rate": 4.6, "count": 120 }
+  },
+  {
+    "id": 2,
+    "title": "Bluetooth Headphones Over-Ear",
+    "price": 2499,
+    "description": "Wireless audio with deep bass and long battery life.",
+    "category": "Audio",
+    "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_t.png",
+    "rating": { "rate": 4.3, "count": 200 }
+  },
+  {
+    "id": 3,
+    "title": "Smart LED TV 43 inch",
+    "price": 25999,
+    "description": "4K UHD smart TV with built-in streaming apps.",
+    "category": "Television",
+    "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_t.png",
+    "rating": { "rate": 4.5, "count": 180 }
+  },
+  {
+    "id": 4,
+    "title": "USB Mechanical Keyboard",
+    "price": 3499,
+    "description": "RGB backlit mechanical keys for precision typing.",
+    "category": "Desktop Accessories",
+    "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_t.png",
+    "rating": { "rate": 4.4, "count": 220 }
+  },
+  {
+    "id": 5,
+    "title": "Wireless Mouse",
+    "price": 799,
+    "description": "Ergonomic design with smooth optical tracking.",
+    "category": "Computer Accessories",
+    "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_t.png",
+    "rating": { "rate": 4.2, "count": 150 }
+  },
+  {
+    "id": 6,
+    "title": "Laptop Cooling Pad",
+    "price": 1299,
+    "description": "High airflow cooling system for laptops.",
+    "category": "Laptop Accessories",
+    "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_t.png",
+    "rating": { "rate": 4.0, "count": 75 }
+  },
+  {
+    "id": 7,
+    "title": "Bluetooth Soundbar",
+    "price": 4999,
+    "description": "Cinema quality immersive audio.",
+    "category": "Audio",
+    "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_t.png",
+    "rating": { "rate": 4.3, "count": 130 }
+  },
+  {
+    "id": 8,
+    "title": "WiFi Router Dual Band",
+    "price": 1999,
+    "description": "High-speed dual band internet router.",
+    "category": "Networking",
+    "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_t.png",
+    "rating": { "rate": 4.1, "count": 90 }
+  },
+  {
+    "id": 9,
+    "title": "External Hard Drive 1TB",
+    "price": 3999,
+    "description": "Fast and secure storage solution.",
+    "category": "Storage",
+    "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_t.png",
+    "rating": { "rate": 4.4, "count": 160 }
+  },
+  {
+    "id": 10,
+    "title": "SSD 512GB NVMe",
+    "price": 2799,
+    "description": "Ultra-fast data access and performance.",
+    "category": "Storage",
+    "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_t.png",
+    "rating": { "rate": 4.6, "count": 110 }
+  },
+  {
+    "id": 11,
+    "title": "Gaming Monitor 27 inch",
+    "price": 18999,
+    "description": "144Hz refresh rate and IPS panel.",
+    "category": "Displays",
+    "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_t.png",
+    "rating": { "rate": 4.5, "count": 105 }
+  },
+  {
+    "id": 12,
+    "title": "Graphics Tablet",
+    "price": 3499,
+    "description": "Perfect for artists and designers.",
+    "category": "Computer Accessories",
+    "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_t.png",
+    "rating": { "rate": 4.2, "count": 50 }
+  },
+  {
+    "id": 13,
+    "title": "Bluetooth Earbuds TWS",
+    "price": 1899,
+    "description": "Compact design with noise isolation.",
+    "category": "Audio",
+    "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_t.png",
+    "rating": { "rate": 4.3, "count": 240 }
+  },
+  {
+    "id": 14,
+    "title": "Gaming Controller",
+    "price": 1499,
+    "description": "Wireless controller for PC and consoles.",
+    "category": "Gaming Accessories",
+    "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_t.png",
+    "rating": { "rate": 4.4, "count": 130 }
+  },
+  {
+    "id": 15,
+    "title": "Smartwatch Bluetooth",
+    "price": 3299,
+    "description": "Fitness tracking and notifications on wrist.",
+    "category": "Wearable Tech",
+    "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_t.png",
+    "rating": { "rate": 4.1, "count": 170 }
+  },
+  {
+    "id": 16,
+    "title": "Projector 1080p",
+    "price": 7999,
+    "description": "Home theatre projector with HDMI support.",
+    "category": "Displays",
+    "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_t.png",
+    "rating": { "rate": 4.2, "count": 82 }
+  },
+  {
+    "id": 17,
+    "title": "Portable Bluetooth Speaker",
+    "price": 1499,
+    "description": "Compact speaker with punchy bass.",
+    "category": "Audio",
+    "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_t.png",
+    "rating": { "rate": 4.3, "count": 210 }
+  },
+  {
+    "id": 18,
+    "title": "Smart Home Voice Assistant",
+    "price": 3499,
+    "description": "Control your smart devices hands-free.",
+    "category": "Smart Home",
+    "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_t.png",
+    "rating": { "rate": 4.4, "count": 170 }
+  },
+  {
+    "id": 19,
+    "title": "Laptop Stand Adjustable",
+    "price": 899,
+    "description": "Ergonomic stand for better posture.",
+    "category": "Laptop Accessories",
+    "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_t.png",
+    "rating": { "rate": 4.1, "count": 190 }
+  },
+  {
+    "id": 20,
+    "title": "USB-C Hub with HDMI",
+    "price": 1599,
+    "description": "Multiple ports expansion for laptops.",
+    "category": "Computer Accessories",
+    "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_t.png",
+    "rating": { "rate": 4.2, "count": 110 }
+  },
+  {
+    "id": 21,
+    "title": "Noise Cancelling Headphones",
+    "price": 4999,
+    "description": "Premium sound with ANC technology.",
+    "category": "Audio",
+    "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_t.png",
+    "rating": { "rate": 4.5, "count": 95 }
+  },
+  {
+    "id": 22,
+    "title": "Smart LED Strip Lights",
+    "price": 999,
+    "description": "RGB lighting controlled via app.",
+    "category": "Smart Home",
+    "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_t.png",
+    "rating": { "rate": 4.3, "count": 140 }
+  },
+  {
+    "id": 23,
+    "title": "Docking Station for Laptop",
+    "price": 4999,
+    "description": "Full workstation setup for productivity.",
+    "category": "Laptop Accessories",
+    "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_t.png",
+    "rating": { "rate": 4.2, "count": 55 }
+  },
+  {
+    "id": 24,
+    "title": "Gaming Mouse RGB",
+    "price": 1299,
+    "description": "Adjustable DPI and programmable buttons.",
+    "category": "Gaming Accessories",
+    "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_t.png",
+    "rating": { "rate": 4.4, "count": 200 }
+  },
+  {
+    "id": 25,
+    "title": "Portable SSD 1TB",
+    "price": 6999,
+    "description": "High-speed portable storage.",
+    "category": "Storage",
+    "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_t.png",
+    "rating": { "rate": 4.6, "count": 99 }
+  },
+  {
+    "id": 26,
+    "title": "1080p Webcam",
+    "price": 1299,
+    "description": "Crystal clear video calling and streaming.",
+    "category": "Computer Accessories",
+    "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_t.png",
+    "rating": { "rate": 4.2, "count": 85 }
+  },
+  {
+    "id": 27,
+    "title": "VR Headset",
+    "price": 11999,
+    "description": "Immersive virtual reality experience.",
+    "category": "Gaming Accessories",
+    "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_t.png",
+    "rating": { "rate": 4.3, "count": 65 }
+  },
+  {
+    "id": 28,
+    "title": "Mini Bluetooth Keyboard",
+    "price": 999,
+    "description": "Compact wireless keyboard for tablets and PC.",
+    "category": "Computer Accessories",
+    "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_t.png",
+    "rating": { "rate": 4.1, "count": 120 }
+  },
+  {
+    "id": 29,
+    "title": "Internal HDD 2TB",
+    "price": 3999,
+    "description": "Reliable high-capacity storage.",
+    "category": "Storage",
+    "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_t.png",
+    "rating": { "rate": 4.0, "count": 90 }
+  },
+  {
+    "id": 30,
+    "title": "UPS for PC",
+    "price": 3499,
+    "description": "Battery backup to protect your device.",
+    "category": "Power Backup",
+    "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_t.png",
+    "rating": { "rate": 4.3, "count": 100 }
+  }
+]

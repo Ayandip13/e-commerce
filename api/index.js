@@ -245,3 +245,17 @@ app.get("/orders/:userId", async (req, res) => {
     res.status(500).json({ message: "Error" });
   }
 });
+
+////////////////////////////////////////// other endpoints based on categories //////////////////////////////////////////
+
+app.get("/categories/:categoryName", async (req, res) => {
+  try {
+    const categoryName = req.params.categoryName;
+    if (categoryName === "electronics") {
+      
+    }
+    res.status(200).json({ products });
+  } catch (error) {
+    res.status(500).json({ message: "Error getting products" });
+  }
+});
