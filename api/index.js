@@ -8,6 +8,10 @@ const User = require("./models/user.model.js");
 const Order = require("./models/order.model.js");
 const fs = require("fs");
 const path = require("path");
+const cloudinary = require("cloudinary").v2;
+const multer = require("multer");
+const { CloudinaryStorage } = require("multer-storage-cloudinary");
+const bcrypt = require("bcrypt");
 
 const app = express();
 const PORT = 8000;
@@ -16,6 +20,22 @@ const cors = require("cors");
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+
+cloudinary.config({
+  cloud_name: "dpsytr5aw",
+  api_key: "189517521759289",
+  api_secret: "YcmK7NRtRJGi1bSf5YpHGUtpIO8",
+});
+
+const storage = new CloudinaryStorage({
+  cloudinary,
+  params: {
+    folder: "profile_pictures",
+    allowed_formats: ["jpg", "png", "jpeg"],
+  },
+});
+
+const upload = multer({ storage });
 
 mongoose
   .connect("mongodb+srv://ayandip:darkKnight@cluster0.e9eufse.mongodb.net", {
@@ -273,3 +293,47 @@ app.get("/categories/:categoryName", async (req, res) => {
     res.status(500).json({ message: "Error getting products" });
   }
 });
+
+//endpoint to upload profile picture
+app.put(
+  "/edit-profile/:userId",
+  upload.single("profileImage"),
+  async (req, res) => {
+    try {
+      const { userId } = req.params;
+      const { name, email, password } = req.body;
+
+      // ❗ profile picture is mandatory
+      if (!req.file) {
+        return res.status(400).json({ message: "Profile picture is required" });
+      }
+
+      const user = await User.findById(userId);
+      if (!user) {
+        return res.status(404).json({ message: "User not found" });
+      }
+
+      // optional updates
+      if (name) user.name = name;
+      if (email) user.email = email;
+
+      if (password) {
+        const hashedPassword = await bcrypt.hash(password, 10);
+        user.password = hashedPassword;
+      }
+
+      // mandatory profile image
+      user.profileImage = req.file.path; // Cloudinary URL
+
+      await user.save();
+
+      res.status(200).json({
+        message: "Profile updated successfully",
+        user,
+      });
+    } catch (error) {
+      console.log("Edit profile error:", error);
+      res.status(500).json({ message: "Failed to update profile" });
+    }
+  }
+);

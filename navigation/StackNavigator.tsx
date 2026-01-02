@@ -1,16 +1,11 @@
 import React, { useEffect, useState } from "react";
-import {
-  CommonActions,
-  NavigationContainer,
-  useNavigation,
-} from "@react-navigation/native";
+import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import LoginScreen from "../screens/LoginScreen";
 import RegisterScreen from "../screens/RegisterScreen";
 import HomeScreen from "../screens/HomeScreen";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Entypo } from "@expo/vector-icons";
-import ProfileScreen from "../screens/ProfileScreen";
 import CartScreen from "../screens/CartScreen";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { ActivityIndicator, Alert, View } from "react-native";
@@ -21,6 +16,8 @@ import ConfirmationScreen from "../screens/ConfirmationScreen";
 import OrderScreen from "../screens/OrderScreen";
 import OrderedItem from "../screens/OrderedItem";
 import BookmarkedItems from "../screens/BookmarkedItems";
+import Orders from "../screens/Orders";
+import ProfileScreen from "../screens/ProfileScreen";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -44,18 +41,18 @@ function BottomTabs() {
         component={HomeScreen}
       />
       <Tab.Screen
-        name="Profile"
+        name="Orders"
         options={{
-          tabBarLabel: "Profile",
+          tabBarLabel: "Orders",
           tabBarLabelStyle: { color: "#008e97" },
           tabBarIcon: ({ focused }) =>
             focused ? (
-              <Entypo name="user" size={24} color={"#008e97"} />
+              <Entypo name="shop" size={24} color={"#008e97"} />
             ) : (
-              <Entypo name="user" size={24} color="#aaaaaa" />
+              <Entypo name="shop" size={24} color="#aaaaaa" />
             ),
         }}
-        component={ProfileScreen}
+        component={Orders}
       />
       <Tab.Screen
         name="Cart"
@@ -71,6 +68,21 @@ function BottomTabs() {
             ),
         }}
         component={CartScreen}
+      />
+      <Tab.Screen
+        name="Profile"
+        options={{
+          tabBarLabel: "Profile",
+          headerShown: false,
+          tabBarLabelStyle: { color: "#008e97" },
+          tabBarIcon: ({ focused }) =>
+            focused ? (
+              <Entypo name="user" size={24} color={"#008e97"} />
+            ) : (
+              <Entypo name="user" size={24} color="#aaaaaa" />
+            ),
+        }}
+        component={ProfileScreen}
       />
     </Tab.Navigator>
   );
