@@ -73,7 +73,7 @@ function BottomTabs() {
         name="Profile"
         options={{
           tabBarLabel: "Profile",
-          headerShown: false,
+          // headerShown: false,
           tabBarLabelStyle: { color: "#008e97" },
           tabBarIcon: ({ focused }) =>
             focused ? (

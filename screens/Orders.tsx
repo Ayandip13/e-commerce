@@ -1,7 +1,6 @@
 import {
   Image,
   ScrollView,
-  StyleSheet,
   Text,
   ToastAndroid,
   TouchableOpacity,
@@ -48,17 +47,6 @@ export default function Orders() {
     getOrders();
   }, []);
 
-  const handleLogout = async () => {
-    try {
-      await AsyncStorage.removeItem("authToken");
-      navigation.replace("Login" as never);
-      ToastAndroid.show("Logged out successfully", ToastAndroid.SHORT);
-    } catch (error) {
-      console.log("error", error);
-      ToastAndroid.show("Error logging out", ToastAndroid.SHORT);
-    }
-  };
-
   useLayoutEffect(() => {
     navigation.setOptions({
       title: "",
@@ -94,10 +82,6 @@ export default function Orders() {
         backgroundColor: "#fff",
       }}
     >
-      <Text style={{ fontSize: 20, fontWeight: "bold" }}>
-        Welcome {user?.name}
-      </Text>
-
       <View
         style={{
           flexDirection: "row",
@@ -106,17 +90,6 @@ export default function Orders() {
           marginTop: 12,
         }}
       >
-        <TouchableOpacity
-          style={{
-            padding: 10,
-            backgroundColor: "#E0E0E0",
-            borderRadius: 25,
-            flex: 1,
-          }}
-        >
-          <Text style={{ textAlign: "center", fontSize: 14 }}>Your orders</Text>
-        </TouchableOpacity>
-
         <TouchableOpacity
           onPress={() => navigation.navigate("BookmarkedItems" as never)}
           style={{
@@ -130,16 +103,6 @@ export default function Orders() {
             Your Wishlist
           </Text>
         </TouchableOpacity>
-      </View>
-
-      <View
-        style={{
-          flexDirection: "row",
-          alignItems: "center",
-          gap: 10,
-          marginTop: 12,
-        }}
-      >
         <TouchableOpacity
           onPress={() => navigation.navigate("Home" as never)}
           style={{
@@ -150,18 +113,6 @@ export default function Orders() {
           }}
         >
           <Text style={{ textAlign: "center", fontSize: 14 }}>Buy Again</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity
-          onPress={handleLogout}
-          style={{
-            padding: 10,
-            backgroundColor: "#E0E0E0",
-            borderRadius: 25,
-            flex: 1,
-          }}
-        >
-          <Text style={{ textAlign: "center", fontSize: 14 }}>Logout</Text>
         </TouchableOpacity>
       </View>
 
