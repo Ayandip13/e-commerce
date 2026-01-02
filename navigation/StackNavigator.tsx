@@ -18,6 +18,7 @@ import OrderedItem from "../screens/OrderedItem";
 import BookmarkedItems from "../screens/BookmarkedItems";
 import Orders from "../screens/Orders";
 import ProfileScreen from "../screens/ProfileScreen";
+import EditProfile from "../screens/EditProfile";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -73,7 +74,6 @@ function BottomTabs() {
         name="Profile"
         options={{
           tabBarLabel: "Profile",
-          // headerShown: false,
           tabBarLabelStyle: { color: "#008e97" },
           tabBarIcon: ({ focused }) =>
             focused ? (
@@ -203,6 +203,19 @@ const StackNavigator = () => {
         <Stack.Screen
           name="BookmarkedItems"
           component={BookmarkedItems}
+          options={{
+            headerTitle: "",
+            headerStyle: {
+              backgroundColor: "#00ced1",
+            },
+            headerTitleStyle: {
+              color: "#00ced1",
+            },
+          }}
+        />
+        <Stack.Screen
+          name="EditProfile"
+          component={EditProfile}
           options={{
             headerTitle: "",
             headerStyle: {

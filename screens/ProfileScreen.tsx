@@ -1,18 +1,29 @@
-import { Image, Text, ToastAndroid, TouchableOpacity, View } from "react-native";
+import {
+  Image,
+  Text,
+  ToastAndroid,
+  TouchableOpacity,
+  View,
+  Modal,
+  StyleSheet,
+} from "react-native";
 import React, { useContext, useEffect, useLayoutEffect, useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 import axios from "axios";
 import { API_URL } from "../api";
 import { UserType } from "../UserContext";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-
+import { Entypo } from "@expo/vector-icons";
 const ProfileScreen = () => {
   const navigation = useNavigation();
   const [user, setUser] = useState({});
+  const [logoutVisible, setLogoutVisible] = useState(false);
   const { userId } = useContext(UserType);
+
   useLayoutEffect(() => {
     navigation.setOptions({
-      title: "",
+      title: "Profile",
+      headerTitleAlign: "center",
       headerStyle: { backgroundColor: "#00ced1" },
       headerLeft: () => (
         <Image
@@ -24,12 +35,12 @@ const ProfileScreen = () => {
       headerRight: () => (
         <>
           <Image
-            source={require("../assets/bell.png")}
-            style={{ width: 25, height: 25, marginRight: 10 }}
+          // source={require("../assets/bell.png")}
+          // style={{ width: 25, height: 25, marginRight: 10 }}
           />
           <Image
-            source={require("../assets/search.png")}
-            style={{ width: 25, height: 25, marginRight: 10 }}
+          // source={require("../assets/search.png")}
+          // style={{ width: 25, height: 25, marginRight: 10 }}
           />
         </>
       ),
@@ -59,8 +70,36 @@ const ProfileScreen = () => {
   useEffect(() => {
     getUser();
   }, []);
+
   return (
-    <View style={{ flex: 1, paddingHorizontal: 20, backgroundColor: "#f5f5f5" }}>
+    <View
+      style={{ flex: 1, paddingHorizontal: 20, backgroundColor: "#f5f5f5" }}
+    >
+      <View style={{ alignItems: "center", marginTop: 30 }}>
+        <TouchableOpacity
+          onPress={() => navigation.navigate("EditProfile" as never)}
+        >
+          <Image
+            source={require("../assets/person.png")}
+            style={{ width: 140, height: 80, borderRadius: 50, marginTop: 20 }}
+            resizeMode="contain"
+            tintColor="#008e97"
+          />
+          <Entypo
+            name="edit"
+            size={20}
+            color="#000"
+            style={{
+              position: "absolute",
+              right: "5%",
+              top: "80%",
+            }}
+          />
+        </TouchableOpacity>
+        <Text style={{ fontSize: 18, fontWeight: "600", marginTop: 10 }}>
+          {user.name}
+        </Text>
+      </View>
       <View
         style={{
           flexDirection: "row",
@@ -70,7 +109,7 @@ const ProfileScreen = () => {
         }}
       >
         <TouchableOpacity
-          onPress={handleLogout}
+          onPress={() => setLogoutVisible(true)}
           style={{
             padding: 10,
             backgroundColor: "#E0E0E0",
@@ -78,24 +117,97 @@ const ProfileScreen = () => {
             flex: 1,
           }}
         >
-          <Text style={{ textAlign: "center", fontSize: 14 }}>
-            Logout
-          </Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          onPress={() => navigation.navigate("Home" as never)}
-          style={{
-            padding: 10,
-            backgroundColor: "#E0E0E0",
-            borderRadius: 25,
-            flex: 1,
-          }}
-        >
-          <Text style={{ textAlign: "center", fontSize: 14 }}>Buy Again</Text>
+          <Text style={{ textAlign: "center", fontSize: 14 }}>Logout</Text>
         </TouchableOpacity>
       </View>
+
+      <Modal
+        transparent
+        animationType="fade"
+        visible={logoutVisible}
+        onRequestClose={() => setLogoutVisible(false)}
+      >
+        <View style={styles.overlay}>
+          <View style={styles.modal}>
+            <Text style={styles.title}>Logout?</Text>
+            <Text style={styles.subtitle}>
+              Are you sure you want to logout?
+            </Text>
+
+            <View style={styles.row}>
+              <TouchableOpacity
+                style={[styles.btn, styles.cancel]}
+                onPress={() => setLogoutVisible(false)}
+              >
+                <Text style={styles.cancelText}>Cancel</Text>
+              </TouchableOpacity>
+
+              <TouchableOpacity
+                style={[styles.btn, styles.logout]}
+                onPress={() => {
+                  setLogoutVisible(false);
+                  handleLogout();
+                }}
+              >
+                <Text style={styles.logoutText}>Logout</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        </View>
+      </Modal>
     </View>
   );
 };
 
 export default ProfileScreen;
+const styles = StyleSheet.create({
+  overlay: {
+    flex: 1,
+    backgroundColor: "rgba(0, 0, 0, 0.12)",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  modal: {
+    width: "80%",
+    backgroundColor: "#fff",
+    borderRadius: 12,
+    padding: 20,
+  },
+  title: {
+    fontSize: 18,
+    fontWeight: "bold",
+    textAlign: "center",
+    marginBottom: 6,
+  },
+  subtitle: {
+    fontSize: 14,
+    color: "#555",
+    textAlign: "center",
+    marginBottom: 20,
+  },
+  row: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+  },
+  btn: {
+    flex: 1,
+    paddingVertical: 10,
+    borderRadius: 8,
+    alignItems: "center",
+  },
+  cancel: {
+    backgroundColor: "#e0e0e0",
+    marginRight: 10,
+  },
+  logout: {
+    backgroundColor: "#ff3b30",
+  },
+  cancelText: {
+    color: "#333",
+    fontWeight: "600",
+  },
+  logoutText: {
+    color: "#fff",
+    fontWeight: "600",
+  },
+});

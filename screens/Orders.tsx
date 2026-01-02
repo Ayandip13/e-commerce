@@ -78,7 +78,6 @@ export default function Orders() {
       style={{
         flex: 1,
         paddingHorizontal: 20,
-        paddingVertical: 15,
         backgroundColor: "#fff",
       }}
     >
