@@ -19,6 +19,10 @@ const ProfileScreen = () => {
   const [user, setUser] = useState({});
   const [logoutVisible, setLogoutVisible] = useState(false);
   const { userId } = useContext(UserType);
+  const [loading, setLoading] = useState({
+    pressEdit: false,
+    logout: false,
+  });
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -67,34 +71,69 @@ const ProfileScreen = () => {
     }
   };
 
+  const pressEdit = () => {
+    // navigation.navigate("EditProfile" as never, { userData: user });
+    setTimeout(() => {
+      setLoading((prev) => ({ ...prev, pressEdit: true }));
+    }, 10);
+    setTimeout(() => {
+      navigation.navigate("EditProfile" as never, { userData: user });
+      setLoading((prev) => ({ ...prev, pressEdit: false }));
+    }, 200);
+  };
+
   useEffect(() => {
     getUser();
+    // console.log("from profilescreen",user.profileImage);
   }, []);
 
   return (
     <View
-      style={{ flex: 1, paddingHorizontal: 20, backgroundColor: "#f5f5f5" }}
+      style={{ flex: 1, paddingHorizontal: 20, backgroundColor: "#ffffff" }}
     >
       <View style={{ alignItems: "center", marginTop: 30 }}>
         <TouchableOpacity
-          onPress={() => navigation.navigate("EditProfile" as never)}
+          onLongPress={() => navigation.navigate("EditProfile" as never)}
         >
           <Image
-            source={require("../assets/person.png")}
-            style={{ width: 140, height: 80, borderRadius: 50, marginTop: 20 }}
-            resizeMode="contain"
-            tintColor="#008e97"
-          />
-          <Entypo
-            name="edit"
-            size={20}
-            color="#000"
+            source={
+              user.profileImage
+                ? { uri: user.profileImage }
+                : require("../assets/person.png")
+            }
             style={{
-              position: "absolute",
-              right: "5%",
-              top: "80%",
+              width: 140,
+              height: 140,
+              borderRadius: 100,
+              marginTop: 20,
             }}
+            resizeMode="contain"
           />
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={pressEdit}
+          style={{
+            marginTop: 10,
+            backgroundColor: loading.pressEdit ? "#c3f6ffff" : "#ffffff",
+            borderWidth: loading.pressEdit ? 0 : 0.3,
+            paddingVertical: 5,
+            borderRadius: 20,
+            paddingHorizontal: 30,
+            borderColor: "#75dfffff",
+            shadowColor: "#c3f1ffff",
+            shadowOffset: { width: 0, height: 2 },
+            shadowOpacity: 0.3,
+            shadowRadius: 3,
+            elevation: 5,
+          }}
+        >
+          <Text
+            style={{
+              textAlign: "center",
+            }}
+          >
+            Edit
+          </Text>
         </TouchableOpacity>
         <Text style={{ fontSize: 18, fontWeight: "600", marginTop: 10 }}>
           {user.name}

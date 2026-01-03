@@ -10,6 +10,7 @@ import {
   Platform,
   ScrollView,
   ToastAndroid,
+  ActivityIndicator,
 } from "react-native";
 import React, { useContext, useEffect, useState } from "react";
 import { Entypo, Ionicons, MaterialIcons } from "@expo/vector-icons";
@@ -18,7 +19,6 @@ import { useNavigation } from "@react-navigation/native";
 import { API_URL } from "../api";
 import axios from "axios";
 import { UserType } from "../UserContext";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const EditProfile = () => {
   const [modalVisible, setModalVisible] = useState(false);
@@ -27,9 +27,14 @@ const EditProfile = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [hidePassword, setHidePassword] = useState(true);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState({
+    updateProfile: false,
+    fetchCameraPhoto: false,
+    fetchGalleryPhoto: false,
+  });
   const navigation = useNavigation();
   const { userId, setUserId } = useContext(UserType);
+  const [user, setUser] = useState({});
 
   const handleUpdateProfile = async () => {
     try {
@@ -46,7 +51,7 @@ const EditProfile = () => {
         }
       }
 
-      setLoading(true);
+      setLoading((prev) => ({ ...prev, updateProfile: true }));
 
       const formData = new FormData();
 
@@ -85,56 +90,80 @@ const EditProfile = () => {
         ToastAndroid.SHORT
       );
     } finally {
-      setLoading(false);
+      setLoading((prev) => ({ ...prev, updateProfile: false }));
     }
   };
 
-  const getToken = async () => {
+  const getUser = async () => {
     try {
-      const token = await AsyncStorage.getItem("authToken");
-      console.log("user Token:", token);
+      const res = await axios.get(`${API_URL}profile/${userId}`);
+      setUser(res.data.user);
     } catch (error) {
-      console.error("Error fetching token:", error);
+      console.log("error", error);
     }
   };
+
   useEffect(() => {
-    getToken();
+    getUser();
   }, []);
 
   const pickFromGallery = async () => {
-    const permission = await ImagePicker.requestMediaLibraryPermissionsAsync();
+    try {
+      setLoading((prev) => ({ ...prev, fetchGalleryPhoto: true }));
+      const permission =
+        await ImagePicker.requestMediaLibraryPermissionsAsync();
 
-    if (!permission.granted) return;
+      if (!permission.granted) return;
 
-    const result = await ImagePicker.launchImageLibraryAsync({
-      mediaTypes: ["images"],
-      quality: 0.8,
-      allowsEditing: true,
-      aspect: [1, 1],
-    });
+      const result = await ImagePicker.launchImageLibraryAsync({
+        mediaTypes: ["images"],
+        quality: 0.8,
+        allowsEditing: true,
+        aspect: [1, 1],
+      });
 
-    if (!result.canceled) {
-      setImage(result.assets[0].uri);
+      if (!result.canceled) {
+        setImage(result.assets[0].uri);
+      }
+      setModalVisible(false);
+    } catch (error) {
+      console.log("Error picking image from gallery:", error);
+      ToastAndroid.show(
+        "An error occurred while accessing the gallery.",
+        ToastAndroid.SHORT
+      );
+    } finally {
+      setLoading((prev) => ({ ...prev, fetchGalleryPhoto: false }));
     }
-    setModalVisible(false);
   };
 
   const pickFromCamera = async () => {
-    const permission = await ImagePicker.requestCameraPermissionsAsync();
+    try {
+      const permission = await ImagePicker.requestCameraPermissionsAsync();
 
-    if (!permission.granted) return;
+      if (!permission.granted) return;
 
-    const result = await ImagePicker.launchCameraAsync({
-      quality: 0.8,
-      allowsEditing: true,
-      aspect: [1, 1],
-      mediaTypes: ["images"],
-    });
+      const result = await ImagePicker.launchCameraAsync({
+        quality: 0.8,
+        allowsEditing: true,
+        aspect: [1, 1],
+        mediaTypes: ["images"],
+      });
 
-    if (!result.canceled) {
-      setImage(result.assets[0].uri);
+      if (!result.canceled) {
+        setImage(result.assets[0].uri);
+      }
+      setModalVisible(false);
+      setLoading((prev) => ({ ...prev, fetchCameraPhoto: true }));
+    } catch (error) {
+      console.log("Error picking image from camera:", error);
+      ToastAndroid.show(
+        "An error occurred while accessing the camera.",
+        ToastAndroid.SHORT
+      );
+    } finally {
+      setLoading((prev) => ({ ...prev, fetchCameraPhoto: false }));
     }
-    setModalVisible(false);
   };
 
   return (
@@ -150,7 +179,11 @@ const EditProfile = () => {
         onPress={() => setModalVisible(true)}
       >
         <Image
-          source={image ? { uri: image } : require("../assets/person.png")}
+          source={
+            user?.profileImage
+              ? { uri: user?.profileImage }
+              : require("../assets/person.png")
+          }
           style={{
             width: 150,
             height: 150,
@@ -166,6 +199,18 @@ const EditProfile = () => {
             position: "absolute",
             right: "30%",
             bottom: 10,
+          }}
+        />
+        <ActivityIndicator
+          size="large"
+          color="#ffffff"
+          style={{
+            position: "absolute",
+            top: "50%",
+            display:
+              loading.fetchCameraPhoto || loading.fetchGalleryPhoto
+                ? "flex"
+                : "none",
           }}
         />
       </TouchableOpacity>
@@ -310,7 +355,7 @@ const EditProfile = () => {
                 fontWeight: "600",
               }}
             >
-              {loading ? "Updating..." : "Submit Changes"}
+              {loading.updateProfile ? "Updating..." : "Submit Changes"}
             </Text>
           </TouchableOpacity>
         </ScrollView>
