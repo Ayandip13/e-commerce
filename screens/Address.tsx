@@ -39,11 +39,11 @@ const Address = () => {
       return;
     }
     const address = {
-      name,
+      name: name.trim(),
       mobileNo: Number(phone),
-      houseNo: housingNo,
-      street,
-      landmark,
+      houseNo: housingNo.trim(),
+      street: street.trim(),
+      landmark: landmark.trim(),
       postalCode: Number(pincode),
     };
     try {
@@ -168,6 +168,7 @@ const Address = () => {
                 marginTop: 10,
                 borderRadius: 5,
                 paddingHorizontal: 15,
+                color: "#000000",
               }}
               keyboardType="phone-pad"
             />
@@ -248,6 +249,7 @@ const Address = () => {
                 marginTop: 10,
                 borderRadius: 5,
                 paddingHorizontal: 15,
+                color: "#000000",
               }}
               keyboardType="phone-pad"
             />

@@ -49,86 +49,35 @@ mongoose
     console.log("Error connecting to MongoDB:", err);
   });
 
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+app.listen(PORT, "0.0.0.0", () => {
+  console.log(`Server running on http://0.0.0.0:${PORT}`);
 });
-
-//function to send verification email
-const sendVerificationEmail = async (email, verificationToken) => {
-  //create a transport
-  const transporter = nodemailer.createTransport({
-    service: "Gmail",
-    auth: {
-      user: "ayandippaul284@gmail.com",
-      pass: "goxt oyhp qsov onhq",
-    },
-  });
-
-  //compose the email message
-  const mailOptions = {
-    from: "amazon.com",
-    to: email,
-    subject: "Email Verification",
-    text: `Please verify your email by clicking the following link: http://192.168.0.101:8000/verify/${verificationToken}`,
-  };
-
-  //send the email
-  try {
-    await transporter.sendMail(mailOptions);
-    console.log("Verification email sent successfully");
-  } catch (error) {
-    console.log("Error sending verification email", error);
-  }
-};
 
 //endpoints to register and login the user
 app.post("/register", async (req, res) => {
   try {
     const { name, email, password } = req.body;
 
-    //check if user already exists
     const existingUser = await User.findOne({ email });
     if (existingUser) {
       return res.status(400).json({ message: "User already exists" });
     }
 
-    //create a new user
-    const newUser = new User({ name, email, password });
+    const hashedPassword = await bcrypt.hash(password, 10);
 
-    //generate and store a verification token
-    newUser.verificationToken = crypto.randomBytes(20).toString("hex");
+    const newUser = new User({
+      name,
+      email,
+      password: hashedPassword,
+    });
 
-    //save the new user
     await newUser.save();
 
-    //send verification email to the user
-    await sendVerificationEmail(newUser.email, newUser.verificationToken);
     res.status(201).json({
-      message:
-        "User registered successfully! Please check your email to verify your account.",
+      message: "User registered successfully",
     });
   } catch (error) {
-    console.log("Error registering user", error);
     res.status(500).json({ message: "Registration failed" });
-  }
-});
-
-//endpoint to verify the email
-app.get("/verify/:token", async (req, res) => {
-  try {
-    const token = req.params.token;
-    //find the user with the given verification token
-    const user = await User.findOne({ verificationToken: token });
-    if (!user) {
-      return res.status(404).json({ message: "Invalid verification token" });
-    }
-    //mark the user as verified
-    user.verified = true;
-    user.verificationToken = undefined; //clear the verification token
-    await user.save();
-    res.status(200).json({ message: "Email verified successfully" });
-  } catch (error) {
-    res.status(500).json({ message: "Email verification failed" });
   }
 });
 
@@ -151,7 +100,9 @@ app.post("/login", async (req, res) => {
     }
 
     //check if password is correct
-    if (user.password !== password) {
+    const isMatch = await bcrypt.compare(password, user.password);
+
+    if (!isMatch) {
       return res.status(401).json({ message: "Invalid password" });
     }
 
@@ -315,7 +266,13 @@ app.put(
 
       // optional updates
       if (name) user.name = name;
-      if (email) user.email = email;
+      if (email && email !== user.email) {
+        const emailExists = await User.findOne({ email });
+        if (emailExists) {
+          return res.status(400).json({ message: "Email already in use" });
+        }
+        user.email = email;
+      }
 
       if (password) {
         const hashedPassword = await bcrypt.hash(password, 10);
