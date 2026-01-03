@@ -72,7 +72,6 @@ const ProfileScreen = () => {
   };
 
   const pressEdit = () => {
-    // navigation.navigate("EditProfile" as never, { userData: user });
     setTimeout(() => {
       setLoading((prev) => ({ ...prev, pressEdit: true }));
     }, 10);
@@ -139,6 +138,57 @@ const ProfileScreen = () => {
           {user.name}
         </Text>
       </View>
+
+      <View>
+        <TouchableOpacity
+          onPress={() => navigation.navigate("BookmarkedItems" as never)}
+          style={{
+            marginTop: 12,
+            borderRadius: 5,
+            padding: 10,
+            borderColor: "#d0d0d0",
+            borderWidth: 0.5,
+            paddingVertical: 20,
+          }}
+        >
+          <Text style={{ fontSize: 16, fontWeight: "600" }}>
+            See your Wishlist
+          </Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          onPress={() => navigation.navigate("Test" as never)}
+          style={{
+            marginTop: 2,
+            borderRadius: 5,
+            padding: 10,
+            borderColor: "#d0d0d0",
+            borderWidth: 0.5,
+            paddingVertical: 20,
+          }}
+        >
+          <Text style={{ fontSize: 16, fontWeight: "600" }}>
+            Privacy Policy
+          </Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          onPress={() => navigation.navigate("BookmarkedItems" as never)}
+          style={{
+            marginTop: 2,
+            borderRadius: 5,
+            padding: 10,
+            borderColor: "#d0d0d0",
+            borderWidth: 0.5,
+            paddingVertical: 20,
+          }}
+        >
+          <Text style={{ fontSize: 16, fontWeight: "600" }}>
+            See your Wishlist
+          </Text>
+        </TouchableOpacity>
+      </View>
+
       <View
         style={{
           flexDirection: "row",
