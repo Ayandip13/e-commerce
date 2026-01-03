@@ -19,6 +19,7 @@ import BookmarkedItems from "../screens/BookmarkedItems";
 import Orders from "../screens/Orders";
 import ProfileScreen from "../screens/ProfileScreen";
 import EditProfile from "../screens/EditProfile";
+import Test from "../screens/Test";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -216,6 +217,19 @@ const StackNavigator = () => {
         <Stack.Screen
           name="EditProfile"
           component={EditProfile}
+          options={{
+            headerTitle: "",
+            headerStyle: {
+              backgroundColor: "#00ced1",
+            },
+            headerTitleStyle: {
+              color: "#00ced1",
+            },
+          }}
+        />
+        <Stack.Screen
+          name="Test"
+          component={Test}
           options={{
             headerTitle: "",
             headerStyle: {

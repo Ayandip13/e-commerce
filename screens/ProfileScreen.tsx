@@ -74,7 +74,7 @@ const ProfileScreen = () => {
   const pressEdit = () => {
     setTimeout(() => {
       setLoading((prev) => ({ ...prev, pressEdit: true }));
-    }, 10);
+    }, 5);
     setTimeout(() => {
       navigation.navigate("EditProfile" as never, { userData: user });
       setLoading((prev) => ({ ...prev, pressEdit: false }));
@@ -85,6 +85,15 @@ const ProfileScreen = () => {
     getUser();
     // console.log("from profilescreen",user.profileImage);
   }, []);
+
+  const arr = [
+    { title: "Your Wishlist Products", screen: "BookmarkedItems" },
+    { title: "Check Credentials", screen: "Test" },
+    { title: "About Us", screen: "Test" },
+    { title: "Privacy Policy", screen: "Test" },
+    { title: "Terms of Service", screen: "Test" },
+    { title: "Help & Support", screen: "Test" },
+  ];
 
   return (
     <View
@@ -129,6 +138,7 @@ const ProfileScreen = () => {
           <Text
             style={{
               textAlign: "center",
+              color: loading.pressEdit ? "#fff" : "#75dfffff",
             }}
           >
             Edit
@@ -137,56 +147,40 @@ const ProfileScreen = () => {
         <Text style={{ fontSize: 18, fontWeight: "600", marginTop: 10 }}>
           {user.name}
         </Text>
+        <View
+          style={{
+            marginTop: 3,
+            backgroundColor: "#d0f0f5",
+            height: 1,
+            width: "30%",
+            marginBottom: 10,
+          }}
+        />
       </View>
 
       <View>
-        <TouchableOpacity
-          onPress={() => navigation.navigate("BookmarkedItems" as never)}
-          style={{
-            marginTop: 12,
-            borderRadius: 5,
-            padding: 10,
-            borderColor: "#d0d0d0",
-            borderWidth: 0.5,
-            paddingVertical: 20,
-          }}
-        >
-          <Text style={{ fontSize: 16, fontWeight: "600" }}>
-            See your Wishlist
-          </Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity
-          onPress={() => navigation.navigate("Test" as never)}
-          style={{
-            marginTop: 2,
-            borderRadius: 5,
-            padding: 10,
-            borderColor: "#d0d0d0",
-            borderWidth: 0.5,
-            paddingVertical: 20,
-          }}
-        >
-          <Text style={{ fontSize: 16, fontWeight: "600" }}>
-            Privacy Policy
-          </Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity
-          onPress={() => navigation.navigate("BookmarkedItems" as never)}
-          style={{
-            marginTop: 2,
-            borderRadius: 5,
-            padding: 10,
-            borderColor: "#d0d0d0",
-            borderWidth: 0.5,
-            paddingVertical: 20,
-          }}
-        >
-          <Text style={{ fontSize: 16, fontWeight: "600" }}>
-            See your Wishlist
-          </Text>
-        </TouchableOpacity>
+        {arr.map((item, index) => (
+          <TouchableOpacity
+            key={index}
+            onPress={() => navigation.navigate(item.screen as never)}
+            style={{
+              marginTop: 2,
+              borderRadius: 5,
+              padding: 10,
+              borderColor: "#75dfffff",
+              borderWidth: 0.3,
+              paddingVertical: 20,
+              // shadowColor: "#000000",
+              shadowOffset: { width: 0, height: 2 },
+              shadowOpacity: 0.3,
+              shadowRadius: 3,
+            }}
+          >
+            <Text style={{ fontSize: 16, fontWeight: "600" }}>
+              {item.title}
+            </Text>
+          </TouchableOpacity>
+        ))}
       </View>
 
       <View
