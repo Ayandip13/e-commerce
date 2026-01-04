@@ -63,46 +63,33 @@ const OrderedItem = () => {
             <View
               style={{
                 flexDirection: "row",
-                justifyContent: "space-between",
+                justifyContent: "flex-end",
               }}
             >
-              <TouchableOpacity
-                onPress={() => setPressed((pressed) => !pressed)}
+              <View
                 style={{
-                  backgroundColor: "#d0d0d0",
-                  borderRadius: 50,
-                  height: width * 0.11,
-                  width: width * 0.11,
+                  position: "absolute",
+                  bottom: '600%',
+                  left: 0,
+                  backgroundColor: "#c60c30",
+                  width: 45,
+                  height: 45,
+                  borderRadius: 22.5,
                   justifyContent: "center",
-                  alignSelf: "center",
+                  // zIndex: 10,
                 }}
               >
-                {pressed ? (
-                  <Image
-                    source={require("../assets/heart-outline.png")}
-                    style={{
-                      position: "absolute",
-                      width: width * 0.06,
-                      height: width * 0.06,
-                      resizeMode: "contain",
-                      borderRadius: 10,
-                      alignSelf: "center",
-                    }}
-                  />
-                ) : (
-                  <Image
-                    source={require("../assets/heart-fill.png")}
-                    style={{
-                      position: "absolute",
-                      width: width * 0.06,
-                      height: width * 0.06,
-                      resizeMode: "contain",
-                      borderRadius: 10,
-                      alignSelf: "center",
-                    }}
-                  />
-                )}
-              </TouchableOpacity>
+                <Text
+                  style={{
+                    color: "#fff",
+                    fontSize: 11,
+                    fontWeight: "bold",
+                    textAlign: "center",
+                  }}
+                >
+                  20% OFF
+                </Text>
+              </View>
               <TouchableOpacity
                 style={{
                   backgroundColor: "#d0d0d0",

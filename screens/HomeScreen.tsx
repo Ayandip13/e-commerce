@@ -397,8 +397,9 @@ const HomeScreen = () => {
 
         <FlatList
           data={list}
-          renderItem={({ item }) => (
+          renderItem={({ item, index }) => (
             <TouchableOpacity
+              key={index}
               style={{
                 alignItems: "center",
                 justifyContent: "space-between",
@@ -509,9 +510,10 @@ const HomeScreen = () => {
           contentContainerStyle={{ paddingHorizontal: 10 }}
           horizontal
           showsHorizontalScrollIndicator={false}
-          renderItem={({ item }) => {
+          renderItem={({ item, index }) => {
             return (
               <TouchableOpacity
+                key={index}
                 onPress={() =>
                   navigation.navigate("ProductInfoScreen", {
                     id: item?.id,
