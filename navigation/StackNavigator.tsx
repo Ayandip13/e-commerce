@@ -8,7 +8,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Entypo } from "@expo/vector-icons";
 import CartScreen from "../screens/CartScreen";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { ActivityIndicator, Alert, View } from "react-native";
+import { ActivityIndicator, View } from "react-native";
 import ProductInfoScreen from "../screens/ProductInfoScreen";
 import AddAddressScreen from "../screens/AddAddressScreen";
 import Address from "../screens/Address";
@@ -20,6 +20,7 @@ import Orders from "../screens/Orders";
 import ProfileScreen from "../screens/ProfileScreen";
 import EditProfile from "../screens/EditProfile";
 import Test from "../screens/Test";
+import CheckCredentials from "../screens/CheckCredentials";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -230,6 +231,19 @@ const StackNavigator = () => {
         <Stack.Screen
           name="Test"
           component={Test}
+          options={{
+            headerTitle: "",
+            headerStyle: {
+              backgroundColor: "#00ced1",
+            },
+            headerTitleStyle: {
+              color: "#00ced1",
+            },
+          }}
+        />
+        <Stack.Screen
+          name="CheckCredentials"
+          component={CheckCredentials}
           options={{
             headerTitle: "",
             headerStyle: {

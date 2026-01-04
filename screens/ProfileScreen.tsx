@@ -13,7 +13,6 @@ import axios from "axios";
 import { API_URL } from "../api";
 import { UserType } from "../UserContext";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { Entypo } from "@expo/vector-icons";
 const ProfileScreen = () => {
   const navigation = useNavigation();
   const [user, setUser] = useState({});
@@ -88,7 +87,7 @@ const ProfileScreen = () => {
 
   const arr = [
     { title: "Your Wishlist Products", screen: "BookmarkedItems" },
-    { title: "Check Credentials", screen: "Test" },
+    { title: "Check Credentials", screen: "CheckCredentials" },
     { title: "About Us", screen: "Test" },
     { title: "Privacy Policy", screen: "Test" },
     { title: "Terms of Service", screen: "Test" },
@@ -138,7 +137,7 @@ const ProfileScreen = () => {
           <Text
             style={{
               textAlign: "center",
-              color: loading.pressEdit ? "#fff" : "#75dfffff",
+              color: '#000'
             }}
           >
             Edit
