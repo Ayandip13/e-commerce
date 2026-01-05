@@ -61,22 +61,20 @@ const OrderedItem = () => {
             />
 
             <View
-              style={{
-                flexDirection: "row",
-                justifyContent: "flex-end",
-              }}
+              style={{ flexDirection: "row", justifyContent: "space-between" }}
             >
+              {" "}
               <View
                 style={{
                   position: "absolute",
-                  bottom: '600%',
+                  bottom: "650%",
                   left: 0,
                   backgroundColor: "#c60c30",
                   width: 45,
                   height: 45,
                   borderRadius: 22.5,
                   justifyContent: "center",
-                  // zIndex: 10,
+                  zIndex: 10,
                 }}
               >
                 <Text
@@ -90,6 +88,23 @@ const OrderedItem = () => {
                   20% OFF
                 </Text>
               </View>
+              <TouchableOpacity
+                onPress={() => setPressed((prev) => !prev)}
+                style={{
+                  backgroundColor: "#d0d0d0",
+                  borderRadius: 50,
+                  height: width * 0.11,
+                  width: width * 0.11,
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <Entypo
+                  name={pressed ? "heart" : "heart-outlined"}
+                  size={24}
+                  color="#000"
+                />
+              </TouchableOpacity>
               <TouchableOpacity
                 style={{
                   backgroundColor: "#d0d0d0",
