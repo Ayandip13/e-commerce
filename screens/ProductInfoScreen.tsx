@@ -25,6 +25,22 @@ const ProductInfoScreen = () => {
   const [addedToCart, setAddedToCart] = useState(false);
   const [pressedBookmark, setPressedBookmark] = useState(false);
 
+  // FIXED: Access bookmarks (plural) from Redux store
+  const bookmarks = useSelector((state: any) => state.bookmark.bookmarks);
+
+  // Check if current item is bookmarked on mount and when bookmarks change
+  useEffect(() => {
+    // Get the product ID from the route item
+    const currentProductId = String(route?.item?.productId ?? route?.item?.id);
+
+    // Check if this product exists in bookmarks
+    const isBookmarked = bookmarks.some(
+      (bookmarkItem: any) => String(bookmarkItem.productId) === currentProductId
+    );
+
+    setPressedBookmark(isBookmarked);
+  }, [bookmarks, route?.item]);
+
   const addItemToCart = (item: any) => {
     setAddedToCart(true);
     dispatch(addToCart(item));
@@ -32,15 +48,13 @@ const ProductInfoScreen = () => {
   };
 
   const handleBookmark = (item: any) => {
-    setPressedBookmark((prev) => {
-      const next = !prev;
-      if (next) {
-        dispatch(addToBookmark(item));
-      } else {
-        dispatch(removeBookmark(item));
-      }
-      return next;
-    });
+    if (pressedBookmark) {
+      // Remove bookmark
+      dispatch(removeBookmark(item));
+    } else {
+      // Add bookmark
+      dispatch(addToBookmark(item));
+    }
   };
 
   return (
@@ -243,5 +257,3 @@ const ProductInfoScreen = () => {
 };
 
 export default ProductInfoScreen;
-
-const styles = StyleSheet.create({});

@@ -179,6 +179,7 @@ const CartScreen = () => {
                       <Image
                         source={{ uri: item?.image }}
                         style={{ width: 140, height: 140 }}
+                        resizeMode="contain"
                       />
                     </View>
                     <View

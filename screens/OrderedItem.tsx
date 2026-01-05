@@ -6,15 +6,18 @@ import {
   Dimensions,
   TouchableOpacity,
 } from "react-native";
-import React, { useState } from "react";
+import React from "react";
 import { useRoute } from "@react-navigation/native";
+import { useDispatch, useSelector } from "react-redux";
 import { Entypo } from "@expo/vector-icons";
+import { addToBookmark, removeBookmark } from "../redux/BookmarkReducer";
 const { width } = Dimensions.get("window");
 
 const OrderedItem = () => {
   const route = useRoute();
   const itemsWithProduct = route?.params?.order?.products || [];
-  const [pressed, setPressed] = useState<boolean>(true);
+  const dispatch = useDispatch();
+  const bookmarks = useSelector((state: any) => state.bookmark.bookmarks);
 
   const formattedDate = new Date(
     route?.params?.order?.createdAt
@@ -60,10 +63,7 @@ const OrderedItem = () => {
               }}
             />
 
-            <View
-              style={{ flexDirection: "row", justifyContent: "space-between" }}
-            >
-              {" "}
+            <View style={{ flexDirection: "row", justifyContent: "flex-end" }}>
               <View
                 style={{
                   position: "absolute",
@@ -88,23 +88,6 @@ const OrderedItem = () => {
                   20% OFF
                 </Text>
               </View>
-              <TouchableOpacity
-                onPress={() => setPressed((prev) => !prev)}
-                style={{
-                  backgroundColor: "#d0d0d0",
-                  borderRadius: 50,
-                  height: width * 0.11,
-                  width: width * 0.11,
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-              >
-                <Entypo
-                  name={pressed ? "heart" : "heart-outlined"}
-                  size={24}
-                  color="#000"
-                />
-              </TouchableOpacity>
               <TouchableOpacity
                 style={{
                   backgroundColor: "#d0d0d0",
