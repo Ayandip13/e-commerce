@@ -1,19 +1,134 @@
-import { Image, StyleSheet, Text, View } from "react-native";
-import React, { useEffect } from "react";
+import { FlatList, Image, Text, TouchableOpacity, View } from "react-native";
+import React from "react";
 import { useSelector } from "react-redux";
+import { useNavigation } from "@react-navigation/native";
 
 const BookmarkedItems = () => {
-  const item = useSelector((state: any) => state.bookmark.bookmarks);
-  return (
-    <View>
-      {item.map((item: any, index: number) => (
-        <View key={index} style={{ margin: 10, alignItems: "center" }}>
-          <Image
-            source={{ uri: item.image }}
-            style={{ width: 100, height: 100 }}
-          />
+  const bookmarks = useSelector((state: any) => state.bookmark.bookmarks);
+  const navigation = useNavigation();
+  const renderItem = ({ item }: any) => {
+    const oldPrice = Number(item.oldPrice);
+    const price = Number(item.price);
+    const discountPercent =
+      oldPrice > 0 ? Math.round(((oldPrice - price) / oldPrice) * 100) : 0;
+
+    return (
+      <TouchableOpacity
+        onPress={() => navigation.navigate("InfoScreenBookmark" as never, { item, discountPercent})}
+        style={{
+          flexDirection: "row",
+          backgroundColor: "#fff",
+          padding: 10,
+          marginVertical: 5,
+          marginHorizontal: 10,
+          borderRadius: 8,
+          elevation: 2,
+        }}
+      >
+        <Image
+          source={{ uri: item.image }}
+          style={{
+            width: 120,
+            height: 120,
+          }}
+          resizeMode="contain"
+        />
+
+        <View style={{ flex: 1, marginLeft: 10 }}>
+          <Text
+            numberOfLines={1}
+            style={{
+              fontSize: 15,
+              fontWeight: "600",
+              marginTop: 10,
+            }}
+          >
+            {item.title}
+          </Text>
+
+          <Text
+            style={{
+              fontSize: 14,
+              color: "#888",
+              textDecorationLine: "line-through",
+              marginTop: 6,
+            }}
+          >
+            ₹{oldPrice}
+          </Text>
+
+          <View
+            style={{
+              flexDirection: "row",
+              gap: 10,
+            }}
+          >
+            <Text
+              style={{
+                fontSize: 15,
+                fontWeight: "600",
+                marginTop: 2,
+              }}
+            >
+              ₹{price}
+            </Text>
+
+            {discountPercent > 0 && (
+              <Text
+                style={{
+                  fontSize: 13,
+                  color: "green",
+                  fontWeight: "600",
+                  marginTop: 4,
+                }}
+              >
+                {discountPercent}% OFF
+              </Text>
+            )}
+          </View>
         </View>
-      ))}
+      </TouchableOpacity>
+    );
+  };
+
+  return (
+    <View style={{ flex: 1, backgroundColor: "#fff" }}>
+      <View
+        style={{
+          alignItems: "center",
+          backgroundColor: "#fff",
+          elevation: 5,
+          padding: 15,
+          borderBottomEndRadius: 15,
+          borderBottomStartRadius: 15,
+        }}
+      >
+        <Text style={{ fontSize: 20, fontWeight: "600" }}>
+          Bookmarked Items
+        </Text>
+      </View>
+
+      <FlatList
+        data={bookmarks}
+        keyExtractor={(item: any) => item.productId || item._id || item.id}
+        renderItem={renderItem}
+        contentContainerStyle={{
+          flexGrow: bookmarks.length === 0 ? 1 : undefined,
+        }}
+        ListEmptyComponent={
+          <View
+            style={{
+              flex: 1,
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <Text style={{ fontSize: 18, color: "#999" }}>
+              No Bookmarked Items 😕
+            </Text>
+          </View>
+        }
+      />
     </View>
   );
 };

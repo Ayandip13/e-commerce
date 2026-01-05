@@ -1,67 +1,43 @@
 import {
   Dimensions,
-  ImageBackground,
+  Image,
   ScrollView,
-  StyleSheet,
   Text,
   TouchableOpacity,
   View,
 } from "react-native";
-import React, { useEffect, useState } from "react";
-import { MaterialCommunityIcons, Ionicons } from "@expo/vector-icons";
+import React, { useState } from "react";
 import { useNavigation, useRoute } from "@react-navigation/native";
-import { useDispatch, useSelector } from "react-redux";
+import { Ionicons } from "@expo/vector-icons";
+import { useDispatch } from "react-redux";
 import { addToCart } from "../redux/CartReducer";
-import { StatusBar } from "expo-status-bar";
-import { addToBookmark, removeBookmark } from "../redux/BookmarkReducer";
 
-const ProductInfoScreen = () => {
-  const routeParams = useRoute();
-  const route = routeParams.params;
+const InfoScreenBookmark = () => {
   const { width } = Dimensions.get("window");
   const height = width;
-  const navigation = useNavigation();
-  const dispatch = useDispatch();
+  const { params } = useRoute();
   const [addedToCart, setAddedToCart] = useState(false);
-  const [pressedBookmark, setPressedBookmark] = useState(false);
-
-  const bookmarks = useSelector((state: any) => state.bookmark.bookmarks);
-  // console.log("products from productInfoScreen", routeParams);
-  useEffect(() => {
-    const currentProductId = String(route?.item?.productId ?? route?.item?.id);
-    const isBookmarked = bookmarks.some(
-      (bookmarkItem: any) => String(bookmarkItem.productId) === currentProductId
-    );
-    setPressedBookmark(isBookmarked);
-  }, [bookmarks, route?.item]);
-
+  const dispatch = useDispatch();
   const addItemToCart = (item: any) => {
     setAddedToCart(true);
     dispatch(addToCart(item));
     setTimeout(() => setAddedToCart(false), 1000);
   };
-
-  const handleBookmark = (item: any) => {
-    if (pressedBookmark) {
-      dispatch(removeBookmark(item));
-    } else {
-      dispatch(addToBookmark(item));
-    }
-  };
-
+  const navigation = useNavigation();
+  console.log(params);
   return (
     <ScrollView
-      style={{ flex: 1, backgroundColor: "white" }}
-      showsVerticalScrollIndicator={false}
+      style={{
+        flex: 1,
+        backgroundColor: "#fff",
+        marginBottom: 50,
+      }}
     >
-      <StatusBar style="dark" />
-
-      <View>
+      <View style={{ marginHorizontal: 20, marginTop: 20 }}>
         <View
           style={{
             position: "absolute",
-            top: 35,
-            left: 15,
+            // top: 35,
             backgroundColor: "#c60c30",
             width: 45,
             height: 45,
@@ -78,73 +54,20 @@ const ProductInfoScreen = () => {
               textAlign: "center",
             }}
           >
-            20% OFF
+            {params.discountPercent}% {"\n"}OFF
           </Text>
         </View>
-
-        <TouchableOpacity
-          style={{
-            position: "absolute",
-            top: 35,
-            right: 15,
-            backgroundColor: "#e0e0e0",
-            width: 45,
-            height: 45,
-            borderRadius: 22.5,
-            justifyContent: "center",
-            alignItems: "center",
-            zIndex: 10,
-          }}
-        >
-          <MaterialCommunityIcons name="share-variant" size={25} />
-        </TouchableOpacity>
-
-        <TouchableOpacity
-          activeOpacity={0.8}
-          onPress={() => handleBookmark(route?.item)}
-          style={{
-            position: "absolute",
-            bottom: 20,
-            left: 15,
-            backgroundColor: "#e0e0e0",
-            width: 45,
-            height: 45,
-            borderRadius: 22.5,
-            justifyContent: "center",
-            alignItems: "center",
-            zIndex: 10,
-          }}
-        >
-          <MaterialCommunityIcons
-            name={pressedBookmark ? "heart" : "heart-outline"}
-            size={28}
-          />
-        </TouchableOpacity>
-
-        <ScrollView
-          horizontal
-          pagingEnabled
-          showsHorizontalScrollIndicator={false}
-        >
-          {route?.carouselImages.map((item: string, index: number) => (
-            <ImageBackground
-              key={index}
-              source={{ uri: item }}
-              style={{ width, height, marginTop: 25 }}
-              resizeMode="contain"
-            />
-          ))}
-        </ScrollView>
-      </View>
-
-      {/* Product Details */}
-      <View style={{ padding: 10 }}>
-        <Text style={{ fontSize: 15, fontWeight: "500", marginBottom: 10 }}>
-          {route?.title}
+        <Image
+          source={{ uri: params.item?.image }}
+          style={{ width, height }}
+          resizeMode="contain"
+        />
+        <Text numberOfLines={2} style={{ fontSize: 17, marginTop: 10 }}>
+          {params.item?.title}
         </Text>
-
-        <Text style={{ fontSize: 20, fontWeight: "500" }}>₹{route?.price}</Text>
-
+        <Text style={{ fontSize: 20, fontWeight: "500" }}>
+          ₹{params.item?.price}
+        </Text>
         <View
           style={{
             backgroundColor: "#aaaaaa",
@@ -159,7 +82,7 @@ const ProductInfoScreen = () => {
         >
           <Text>Color: </Text>
           <Text style={{ fontWeight: "bold", fontSize: 15 }}>
-            {route?.color}
+            {params.item?.color}
           </Text>
         </View>
 
@@ -168,7 +91,7 @@ const ProductInfoScreen = () => {
         >
           <Text>Size: </Text>
           <Text style={{ fontWeight: "bold", fontSize: 15 }}>
-            {route?.size}
+            {params.item?.size}
           </Text>
         </View>
 
@@ -182,7 +105,7 @@ const ProductInfoScreen = () => {
         />
 
         <View style={{ marginTop: 10, marginBottom: 50 }}>
-          <Text style={{ fontSize: 15 }}>Total: ₹{route?.price}</Text>
+          <Text style={{ fontSize: 15 }}>Total: ₹{params.item?.price}</Text>
 
           <Text style={{ fontSize: 15, color: "#00ced1", marginTop: 5 }}>
             Free delivery tomorrow by 3PM. Order within 10 hours 30 minutes
@@ -214,7 +137,7 @@ const ProductInfoScreen = () => {
           </Text>
 
           <TouchableOpacity
-            onPress={() => addItemToCart(route?.item)}
+            onPress={() => addItemToCart(params.item)}
             style={{
               padding: 10,
               marginTop: 10,
@@ -227,7 +150,6 @@ const ProductInfoScreen = () => {
             <Text>{addedToCart ? "Added to Cart" : "Add to Cart"}</Text>
           </TouchableOpacity>
 
-          {/* Buy Now Button */}
           <TouchableOpacity
             onPress={() => navigation.navigate("Confirm" as never)}
             style={{
@@ -247,4 +169,4 @@ const ProductInfoScreen = () => {
   );
 };
 
-export default ProductInfoScreen;
+export default InfoScreenBookmark;

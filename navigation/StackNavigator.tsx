@@ -21,6 +21,7 @@ import ProfileScreen from "../screens/ProfileScreen";
 import EditProfile from "../screens/EditProfile";
 import Test from "../screens/Test";
 import CheckCredentials from "../screens/CheckCredentials";
+import InfoScreenBookmark from "../screens/InfoScreenBookmark";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -244,6 +245,19 @@ const StackNavigator = () => {
         <Stack.Screen
           name="CheckCredentials"
           component={CheckCredentials}
+          options={{
+            headerTitle: "",
+            headerStyle: {
+              backgroundColor: "#00ced1",
+            },
+            headerTitleStyle: {
+              color: "#00ced1",
+            },
+          }}
+        />
+        <Stack.Screen
+          name="InfoScreenBookmark"
+          component={InfoScreenBookmark}
           options={{
             headerTitle: "",
             headerStyle: {
