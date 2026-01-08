@@ -54,7 +54,7 @@ const BookmarkedItems = () => {
     const isAlreadyOrdered = isItemOrdered(item);
 
     return (
-      <TouchableOpacity
+      <View
         style={{
           flexDirection: "row",
           backgroundColor: "#fff",
@@ -151,7 +151,7 @@ const BookmarkedItems = () => {
             </Text>
           </TouchableOpacity>
         </View>
-      </TouchableOpacity>
+      </View>
     );
   };
 

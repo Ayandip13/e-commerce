@@ -1,272 +1,182 @@
 [
   {
-    "id": 1,
+    "id": "1",
     "title": "The Lost City of Stars",
+    "oldPrice": 499,
     "price": 399,
-    "description": "A thrilling space adventure uncovering forgotten civilizations.",
-    "category": "Science Fiction",
     "image": "https://fakestoreapi.com/img/51Y5NI-I5jL._AC_UX679_.jpg",
-    "rating": { "rate": 4.4, "count": 320 }
+    "carouselImages": [
+      "https://fakestoreapi.com/img/51Y5NI-I5jL._AC_UX679_.jpg"
+    ],
+    "color": "Default",
+    "size": "Paperback"
   },
   {
-    "id": 2,
+    "id": "2",
     "title": "Secrets of the Deep Sea",
+    "oldPrice": 349,
     "price": 299,
-    "description": "Exploring the mysterious creatures beneath the ocean.",
-    "category": "Non-fiction",
     "image": "https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg",
-    "rating": { "rate": 4.1, "count": 210 }
+    "carouselImages": [
+      "https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg"
+    ],
+    "color": "Default",
+    "size": "Paperback"
   },
   {
-    "id": 3,
+    "id": "3",
     "title": "Love in the Monsoon",
+    "oldPrice": 299,
     "price": 249,
-    "description": "A romantic story set in the rains of India.",
-    "category": "Romance",
     "image": "https://fakestoreapi.com/img/61IBBVJvSDL._AC_SY879_.jpg",
-    "rating": { "rate": 4.0, "count": 180 }
+    "carouselImages": [
+      "https://fakestoreapi.com/img/61IBBVJvSDL._AC_SY879_.jpg"
+    ],
+    "color": "Default",
+    "size": "Paperback"
   },
   {
-    "id": 4,
+    "id": "4",
     "title": "The Code Breakers",
+    "oldPrice": 549,
     "price": 449,
-    "description": "A cybersecurity thriller about a hacker’s race against time.",
-    "category": "Thriller",
     "image": "https://fakestoreapi.com/img/81QpkIctqPL._AC_SX679_.jpg",
-    "rating": { "rate": 4.5, "count": 260 }
+    "carouselImages": [
+      "https://fakestoreapi.com/img/81QpkIctqPL._AC_SX679_.jpg"
+    ],
+    "color": "Default",
+    "size": "Paperback"
   },
   {
-    "id": 5,
+    "id": "5",
     "title": "Mastering JavaScript",
+    "oldPrice": 699,
     "price": 599,
-    "description": "Advanced concepts and real-world projects for developers.",
-    "category": "Programming",
     "image": "https://fakestoreapi.com/img/71HblAHs5xL._AC_SY879_.jpg",
-    "rating": { "rate": 4.6, "count": 340 }
+    "carouselImages": [
+      "https://fakestoreapi.com/img/71HblAHs5xL._AC_SY879_.jpg"
+    ],
+    "color": "Default",
+    "size": "Paperback"
   },
   {
-    "id": 6,
-    "title": "History of Ancient India",
-    "price": 349,
-    "description": "Understanding India’s culture and heritage through the centuries.",
-    "category": "History",
-    "image": "https://fakestoreapi.com/img/71YXzeOuslL._AC_SY879_.jpg",
-    "rating": { "rate": 4.3, "count": 270 }
-  },
-  {
-    "id": 7,
-    "title": "The Psychic Detective",
-    "price": 329,
-    "description": "A paranormal mystery solving crimes beyond logic.",
-    "category": "Mystery",
-    "image": "https://fakestoreapi.com/img/81Zt42ioCgL._AC_SX679_.jpg",
-    "rating": { "rate": 4.2, "count": 180 }
-  },
-  {
-    "id": 8,
-    "title": "Mind Power: The Art of Focus",
-    "price": 399,
-    "description": "Practical ways to boost productivity and stay focused.",
-    "category": "Self Help",
-    "image": "https://fakestoreapi.com/img/71HblAHs5xL._AC_SY879_.jpg",
-    "rating": { "rate": 4.4, "count": 310 }
-  },
-  {
-    "id": 9,
-    "title": "Magic of the Forgotten Forest",
-    "price": 279,
-    "description": "Fantasy tale about a world hidden from humanity.",
-    "category": "Fantasy",
-    "image": "https://fakestoreapi.com/img/61IBBVJvSDL._AC_SY879_.jpg",
-    "rating": { "rate": 4.3, "count": 250 }
-  },
-  {
-    "id": 10,
-    "title": "Startup Minds",
+    "id": "6",
+    "title": "The Quantum Paradox",
+    "oldPrice": 599,
     "price": 499,
-    "description": "Inside stories of entrepreneurs and innovation.",
-    "category": "Business",
-    "image": "https://fakestoreapi.com/img/81QpkIctqPL._AC_SX679_.jpg",
-    "rating": { "rate": 4.5, "count": 200 }
+    "image": "https://fakestoreapi.com/img/61mtL5D5cL._AC_SX679_.jpg",
+    "carouselImages": [
+      "https://fakestoreapi.com/img/61mtL5D5cL._AC_SX679_.jpg"
+    ],
+    "color": "Default",
+    "size": "Hardcover"
   },
   {
-    "id": 11,
-    "title": "The Cursed Pharaoh",
-    "price": 349,
-    "description": "Archaeological adventure with unexpected twists.",
-    "category": "Adventure",
-    "image": "https://fakestoreapi.com/img/71YXzeOuslL._AC_SY879_.jpg",
-    "rating": { "rate": 4.2, "count": 230 }
-  },
-  {
-    "id": 12,
-    "title": "AI Revolution",
-    "price": 549,
-    "description": "How artificial intelligence is reshaping our future.",
-    "category": "Technology",
-    "image": "https://fakestoreapi.com/img/81Zt42ioCgL._AC_SX679_.jpg",
-    "rating": { "rate": 4.6, "count": 290 }
-  },
-  {
-    "id": 13,
-    "title": "Tiny Tales for Kids",
-    "price": 199,
-    "description": "Short moral stories that kids will love.",
-    "category": "Children",
-    "image": "https://fakestoreapi.com/img/51Y5NI-I5jL._AC_UX679_.jpg",
-    "rating": { "rate": 4.1, "count": 350 }
-  },
-  {
-    "id": 14,
-    "title": "Healthy Living Made Simple",
-    "price": 299,
-    "description": "Daily routine hacks for long-term fitness.",
-    "category": "Health",
-    "image": "https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg",
-    "rating": { "rate": 4.2, "count": 180 }
-  },
-  {
-    "id": 15,
-    "title": "The Haunted House Next Door",
-    "price": 249,
-    "description": "Spine-chilling ghost stories from suburban towns.",
-    "category": "Horror",
-    "image": "https://fakestoreapi.com/img/61IBBVJvSDL._AC_SY879_.jpg",
-    "rating": { "rate": 4.0, "count": 210 }
-  },
-  {
-    "id": 16,
-    "title": "Cooking with Love",
-    "price": 349,
-    "description": "Homemade recipes inspired by Indian kitchens.",
-    "category": "Cooking",
-    "image": "https://fakestoreapi.com/img/71HblAHs5xL._AC_SY879_.jpg",
-    "rating": { "rate": 4.3, "count": 150 }
-  },
-  {
-    "id": 17,
-    "title": "The Time Travelers",
-    "price": 399,
-    "description": "Young heroes exploring timelines of history.",
-    "category": "Young Adult",
-    "image": "https://fakestoreapi.com/img/81QpkIctqPL._AC_SX679_.jpg",
-    "rating": { "rate": 4.4, "count": 280 }
-  },
-  {
-    "id": 18,
-    "title": "The Warrior of Bengal",
-    "price": 369,
-    "description": "A historical fiction based on Bengal’s valiant heroes.",
-    "category": "Historical Fiction",
-    "image": "https://fakestoreapi.com/img/71YXzeOuslL._AC_SY879_.jpg",
-    "rating": { "rate": 4.5, "count": 230 }
-  },
-  {
-    "id": 19,
-    "title": "Detective Doggo",
-    "price": 229,
-    "description": "Fun mystery-solving adventures featuring a clever dog.",
-    "category": "Children",
-    "image": "https://fakestoreapi.com/img/81Zt42ioCgL._AC_SX679_.jpg",
-    "rating": { "rate": 4.3, "count": 300 }
-  },
-  {
-    "id": 20,
-    "title": "Money Blueprint",
-    "price": 449,
-    "description": "Smart financial habits to secure your wealth.",
-    "category": "Finance",
-    "image": "https://fakestoreapi.com/img/61IBBVJvSDL._AC_SY879_.jpg",
-    "rating": { "rate": 4.4, "count": 250 }
-  },
-  {
-    "id": 21,
-    "title": "The Silent Samurai",
+    "id": "7",
+    "title": "Ancient Civilizations",
+    "oldPrice": 449,
     "price": 379,
-    "description": "A gripping Japanese warrior saga.",
-    "category": "Action",
-    "image": "https://fakestoreapi.com/img/71HblAHs5xL._AC_SY879_.jpg",
-    "rating": { "rate": 4.2, "count": 170 }
+    "image": "https://fakestoreapi.com/img/71pWzhdJNwL._AC_UL640_QL65_ML3_.jpg",
+    "carouselImages": [
+      "https://fakestoreapi.com/img/71pWzhdJNwL._AC_UL640_QL65_ML3_.jpg"
+    ],
+    "color": "Default",
+    "size": "Paperback"
   },
   {
-    "id": 22,
-    "title": "Mindful Every Day",
-    "price": 299,
-    "description": "Simple mindfulness practices for a peaceful mind.",
-    "category": "Self Help",
-    "image": "https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg",
-    "rating": { "rate": 4.3, "count": 260 }
+    "id": "8",
+    "title": "Culinary Arts Masterclass",
+    "oldPrice": 799,
+    "price": 649,
+    "image": "https://fakestoreapi.com/img/61sbMiUnoGL._AC_UL640_QL65_ML3_.jpg",
+    "carouselImages": [
+      "https://fakestoreapi.com/img/61sbMiUnoGL._AC_UL640_QL65_ML3_.jpg"
+    ],
+    "color": "Default",
+    "size": "Hardcover"
   },
   {
-    "id": 23,
-    "title": "Coding for Beginners",
-    "price": 399,
-    "description": "A fun introduction to programming for absolute beginners.",
-    "category": "Education",
-    "image": "https://fakestoreapi.com/img/71YXzeOuslL._AC_SY879_.jpg",
-    "rating": { "rate": 4.1, "count": 350 }
+    "id": "9",
+    "title": "The Art of Mindfulness",
+    "oldPrice": 399,
+    "price": 329,
+    "image": "https://fakestoreapi.com/img/71YAIFU48IL._AC_UL640_QL65_ML3_.jpg",
+    "carouselImages": [
+      "https://fakestoreapi.com/img/71YAIFU48IL._AC_UL640_QL65_ML3_.jpg"
+    ],
+    "color": "Default",
+    "size": "Paperback"
   },
   {
-    "id": 24,
-    "title": "The Enchanted Library",
-    "price": 269,
-    "description": "Fantasy tale about a magical library with living books.",
-    "category": "Fantasy",
-    "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.png",
-    "rating": { "rate": 4.5, "count": 310 }
+    "id": "10",
+    "title": "Space Exploration: A History",
+    "oldPrice": 699,
+    "price": 559,
+    "image": "https://fakestoreapi.com/img/51UDEzMJVpL._AC_UL640_QL65_ML3_.jpg",
+    "carouselImages": [
+      "https://fakestoreapi.com/img/51UDEzMJVpL._AC_UL640_QL65_ML3_.jpg"
+    ],
+    "color": "Default",
+    "size": "Hardcover"
   },
   {
-    "id": 25,
-    "title": "Cyber Warriors",
-    "price": 449,
-    "description": "A near-future battle between hackers and AIs.",
-    "category": "Sci-Fi",
+    "id": "11",
+    "title": "Python Programming Essentials",
+    "oldPrice": 649,
+    "price": 549,
     "image": "https://fakestoreapi.com/img/61IBBVJvSDL._AC_SY879_.jpg",
-    "rating": { "rate": 4.6, "count": 200 }
+    "carouselImages": [
+      "https://fakestoreapi.com/img/61IBBVJvSDL._AC_SY879_.jpg"
+    ],
+    "color": "Default",
+    "size": "Paperback"
   },
   {
-    "id": 26,
-    "title": "Poetry of the Heart",
+    "id": "12",
+    "title": "Mysteries of the Rainforest",
+    "oldPrice": 379,
     "price": 299,
-    "description": "Soulful poems about life, love, and dreams.",
-    "category": "Poetry",
+    "image": "https://fakestoreapi.com/img/71kWymZ+c+L._AC_UL640_QL65_ML3_.jpg",
+    "carouselImages": [
+      "https://fakestoreapi.com/img/71kWymZ+c+L._AC_UL640_QL65_ML3_.jpg"
+    ],
+    "color": "Default",
+    "size": "Paperback"
+  },
+  {
+    "id": "13",
+    "title": "Financial Freedom Guide",
+    "oldPrice": 529,
+    "price": 429,
+    "image": "https://fakestoreapi.com/img/61mtL5D5cL._AC_SX679_.jpg",
+    "carouselImages": [
+      "https://fakestoreapi.com/img/61mtL5D5cL._AC_SX679_.jpg"
+    ],
+    "color": "Default",
+    "size": "Paperback"
+  },
+  {
+    "id": "14",
+    "title": "Modern Architecture Design",
+    "oldPrice": 899,
+    "price": 749,
     "image": "https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg",
-    "rating": { "rate": 4.2, "count": 150 }
+    "carouselImages": [
+      "https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg"
+    ],
+    "color": "Default",
+    "size": "Hardcover"
   },
   {
-    "id": 27,
-    "title": "Indian Street Food Guide",
-    "price": 349,
-    "description": "Delicious street food recipes from every state.",
-    "category": "Cooking",
+    "id": "15",
+    "title": "The Psychology of Success",
+    "oldPrice": 479,
+    "price": 399,
     "image": "https://fakestoreapi.com/img/81QpkIctqPL._AC_SX679_.jpg",
-    "rating": { "rate": 4.4, "count": 220 }
-  },
-  {
-    "id": 28,
-    "title": "Ultimate Fitness Guide",
-    "price": 349,
-    "description": "Workout plans and diet charts for transformation.",
-    "category": "Health",
-    "image": "https://fakestoreapi.com/img/81Zt42ioCgL._AC_SX679_.jpg",
-    "rating": { "rate": 4.3, "count": 180 }
-  },
-  {
-    "id": 29,
-    "title": "The Ghost of Old Mansion",
-    "price": 259,
-    "description": "Haunted mystery with unexpected twists.",
-    "category": "Horror",
-    "image": "https://fakestoreapi.com/img/71HblAHs5xL._AC_SY879_.jpg",
-    "rating": { "rate": 4.0, "count": 210 }
-  },
-  {
-    "id": 30,
-    "title": "Brain Games Puzzle Book",
-    "price": 199,
-    "description": "Fun puzzles to boost memory and problem-solving.",
-    "category": "Puzzle",
-    "image": "https://fakestoreapi.com/img/71YXzeOuslL._AC_SY879_.jpg",
-    "rating": { "rate": 4.5, "count": 400 }
+    "carouselImages": [
+      "https://fakestoreapi.com/img/81QpkIctqPL._AC_SX679_.jpg"
+    ],
+    "color": "Default",
+    "size": "Paperback"
   }
 ]

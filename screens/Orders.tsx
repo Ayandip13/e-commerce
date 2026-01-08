@@ -2,7 +2,6 @@ import {
   Image,
   ScrollView,
   Text,
-  ToastAndroid,
   TouchableOpacity,
   View,
 } from "react-native";
@@ -10,7 +9,6 @@ import React, { useContext, useEffect, useLayoutEffect, useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 import axios from "axios";
 import { UserType } from "../UserContext";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 import { API_URL } from "../api";
 
 export default function Orders() {

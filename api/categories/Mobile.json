@@ -1,272 +1,182 @@
 [
   {
-    "id": 1,
-    "title": "Nova X1 5G",
-    "price": 18999,
-    "description": "6.6-inch FHD+ display with 5000mAh battery and 5G support.",
-    "category": "Smartphone",
-    "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.png",
-    "rating": { "rate": 4.2, "count": 240 }
+    "id": "1",
+    "title": "iPhone 15 Pro",
+    "oldPrice": 129999,
+    "price": 119999,
+    "image": "https://fakestoreapi.com/img/81QpkIctqPL._AC_SX679_.jpg",
+    "carouselImages": [
+      "https://fakestoreapi.com/img/81QpkIctqPL._AC_SX679_.jpg"
+    ],
+    "color": "Titanium Black",
+    "size": "256GB"
   },
   {
-    "id": 2,
-    "title": "HyperMax Pro 8",
-    "price": 30999,
-    "description": "120Hz AMOLED, 108MP camera, fast charging.",
-    "category": "Smartphone",
+    "id": "2",
+    "title": "Samsung Galaxy S24",
+    "oldPrice": 89999,
+    "price": 79999,
+    "image": "https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg",
+    "carouselImages": [
+      "https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg"
+    ],
+    "color": "Phantom Black",
+    "size": "256GB"
+  },
+  {
+    "id": "3",
+    "title": "OnePlus 12",
+    "oldPrice": 69999,
+    "price": 64999,
     "image": "https://fakestoreapi.com/img/61IBBVJvSDL._AC_SY879_.jpg",
-    "rating": { "rate": 4.5, "count": 190 }
+    "carouselImages": [
+      "https://fakestoreapi.com/img/61IBBVJvSDL._AC_SY879_.jpg"
+    ],
+    "color": "Emerald Green",
+    "size": "256GB"
   },
   {
-    "id": 3,
-    "title": "SkyOne Ultra",
+    "id": "4",
+    "title": "Google Pixel 8 Pro",
+    "oldPrice": 84999,
+    "price": 74999,
+    "image": "https://fakestoreapi.com/img/71HblAHs5xL._AC_SY879_.jpg",
+    "carouselImages": [
+      "https://fakestoreapi.com/img/71HblAHs5xL._AC_SY879_.jpg"
+    ],
+    "color": "Obsidian",
+    "size": "256GB"
+  },
+  {
+    "id": "5",
+    "title": "Xiaomi 14 Pro",
+    "oldPrice": 79999,
+    "price": 71999,
+    "image": "https://fakestoreapi.com/img/71YXzeOuslL._AC_SY879_.jpg",
+    "carouselImages": [
+      "https://fakestoreapi.com/img/71YXzeOuslL._AC_SY879_.jpg"
+    ],
+    "color": "White",
+    "size": "256GB"
+  },
+  {
+    "id": "6",
+    "title": "Samsung Galaxy Z Fold5",
+    "oldPrice": 154999,
+    "price": 139999,
+    "image": "https://fakestoreapi.com/img/81Zt42ioCgL._AC_SX679_.jpg",
+    "carouselImages": [
+      "https://fakestoreapi.com/img/81Zt42ioCgL._AC_SX679_.jpg"
+    ],
+    "color": "Icy Blue",
+    "size": "512GB"
+  },
+  {
+    "id": "7",
+    "title": "iPhone 14",
+    "oldPrice": 69999,
+    "price": 59999,
+    "image": "https://fakestoreapi.com/img/81QpkIctqPL._AC_SX679_.jpg",
+    "carouselImages": [
+      "https://fakestoreapi.com/img/81QpkIctqPL._AC_SX679_.jpg"
+    ],
+    "color": "Midnight",
+    "size": "128GB"
+  },
+  {
+    "id": "8",
+    "title": "OnePlus Nord CE 3",
+    "oldPrice": 29999,
     "price": 25999,
-    "description": "Reliable performance with triple camera setup.",
-    "category": "Smartphone",
-    "image": "https://fakestoreapi.com/img/81Zt42ioCgL._AC_SX679_.jpg",
-    "rating": { "rate": 4.3, "count": 150 }
-  },
-  {
-    "id": 4,
-    "title": "PixelWave Mini",
-    "price": 9999,
-    "description": "Compact smartphone with HD display and 4000mAh battery.",
-    "category": "Smartphone",
     "image": "https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg",
-    "rating": { "rate": 4.0, "count": 300 }
+    "carouselImages": [
+      "https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg"
+    ],
+    "color": "Aqua Surge",
+    "size": "128GB"
   },
   {
-    "id": 5,
-    "title": "Astra One Neo 5G",
-    "price": 22999,
-    "description": "AMOLED display with dual stereo speakers.",
-    "category": "Smartphone",
-    "image": "https://fakestoreapi.com/img/71YXzeOuslL._AC_SY879_.jpg",
-    "rating": { "rate": 4.4, "count": 210 }
-  },
-  {
-    "id": 6,
-    "title": "Blade X Turbo",
-    "price": 14999,
-    "description": "Gaming chipset with liquid cooling tech.",
-    "category": "Smartphone",
-    "image": "https://fakestoreapi.com/img/71HblAHs5xL._AC_SY879_.jpg",
-    "rating": { "rate": 4.2, "count": 260 }
-  },
-  {
-    "id": 7,
-    "title": "GalaxyNova S20",
-    "price": 45999,
-    "description": "Premium flagship with wireless charging.",
-    "category": "Smartphone",
-    "image": "https://fakestoreapi.com/img/81QpkIctqPL._AC_SX679_.jpg",
-    "rating": { "rate": 4.6, "count": 180 }
-  },
-  {
-    "id": 8,
-    "title": "Orbit G5",
-    "price": 12999,
-    "description": "5G mobile with long-lasting battery.",
-    "category": "Smartphone",
+    "id": "9",
+    "title": "Motorola Edge 40",
+    "oldPrice": 34999,
+    "price": 29999,
     "image": "https://fakestoreapi.com/img/61IBBVJvSDL._AC_SY879_.jpg",
-    "rating": { "rate": 4.2, "count": 310 }
+    "carouselImages": [
+      "https://fakestoreapi.com/img/61IBBVJvSDL._AC_SY879_.jpg"
+    ],
+    "color": "Nebula Green",
+    "size": "256GB"
   },
   {
-    "id": 9,
-    "title": "Titanium M9",
-    "price": 33999,
-    "description": "Flagship camera with OIS and 2K display.",
-    "category": "Smartphone",
+    "id": "10",
+    "title": "Nothing Phone (2)",
+    "oldPrice": 44999,
+    "price": 39999,
+    "image": "https://fakestoreapi.com/img/71HblAHs5xL._AC_SY879_.jpg",
+    "carouselImages": [
+      "https://fakestoreapi.com/img/71HblAHs5xL._AC_SY879_.jpg"
+    ],
+    "color": "White",
+    "size": "256GB"
+  },
+  {
+    "id": "11",
+    "title": "Samsung Galaxy A54",
+    "oldPrice": 37999,
+    "price": 32999,
+    "image": "https://fakestoreapi.com/img/71YXzeOuslL._AC_SY879_.jpg",
+    "carouselImages": [
+      "https://fakestoreapi.com/img/71YXzeOuslL._AC_SY879_.jpg"
+    ],
+    "color": "Awesome Violet",
+    "size": "128GB"
+  },
+  {
+    "id": "12",
+    "title": "Vivo V29 Pro",
+    "oldPrice": 41999,
+    "price": 36999,
     "image": "https://fakestoreapi.com/img/81Zt42ioCgL._AC_SX679_.jpg",
-    "rating": { "rate": 4.5, "count": 170 }
+    "carouselImages": [
+      "https://fakestoreapi.com/img/81Zt42ioCgL._AC_SX679_.jpg"
+    ],
+    "color": "Himalayan Blue",
+    "size": "256GB"
   },
   {
-    "id": 10,
-    "title": "VoltEdge 6",
-    "price": 16999,
-    "description": "Superfast fast charging and smooth UI.",
-    "category": "Smartphone",
+    "id": "13",
+    "title": "iPhone SE (3rd Gen)",
+    "oldPrice": 44999,
+    "price": 39999,
+    "image": "https://fakestoreapi.com/img/81QpkIctqPL._AC_SX679_.jpg",
+    "carouselImages": [
+      "https://fakestoreapi.com/img/81QpkIctqPL._AC_SX679_.jpg"
+    ],
+    "color": "Starlight",
+    "size": "128GB"
+  },
+  {
+    "id": "14",
+    "title": "Google Pixel 7a",
+    "oldPrice": 43999,
+    "price": 37999,
     "image": "https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg",
-    "rating": { "rate": 4.1, "count": 260 }
+    "carouselImages": [
+      "https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg"
+    ],
+    "color": "Charcoal",
+    "size": "128GB"
   },
   {
-    "id": 11,
-    "title": "DreamNote 12 Pro",
-    "price": 21999,
-    "description": "Stylus support and crystal-clear AMOLED.",
-    "category": "Smartphone",
-    "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.png",
-    "rating": { "rate": 4.3, "count": 140 }
-  },
-  {
-    "id": 12,
-    "title": "Vision U Max",
-    "price": 30999,
-    "description": "Dual 48MP cameras with AI imaging.",
-    "category": "Smartphone",
-    "image": "https://fakestoreapi.com/img/71YXzeOuslL._AC_SY879_.jpg",
-    "rating": { "rate": 4.4, "count": 200 }
-  },
-  {
-    "id": 13,
-    "title": "FlexFold Z Lite",
-    "price": 69999,
-    "description": "Foldable display with premium build.",
-    "category": "Smartphone",
-    "image": "https://fakestoreapi.com/img/61IBBVJvSDL._AC_SY879_.jpg",
-    "rating": { "rate": 4.7, "count": 95 }
-  },
-  {
-    "id": 14,
-    "title": "Raptor G2",
-    "price": 10999,
-    "description": "Gaming-ready chip and 90Hz display.",
-    "category": "Smartphone",
-    "image": "https://fakestoreapi.com/img/71HblAHs5xL._AC_SY879_.jpg",
-    "rating": { "rate": 4.0, "count": 280 }
-  },
-  {
-    "id": 15,
-    "title": "CoreX Prime",
-    "price": 8999,
-    "description": "Budget phone with fingerprint unlock.",
-    "category": "Smartphone",
-    "image": "https://fakestoreapi.com/img/81QpkIctqPL._AC_SX679_.jpg",
-    "rating": { "rate": 3.9, "count": 400 }
-  },
-  {
-    "id": 16,
-    "title": "Aura 5 Pro",
-    "price": 17999,
-    "description": "Quad camera setup with night mode.",
-    "category": "Smartphone",
-    "image": "https://fakestoreapi.com/img/81Zt42ioCgL._AC_SX679_.jpg",
-    "rating": { "rate": 4.3, "count": 220 }
-  },
-  {
-    "id": 17,
-    "title": "Vortex N10",
+    "id": "15",
+    "title": "Redmi Note 13 Pro+",
+    "oldPrice": 32999,
     "price": 28999,
-    "description": "5nm chipset and fast 5G performance.",
-    "category": "Smartphone",
     "image": "https://fakestoreapi.com/img/61IBBVJvSDL._AC_SY879_.jpg",
-    "rating": { "rate": 4.4, "count": 150 }
-  },
-  {
-    "id": 18,
-    "title": "SparkLite A3",
-    "price": 7499,
-    "description": "Lightweight and durable design.",
-    "category": "Smartphone",
-    "image": "https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg",
-    "rating": { "rate": 3.8, "count": 180 }
-  },
-  {
-    "id": 19,
-    "title": "AlphaZoom 10X",
-    "price": 24999,
-    "description": "Long zoom camera and super AMOLED screen.",
-    "category": "Smartphone",
-    "image": "https://fakestoreapi.com/img/71YXzeOuslL._AC_SY879_.jpg",
-    "rating": { "rate": 4.5, "count": 180 }
-  },
-  {
-    "id": 20,
-    "title": "EcoPhone V4",
-    "price": 6499,
-    "description": "Big battery and clean UI at low cost.",
-    "category": "Smartphone",
-    "image": "https://fakestoreapi.com/img/71HblAHs5xL._AC_SY879_.jpg",
-    "rating": { "rate": 3.9, "count": 260 }
-  },
-  {
-    "id": 21,
-    "title": "PowerMax Ultra",
-    "price": 33999,
-    "description": "Flagship processor and 80W fast charging.",
-    "category": "Smartphone",
-    "image": "https://fakestoreapi.com/img/81Zt42ioCgL._AC_SX679_.jpg",
-    "rating": { "rate": 4.6, "count": 140 }
-  },
-  {
-    "id": 22,
-    "title": "Glide S13",
-    "price": 11999,
-    "description": "Slim design with side fingerprint lock.",
-    "category": "Smartphone",
-    "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.png",
-    "rating": { "rate": 4.1, "count": 190 }
-  },
-  {
-    "id": 23,
-    "title": "MegaNote 9G",
-    "price": 15999,
-    "description": "Big display for entertainment lovers.",
-    "category": "Smartphone",
-    "image": "https://fakestoreapi.com/img/71YXzeOuslL._AC_SY879_.jpg",
-    "rating": { "rate": 4.2, "count": 210 }
-  },
-  {
-    "id": 24,
-    "title": "LunarPro 6",
-    "price": 30999,
-    "description": "Premium glass finish and fast performance.",
-    "category": "Smartphone",
-    "image": "https://fakestoreapi.com/img/81QpkIctqPL._AC_SX679_.jpg",
-    "rating": { "rate": 4.4, "count": 170 }
-  },
-  {
-    "id": 25,
-    "title": "Rogue 11G",
-    "price": 18999,
-    "description": "Smooth performance and immersive audio.",
-    "category": "Smartphone",
-    "image": "https://fakestoreapi.com/img/61IBBVJvSDL._AC_SY879_.jpg",
-    "rating": { "rate": 4.0, "count": 240 }
-  },
-  {
-    "id": 26,
-    "title": "ZenStar 3S",
-    "price": 5499,
-    "description": "Affordable smartphone for basic usage.",
-    "category": "Smartphone",
-    "image": "https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg",
-    "rating": { "rate": 3.7, "count": 300 }
-  },
-  {
-    "id": 27,
-    "title": "FlashX Speed 5G",
-    "price": 21999,
-    "description": "High refresh rate and fast app switching.",
-    "category": "Smartphone",
-    "image": "https://fakestoreapi.com/img/71YXzeOuslL._AC_SY879_.jpg",
-    "rating": { "rate": 4.3, "count": 198 }
-  },
-  {
-    "id": 28,
-    "title": "Pulse M7",
-    "price": 13999,
-    "description": "AI camera and punch-hole display.",
-    "category": "Smartphone",
-    "image": "https://fakestoreapi.com/img/61IBBVJvSDL._AC_SY879_.jpg",
-    "rating": { "rate": 4.1, "count": 225 }
-  },
-  {
-    "id": 29,
-    "title": "CyberOne Fold Mini",
-    "price": 52999,
-    "description": "Compact foldable for premium users.",
-    "category": "Smartphone",
-    "image": "https://fakestoreapi.com/img/81Zt42ioCgL._AC_SX679_.jpg",
-    "rating": { "rate": 4.6, "count": 88 }
-  },
-  {
-    "id": 30,
-    "title": "Bolt A10",
-    "price": 7999,
-    "description": "Entry-level smartphone with dual SIM.",
-    "category": "Smartphone",
-    "image": "https://fakestoreapi.com/img/71HblAHs5xL._AC_SY879_.jpg",
-    "rating": { "rate": 3.9, "count": 190 }
+    "carouselImages": [
+      "https://fakestoreapi.com/img/61IBBVJvSDL._AC_SY879_.jpg"
+    ],
+    "color": "Coral Purple",
+    "size": "256GB"
   }
 ]

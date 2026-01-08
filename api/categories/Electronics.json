@@ -1,272 +1,182 @@
 [
   {
-    "id": 1,
-    "title": "SoundBeat Wireless Earbuds",
-    "price": 2499,
-    "description": "Deep bass earbuds with 30 hours of playtime.",
-    "category": "Earbuds",
-    "image": "https://fakestoreapi.com/img/71YXzeOuslL._AC_SY879_.jpg",
-    "rating": { "rate": 4.3, "count": 300 }
-  },
-  {
-    "id": 2,
-    "title": "BassHub Bluetooth Speaker",
-    "price": 3499,
-    "description": "Portable speaker with rich sound and RGB lights.",
-    "category": "Speaker",
-    "image": "https://fakestoreapi.com/img/61IBBVJvSDL._AC_SY879_.jpg",
-    "rating": { "rate": 4.4, "count": 220 }
-  },
-  {
-    "id": 3,
-    "title": "ProLens DSLR Camera",
-    "price": 45999,
-    "description": "24MP sensor with interchangeable lens support.",
-    "category": "Camera",
-    "image": "https://fakestoreapi.com/img/81Zt42ioCgL._AC_SX679_.jpg",
-    "rating": { "rate": 4.5, "count": 150 }
-  },
-  {
-    "id": 4,
-    "title": "VibeTrack Smartwatch",
-    "price": 4999,
-    "description": "Fitness tracking with heart rate and SpO2.",
-    "category": "Smartwatch",
-    "image": "https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg",
-    "rating": { "rate": 4.2, "count": 270 }
-  },
-  {
-    "id": 5,
-    "title": "SpeedLink WiFi Router",
-    "price": 2499,
-    "description": "Dual-band WiFi router with high range coverage.",
-    "category": "Router",
-    "image": "https://fakestoreapi.com/img/81QpkIctqPL._AC_SX679_.jpg",
-    "rating": { "rate": 4.1, "count": 210 }
-  },
-  {
-    "id": 6,
-    "title": "GameBox Wireless Controller",
-    "price": 2999,
-    "description": "Ergonomic controller with Bluetooth 5.0.",
-    "category": "Gaming Accessory",
-    "image": "https://fakestoreapi.com/img/71HblAHs5xL._AC_SY879_.jpg",
-    "rating": { "rate": 4.3, "count": 180 }
-  },
-  {
-    "id": 7,
-    "title": "LaserJet Wireless Printer",
-    "price": 10999,
-    "description": "High-speed printing with WiFi direct.",
-    "category": "Printer",
-    "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.png",
-    "rating": { "rate": 4.2, "count": 130 }
-  },
-  {
-    "id": 8,
-    "title": "UltraTab Pro Tablet 10.5\"",
-    "price": 22999,
-    "description": "Large display with multi-tasking mode.",
-    "category": "Tablet",
-    "image": "https://fakestoreapi.com/img/71YXzeOuslL._AC_SY879_.jpg",
-    "rating": { "rate": 4.3, "count": 190 }
-  },
-  {
-    "id": 9,
-    "title": "PixelGo Action Camera",
-    "price": 11999,
-    "description": "4K action cam with image stabilization.",
-    "category": "Action Camera",
-    "image": "https://fakestoreapi.com/img/61IBBVJvSDL._AC_SY879_.jpg",
-    "rating": { "rate": 4.4, "count": 175 }
-  },
-  {
-    "id": 10,
-    "title": "ChargePro 20000mAh Power Bank",
-    "price": 1699,
-    "description": "Fast charging with dual USB output.",
-    "category": "Power Bank",
-    "image": "https://fakestoreapi.com/img/81Zt42ioCgL._AC_SX679_.jpg",
-    "rating": { "rate": 4.1, "count": 350 }
-  },
-  {
-    "id": 11,
-    "title": "StreamCast TV Stick",
-    "price": 3499,
-    "description": "4K streaming stick with dedicated remote.",
-    "category": "Streaming Device",
-    "image": "https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg",
-    "rating": { "rate": 4.3, "count": 270 }
-  },
-  {
-    "id": 12,
-    "title": "MicroDash Dashcam",
-    "price": 3999,
-    "description": "HD dash camera with loop recording.",
-    "category": "Car Electronics",
-    "image": "https://fakestoreapi.com/img/71HblAHs5xL._AC_SY879_.jpg",
-    "rating": { "rate": 4.0, "count": 135 }
-  },
-  {
-    "id": 13,
-    "title": "ProKey Mechanical Keyboard",
-    "price": 4599,
-    "description": "RGB mechanical keyboard with blue switches.",
-    "category": "Computer Accessory",
-    "image": "https://fakestoreapi.com/img/81QpkIctqPL._AC_SX679_.jpg",
-    "rating": { "rate": 4.5, "count": 220 }
-  },
-  {
-    "id": 14,
-    "title": "ThunderMouse Gaming Mouse",
-    "price": 1999,
-    "description": "Adjustable DPI and custom RGB lighting.",
-    "category": "Computer Accessory",
-    "image": "https://fakestoreapi.com/img/61IBBVJvSDL._AC_SY879_.jpg",
-    "rating": { "rate": 4.3, "count": 260 }
-  },
-  {
-    "id": 15,
-    "title": "CinemaView Projector",
-    "price": 11999,
-    "description": "Full HD projection with HDMI support.",
-    "category": "Projector",
-    "image": "https://fakestoreapi.com/img/71YXzeOuslL._AC_SY879_.jpg",
-    "rating": { "rate": 4.2, "count": 170 }
-  },
-  {
-    "id": 16,
-    "title": "SmartHome WiFi Plug",
-    "price": 1299,
-    "description": "App-controlled plug with voice assistant support.",
-    "category": "Smart Home",
-    "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.png",
-    "rating": { "rate": 4.4, "count": 340 }
-  },
-  {
-    "id": 17,
-    "title": "FitPulse Fitness Band",
-    "price": 1999,
-    "description": "Step tracking and sleep monitoring.",
-    "category": "Fitness Tracker",
-    "image": "https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg",
-    "rating": { "rate": 4.0, "count": 300 }
-  },
-  {
-    "id": 18,
-    "title": "WaveStudio Wired Earphones",
-    "price": 599,
-    "description": "Comfort earbuds with HD microphone.",
-    "category": "Headphones",
-    "image": "https://fakestoreapi.com/img/71HblAHs5xL._AC_SY879_.jpg",
-    "rating": { "rate": 4.1, "count": 280 }
-  },
-  {
-    "id": 19,
-    "title": "BlueCast Bluetooth Adapter",
-    "price": 799,
-    "description": "Bluetooth dongle for audio streaming.",
-    "category": "Audio Accessory",
-    "image": "https://fakestoreapi.com/img/61IBBVJvSDL._AC_SY879_.jpg",
-    "rating": { "rate": 4.0, "count": 195 }
-  },
-  {
-    "id": 20,
-    "title": "CaptureX Webcam",
-    "price": 2499,
-    "description": "1080p webcam with noise reduction mic.",
-    "category": "Computer Accessory",
-    "image": "https://fakestoreapi.com/img/81Zt42ioCgL._AC_SX679_.jpg",
-    "rating": { "rate": 4.2, "count": 140 }
-  },
-  {
-    "id": 21,
-    "title": "GameBase Headset",
-    "price": 2999,
-    "description": "Surround sound gaming headset with mic.",
-    "category": "Gaming Accessory",
-    "image": "https://fakestoreapi.com/img/71YXzeOuslL._AC_SY879_.jpg",
-    "rating": { "rate": 4.4, "count": 175 }
-  },
-  {
-    "id": 22,
-    "title": "SonicBar Soundbar",
-    "price": 7999,
-    "description": "2.1 channel cinematic audio experience.",
-    "category": "Speakers",
-    "image": "https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg",
-    "rating": { "rate": 4.5, "count": 210 }
-  },
-  {
-    "id": 23,
-    "title": "TrackGuard GPS Tracker",
-    "price": 3499,
-    "description": "Real-time tracking with mobile alerts.",
-    "category": "Car Electronics",
-    "image": "https://fakestoreapi.com/img/71HblAHs5xL._AC_SY879_.jpg",
-    "rating": { "rate": 4.2, "count": 125 }
-  },
-  {
-    "id": 24,
-    "title": "UltraBoost Portable SSD 500GB",
-    "price": 5999,
-    "description": "High-speed SSD with Type-C port.",
-    "category": "Storage",
-    "image": "https://fakestoreapi.com/img/71YXzeOuslL._AC_SY879_.jpg",
-    "rating": { "rate": 4.6, "count": 180 }
-  },
-  {
-    "id": 25,
-    "title": "NetView CCTV Camera",
-    "price": 2899,
-    "description": "Night vision and 360° rotation security camera.",
-    "category": "Smart Home",
-    "image": "https://fakestoreapi.com/img/61IBBVJvSDL._AC_SY879_.jpg",
-    "rating": { "rate": 4.3, "count": 200 }
-  },
-  {
-    "id": 26,
-    "title": "DroneX Aerial Drone",
+    "id": "1",
+    "title": "Wireless Bluetooth Headphones",
+    "oldPrice": 12999,
     "price": 8999,
-    "description": "Entry-level drone with HD camera.",
-    "category": "Drone",
-    "image": "https://fakestoreapi.com/img/71HblAHs5xL._AC_SY879_.jpg",
-    "rating": { "rate": 4.1, "count": 140 }
-  },
-  {
-    "id": 27,
-    "title": "AudioCast Home Theater Receiver",
-    "price": 15999,
-    "description": "Supports Dolby Audio and multiple HDMI inputs.",
-    "category": "Home Theater",
-    "image": "https://fakestoreapi.com/img/81Zt42ioCgL._AC_SX679_.jpg",
-    "rating": { "rate": 4.4, "count": 95 }
-  },
-  {
-    "id": 28,
-    "title": "ClipTune MP3 Player",
-    "price": 1299,
-    "description": "Compact music player with long battery life.",
-    "category": "Audio Player",
-    "image": "https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg",
-    "rating": { "rate": 3.9, "count": 165 }
-  },
-  {
-    "id": 29,
-    "title": "BeamLite Laser Pointer",
-    "price": 499,
-    "description": "Precision pointing tool for presentations.",
-    "category": "Office Gadget",
-    "image": "https://fakestoreapi.com/img/61IBBVJvSDL._AC_SY879_.jpg",
-    "rating": { "rate": 4.0, "count": 190 }
-  },
-  {
-    "id": 30,
-    "title": "ZoomView Binoculars",
-    "price": 2199,
-    "description": "High clarity with adjustable zoom control.",
-    "category": "Outdoor Electronics",
     "image": "https://fakestoreapi.com/img/81QpkIctqPL._AC_SX679_.jpg",
-    "rating": { "rate": 4.1, "count": 145 }
+    "carouselImages": [
+      "https://fakestoreapi.com/img/81QpkIctqPL._AC_SX679_.jpg"
+    ],
+    "color": "Black",
+    "size": "Default"
+  },
+  {
+    "id": "2",
+    "title": "Smartphone 5G 128GB",
+    "oldPrice": 49999,
+    "price": 42999,
+    "image": "https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg",
+    "carouselImages": [
+      "https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg"
+    ],
+    "color": "Midnight Blue",
+    "size": "Default"
+  },
+  {
+    "id": "3",
+    "title": "Gaming Laptop RTX 4060",
+    "oldPrice": 124999,
+    "price": 109999,
+    "image": "https://fakestoreapi.com/img/61IBBVJvSDL._AC_SY879_.jpg",
+    "carouselImages": [
+      "https://fakestoreapi.com/img/61IBBVJvSDL._AC_SY879_.jpg"
+    ],
+    "color": "Gray",
+    "size": "16-inch"
+  },
+  {
+    "id": "4",
+    "title": "Smart Watch Series 8",
+    "oldPrice": 29999,
+    "price": 24999,
+    "image": "https://fakestoreapi.com/img/51Y5NI-I5jL._AC_UX679_.jpg",
+    "carouselImages": [
+      "https://fakestoreapi.com/img/51Y5NI-I5jL._AC_UX679_.jpg"
+    ],
+    "color": "Silver",
+    "size": "44mm"
+  },
+  {
+    "id": "5",
+    "title": "Noise Cancelling Earbuds",
+    "oldPrice": 15999,
+    "price": 11999,
+    "image": "https://fakestoreapi.com/img/71HblAHs5xL._AC_SY879_.jpg",
+    "carouselImages": [
+      "https://fakestoreapi.com/img/71HblAHs5xL._AC_SY879_.jpg"
+    ],
+    "color": "White",
+    "size": "Default"
+  },
+  {
+    "id": "6",
+    "title": "4K Ultra HD Smart TV",
+    "oldPrice": 74999,
+    "price": 64999,
+    "image": "https://fakestoreapi.com/img/61mtL5D5cL._AC_SX679_.jpg",
+    "carouselImages": [
+      "https://fakestoreapi.com/img/61mtL5D5cL._AC_SX679_.jpg"
+    ],
+    "color": "Black",
+    "size": "55-inch"
+  },
+  {
+    "id": "7",
+    "title": "Tablet 10.5 inch 256GB",
+    "oldPrice": 45999,
+    "price": 38999,
+    "image": "https://fakestoreapi.com/img/71pWzhdJNwL._AC_UL640_QL65_ML3_.jpg",
+    "carouselImages": [
+      "https://fakestoreapi.com/img/71pWzhdJNwL._AC_UL640_QL65_ML3_.jpg"
+    ],
+    "color": "Space Gray",
+    "size": "10.5-inch"
+  },
+  {
+    "id": "8",
+    "title": "Wireless Mechanical Keyboard",
+    "oldPrice": 12999,
+    "price": 9999,
+    "image": "https://fakestoreapi.com/img/61sbMiUnoGL._AC_UL640_QL65_ML3_.jpg",
+    "carouselImages": [
+      "https://fakestoreapi.com/img/61sbMiUnoGL._AC_UL640_QL65_ML3_.jpg"
+    ],
+    "color": "RGB",
+    "size": "Full Size"
+  },
+  {
+    "id": "9",
+    "title": "Portable Bluetooth Speaker",
+    "oldPrice": 8999,
+    "price": 6999,
+    "image": "https://fakestoreapi.com/img/71YAIFU48IL._AC_UL640_QL65_ML3_.jpg",
+    "carouselImages": [
+      "https://fakestoreapi.com/img/71YAIFU48IL._AC_UL640_QL65_ML3_.jpg"
+    ],
+    "color": "Red",
+    "size": "Default"
+  },
+  {
+    "id": "10",
+    "title": "DSLR Camera Kit 24MP",
+    "oldPrice": 84999,
+    "price": 74999,
+    "image": "https://fakestoreapi.com/img/51UDEzMJVpL._AC_UL640_QL65_ML3_.jpg",
+    "carouselImages": [
+      "https://fakestoreapi.com/img/51UDEzMJVpL._AC_UL640_QL65_ML3_.jpg"
+    ],
+    "color": "Black",
+    "size": "Default"
+  },
+  {
+    "id": "11",
+    "title": "Fitness Tracker Band",
+    "oldPrice": 7999,
+    "price": 5999,
+    "image": "https://fakestoreapi.com/img/61IBBVJvSDL._AC_SY879_.jpg",
+    "carouselImages": [
+      "https://fakestoreapi.com/img/61IBBVJvSDL._AC_SY879_.jpg"
+    ],
+    "color": "Pink",
+    "size": "Regular"
+  },
+  {
+    "id": "12",
+    "title": "Gaming Mouse RGB",
+    "oldPrice": 4999,
+    "price": 3499,
+    "image": "https://fakestoreapi.com/img/71kWymZ+c+L._AC_UL640_QL65_ML3_.jpg",
+    "carouselImages": [
+      "https://fakestoreapi.com/img/71kWymZ+c+L._AC_UL640_QL65_ML3_.jpg"
+    ],
+    "color": "Black",
+    "size": "Default"
+  },
+  {
+    "id": "13",
+    "title": "External SSD 1TB",
+    "oldPrice": 12999,
+    "price": 9999,
+    "image": "https://fakestoreapi.com/img/61mtL5D5cL._AC_SX679_.jpg",
+    "carouselImages": [
+      "https://fakestoreapi.com/img/61mtL5D5cL._AC_SX679_.jpg"
+    ],
+    "color": "Silver",
+    "size": "1TB"
+  },
+  {
+    "id": "14",
+    "title": "Wireless Charging Pad",
+    "oldPrice": 3999,
+    "price": 2999,
+    "image": "https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg",
+    "carouselImages": [
+      "https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg"
+    ],
+    "color": "White",
+    "size": "Fast Charging"
+  },
+  {
+    "id": "15",
+    "title": "Smart Home Security Camera",
+    "oldPrice": 8999,
+    "price": 7499,
+    "image": "https://fakestoreapi.com/img/81QpkIctqPL._AC_SX679_.jpg",
+    "carouselImages": [
+      "https://fakestoreapi.com/img/81QpkIctqPL._AC_SX679_.jpg"
+    ],
+    "color": "White",
+    "size": "1080p"
   }
 ]

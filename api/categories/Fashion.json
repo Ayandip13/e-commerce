@@ -1,272 +1,182 @@
 [
   {
-    "id": 1,
-    "title": "UrbanFit Slim Jeans",
-    "price": 1499,
-    "description": "Comfort stretch denim with a slim tapered fit.",
-    "category": "Men Clothing",
-    "image": "https://fakestoreapi.com/img/71YXzeOuslL._AC_SY879_.jpg",
-    "rating": { "rate": 4.3, "count": 220 }
-  },
-  {
-    "id": 2,
-    "title": "CozyWear Hooded Jacket",
-    "price": 1999,
-    "description": "Fleece-lined hoodie for winter comfort.",
-    "category": "Men Clothing",
-    "image": "https://fakestoreapi.com/img/71HblAHs5xL._AC_SY879_.jpg",
-    "rating": { "rate": 4.4, "count": 180 }
-  },
-  {
-    "id": 3,
-    "title": "RoyalChic Floral Dress",
-    "price": 1799,
-    "description": "Soft breathable cotton floral print dress.",
-    "category": "Women Clothing",
-    "image": "https://fakestoreapi.com/img/81Zt42ioCgL._AC_SX679_.jpg",
-    "rating": { "rate": 4.2, "count": 200 }
-  },
-  {
-    "id": 4,
-    "title": "TrendLine Casual Shirt",
-    "price": 1099,
-    "description": "Full sleeves checked shirt with modern fit.",
-    "category": "Men Clothing",
-    "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.png",
-    "rating": { "rate": 4.1, "count": 260 }
-  },
-  {
-    "id": 5,
-    "title": "Elegance Handbag",
-    "price": 1299,
-    "description": "Premium faux leather bag with gold accents.",
-    "category": "Women Accessories",
-    "image": "https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg",
-    "rating": { "rate": 4.3, "count": 175 }
-  },
-  {
-    "id": 6,
-    "title": "StridePro Running Shoes",
-    "price": 2199,
-    "description": "Breathable sports shoes with shock absorption.",
-    "category": "Men Footwear",
-    "image": "https://fakestoreapi.com/img/71YXzeOuslL._AC_SY879_.jpg",
-    "rating": { "rate": 4.4, "count": 300 }
-  },
-  {
-    "id": 7,
-    "title": "ChicWay Sandals",
-    "price": 899,
-    "description": "Lightweight wedge sandals with comfy straps.",
-    "category": "Women Footwear",
-    "image": "https://fakestoreapi.com/img/71HblAHs5xL._AC_SY879_.jpg",
-    "rating": { "rate": 4.1, "count": 195 }
-  },
-  {
-    "id": 8,
-    "title": "SportX Gym Shorts",
-    "price": 799,
-    "description": "Dry-fit fabric for maximum movement.",
-    "category": "Men Clothing",
-    "image": "https://fakestoreapi.com/img/81Zt42ioCgL._AC_SX679_.jpg",
-    "rating": { "rate": 4.2, "count": 210 }
-  },
-  {
-    "id": 9,
-    "title": "Glimmer Stud Earrings",
-    "price": 499,
-    "description": "Elegant metal studs with cubic stones.",
-    "category": "Women Accessories",
-    "image": "https://fakestoreapi.com/img/61IBBVJvSDL._AC_SY879_.jpg",
-    "rating": { "rate": 4.4, "count": 250 }
-  },
-  {
-    "id": 10,
-    "title": "SmartTie Silk Necktie",
-    "price": 699,
-    "description": "Premium silk tie with classic design.",
-    "category": "Men Accessories",
-    "image": "https://fakestoreapi.com/img/81QpkIctqPL._AC_SX679_.jpg",
-    "rating": { "rate": 4.3, "count": 130 }
-  },
-  {
-    "id": 11,
-    "title": "Elite Wristwatch Leather",
-    "price": 2599,
-    "description": "Water-resistant analog watch with leather strap.",
-    "category": "Men Accessories",
-    "image": "https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg",
-    "rating": { "rate": 4.5, "count": 195 }
-  },
-  {
-    "id": 12,
-    "title": "Cosmo Maxi Skirt",
-    "price": 1299,
-    "description": "High-waist long skirt with flowy design.",
-    "category": "Women Clothing",
-    "image": "https://fakestoreapi.com/img/61IBBVJvSDL._AC_SY879_.jpg",
-    "rating": { "rate": 4.2, "count": 170 }
-  },
-  {
-    "id": 13,
-    "title": "WinterTrek Boots",
-    "price": 2499,
-    "description": "Rugged boots for trekking and cold weather.",
-    "category": "Men Footwear",
-    "image": "https://fakestoreapi.com/img/81Zt42ioCgL._AC_SX679_.jpg",
-    "rating": { "rate": 4.3, "count": 160 }
-  },
-  {
-    "id": 14,
-    "title": "CharmBrace Bangle Set",
-    "price": 599,
-    "description": "Trendy bangles with ethnic designs.",
-    "category": "Women Accessories",
-    "image": "https://fakestoreapi.com/img/71YXzeOuslL._AC_SY879_.jpg",
-    "rating": { "rate": 4.4, "count": 220 }
-  },
-  {
-    "id": 15,
-    "title": "FlexFit Yoga Pants",
-    "price": 999,
-    "description": "Soft high-stretch leggings for workouts.",
-    "category": "Women Clothing",
-    "image": "https://fakestoreapi.com/img/71HblAHs5xL._AC_SY879_.jpg",
-    "rating": { "rate": 4.3, "count": 275 }
-  },
-  {
-    "id": 16,
-    "title": "Classic Polo T-Shirt",
-    "price": 899,
-    "description": "Cotton polo with breathable fabric.",
-    "category": "Men Clothing",
-    "image": "https://fakestoreapi.com/img/81QpkIctqPL._AC_SX679_.jpg",
-    "rating": { "rate": 4.1, "count": 260 }
-  },
-  {
-    "id": 17,
-    "title": "Blaze Running Shoes",
+    "id": "1",
+    "title": "Leather Crossbody Bag",
+    "oldPrice": 2999,
     "price": 2399,
-    "description": "Stability shoes with cushioned sole.",
-    "category": "Women Footwear",
-    "image": "https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg",
-    "rating": { "rate": 4.4, "count": 240 }
-  },
-  {
-    "id": 18,
-    "title": "RoyalSuit Blazer",
-    "price": 3499,
-    "description": "Solid two-button blazer for formal wear.",
-    "category": "Men Clothing",
-    "image": "https://fakestoreapi.com/img/81Zt42ioCgL._AC_SX679_.jpg",
-    "rating": { "rate": 4.5, "count": 150 }
-  },
-  {
-    "id": 19,
-    "title": "DailyChic Handbag",
-    "price": 999,
-    "description": "Casual everyday handbag with roomy interior.",
-    "category": "Women Accessories",
-    "image": "https://fakestoreapi.com/img/71HblAHs5xL._AC_SY879_.jpg",
-    "rating": { "rate": 4.2, "count": 180 }
-  },
-  {
-    "id": 20,
-    "title": "SunShield Cap",
-    "price": 499,
-    "description": "Cotton baseball cap with adjustable strap.",
-    "category": "Unisex Accessories",
-    "image": "https://fakestoreapi.com/img/71YXzeOuslL._AC_SY879_.jpg",
-    "rating": { "rate": 4.0, "count": 160 }
-  },
-  {
-    "id": 21,
-    "title": "DenimCharm Jacket",
-    "price": 2199,
-    "description": "Classic denim jacket with faded style.",
-    "category": "Women Clothing",
     "image": "https://fakestoreapi.com/img/81QpkIctqPL._AC_SX679_.jpg",
-    "rating": { "rate": 4.4, "count": 145 }
+    "carouselImages": [
+      "https://fakestoreapi.com/img/81QpkIctqPL._AC_SX679_.jpg"
+    ],
+    "color": "Brown",
+    "size": "Medium"
   },
   {
-    "id": 22,
-    "title": "StyleGrip Leather Belt",
-    "price": 699,
-    "description": "Premium leather belt with metal buckle.",
-    "category": "Men Accessories",
-    "image": "https://fakestoreapi.com/img/61IBBVJvSDL._AC_SY879_.jpg",
-    "rating": { "rate": 4.3, "count": 200 }
-  },
-  {
-    "id": 23,
-    "title": "WinterWarm Scarf",
-    "price": 399,
-    "description": "Soft wool scarf for cold seasons.",
-    "category": "Unisex Accessories",
-    "image": "https://fakestoreapi.com/img/81Zt42ioCgL._AC_SX679_.jpg",
-    "rating": { "rate": 4.5, "count": 230 }
-  },
-  {
-    "id": 24,
-    "title": "StreetStyle Sneakers",
-    "price": 1699,
-    "description": "Trendy sneakers for everyday comfort.",
-    "category": "Unisex Footwear",
-    "image": "https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg",
-    "rating": { "rate": 4.3, "count": 260 }
-  },
-  {
-    "id": 25,
-    "title": "PearlGlow Necklace",
+    "id": "2",
+    "title": "Statement Pearl Necklace",
+    "oldPrice": 1599,
     "price": 1299,
-    "description": "Elegant pearl chain for special occasions.",
-    "category": "Women Accessories",
-    "image": "https://fakestoreapi.com/img/71HblAHs5xL._AC_SY879_.jpg",
-    "rating": { "rate": 4.5, "count": 200 }
+    "image": "https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg",
+    "carouselImages": [
+      "https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg"
+    ],
+    "color": "White",
+    "size": "18-inch"
   },
   {
-    "id": 26,
-    "title": "Sunset Summer Dress",
-    "price": 1599,
-    "description": "Lightweight dress perfect for casual outings.",
-    "category": "Women Clothing",
-    "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.png",
-    "rating": { "rate": 4.3, "count": 175 }
-  },
-  {
-    "id": 27,
-    "title": "PrimeSport Track Pants",
-    "price": 1199,
-    "description": "Quick-dry pants ideal for training and running.",
-    "category": "Men Clothing",
-    "image": "https://fakestoreapi.com/img/71YXzeOuslL._AC_SY879_.jpg",
-    "rating": { "rate": 4.2, "count": 200 }
-  },
-  {
-    "id": 28,
-    "title": "FlipStride Casual Sandals",
-    "price": 599,
-    "description": "Comfortable sandals for daily wear.",
-    "category": "Men Footwear",
-    "image": "https://fakestoreapi.com/img/71HblAHs5xL._AC_SY879_.jpg",
-    "rating": { "rate": 4.1, "count": 210 }
-  },
-  {
-    "id": 29,
-    "title": "GlowCharm Earrings",
-    "price": 499,
-    "description": "Minimalist earrings with elegant design.",
-    "category": "Women Accessories",
-    "image": "https://fakestoreapi.com/img/81Zt42ioCgL._AC_SX679_.jpg",
-    "rating": { "rate": 4.4, "count": 160 }
-  },
-  {
-    "id": 30,
-    "title": "PolarTrack Woolen Cap",
-    "price": 399,
-    "description": "Warm wool beanie for winter use.",
-    "category": "Unisex Accessories",
+    "id": "3",
+    "title": "Designer Sunglasses",
+    "oldPrice": 3499,
+    "price": 2799,
     "image": "https://fakestoreapi.com/img/61IBBVJvSDL._AC_SY879_.jpg",
-    "rating": { "rate": 4.3, "count": 190 }
+    "carouselImages": [
+      "https://fakestoreapi.com/img/61IBBVJvSDL._AC_SY879_.jpg"
+    ],
+    "color": "Black",
+    "size": "Standard"
+  },
+  {
+    "id": "4",
+    "title": "Leather Wallet for Men",
+    "oldPrice": 1899,
+    "price": 1499,
+    "image": "https://fakestoreapi.com/img/71HblAHs5xL._AC_SY879_.jpg",
+    "carouselImages": [
+      "https://fakestoreapi.com/img/71HblAHs5xL._AC_SY879_.jpg"
+    ],
+    "color": "Black",
+    "size": "Bifold"
+  },
+  {
+    "id": "5",
+    "title": "Gold Hoop Earrings",
+    "oldPrice": 899,
+    "price": 699,
+    "image": "https://fakestoreapi.com/img/71YXzeOuslL._AC_SY879_.jpg",
+    "carouselImages": [
+      "https://fakestoreapi.com/img/71YXzeOuslL._AC_SY879_.jpg"
+    ],
+    "color": "Gold",
+    "size": "Medium"
+  },
+  {
+    "id": "6",
+    "title": "Silk Scarf",
+    "oldPrice": 1299,
+    "price": 999,
+    "image": "https://fakestoreapi.com/img/81Zt42ioCgL._AC_SX679_.jpg",
+    "carouselImages": [
+      "https://fakestoreapi.com/img/81Zt42ioCgL._AC_SX679_.jpg"
+    ],
+    "color": "Patterned",
+    "size": "90x90 cm"
+  },
+  {
+    "id": "7",
+    "title": "Leather Belt",
+    "oldPrice": 1199,
+    "price": 899,
+    "image": "https://fakestoreapi.com/img/81QpkIctqPL._AC_SX679_.jpg",
+    "carouselImages": [
+      "https://fakestoreapi.com/img/81QpkIctqPL._AC_SX679_.jpg"
+    ],
+    "color": "Brown",
+    "size": "32-36 inch"
+  },
+  {
+    "id": "8",
+    "title": "Evening Clutch",
+    "oldPrice": 2199,
+    "price": 1799,
+    "image": "https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg",
+    "carouselImages": [
+      "https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg"
+    ],
+    "color": "Silver",
+    "size": "Small"
+  },
+  {
+    "id": "9",
+    "title": "Stackable Rings Set",
+    "oldPrice": 799,
+    "price": 599,
+    "image": "https://fakestoreapi.com/img/61IBBVJvSDL._AC_SY879_.jpg",
+    "carouselImages": [
+      "https://fakestoreapi.com/img/61IBBVJvSDL._AC_SY879_.jpg"
+    ],
+    "color": "Rose Gold",
+    "size": "Adjustable"
+  },
+  {
+    "id": "10",
+    "title": "Designer Hat",
+    "oldPrice": 1699,
+    "price": 1299,
+    "image": "https://fakestoreapi.com/img/71HblAHs5xL._AC_SY879_.jpg",
+    "carouselImages": [
+      "https://fakestoreapi.com/img/71HblAHs5xL._AC_SY879_.jpg"
+    ],
+    "color": "Beige",
+    "size": "One Size"
+  },
+  {
+    "id": "11",
+    "title": "Wristwatch for Women",
+    "oldPrice": 4299,
+    "price": 3499,
+    "image": "https://fakestoreapi.com/img/71YXzeOuslL._AC_SY879_.jpg",
+    "carouselImages": [
+      "https://fakestoreapi.com/img/71YXzeOuslL._AC_SY879_.jpg"
+    ],
+    "color": "Rose Gold",
+    "size": "Small"
+  },
+  {
+    "id": "12",
+    "title": "Backpack Purse",
+    "oldPrice": 2599,
+    "price": 2099,
+    "image": "https://fakestoreapi.com/img/81Zt42ioCgL._AC_SX679_.jpg",
+    "carouselImages": [
+      "https://fakestoreapi.com/img/81Zt42ioCgL._AC_SX679_.jpg"
+    ],
+    "color": "Navy Blue",
+    "size": "Large"
+  },
+  {
+    "id": "13",
+    "title": "Bangle Set",
+    "oldPrice": 1499,
+    "price": 1199,
+    "image": "https://fakestoreapi.com/img/81QpkIctqPL._AC_SX679_.jpg",
+    "carouselImages": [
+      "https://fakestoreapi.com/img/81QpkIctqPL._AC_SX679_.jpg"
+    ],
+    "color": "Gold",
+    "size": "Adjustable"
+  },
+  {
+    "id": "14",
+    "title": "Pashmina Shawl",
+    "oldPrice": 1899,
+    "price": 1499,
+    "image": "https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg",
+    "carouselImages": [
+      "https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg"
+    ],
+    "color": "Cream",
+    "size": "70x200 cm"
+  },
+  {
+    "id": "15",
+    "title": "Cufflinks Set",
+    "oldPrice": 1299,
+    "price": 999,
+    "image": "https://fakestoreapi.com/img/61IBBVJvSDL._AC_SY879_.jpg",
+    "carouselImages": [
+      "https://fakestoreapi.com/img/61IBBVJvSDL._AC_SY879_.jpg"
+    ],
+    "color": "Silver",
+    "size": "Standard"
   }
 ]
