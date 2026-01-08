@@ -132,7 +132,7 @@ const CartScreen = () => {
         }}
       />
 
-      <ScrollView style={{ flex: 1, marginVertical: 10 }}>
+      <View style={{ flex: 1, marginVertical: 10 }}>
         <View
           style={{
             paddingHorizontal: 15,
@@ -329,7 +329,7 @@ const CartScreen = () => {
             }}
           />
         </View>
-      </ScrollView>
+      </View>
     </View>
   );
 };

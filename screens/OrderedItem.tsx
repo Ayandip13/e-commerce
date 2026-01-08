@@ -5,6 +5,7 @@ import {
   Text,
   Dimensions,
   TouchableOpacity,
+  ToastAndroid,
 } from "react-native";
 import React from "react";
 import { useRoute } from "@react-navigation/native";
@@ -169,6 +170,12 @@ const OrderedItem = () => {
 
             <View>
               <TouchableOpacity
+                onPress={() => {
+                  ToastAndroid.show(
+                    "Order can't be Cancelled",
+                    ToastAndroid.SHORT
+                  );
+                }}
                 style={{
                   alignSelf: "center",
                   backgroundColor: "#ffc72c",
