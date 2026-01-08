@@ -223,12 +223,12 @@ app.get("/orders/:userId", async (req, res) => {
 app.get("/categories/:categoryName", async (req, res) => {
   try {
     const categoryName = req.params.categoryName;
+    const page = parseInt(req.query.page) || 1;
+    const limit = 5;
 
-    // Capitalize first letter to match file name if needed
     const fileName = `${categoryName
       .charAt(0)
       .toUpperCase()}${categoryName.slice(1)}.json`;
-
     const filePath = path.join(__dirname, "categories", fileName);
 
     if (!fs.existsSync(filePath)) {
@@ -236,11 +236,22 @@ app.get("/categories/:categoryName", async (req, res) => {
     }
 
     const jsonData = fs.readFileSync(filePath, "utf-8");
-    const parsedData = JSON.parse(jsonData);
+    const products = JSON.parse(jsonData);
 
-    res.status(200).json({ products: parsedData });
+    const startIndex = (page - 1) * limit;
+    const endIndex = page * limit;
+
+    const paginatedProducts = products.slice(startIndex, endIndex);
+
+    res.status(200).json({
+      currentPage: page,
+      totalPages: Math.ceil(products.length / limit),
+      totalItems: products.length,
+      itemsPerPage: limit,
+      products: paginatedProducts,
+    });
   } catch (error) {
-    console.log(error);
+    console.error(error);
     res.status(500).json({ message: "Error getting products" });
   }
 });

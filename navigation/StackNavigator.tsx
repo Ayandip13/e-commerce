@@ -22,6 +22,12 @@ import EditProfile from "../screens/EditProfile";
 import Test from "../screens/Test";
 import CheckCredentials from "../screens/CheckCredentials";
 import InfoScreenBookmark from "../screens/InfoScreenBookmark";
+import Music from "../screens/categories/Music";
+import Home from "../screens/categories/Home";
+import Books from "../screens/categories/Books";
+import Electronics from "../screens/categories/Electronics";
+import Mobiles from "../screens/categories/Mobiles";
+import Fashion from "../screens/categories/Fashion";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -30,7 +36,7 @@ function BottomTabs() {
   return (
     <Tab.Navigator>
       <Tab.Screen
-        name="Home"
+        name="HomeScreen"
         options={{
           headerShown: false,
           tabBarLabel: "Home",
@@ -230,19 +236,6 @@ const StackNavigator = () => {
           }}
         />
         <Stack.Screen
-          name="Test"
-          component={Test}
-          options={{
-            headerTitle: "",
-            headerStyle: {
-              backgroundColor: "#00ced1",
-            },
-            headerTitleStyle: {
-              color: "#00ced1",
-            },
-          }}
-        />
-        <Stack.Screen
           name="CheckCredentials"
           component={CheckCredentials}
           options={{
@@ -258,6 +251,84 @@ const StackNavigator = () => {
         <Stack.Screen
           name="InfoScreenBookmark"
           component={InfoScreenBookmark}
+          options={{
+            headerTitle: "",
+            headerStyle: {
+              backgroundColor: "#00ced1",
+            },
+            headerTitleStyle: {
+              color: "#00ced1",
+            },
+          }}
+        />
+        <Stack.Screen
+          name="Home"
+          component={Home}
+          options={{
+            headerTitle: "",
+            headerStyle: {
+              backgroundColor: "#00ced1",
+            },
+            headerTitleStyle: {
+              color: "#00ced1",
+            },
+          }}
+        />
+        <Stack.Screen
+          name="Books"
+          component={Books}
+          options={{
+            headerTitle: "",
+            headerStyle: {
+              backgroundColor: "#00ced1",
+            },
+            headerTitleStyle: {
+              color: "#00ced1",
+            },
+          }}
+        />
+        <Stack.Screen
+          name="Electronics"
+          component={Electronics}
+          options={{
+            headerTitle: "",
+            headerStyle: {
+              backgroundColor: "#00ced1",
+            },
+            headerTitleStyle: {
+              color: "#00ced1",
+            },
+          }}
+        />
+        <Stack.Screen
+          name="Mobiles"
+          component={Mobiles}
+          options={{
+            headerTitle: "",
+            headerStyle: {
+              backgroundColor: "#00ced1",
+            },
+            headerTitleStyle: {
+              color: "#00ced1",
+            },
+          }}
+        />
+        <Stack.Screen
+          name="Music"
+          component={Music}
+          options={{
+            headerTitle: "",
+            headerStyle: {
+              backgroundColor: "#00ced1",
+            },
+            headerTitleStyle: {
+              color: "#00ced1",
+            },
+          }}
+        />
+        <Stack.Screen
+          name="Fashion"
+          component={Fashion}
           options={{
             headerTitle: "",
             headerStyle: {

@@ -397,13 +397,16 @@ const HomeScreen = () => {
 
         <FlatList
           data={list}
+          keyExtractor={(item, index) => item.id.toString()}
           renderItem={({ item, index }) => (
             <TouchableOpacity
+              onPress={() => navigation.navigate(item.name as never)}
               key={index}
               style={{
                 alignItems: "center",
                 justifyContent: "space-between",
-                padding: 10,
+                paddingHorizontal: 9,
+                paddingVertical: 10,
               }}
             >
               <Image
