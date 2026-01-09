@@ -224,7 +224,7 @@ app.get("/categories/:categoryName", async (req, res) => {
   try {
     const categoryName = req.params.categoryName;
     const page = parseInt(req.query.page) || 1;
-    const limit = 5;
+    const limit = 10;
 
     const fileName = `${categoryName
       .charAt(0)

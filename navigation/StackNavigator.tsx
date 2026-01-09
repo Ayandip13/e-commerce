@@ -265,78 +265,84 @@ const StackNavigator = () => {
           name="Home"
           component={Home}
           options={{
-            headerTitle: "",
+            headerTitle: "Home Appliances",
             headerStyle: {
               backgroundColor: "#00ced1",
             },
             headerTitleStyle: {
-              color: "#00ced1",
+              color: "#000000",
             },
+            headerTitleAlign: "center",
           }}
         />
         <Stack.Screen
           name="Books"
           component={Books}
           options={{
-            headerTitle: "",
+            headerTitle: "Books",
             headerStyle: {
               backgroundColor: "#00ced1",
             },
             headerTitleStyle: {
-              color: "#00ced1",
+              color: "#000000",
             },
+            headerTitleAlign: "center",
           }}
         />
         <Stack.Screen
           name="Electronics"
           component={Electronics}
           options={{
-            headerTitle: "",
+            headerTitle: "Electronics and Gadgets",
             headerStyle: {
               backgroundColor: "#00ced1",
             },
             headerTitleStyle: {
-              color: "#00ced1",
+              color: "#000000",
             },
+            headerTitleAlign: "center",
           }}
         />
         <Stack.Screen
           name="Mobiles"
           component={Mobiles}
           options={{
-            headerTitle: "",
+            headerTitle: "Mobiles",
             headerStyle: {
               backgroundColor: "#00ced1",
             },
             headerTitleStyle: {
-              color: "#00ced1",
+              color: "#000000",
             },
+            headerTitleAlign: "center",
           }}
         />
         <Stack.Screen
           name="Music"
           component={Music}
           options={{
-            headerTitle: "",
+            headerTitle: "Musical Instruments",
             headerStyle: {
               backgroundColor: "#00ced1",
             },
             headerTitleStyle: {
-              color: "#00ced1",
+              color: "#000000",
             },
+            headerTitleAlign: "center",
           }}
         />
         <Stack.Screen
           name="Fashion"
           component={Fashion}
           options={{
-            headerTitle: "",
+            headerTitle: "Fashion and Accessories",
             headerStyle: {
               backgroundColor: "#00ced1",
             },
             headerTitleStyle: {
-              color: "#00ced1",
+              color: "#000000",
             },
+            headerTitleAlign: "center",
           }}
         />
       </Stack.Navigator>
