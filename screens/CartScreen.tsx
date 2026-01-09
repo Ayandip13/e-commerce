@@ -15,6 +15,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addToCart, decrement, removeCart } from "../redux/CartReducer";
 import { useNavigation } from "@react-navigation/native";
 import { StatusBar } from "expo-status-bar";
+import { LinearGradient } from "expo-linear-gradient";
 
 const CartScreen = () => {
   const navigation = useNavigation();
@@ -106,21 +107,24 @@ const CartScreen = () => {
                 ToastAndroid.show("Please Add Items ", ToastAndroid.SHORT);
               }
             }}
-            style={{
-              marginTop: 10,
-              backgroundColor: "#ffc72c",
-              padding: 10,
-              borderRadius: 5,
-              alignItems: "center",
-            }}
           >
-            {cart.length > 0 ? (
+            <LinearGradient
+              colors={["#fcb900", "#ffe49b"]}
+              style={{
+                padding: 10,
+                borderRadius: 10,
+                alignItems: "center",
+                marginTop: 10,
+              }}
+            >
+              {cart.length > 0 ? (
               <Text style={{ fontSize: 16 }}>
                 Proceed to Buy {cart.length} items
               </Text>
             ) : (
               <Text style={{ fontSize: 16 }}>Proceed to Buy</Text>
             )}
+            </LinearGradient>
           </TouchableOpacity>
         </View>
       </View>

@@ -17,6 +17,7 @@ import { cleanCart } from "../redux/CartReducer";
 import RazorpayCheckout from "react-native-razorpay";
 import { StatusBar } from "expo-status-bar";
 import { API_URL } from "../api";
+import { LinearGradient } from "expo-linear-gradient";
 
 const ConfirmationScreen = () => {
   interface fetchedAddress {
@@ -338,19 +339,24 @@ const ConfirmationScreen = () => {
                                 ToastAndroid.SHORT
                               );
                         }}
-                        style={{
-                          alignItems: "center",
-                          backgroundColor: "#008e97",
-                          paddingVertical: 10,
-                          borderRadius: 20,
-                          marginTop: 5,
-                          alignSelf: "center",
-                          paddingHorizontal: 30,
-                        }}
                       >
-                        <Text style={{ color: "#ffffff", fontWeight: "bold" }}>
-                          Deliver to this address
-                        </Text>
+                        <LinearGradient
+                          colors={["#00abb8", "#03dff3"]}
+                          style={{
+                            alignItems: "center",
+                            paddingVertical: 10,
+                            borderRadius: 20,
+                            marginTop: 5,
+                            alignSelf: "center",
+                            paddingHorizontal: 30,
+                          }}
+                        >
+                          <Text
+                            style={{ color: "#ffffff", fontWeight: "bold" }}
+                          >
+                            Deliver to this address
+                          </Text>
+                        </LinearGradient>
                       </TouchableOpacity>
                     )}
                   </View>
@@ -401,16 +407,19 @@ const ConfirmationScreen = () => {
               options
                 ? setCurrentStep(2)
                 : ToastAndroid.show("Select an option", ToastAndroid.SHORT);
-            }} //TODO: Change this to only work when an option is selected(implement validation)
-            style={{
-              backgroundColor: "#ffc72c",
-              padding: 10,
-              borderRadius: 8,
-              alignItems: "center",
-              marginTop: 20,
             }}
           >
-            <Text>Continue</Text>
+            <LinearGradient
+              colors={["#ffc72c", "#ffe291"]}
+              style={{
+                padding: 10,
+                borderRadius: 8,
+                alignItems: "center",
+                marginTop: 20,
+              }}
+            >
+              <Text>Continue</Text>
+            </LinearGradient>
           </TouchableOpacity>
         </View>
       )}
@@ -486,16 +495,19 @@ const ConfirmationScreen = () => {
               selectedOption
                 ? setCurrentStep(3)
                 : ToastAndroid.show("Select an option", ToastAndroid.SHORT);
-            }} //TODO: Change this to only work when an option is selected(implement validation)
-            style={{
-              backgroundColor: "#ffc72c",
-              padding: 10,
-              borderRadius: 8,
-              alignItems: "center",
-              marginTop: 20,
             }}
           >
-            <Text>Continue</Text>
+            <LinearGradient
+              colors={["#ffc72c", "#ffe291"]}
+              style={{
+                padding: 10,
+                borderRadius: 8,
+                alignItems: "center",
+                marginTop: 20,
+              }}
+            >
+              <Text>Continue</Text>
+            </LinearGradient>
           </TouchableOpacity>
         </View>
       )}

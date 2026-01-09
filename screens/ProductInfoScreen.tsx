@@ -14,6 +14,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../redux/CartReducer";
 import { StatusBar } from "expo-status-bar";
 import { addToBookmark, removeBookmark } from "../redux/BookmarkReducer";
+import { LinearGradient } from "expo-linear-gradient";
 
 const ProductInfoScreen = () => {
   const routeParams = useRoute();
@@ -213,33 +214,34 @@ const ProductInfoScreen = () => {
             In Stock
           </Text>
 
-          <TouchableOpacity
-            onPress={() => addItemToCart(route?.item)}
-            style={{
-              padding: 10,
-              marginTop: 10,
-              backgroundColor: "#ffc72c",
-              borderRadius: 10,
-              alignItems: "center",
-              zIndex: 5,
-            }}
-          >
-            <Text>{addedToCart ? "Added to Cart" : "Add to Cart"}</Text>
+          <TouchableOpacity onPress={() => addItemToCart(route?.item)}>
+            <LinearGradient
+              colors={["#fff672", "#ff9900"]}
+              style={{
+                padding: 10,
+                borderRadius: 10,
+                alignItems: "center",
+                marginTop: 10,
+              }}
+            >
+              <Text>{addedToCart ? "Added to Cart" : "Add to Cart"}</Text>
+            </LinearGradient>
           </TouchableOpacity>
 
-          {/* Buy Now Button */}
           <TouchableOpacity
             onPress={() => navigation.navigate("Confirm" as never)}
-            style={{
-              padding: 10,
-              marginTop: 15,
-              backgroundColor: "#ffac1c",
-              borderRadius: 10,
-              alignItems: "center",
-              zIndex: 5,
-            }}
           >
-            <Text>Buy Now</Text>
+            <LinearGradient
+              colors={["#ff9900", "#fff672"]}
+              style={{
+                padding: 10,
+                borderRadius: 10,
+                alignItems: "center",
+                marginTop: 10,
+              }}
+            >
+              <Text>Buy Now</Text>
+            </LinearGradient>
           </TouchableOpacity>
         </View>
       </View>

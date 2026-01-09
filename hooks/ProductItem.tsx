@@ -2,6 +2,7 @@ import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../redux/CartReducer";
+import { LinearGradient } from "expo-linear-gradient";
 
 interface itemprop {
   id: number;
@@ -23,7 +24,7 @@ interface ProductItemProps {
 const ProductItem = ({ item }: ProductItemProps) => {
   const dispatch = useDispatch();
   const [addedToCart, setAddedToCart] = useState(false);
-  const addItemToCart = (item : itemprop) => {
+  const addItemToCart = (item: itemprop) => {
     setAddedToCart(true);
     dispatch(addToCart(item));
     setTimeout(() => {
@@ -55,17 +56,18 @@ const ProductItem = ({ item }: ProductItemProps) => {
           {item?.rating.rate} ratings
         </Text>
       </View>
-      <TouchableOpacity
-        onPress={() => addItemToCart(item)}
-        style={{
-          backgroundColor: "#ffc72c",
-          padding: 10,
-          borderRadius: 10,
-          alignItems: "center",
-          marginTop: 10,
-        }}
-      >
-        {addedToCart ? <Text>Added to Cart</Text> : <Text>Add to Cart</Text>}
+      <TouchableOpacity onPress={() => addItemToCart(item)}>
+        <LinearGradient
+          colors={["#fcb900", "#ffe49b"]}
+          style={{
+            padding: 10,
+            borderRadius: 10,
+            alignItems: "center",
+            marginTop: 10,
+          }}
+        >
+          {addedToCart ? <Text>Added to Cart</Text> : <Text>Add to Cart</Text>}
+        </LinearGradient>
       </TouchableOpacity>
     </TouchableOpacity>
   );
