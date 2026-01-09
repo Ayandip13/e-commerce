@@ -11,6 +11,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { LinearGradient } from "expo-linear-gradient";
 import { useNavigation } from "@react-navigation/native";
+import { API_URL } from "../../api";
 
 interface itemData {
   id: number;
@@ -38,7 +39,7 @@ const Fashion = () => {
 
     try {
       const response = await axios.get<{ products: itemData[] }>(
-        `http://192.168.0.101:8000/categories/Fashion?page=${pageNumber}`
+        `${API_URL}categories/Fashion?page=${pageNumber}`
       );
 
       const newProducts = response.data.products;

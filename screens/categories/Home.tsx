@@ -11,6 +11,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { LinearGradient } from "expo-linear-gradient";
 import { useNavigation } from "@react-navigation/native";
+import { API_URL } from "../../api";
 
 interface itemData {
   id: number;
@@ -38,7 +39,7 @@ const Home = () => {
 
     try {
       const response = await axios.get<{ products: itemData[] }>(
-        `http://192.168.0.101:8000/categories/Home?page=${pageNumber}`
+        `${API_URL}categories/Home?page=${pageNumber}`
       );
 
       const newProducts = response.data.products;
@@ -139,7 +140,13 @@ const Home = () => {
   };
 
   return (
-    <View style={{ flex: 1, backgroundColor: "#fff", padding: 10 }}>
+    <View
+      style={{
+        flex: 1,
+        backgroundColor: "#fff",
+        padding: 10,
+      }}
+    >
       <FlatList
         data={data}
         keyExtractor={(item) => item.id.toString()}

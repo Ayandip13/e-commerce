@@ -5,11 +5,13 @@ import {
   View,
   ListRenderItem,
   TouchableOpacity,
+  ActivityIndicator,
 } from "react-native";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { LinearGradient } from "expo-linear-gradient";
 import { useNavigation } from "@react-navigation/native";
+import { API_URL } from "../../api";
 
 interface itemData {
   id: number;
@@ -24,17 +26,39 @@ interface itemData {
 
 const Music = () => {
   const [data, setData] = useState<itemData[]>([]);
+  const [page, setPage] = useState(1);
+  const [loading, setLoading] = useState(false);
+  const [hasMore, setHasMore] = useState(true);
+
   const navigation = useNavigation();
 
-  const fetchData = async () => {
-    const response = await axios.get<{ products: itemData[] }>(
-      "http://192.168.0.101:8000/categories/Music?page=1"
-    );
-    setData(response.data.products);
+  const fetchData = async (pageNumber: number) => {
+    if (loading || !hasMore) return;
+
+    setLoading(true);
+
+    try {
+      const response = await axios.get<{ products: itemData[] }>(
+        `${API_URL}categories/Music?page=${pageNumber}`
+      );
+
+      const newProducts = response.data.products;
+
+      if (newProducts.length === 0) {
+        setHasMore(false);
+      } else {
+        setData((prev) => [...prev, ...newProducts]);
+        setPage(pageNumber);
+      }
+    } catch (error) {
+      console.log("Music pagination error:", error);
+    } finally {
+      setLoading(false);
+    }
   };
 
   useEffect(() => {
-    fetchData();
+    fetchData(1);
   }, []);
 
   const renderItem: ListRenderItem<itemData> = ({ item }) => {
@@ -49,7 +73,6 @@ const Music = () => {
           backgroundColor: "#fff",
           padding: 10,
           marginVertical: 5,
-          marginHorizontal: 1,
           borderRadius: 8,
           elevation: 2,
         }}
@@ -60,15 +83,11 @@ const Music = () => {
           resizeMode="contain"
         />
 
-        <View
-          style={{
-            flex: 1,
-            marginLeft: 20,
-          }}
-        >
+        <View style={{ flex: 1, marginLeft: 20 }}>
           <Text style={{ fontSize: 15, fontWeight: "600", marginTop: 10 }}>
             {item.title}
           </Text>
+
           <Text
             style={{
               fontSize: 14,
@@ -79,21 +98,9 @@ const Music = () => {
           >
             ₹{oldPrice}
           </Text>
-          <View
-            style={{
-              flexDirection: "row",
-              gap: 10,
-            }}
-          >
-            <Text
-              style={{
-                fontSize: 15,
-                fontWeight: "600",
-                marginTop: 2,
-              }}
-            >
-              ₹{price}
-            </Text>
+
+          <View style={{ flexDirection: "row", gap: 10 }}>
+            <Text style={{ fontSize: 15, fontWeight: "600" }}>₹{price}</Text>
 
             {discountPercent > 0 && (
               <Text
@@ -101,15 +108,17 @@ const Music = () => {
                   fontSize: 13,
                   color: "green",
                   fontWeight: "600",
-                  marginTop: 4,
                 }}
               >
                 {discountPercent}% OFF
               </Text>
             )}
           </View>
+
           <TouchableOpacity
-            onPress={() => navigation.navigate("ProductInfoScreen", item)}
+            onPress={() =>
+              navigation.navigate("ProductInfoScreen" as never, item as never)
+            }
           >
             <LinearGradient
               colors={["#8afdff", "#04cfd3"]}
@@ -118,18 +127,10 @@ const Music = () => {
               style={{
                 alignItems: "center",
                 borderRadius: 8,
-                width: "100%",
+                marginTop: 8,
               }}
             >
-              <Text
-                style={{
-                  fontSize: 15,
-                  paddingVertical: 8,
-                  paddingHorizontal: 50,
-                }}
-              >
-                See Details
-              </Text>
+              <Text style={{ paddingVertical: 8 }}>See Details</Text>
             </LinearGradient>
           </TouchableOpacity>
         </View>
@@ -142,14 +143,18 @@ const Music = () => {
       style={{
         flex: 1,
         backgroundColor: "#fff",
-        paddingHorizontal: 20,
-        paddingVertical: 10,
+        padding: 10,
       }}
     >
       <FlatList
         data={data}
         keyExtractor={(item) => item.id.toString()}
         renderItem={renderItem}
+        onEndReached={() => fetchData(page + 1)}
+        onEndReachedThreshold={0.5}
+        ListFooterComponent={
+          loading ? <ActivityIndicator size="large" color="#04cfd3" /> : null
+        }
       />
     </View>
   );
