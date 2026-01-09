@@ -1,10 +1,18 @@
-import { FlatList, Image, Text, ToastAndroid, TouchableOpacity, View } from "react-native";
+import {
+  FlatList,
+  Image,
+  Text,
+  ToastAndroid,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import React, { useContext, useEffect, useMemo, useState } from "react";
 import { useSelector } from "react-redux";
 import { useNavigation } from "@react-navigation/native";
 import { UserType } from "../UserContext";
 import axios from "axios";
 import { API_URL } from "../api";
+import { LinearGradient } from "expo-linear-gradient";
 
 const BookmarkedItems = () => {
   const bookmarks = useSelector((state: any) => state.bookmark.bookmarks);
@@ -130,25 +138,30 @@ const BookmarkedItems = () => {
             onPress={() => {
               isAlreadyOrdered
                 ? ToastAndroid.show(
-                  "You have already ordered this item",
-                  ToastAndroid.SHORT
-                )
+                    "You have already ordered this item",
+                    ToastAndroid.SHORT
+                  )
                 : navigation.navigate("InfoScreenBookmark" as never, {
                     item,
                     discountPercent,
                   });
             }}
-            style={{
-              marginTop: 10,
-              backgroundColor: "#ffc72c",
-              padding: 10,
-              borderRadius: 8,
-              alignItems: "center",
-            }}
           >
-            <Text style={{ color: isAlreadyOrdered ? "#666" : "#000" }}>
-              {isAlreadyOrdered ? "Already Bought" : "Wanna Buy?"}
-            </Text>
+            <LinearGradient
+              colors={["#ffde84", "#feb47b"]}
+              style={{
+                marginTop: 10,
+                width: "100%",
+                flex: 1,
+                padding: 10,
+                borderRadius: 8,
+                alignItems: "center",
+              }}
+            >
+              <Text style={{ color: isAlreadyOrdered ? "#666" : "#000" }}>
+                {isAlreadyOrdered ? "Already Bought" : "Wanna Buy?"}
+              </Text>
+            </LinearGradient>
           </TouchableOpacity>
         </View>
       </View>

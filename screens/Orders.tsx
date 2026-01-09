@@ -1,10 +1,4 @@
-import {
-  Image,
-  ScrollView,
-  Text,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import { Image, ScrollView, Text, TouchableOpacity, View } from "react-native";
 import React, { useContext, useEffect, useLayoutEffect, useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 import axios from "axios";
@@ -101,7 +95,7 @@ export default function Orders() {
           </Text>
         </TouchableOpacity>
         <TouchableOpacity
-          onPress={() => navigation.navigate("Home" as never)}
+          onPress={() => navigation.navigate("HomeScreen" as never)}
           style={{
             padding: 10,
             backgroundColor: "#E0E0E0",

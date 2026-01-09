@@ -19,7 +19,6 @@ import BookmarkedItems from "../screens/BookmarkedItems";
 import Orders from "../screens/Orders";
 import ProfileScreen from "../screens/ProfileScreen";
 import EditProfile from "../screens/EditProfile";
-import Test from "../screens/Test";
 import CheckCredentials from "../screens/CheckCredentials";
 import InfoScreenBookmark from "../screens/InfoScreenBookmark";
 import Music from "../screens/categories/Music";
