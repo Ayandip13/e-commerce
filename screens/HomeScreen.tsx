@@ -360,7 +360,7 @@ const HomeScreen = () => {
             />
           </View>
         </Pressable>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={()=>navigation.navigate('Test' as never)}>
           <Feather name="mic" size={20} color="black" />
         </TouchableOpacity>
       </View>

@@ -27,6 +27,7 @@ import Books from "../screens/categories/Books";
 import Electronics from "../screens/categories/Electronics";
 import Mobiles from "../screens/categories/Mobiles";
 import Fashion from "../screens/categories/Fashion";
+import Test from "../screens/Test";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -335,6 +336,20 @@ const StackNavigator = () => {
           component={Fashion}
           options={{
             headerTitle: "Fashion and Accessories",
+            headerStyle: {
+              backgroundColor: "#00ced1",
+            },
+            headerTitleStyle: {
+              color: "#000000",
+            },
+            headerTitleAlign: "center",
+          }}
+        />
+        <Stack.Screen
+          name="Test"
+          component={Test}
+          options={{
+            headerTitle: "Test",
             headerStyle: {
               backgroundColor: "#00ced1",
             },
