@@ -1,6 +1,6 @@
 [
   {
-    "id": "1",
+    "id": "74",
     "title": "Robot Vacuum Cleaner",
     "oldPrice": 24999,
     "price": 19999,
@@ -14,7 +14,7 @@
     "size": "Standard"
   },
   {
-    "id": "2",
+    "id": "75",
     "title": "Air Purifier with HEPA Filter",
     "oldPrice": 15999,
     "price": 12999,
@@ -28,7 +28,7 @@
     "size": "Medium"
   },
   {
-    "id": "3",
+    "id": "76",
     "title": "Microwave Oven 28L",
     "oldPrice": 12999,
     "price": 10499,
@@ -42,7 +42,7 @@
     "size": "28 Liter"
   },
   {
-    "id": "4",
+    "id": "77",
     "title": "Coffee Maker Machine",
     "oldPrice": 8999,
     "price": 7499,
@@ -56,7 +56,7 @@
     "size": "1.2L"
   },
   {
-    "id": "5",
+    "id": "78",
     "title": "Blender with 6 Speeds",
     "oldPrice": 5999,
     "price": 4799,
@@ -70,7 +70,7 @@
     "size": "1.5L Jar"
   },
   {
-    "id": "6",
+    "id": "79",
     "title": "Air Conditioner 1.5 Ton",
     "oldPrice": 44999,
     "price": 38999,
@@ -84,7 +84,7 @@
     "size": "1.5 Ton"
   },
   {
-    "id": "7",
+    "id": "80",
     "title": "Washing Machine 8kg",
     "oldPrice": 32999,
     "price": 27999,
@@ -98,7 +98,7 @@
     "size": "8 kg"
   },
   {
-    "id": "8",
+    "id": "81",
     "title": "Electric Kettle 1.8L",
     "oldPrice": 2999,
     "price": 2399,
@@ -112,7 +112,7 @@
     "size": "1.8 Liter"
   },
   {
-    "id": "9",
+    "id": "82",
     "title": "Toaster 4 Slice",
     "oldPrice": 3999,
     "price": 3299,
@@ -126,7 +126,7 @@
     "size": "4 Slice"
   },
   {
-    "id": "10",
+    "id": "83",
     "title": "Refrigerator 300L",
     "oldPrice": 54999,
     "price": 47999,
@@ -140,7 +140,7 @@
     "size": "300 Liter"
   },
   {
-    "id": "11",
+    "id": "84",
     "title": "Food Processor",
     "oldPrice": 8499,
     "price": 6999,
@@ -154,7 +154,7 @@
     "size": "3L Bowl"
   },
   {
-    "id": "12",
+    "id": "85",
     "title": "Induction Cooktop",
     "oldPrice": 5999,
     "price": 4999,
@@ -168,7 +168,7 @@
     "size": "Single Burner"
   },
   {
-    "id": "13",
+    "id": "86",
     "title": "Water Purifier RO",
     "oldPrice": 18999,
     "price": 15999,
@@ -182,7 +182,7 @@
     "size": "8L Storage"
   },
   {
-    "id": "14",
+    "id": "87",
     "title": "Iron Steam Brush",
     "oldPrice": 3499,
     "price": 2799,
@@ -196,7 +196,7 @@
     "size": "Standard"
   },
   {
-    "id": "15",
+    "id": "88",
     "title": "Electric Chimney",
     "oldPrice": 12999,
     "price": 10999,

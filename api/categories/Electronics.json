@@ -1,6 +1,6 @@
 [
   {
-    "id": "1",
+    "id": "44",
     "title": "Wireless Bluetooth Headphones",
     "oldPrice": 12999,
     "price": 8999,
@@ -14,7 +14,7 @@
     "size": "Default"
   },
   {
-    "id": "2",
+    "id": "45",
     "title": "Smartphone 5G 128GB",
     "oldPrice": 49999,
     "price": 42999,
@@ -28,7 +28,7 @@
     "size": "Default"
   },
   {
-    "id": "3",
+    "id": "46",
     "title": "Gaming Laptop RTX 4060",
     "oldPrice": 124999,
     "price": 109999,
@@ -42,7 +42,7 @@
     "size": "16-inch"
   },
   {
-    "id": "4",
+    "id": "47",
     "title": "Smart Watch Series 8",
     "oldPrice": 29999,
     "price": 24999,
@@ -56,7 +56,7 @@
     "size": "44mm"
   },
   {
-    "id": "5",
+    "id": "48",
     "title": "Noise Cancelling Earbuds",
     "oldPrice": 15999,
     "price": 11999,
@@ -70,7 +70,7 @@
     "size": "Default"
   },
   {
-    "id": "6",
+    "id": "49",
     "title": "4K Ultra HD Smart TV",
     "oldPrice": 74999,
     "price": 64999,
@@ -84,7 +84,7 @@
     "size": "55-inch"
   },
   {
-    "id": "7",
+    "id": "50",
     "title": "Tablet 10.5 inch 256GB",
     "oldPrice": 45999,
     "price": 38999,
@@ -98,7 +98,7 @@
     "size": "10.5-inch"
   },
   {
-    "id": "8",
+    "id": "51",
     "title": "Wireless Mechanical Keyboard",
     "oldPrice": 12999,
     "price": 9999,
@@ -112,7 +112,7 @@
     "size": "Full Size"
   },
   {
-    "id": "9",
+    "id": "52",
     "title": "Portable Bluetooth Speaker",
     "oldPrice": 8999,
     "price": 6999,
@@ -127,7 +127,7 @@
     "size": "Default"
   },
   {
-    "id": "10",
+    "id": "53",
     "title": "DSLR Camera Kit 24MP",
     "oldPrice": 84999,
     "price": 74999,
@@ -141,7 +141,7 @@
     "size": "Default"
   },
   {
-    "id": "11",
+    "id": "54",
     "title": "Fitness Tracker Band",
     "oldPrice": 7999,
     "price": 5999,
@@ -155,7 +155,7 @@
     "size": "Regular"
   },
   {
-    "id": "12",
+    "id": "55",
     "title": "Gaming Mouse RGB",
     "oldPrice": 4999,
     "price": 3499,
@@ -169,7 +169,7 @@
     "size": "Default"
   },
   {
-    "id": "13",
+    "id": "56",
     "title": "External SSD 1TB",
     "oldPrice": 12999,
     "price": 9999,
@@ -183,7 +183,7 @@
     "size": "1TB"
   },
   {
-    "id": "14",
+    "id": "57",
     "title": "Wireless Charging Pad",
     "oldPrice": 3999,
     "price": 2999,
@@ -197,7 +197,7 @@
     "size": "Fast Charging"
   },
   {
-    "id": "15",
+    "id": "58",
     "title": "Smart Home Security Camera",
     "oldPrice": 8999,
     "price": 7499,

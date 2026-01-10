@@ -101,7 +101,7 @@ const list: Product[] = [
 
 const deals: Deal[] = [
   {
-    id: "20",
+    id: "21",
     title: "OnePlus Nord CE 3 Lite 5G (Pastel Lime, 8GB RAM, 128GB Storage)",
     oldPrice: 25000,
     price: 19000,
@@ -117,7 +117,7 @@ const deals: Deal[] = [
     size: "6 GB RAM 128GB Storage",
   },
   {
-    id: "30",
+    id: "22",
     title:
       "Samsung Galaxy S20 FE 5G (Cloud Navy, 8GB RAM, 128GB Storage) with No Cost EMI & Additional Exchange Offers",
     oldPrice: 74000,
@@ -134,7 +134,7 @@ const deals: Deal[] = [
     size: "8 GB RAM 128GB Storage",
   },
   {
-    id: "40",
+    id: "23",
     title:
       "Samsung Galaxy M14 5G (ICY Silver, 4GB, 128GB Storage) | 50MP Triple Cam | 6000 mAh Battery | 5nm Octa-Core Processor | Android 13 | Without Charger",
     oldPrice: 16000,
@@ -150,7 +150,7 @@ const deals: Deal[] = [
     size: "6 GB RAM 64GB Storage",
   },
   {
-    id: "50",
+    id: "24",
     title:
       "realme narzo N55 (Prime Blue, 4GB+64GB) 33W Segment Fastest Charging | Super High-res 64MP Primary AI Camera",
     oldPrice: 12999,
@@ -169,7 +169,7 @@ const deals: Deal[] = [
 
 const offers: offer[] = [
   {
-    id: "0",
+    id: "25",
     title:
       "Oppo Enco Air3 Pro True Wireless in Ear Earbuds with Industry First Composite Bamboo Fiber, 49dB ANC, 30H Playtime, 47ms Ultra Low Latency,Fast Charge,BT 5.3 (Green)",
     offer: "72% off",
@@ -187,7 +187,7 @@ const offers: offer[] = [
     size: "Normal",
   },
   {
-    id: "1",
+    id: "26",
     title:
       "Fastrack Limitless FS1 Pro Smart Watch|1.96 Super AMOLED Arched Display with 410x502 Pixel Resolution|SingleSync BT Calling|NitroFast Charging|110+ Sports Modes|200+ Watchfaces|Upto 7 Days Battery",
     offer: "40%",
@@ -203,7 +203,7 @@ const offers: offer[] = [
     size: "Normal",
   },
   {
-    id: "2",
+    id: "27",
     title: "Aishwariya System On Ear Wireless On Ear Bluetooth Headphones",
     offer: "40%",
     oldPrice: 7955,
@@ -214,7 +214,7 @@ const offers: offer[] = [
     size: "Normal",
   },
   {
-    id: "3",
+    id: "28",
     title:
       "Fastrack Limitless FS1 Pro Smart Watch|1.96 Super AMOLED Arched Display with 410x502 Pixel Resolution|SingleSync BT Calling|NitroFast Charging|110+ Sports Modes|200+ Watchfaces|Upto 7 Days Battery",
     offer: "40%",
