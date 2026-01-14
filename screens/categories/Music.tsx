@@ -117,7 +117,7 @@ const Music = () => {
 
           <TouchableOpacity
             onPress={() =>
-              navigation.navigate("ProductInfoScreen" as never, item as never)
+              navigation.navigate("ProductInfoScreen" as never, { ...item, item: item } as never)
             }
           >
             <LinearGradient

@@ -1,6 +1,6 @@
-import { Image, ScrollView, Text, TouchableOpacity, View } from "react-native";
-import React, { useContext, useEffect, useLayoutEffect, useState } from "react";
-import { useNavigation } from "@react-navigation/native";
+import { Image, ScrollView, Text, TouchableOpacity, View, RefreshControl, ToastAndroid, ActivityIndicator } from "react-native";
+import React, { useContext, useEffect, useLayoutEffect, useState, useCallback } from "react";
+import { useNavigation, useFocusEffect } from "@react-navigation/native";
 import axios from "axios";
 import { UserType } from "../UserContext";
 import { API_URL } from "../api";
@@ -11,17 +11,23 @@ export default function Orders() {
   const [user, setUser] = useState(null);
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [refreshing, setRefreshing] = useState(false);
 
   const getOrders = async () => {
     try {
       setLoading(true);
       const res = await axios.get(`${API_URL}orders/${userId}`);
-      setOrders(res.data.orders);
-      // console.log(res.data.orders);
+      if (res.data.orders) {
+        setOrders(res.data.orders);
+        // Debugging: Notify user of count
+        // ToastAndroid.show(`Fetched ${res.data.orders.length} orders`, ToastAndroid.SHORT);
+      }
     } catch (error) {
       console.log("error", error);
+      // ToastAndroid.show("Failed to fetch orders", ToastAndroid.SHORT);
     } finally {
       setLoading(false);
+      setRefreshing(false);
     }
   };
 
@@ -34,10 +40,24 @@ export default function Orders() {
     }
   };
 
-  useEffect(() => {
-    getUser();
+  const onRefresh = useCallback(() => {
+    setRefreshing(true);
     getOrders();
-  }, []);
+  }, [userId]);
+
+  useEffect(() => {
+    if(userId) {
+       getUser();
+    }
+  }, [userId]);
+
+  useFocusEffect(
+    useCallback(() => {
+      if (userId) {
+        getOrders();
+      }
+    }, [userId])
+  );
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -112,7 +132,7 @@ export default function Orders() {
           Your Orders
         </Text>
 
-        {loading ? (
+        {loading && !refreshing ? (
           <View
             style={{
               flex: 1,
@@ -121,12 +141,18 @@ export default function Orders() {
               marginTop: 50,
             }}
           >
-            <Text style={{ fontSize: 18, fontWeight: "bold", color: "#666" }}>
-              Loading...
+            <ActivityIndicator size="large" color="#00ced1" />
+            <Text style={{ fontSize: 18, fontWeight: "bold", color: "#666", marginTop: 10 }}>
+              Loading Orders...
             </Text>
           </View>
         ) : orders.length > 0 ? (
-          <ScrollView showsHorizontalScrollIndicator={false}>
+          <ScrollView 
+            showsVerticalScrollIndicator={false}
+            refreshControl={
+              <RefreshControl refreshing={refreshing} onRefresh={onRefresh} progressBackgroundColor="#dafeffff" />
+            }
+          >
             {orders.map((order, index) => (
               <TouchableOpacity
                 onPress={() =>
@@ -186,18 +212,16 @@ export default function Orders() {
             ))}
           </ScrollView>
         ) : (
-          <View
-            style={{
-              flex: 1,
-              justifyContent: "center",
-              alignItems: "center",
-              marginTop: 50,
-            }}
+          <ScrollView 
+            contentContainerStyle={{ flex: 1, justifyContent: "center", alignItems: "center" }}
+            refreshControl={
+              <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+            }
           >
             <Text style={{ fontSize: 18, fontWeight: "bold", color: "#666" }}>
               No orders found
             </Text>
-          </View>
+          </ScrollView>
         )}
       </View>
     </View>

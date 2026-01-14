@@ -229,7 +229,12 @@ const ProductInfoScreen = () => {
           </TouchableOpacity>
 
           <TouchableOpacity
-            onPress={() => navigation.navigate("Confirm" as never)}
+            onPress={() => {
+              if(route?.item) {
+                 dispatch(addToCart(route?.item));
+                 navigation.navigate("Confirm" as never)
+              }
+            }}
           >
             <LinearGradient
               colors={["#ff9900", "#fff672"]}
