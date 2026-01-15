@@ -59,7 +59,7 @@ const ConfirmationScreen = () => {
       // This line extracts the 'addresses' field (an array) from that data.
       setAddresses(addresses);
     } catch (error) {
-      console.log("Error fetching addresses:", error);
+      // console.log("Error fetching addresses:", error);
     }
   };
   const totalPrice = cartItems
@@ -83,10 +83,10 @@ const ConfirmationScreen = () => {
         dispatch(cleanCart());
         // console.log("Order placed successfully", response.data);
       } else {
-        console.log("Error placing order", response.data);
+        // console.log("Error placing order", response.data);
       }
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     } finally {
       setLoading(false);
     }
@@ -335,9 +335,9 @@ const ConfirmationScreen = () => {
                           selectedAddress
                             ? setCurrentStep(1)
                             : ToastAndroid.show(
-                                "Please select an address",
-                                ToastAndroid.SHORT
-                              );
+                              "Please select an address",
+                              ToastAndroid.SHORT
+                            );
                         }}
                       >
                         <LinearGradient
@@ -461,7 +461,7 @@ const ConfirmationScreen = () => {
                 {
                   text: "Cancel",
                   onPress: () => {
-                    console.log("Cancel Pressed");
+                    // console.log("Cancel Pressed");
                   },
                 },
                 {

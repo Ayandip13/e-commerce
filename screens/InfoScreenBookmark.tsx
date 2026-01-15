@@ -24,7 +24,7 @@ const InfoScreenBookmark = () => {
     setTimeout(() => setAddedToCart(false), 1000);
   };
   const navigation = useNavigation();
-  console.log(params);
+  // console.log(params);
   return (
     <ScrollView
       style={{

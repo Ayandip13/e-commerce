@@ -13,10 +13,10 @@ const CheckCredentials = () => {
   const getUser = async () => {
     try {
       const res = await axios.get(`${API_URL}profile/${userId}`);
-      console.log(res.data.user);
+      // console.log(res.data.user);
       setUser(res.data.user);
     } catch (error) {
-      console.log("error", error);
+      // console.log("error", error);
     }
   };
   useEffect(() => {

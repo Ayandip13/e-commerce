@@ -1,12 +1,13 @@
 import {
   Dimensions,
   ImageBackground,
+  Modal,
   ScrollView,
   Text,
   TouchableOpacity,
   View,
 } from "react-native";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { MaterialCommunityIcons, Ionicons } from "@expo/vector-icons";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import { useDispatch, useSelector } from "react-redux";
@@ -14,6 +15,9 @@ import { addToCart } from "../redux/CartReducer";
 import { StatusBar } from "expo-status-bar";
 import { addToBookmark, removeBookmark } from "../redux/BookmarkReducer";
 import { LinearGradient } from "expo-linear-gradient";
+import { UserType } from "../UserContext";
+import axios from "axios";
+import { API_URL } from "../api";
 
 const ProductInfoScreen = () => {
   const routeParams = useRoute();
@@ -24,9 +28,34 @@ const ProductInfoScreen = () => {
   const dispatch = useDispatch();
   const [addedToCart, setAddedToCart] = useState(false);
   const [pressedBookmark, setPressedBookmark] = useState(false);
+  const { userId } = useContext(UserType);
+  const [loading, setLoading] = useState(false);
+  const [orders, setOrders] = useState([]);
+  const [modalVisible, setModalVisible] = useState(false);
 
   const bookmarks = useSelector((state: any) => state.bookmark.bookmarks);
   // console.log("products from productInfoScreen", routeParams);
+  const getOrders = async () => {
+    try {
+      setLoading(true);
+      const res = await axios.get(`${API_URL}orders/${userId}`);
+      setOrders(res.data.orders);
+      // console.log(res.data.orders);
+    } catch (error) {
+      console.log("error", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const alreadyBuyed = () => {
+    return orders.some((order: any) => order.products.some((product: any) => product.name === route?.item?.title));
+  }
+
+  useEffect(() => {
+    getOrders();
+  }, []);
+
   useEffect(() => {
     const currentProductId = String(route?.item?.productId ?? route?.item?.id);
     const isBookmarked = bookmarks.some(
@@ -62,7 +91,7 @@ const ProductInfoScreen = () => {
             position: "absolute",
             top: 35,
             left: 15,
-            backgroundColor: "#c60c318a",
+            backgroundColor: "#c60c31a8",
             width: 45,
             height: 45,
             borderRadius: 22.5,
@@ -229,14 +258,18 @@ const ProductInfoScreen = () => {
 
           <TouchableOpacity
             onPress={() => {
-              if(route?.item) {
-                 dispatch(addToCart(route?.item));
-                 navigation.navigate("Confirm" as never)
+              if (route?.item) {
+                dispatch(addToCart(route?.item));
+                if (alreadyBuyed()) {
+                  setModalVisible(true);
+                } else {
+                  navigation.navigate("Confirm" as never);
+                }
               }
             }}
           >
             <LinearGradient
-              colors={["#ff9900", "#fff672"]}
+              colors={["#fff672", "#ff9900"]}
               style={{
                 padding: 10,
                 borderRadius: 10,
@@ -249,6 +282,96 @@ const ProductInfoScreen = () => {
           </TouchableOpacity>
         </View>
       </View>
+      <Modal
+        onRequestClose={() => setModalVisible(false)}
+        transparent
+        visible={modalVisible}
+        animationType="slide"
+      >
+        <View
+          style={{
+            flex: 1,
+            justifyContent: "center",
+            alignItems: "center",
+            backgroundColor: "rgba(0, 0, 0, 0.14)",
+          }}>
+          <LinearGradient
+            colors={["#d4faffff", "#fff", "#d4faffff"]}
+            start={{ x: 1, y: 0 }}
+            end={{ x: 0, y: 1 }}
+            style={{
+              width: "80%",
+              borderRadius: 10,
+              height: "20%",
+              borderWidth: 0.5,
+              borderColor: "#00ced1",
+              paddingHorizontal: 20,
+            }}>
+            <Text
+              style={{
+                fontSize: 18,
+                paddingTop: 30,
+                textAlign: "center",
+              }}
+            >
+              You have already buyed this product, Want to buy again?
+            </Text>
+
+            <View
+              style={{
+                flexDirection: "row",
+                justifyContent: "space-between",
+                marginTop: 20,
+                gap: 10,
+              }}
+            >
+              <TouchableOpacity
+                style={{ flex: 1 }}
+                onPress={() => setModalVisible(false)}
+                activeOpacity={0.8}
+              >
+                <LinearGradient
+                  colors={["#fff787ff", "#ffb13dff"]}
+                  style={{
+                    height: 45,
+                    borderRadius: 10,
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                >
+                  <Text style={{ color: "#000", fontSize: 15, fontWeight: "600" }}>
+                    Cancel
+                  </Text>
+                </LinearGradient>
+              </TouchableOpacity>
+
+              <TouchableOpacity
+                style={{ flex: 1 }}
+                activeOpacity={0.8}
+                onPress={() => {
+                  navigation.navigate("Confirm" as never);
+                  setModalVisible(false);
+                }}
+              >
+                <LinearGradient
+                  colors={["#fff787ff", "#ffb13dff"]}
+                  style={{
+                    height: 45,
+                    borderRadius: 10,
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                >
+                  <Text style={{ color: "#000", fontSize: 15, fontWeight: "600" }}>
+                    Buy Again
+                  </Text>
+                </LinearGradient>
+              </TouchableOpacity>
+            </View>
+
+          </LinearGradient>
+        </View>
+      </Modal>
     </ScrollView>
   );
 };

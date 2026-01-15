@@ -28,7 +28,7 @@ const BookmarkedItems = () => {
       setOrders(res.data.orders);
       // console.log(res.data.orders);
     } catch (error) {
-      console.log("error", error);
+      // console.log("error", error);
     } finally {
       setLoading(false);
     }
@@ -138,13 +138,13 @@ const BookmarkedItems = () => {
             onPress={() => {
               isAlreadyOrdered
                 ? ToastAndroid.show(
-                    "You have already ordered this item",
-                    ToastAndroid.SHORT
-                  )
+                  "You have already ordered this item",
+                  ToastAndroid.SHORT
+                )
                 : navigation.navigate("InfoScreenBookmark" as never, {
-                    item,
-                    discountPercent,
-                  });
+                  item,
+                  discountPercent,
+                });
             }}
           >
             <LinearGradient

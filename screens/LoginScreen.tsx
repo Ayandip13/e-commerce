@@ -51,7 +51,7 @@ const LoginScreen = () => {
       const token = response.data.token;
       await AsyncStorage.setItem("authToken", token);
 
-      console.log(response);
+      // console.log(response);
       ToastAndroid.show(
         "Logged in successfully! Welcome back.",
         ToastAndroid.SHORT

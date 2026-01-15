@@ -49,7 +49,7 @@ const RegisterScreen = () => {
         password: password.trim(),
       };
       const response = await axios.post(`${API_URL}register`, user);
-      console.log(response.data);
+      // console.log(response.data);
       Toast.success("Registration Successful! Please log in.");
       setEmail("");
       setPassword("");

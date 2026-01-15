@@ -80,7 +80,7 @@ const EditProfile = () => {
       setPassword("");
       setImage(null);
 
-      console.log("Profile updated:", response.data);
+      // console.log("Profile updated:", response.data);
 
       ToastAndroid.show("Profile updated successfully!", ToastAndroid.SHORT);
       navigation.goBack();
@@ -100,7 +100,7 @@ const EditProfile = () => {
       const res = await axios.get(`${API_URL}profile/${userId}`);
       setUser(res.data.user);
     } catch (error) {
-      console.log("error", error);
+      // console.log("error", error);
     }
   };
 
