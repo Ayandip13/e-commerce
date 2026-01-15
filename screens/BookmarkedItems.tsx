@@ -148,7 +148,7 @@ const BookmarkedItems = () => {
             }}
           >
             <LinearGradient
-              colors={["#ffde84", "#feb47b"]}
+              colors={["#fffd71ff", "#feb47b"]}
               style={{
                 marginTop: 10,
                 width: "100%",

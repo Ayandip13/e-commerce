@@ -1,5 +1,20 @@
-import { Image, ScrollView, Text, TouchableOpacity, View, RefreshControl, ToastAndroid, ActivityIndicator } from "react-native";
-import React, { useContext, useEffect, useLayoutEffect, useState, useCallback } from "react";
+import {
+  Image,
+  ScrollView,
+  Text,
+  TouchableOpacity,
+  View,
+  RefreshControl,
+  ToastAndroid,
+  ActivityIndicator,
+} from "react-native";
+import React, {
+  useContext,
+  useEffect,
+  useLayoutEffect,
+  useState,
+  useCallback,
+} from "react";
 import { useNavigation, useFocusEffect } from "@react-navigation/native";
 import axios from "axios";
 import { UserType } from "../UserContext";
@@ -46,8 +61,8 @@ export default function Orders() {
   }, [userId]);
 
   useEffect(() => {
-    if(userId) {
-       getUser();
+    if (userId) {
+      getUser();
     }
   }, [userId]);
 
@@ -142,15 +157,26 @@ export default function Orders() {
             }}
           >
             <ActivityIndicator size="large" color="#00ced1" />
-            <Text style={{ fontSize: 18, fontWeight: "bold", color: "#666", marginTop: 10 }}>
+            <Text
+              style={{
+                fontSize: 18,
+                fontWeight: "bold",
+                color: "#666",
+                marginTop: 10,
+              }}
+            >
               Loading Orders...
             </Text>
           </View>
         ) : orders.length > 0 ? (
-          <ScrollView 
+          <ScrollView
             showsVerticalScrollIndicator={false}
             refreshControl={
-              <RefreshControl refreshing={refreshing} onRefresh={onRefresh} progressBackgroundColor="#dafeffff" />
+              <RefreshControl
+                refreshing={refreshing}
+                onRefresh={onRefresh}
+                progressBackgroundColor="#dafeffff"
+              />
             }
           >
             {orders.map((order, index) => (
@@ -212,8 +238,12 @@ export default function Orders() {
             ))}
           </ScrollView>
         ) : (
-          <ScrollView 
-            contentContainerStyle={{ flex: 1, justifyContent: "center", alignItems: "center" }}
+          <ScrollView
+            contentContainerStyle={{
+              flex: 1,
+              justifyContent: "center",
+              alignItems: "center",
+            }}
             refreshControl={
               <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
             }

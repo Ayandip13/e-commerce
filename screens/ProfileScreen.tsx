@@ -7,8 +7,8 @@ import {
   Modal,
   StyleSheet,
 } from "react-native";
-import React, { useContext, useEffect, useLayoutEffect, useState } from "react";
-import { useNavigation } from "@react-navigation/native";
+import React, { useCallback, useContext, useEffect, useLayoutEffect, useState } from "react";
+import { useFocusEffect, useNavigation } from "@react-navigation/native";
 import axios from "axios";
 import { API_URL } from "../api";
 import { UserType } from "../UserContext";
@@ -22,6 +22,11 @@ const ProfileScreen = () => {
     pressEdit: false,
     logout: false,
   });
+  useFocusEffect(
+    useCallback(() => {
+      getUser();
+    }, [])
+  );
 
   useLayoutEffect(() => {
     navigation.setOptions({

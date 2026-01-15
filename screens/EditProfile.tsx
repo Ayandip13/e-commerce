@@ -83,6 +83,7 @@ const EditProfile = () => {
       console.log("Profile updated:", response.data);
 
       ToastAndroid.show("Profile updated successfully!", ToastAndroid.SHORT);
+      navigation.goBack();
     } catch (error) {
       console.error("Error updating profile:", error?.response?.data || error);
       ToastAndroid.show(

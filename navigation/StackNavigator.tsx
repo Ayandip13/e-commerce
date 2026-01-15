@@ -129,7 +129,6 @@ const StackNavigator = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        // screenOptions={{ headerShown: false }}
         initialRouteName={initialRoute}
       >
         <Stack.Screen
@@ -156,7 +155,7 @@ const StackNavigator = () => {
               backgroundColor: "#00ced1",
             },
             headerTitleStyle: {
-              color: "#00ced1",
+              color: "#555",
             },
           }}
         />
@@ -169,7 +168,7 @@ const StackNavigator = () => {
               backgroundColor: "#00ced1",
             },
             headerTitleStyle: {
-              color: "#00ced1",
+              color: "#555",
             },
           }}
         />
@@ -182,7 +181,7 @@ const StackNavigator = () => {
               backgroundColor: "#00ced1",
             },
             headerTitleStyle: {
-              color: "#00ced1",
+              color: "#555",
             },
           }}
         />
@@ -205,7 +204,7 @@ const StackNavigator = () => {
               backgroundColor: "#00ced1",
             },
             headerTitleStyle: {
-              color: "#00ced1",
+              color: "#555",
             },
           }}
         />
@@ -218,7 +217,7 @@ const StackNavigator = () => {
               backgroundColor: "#00ced1",
             },
             headerTitleStyle: {
-              color: "#00ced1",
+              color: "#555",
             },
           }}
         />
@@ -226,12 +225,12 @@ const StackNavigator = () => {
           name="EditProfile"
           component={EditProfile}
           options={{
-            headerTitle: "",
+            headerTitle: "Edit Profile",
             headerStyle: {
               backgroundColor: "#00ced1",
             },
             headerTitleStyle: {
-              color: "#00ced1",
+              color: "#555",
             },
           }}
         />
@@ -244,7 +243,7 @@ const StackNavigator = () => {
               backgroundColor: "#00ced1",
             },
             headerTitleStyle: {
-              color: "#00ced1",
+              color: "#555",
             },
           }}
         />
@@ -257,7 +256,7 @@ const StackNavigator = () => {
               backgroundColor: "#00ced1",
             },
             headerTitleStyle: {
-              color: "#00ced1",
+              color: "#555",
             },
           }}
         />
@@ -270,7 +269,7 @@ const StackNavigator = () => {
               backgroundColor: "#00ced1",
             },
             headerTitleStyle: {
-              color: "#000000",
+              color: "#555",
             },
             headerTitleAlign: "center",
           }}
@@ -284,7 +283,7 @@ const StackNavigator = () => {
               backgroundColor: "#00ced1",
             },
             headerTitleStyle: {
-              color: "#000000",
+              color: "#555",
             },
             headerTitleAlign: "center",
           }}
@@ -298,7 +297,7 @@ const StackNavigator = () => {
               backgroundColor: "#00ced1",
             },
             headerTitleStyle: {
-              color: "#000000",
+              color: "#555",
             },
             headerTitleAlign: "center",
           }}
@@ -312,7 +311,7 @@ const StackNavigator = () => {
               backgroundColor: "#00ced1",
             },
             headerTitleStyle: {
-              color: "#000000",
+              color: "#555",
             },
             headerTitleAlign: "center",
           }}
@@ -326,7 +325,7 @@ const StackNavigator = () => {
               backgroundColor: "#00ced1",
             },
             headerTitleStyle: {
-              color: "#000000",
+              color: "#555",
             },
             headerTitleAlign: "center",
           }}
@@ -340,7 +339,7 @@ const StackNavigator = () => {
               backgroundColor: "#00ced1",
             },
             headerTitleStyle: {
-              color: "#000000",
+              color: "#555",
             },
             headerTitleAlign: "center",
           }}
@@ -354,7 +353,7 @@ const StackNavigator = () => {
               backgroundColor: "#00ced1",
             },
             headerTitleStyle: {
-              color: "#000000",
+              color: "#555",
             },
             headerTitleAlign: "center",
           }}
