@@ -19,6 +19,7 @@ import { useNavigation } from "@react-navigation/native";
 import { API_URL } from "../api";
 import axios from "axios";
 import { UserType } from "../UserContext";
+import { LinearGradient } from "expo-linear-gradient";
 
 const EditProfile = () => {
   const [modalVisible, setModalVisible] = useState(false);
@@ -341,23 +342,28 @@ const EditProfile = () => {
 
           <TouchableOpacity
             onPress={handleUpdateProfile}
-            style={{
-              marginTop: "15%",
-              alignItems: "center",
-              padding: 15,
-              backgroundColor: "#febe10",
-              borderRadius: 5,
-            }}
           >
-            <Text
+            <LinearGradient
+              colors={["#FAEB92", "#E5BA41", "#FAEB92"]}
+              start={{ x: 0, y: 0 }}
+              end={{ x: 1, y: 1 }}
               style={{
-                color: "#000",
-                fontSize: 16,
-                fontWeight: "600",
+                padding: 13,
+                borderRadius: 8,
+                marginTop: "15%",
+                alignItems: "center",
               }}
             >
-              {loading.updateProfile ? "Updating..." : "Submit Changes"}
-            </Text>
+              <Text
+                style={{
+                  color: "#000",
+                  fontSize: 16,
+                  fontWeight: "600",
+                }}
+              >
+                {loading.updateProfile ? "Updating..." : "Submit Changes"}
+              </Text>
+            </LinearGradient>
           </TouchableOpacity>
         </ScrollView>
       </KeyboardAvoidingView>

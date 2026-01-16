@@ -76,7 +76,7 @@ const CartScreen = () => {
           >
             <Feather name="search" size={20} color="black" />
             <TextInput
-              placeholder="Search Amazon.in"
+              placeholder="Search Bookosaurus.in"
               placeholderTextColor="#808080"
             />
           </View>
@@ -118,12 +118,12 @@ const CartScreen = () => {
               }}
             >
               {cart.length > 0 ? (
-              <Text style={{ fontSize: 16 }}>
-                Proceed to Buy {cart.length} items
-              </Text>
-            ) : (
-              <Text style={{ fontSize: 16 }}>Proceed to Buy</Text>
-            )}
+                <Text style={{ fontSize: 16 }}>
+                  Proceed to Buy {cart.length} items
+                </Text>
+              ) : (
+                <Text style={{ fontSize: 16 }}>Proceed to Buy</Text>
+              )}
             </LinearGradient>
           </TouchableOpacity>
         </View>

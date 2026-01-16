@@ -193,7 +193,9 @@ const StackNavigator = () => {
         <Stack.Screen
           name="OrderScreen"
           component={OrderScreen}
-          options={{ headerShown: false }}
+          options={{
+            headerShown: false,
+          }}
         />
         <Stack.Screen
           name="OrderedItem"
@@ -226,6 +228,7 @@ const StackNavigator = () => {
           component={EditProfile}
           options={{
             headerTitle: "Edit Profile",
+            headerTitleAlign: "center",
             headerStyle: {
               backgroundColor: "#00ced1",
             },

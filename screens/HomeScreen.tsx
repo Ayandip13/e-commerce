@@ -355,12 +355,12 @@ const HomeScreen = () => {
           >
             <Feather name="search" size={20} color="black" />
             <TextInput
-              placeholder="Search Amazon.in"
+              placeholder="Search Bookosaurus.in"
               placeholderTextColor="#808080"
             />
           </View>
         </Pressable>
-        <TouchableOpacity onPress={()=>navigation.navigate('Test' as never)}>
+        <TouchableOpacity onPress={() => navigation.navigate('Test' as never)}>
           <Feather name="mic" size={20} color="black" />
         </TouchableOpacity>
       </View>

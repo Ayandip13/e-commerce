@@ -1,3 +1,4 @@
+
 import {
   FlatList,
   Image,
@@ -12,6 +13,7 @@ import { useRoute } from "@react-navigation/native";
 import { useDispatch, useSelector } from "react-redux";
 import { Entypo } from "@expo/vector-icons";
 import { addToBookmark, removeBookmark } from "../redux/BookmarkReducer";
+import { LinearGradient } from "expo-linear-gradient";
 const { width } = Dimensions.get("window");
 
 const OrderedItem = () => {
@@ -172,36 +174,31 @@ const OrderedItem = () => {
               <TouchableOpacity
                 onPress={() => {
                   ToastAndroid.show(
-                    "Order can't be Cancelled",
+                    "Order can't be Cancelled, as it has already been Delivered",
                     ToastAndroid.SHORT
                   );
                 }}
-                style={{
-                  alignSelf: "center",
-                  backgroundColor: "#ffc72c",
-                  borderRadius: 8,
-                  paddingVertical: 8,
-                  paddingHorizontal: 16,
-                  shadowColor: "#f0c14b",
-                  shadowOffset: { width: 0, height: 2 },
-                  shadowOpacity: 0.8,
-                  shadowRadius: 2,
-                  elevation: 5,
-                  width: width * 0.9,
-                  height: 50,
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
               >
-                <Text
+                <LinearGradient
+                  colors={["#E5BA41", "#FAEB92", "#E5BA41"]}
+                  start={{ x: 0, y: 0 }}
+                  end={{ x: 1, y: 1 }}
                   style={{
-                    fontSize: 16,
-                    fontWeight: "600",
-                    textAlign: "center",
+                    padding: 13,
+                    borderRadius: 8,
+                    alignItems: "center",
                   }}
                 >
-                  Cancel Order
-                </Text>
+                  <Text
+                    style={{
+                      fontSize: 16,
+                      fontWeight: "600",
+                      textAlign: "center",
+                    }}
+                  >
+                    Cancel Order
+                  </Text>
+                </LinearGradient>
               </TouchableOpacity>
             </View>
 

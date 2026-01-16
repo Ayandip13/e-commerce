@@ -80,9 +80,13 @@ export default function Orders() {
       headerStyle: { backgroundColor: "#00ced1" },
       headerLeft: () => (
         <Image
-          source={require("../assets/amazon.png")}
+          source={require("../assets/Bookosaurus.png")}
           resizeMode="contain"
-          style={{ width: 100, height: 40 }}
+          style={{
+            width: 130,
+            height: 60,
+            marginRight: 50,
+          }}
         />
       ),
       headerRight: () => (

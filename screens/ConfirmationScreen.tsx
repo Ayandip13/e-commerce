@@ -97,7 +97,7 @@ const ConfirmationScreen = () => {
       const options = {
         description: "Adding to wallet",
         currency: "INR",
-        name: "Amazon",
+        name: "amazon",
         key: "rzp_test_Rt8PpDIRVoaieq",
         amount: totalPrice * 100,
         prefill: {
@@ -617,19 +617,23 @@ const ConfirmationScreen = () => {
 
           <TouchableOpacity
             onPress={handlePlaceOrder}
-            style={{
-              backgroundColor: "#ffc72c",
-              padding: 10,
-              borderRadius: 5,
-              alignItems: "center",
-              marginTop: 20,
-            }}
           >
-            {loading ? (
-              <Text>Placing order...</Text>
-            ) : (
-              <Text style={{ fontWeight: "600" }}>Place your order</Text>
-            )}
+
+            <LinearGradient
+              colors={["#ffc72c", "#ffe59fff"]}
+              style={{
+                padding: 10,
+                borderRadius: 8,
+                alignItems: "center",
+                marginTop: 20,
+              }}
+            >
+              {loading ? (
+                <Text>Placing order...</Text>
+              ) : (
+                <Text style={{ fontWeight: "600" }}>Place your order</Text>
+              )}
+            </LinearGradient>
           </TouchableOpacity>
         </View>
       )}
