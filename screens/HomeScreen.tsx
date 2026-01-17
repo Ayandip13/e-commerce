@@ -332,7 +332,8 @@ const HomeScreen = () => {
           paddingRight: 15,
         }}
       >
-        <Pressable
+        <TouchableOpacity
+          activeOpacity={0.9}
           style={{
             flexDirection: "row",
             alignItems: "center",
@@ -358,12 +359,13 @@ const HomeScreen = () => {
             <TextInput
               placeholder="Search Bookosaurus.in"
               placeholderTextColor="#808080"
+              readOnly
             />
           </View>
-        </Pressable>
-        <TouchableOpacity>
-          <Feather name="mic" size={20} color="black" />
         </TouchableOpacity>
+        <Pressable>
+          <Feather name="mic" size={20} color="black" />
+        </Pressable>
       </View>
       <ScrollView style={{ marginTop: Platform.OS === "android" ? 0 : 0 }}>
         <TouchableOpacity

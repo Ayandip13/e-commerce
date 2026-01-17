@@ -219,7 +219,7 @@ app.get("/orders/:userId", async (req, res) => {
   }
 });
 
-//endpoint to get products by category
+//endpoint to get products by category with pagination
 app.get("/categories/:categoryName", async (req, res) => {
   try {
     const categoryName = req.params.categoryName;
@@ -255,6 +255,35 @@ app.get("/categories/:categoryName", async (req, res) => {
     res.status(500).json({ message: "Error getting products" });
   }
 });
+
+//endpoint to get all products by category
+app.get("/categories/:categoryName/all", async (req, res) => {
+  try {
+    const { categoryName } = req.params;
+
+    const fileName = `${categoryName
+      .charAt(0)
+      .toUpperCase()}${categoryName.slice(1)}.json`;
+    const filePath = path.join(__dirname, "categories", fileName);
+
+    if (!fs.existsSync(filePath)) {
+      return res.status(404).json({ message: "Category not found" });
+    }
+
+    const jsonData = fs.readFileSync(filePath, "utf-8");
+    const products = JSON.parse(jsonData);
+
+    res.status(200).json({
+      totalItems: products.length,
+      products,
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Error getting products" });
+  }
+});
+// GET /categories/electronics/all
+
 
 //endpoint to upload profile picture
 app.put(
