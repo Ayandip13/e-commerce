@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { Feather } from '@expo/vector-icons'
 import axios from 'axios'
 import { API_URL } from '../api';
+import { useNavigation } from '@react-navigation/native';
 
 interface Product {
     id: number;
@@ -39,7 +40,7 @@ interface offer {
 const SearchScreen = () => {
     const [searchQuery, setSearchQuery] = useState<string>('');
     const [products, setProducts] = useState<Product[]>([]);
-
+    const navigation = useNavigation();
     const deals: Deal[] = [
         {
             id: "21",
@@ -214,6 +215,7 @@ const SearchScreen = () => {
             style={{
                 flex: 1,
                 backgroundColor: "#fff",
+                marginBottom: 40
             }}>
             <View
                 style={{
@@ -296,6 +298,7 @@ const SearchScreen = () => {
                             padding: 10,
                             borderWidth: 0.3,
                             borderColor: "#00d9ffff",
+                            // marginBottom: 100,
                         }}
                     >
                         <View>
@@ -336,6 +339,16 @@ const SearchScreen = () => {
                                 item.size ? <Text>{item.size}</Text> : <Text style={{ color: "#000" }}>Standard Size</Text>
                             }
                             <TouchableOpacity
+                                onPress={() => (navigation as any).navigate("ProductInfoScreen", {
+                                    id: item.id,
+                                    title: item.title,
+                                    price: item.price,
+                                    carouselImages: item.carouselImages || [item.image],
+                                    color: item.color,
+                                    size: item.size,
+                                    oldPrice: item.oldPrice,
+                                    item: item,
+                                })}
                                 style={{
                                     marginLeft: '70%',
                                 }}>

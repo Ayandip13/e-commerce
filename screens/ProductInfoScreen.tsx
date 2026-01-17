@@ -155,7 +155,7 @@ const ProductInfoScreen = () => {
           pagingEnabled
           showsHorizontalScrollIndicator={false}
         >
-          {route?.carouselImages.map((item: string, index: number) => (
+          {route?.carouselImages?.map((item: string, index: number) => (
             <ImageBackground
               key={index}
               source={{ uri: item }}
@@ -286,7 +286,7 @@ const ProductInfoScreen = () => {
         onRequestClose={() => setModalVisible(false)}
         transparent
         visible={modalVisible}
-        animationType="slide"
+        animationType="fade"
       >
         <View
           style={{
