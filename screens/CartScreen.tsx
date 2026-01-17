@@ -42,7 +42,8 @@ const CartScreen = () => {
   return (
     <View style={{ flex: 1, backgroundColor: "white" }}>
       <StatusBar style="dark" />
-      <View
+      <TouchableOpacity
+        activeOpacity={0.9}
         style={{
           backgroundColor: "#00ced1",
           paddingHorizontal: 10,
@@ -52,8 +53,9 @@ const CartScreen = () => {
           alignItems: "center",
           paddingRight: 15,
         }}
+        onPress={() => navigation.navigate('SearchScreen' as never)}
       >
-        <Pressable
+        <View
           style={{
             flexDirection: "row",
             alignItems: "center",
@@ -78,13 +80,14 @@ const CartScreen = () => {
             <TextInput
               placeholder="Search Bookosaurus.in"
               placeholderTextColor="#808080"
+              readOnly
             />
           </View>
-        </Pressable>
-        <TouchableOpacity>
+        </View>
+        <Pressable>
           <Feather name="mic" size={20} color="black" />
-        </TouchableOpacity>
-      </View>
+        </Pressable>
+      </TouchableOpacity>
       <View style={{ padding: 15 }}>
         <View
           style={{

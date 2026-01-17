@@ -18,6 +18,7 @@ import { useNavigation } from "@react-navigation/native";
 import axios from "axios";
 import { Toast } from "toastify-react-native";
 import { API_URL } from "../api";
+import { LinearGradient } from "expo-linear-gradient";
 
 const RegisterScreen = () => {
   const [name, setName] = useState<string>("");
@@ -65,17 +66,12 @@ const RegisterScreen = () => {
   };
 
   return (
-    <View
-      style={{
-        flex: 1,
-        backgroundColor: "white",
-        alignItems: "center",
-      }}
-    >
+    <LinearGradient colors={['#e0f9ffff', '#fff', '#e0f9ffff']} style={{ flex: 1, alignItems: "center" }}>
       <View style={{ marginTop: 100, marginBottom: 10 }}>
         <Image
-          source={require("../assets/logo.png")}
-          style={{ width: 170, height: 70 }}
+          source={require("../assets/Bookosaurus.png")}
+          style={{ width: 190, height: 100 }}
+          resizeMode="contain"
         />
       </View>
       <KeyboardAvoidingView
@@ -93,7 +89,7 @@ const RegisterScreen = () => {
               flexDirection: "row",
               alignItems: "center",
               gap: 5,
-              backgroundColor: "#d0d0d0",
+              backgroundColor: "#ecececff",
               borderRadius: 5,
               marginTop: 10,
             }}
@@ -116,7 +112,7 @@ const RegisterScreen = () => {
               value={name}
               onChangeText={setName}
               autoCapitalize="words"
-              placeholderTextColor="#ffffff"
+              placeholderTextColor="#999"
             />
           </View>
         </View>
@@ -127,7 +123,7 @@ const RegisterScreen = () => {
               flexDirection: "row",
               alignItems: "center",
               gap: 5,
-              backgroundColor: "#d0d0d0",
+              backgroundColor: "#ecececff",
               borderRadius: 5,
               marginTop: 10,
             }}
@@ -150,7 +146,7 @@ const RegisterScreen = () => {
               placeholder="Enter your Email"
               value={email}
               onChangeText={setEmail}
-              placeholderTextColor="#ffffff"
+              placeholderTextColor="#999"
             />
           </View>
         </View>
@@ -161,7 +157,7 @@ const RegisterScreen = () => {
               flexDirection: "row",
               alignItems: "center",
               gap: 5,
-              backgroundColor: "#d0d0d0",
+              backgroundColor: "#ecececff",
               borderRadius: 5,
               marginTop: 10,
             }}
@@ -187,7 +183,7 @@ const RegisterScreen = () => {
               autoCapitalize="none"
               placeholder="Enter your Password"
               value={password}
-              placeholderTextColor="#ffffff"
+              placeholderTextColor="#999"
               onChangeText={setPassword}
             />
           </View>
@@ -196,19 +192,20 @@ const RegisterScreen = () => {
         <View style={{ marginTop: 40, alignItems: "center" }} />
         <TouchableOpacity
           onPress={handleRegister}
-          style={{
-            backgroundColor: "#febe10",
-            paddingVertical: 15,
-            alignItems: "center",
-            borderRadius: 5,
-            marginHorizontal: 80,
-          }}
         >
-          {loading ? (
-            <ActivityIndicator size="small" color="white" />
-          ) : (
-            <Text style={{ color: "white", fontWeight: "600" }}>Sign Up</Text>
-          )}
+          <LinearGradient colors={['#b4f4ffff', '#d1f8ffff', '#b4f4ffff']}
+            style={{
+              paddingVertical: 15,
+              alignItems: "center",
+              borderRadius: 5,
+              marginHorizontal: 80,
+            }}>
+            {loading ? (
+              <ActivityIndicator size="small" color="white" />
+            ) : (
+              <Text style={{ fontWeight: "600" }}>Sign Up</Text>
+            )}
+          </LinearGradient>
         </TouchableOpacity>
 
         <View style={{ marginTop: 20, alignItems: "center" }}>
@@ -227,7 +224,7 @@ const RegisterScreen = () => {
           </Text>
         </View>
       </KeyboardAvoidingView>
-    </View>
+    </LinearGradient>
   );
 };
 

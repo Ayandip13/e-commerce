@@ -321,7 +321,8 @@ const HomeScreen = () => {
     <View style={{ backgroundColor: "white", flex: 1 }}>
       <StatusBar style="dark" />
 
-      <View
+      <TouchableOpacity
+        activeOpacity={0.9}
         style={{
           backgroundColor: "#00ced1",
           paddingHorizontal: 10,
@@ -331,9 +332,9 @@ const HomeScreen = () => {
           alignItems: "center",
           paddingRight: 15,
         }}
+        onPress={() => navigation.navigate('SearchScreen' as never)}
       >
-        <TouchableOpacity
-          activeOpacity={0.9}
+        <View
           style={{
             flexDirection: "row",
             alignItems: "center",
@@ -346,7 +347,6 @@ const HomeScreen = () => {
             paddingHorizontal: 15,
             justifyContent: "space-between",
           }}
-          onPress={() => navigation.navigate('SearchScreen' as never)}
         >
           <View
             style={{
@@ -362,11 +362,11 @@ const HomeScreen = () => {
               readOnly
             />
           </View>
-        </TouchableOpacity>
+        </View>
         <Pressable>
           <Feather name="mic" size={20} color="black" />
         </Pressable>
-      </View>
+      </TouchableOpacity>
       <ScrollView style={{ marginTop: Platform.OS === "android" ? 0 : 0 }}>
         <TouchableOpacity
           onPress={() => setModalVisible(!modalVisible)}

@@ -1,10 +1,10 @@
 {
   "expo": {
-    "name": "amazon",
-    "slug": "amazon",
+    "name": "Bookosaurus",
+    "slug": "bookosaurus",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.jpeg",
+    "icon": "./assets/Bookosaurus.png",
     "userInterfaceStyle": "light",
     "newArchEnabled": true,
     "splash": {
@@ -17,12 +17,12 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/Bookosaurus.png",
         "backgroundColor": "#ffffff"
       },
       "edgeToEdgeEnabled": true,
       "predictiveBackGestureEnabled": false,
-      "package": "com.ayandip02.amazon"
+      "package": "com.ayandip02.bookosaurus"
     },
     "web": {
       "favicon": "./assets/favicon.png"

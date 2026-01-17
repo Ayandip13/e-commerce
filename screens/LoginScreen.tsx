@@ -18,6 +18,7 @@ import { useNavigation, CommonActions } from "@react-navigation/native";
 import axios from "axios";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { API_URL } from "../api";
+import { LinearGradient } from "expo-linear-gradient";
 
 const LoginScreen = () => {
   const [email, setEmail] = useState<string>("");
@@ -76,17 +77,12 @@ const LoginScreen = () => {
   };
 
   return (
-    <View
-      style={{
-        flex: 1,
-        backgroundColor: "white",
-        alignItems: "center",
-      }}
-    >
+    <LinearGradient colors={['#e0f9ffff', '#fff', '#e0f9ffff']} style={{ flex: 1, alignItems: "center" }}>
       <View style={{ marginTop: 100, marginBottom: 10 }}>
         <Image
-          source={require("../assets/logo.png")}
-          style={{ width: 170, height: 70 }}
+          source={require("../assets/Bookosaurus.png")}
+          style={{ width: 190, height: 100 }}
+          resizeMode="contain"
         />
       </View>
       <KeyboardAvoidingView
@@ -104,7 +100,7 @@ const LoginScreen = () => {
               flexDirection: "row",
               alignItems: "center",
               gap: 5,
-              backgroundColor: "#d0d0d0",
+              backgroundColor: "#ecececff",
               borderRadius: 5,
               marginTop: 10,
             }}
@@ -125,7 +121,7 @@ const LoginScreen = () => {
               autoCapitalize="none"
               keyboardType="email-address"
               placeholder="Enter your Email"
-              placeholderTextColor="#ffffff"
+              placeholderTextColor="#999"
               value={email}
               onChangeText={setEmail}
             />
@@ -138,7 +134,7 @@ const LoginScreen = () => {
               flexDirection: "row",
               alignItems: "center",
               gap: 5,
-              backgroundColor: "#d0d0d0",
+              backgroundColor: "#ecececff",
               borderRadius: 5,
               marginTop: 10,
             }}
@@ -162,7 +158,7 @@ const LoginScreen = () => {
               secureTextEntry={hidePassword}
               autoCapitalize="none"
               placeholder="Enter your Password"
-              placeholderTextColor="#ffffff"
+              placeholderTextColor="#999"
               value={password}
               onChangeText={setPassword}
             />
@@ -186,19 +182,20 @@ const LoginScreen = () => {
         <View style={{ marginTop: 40, alignItems: "center" }} />
         <TouchableOpacity
           onPress={handleLogin}
-          style={{
-            backgroundColor: "#febe10",
-            paddingVertical: 15,
-            alignItems: "center",
-            borderRadius: 5,
-            marginHorizontal: 80,
-          }}
         >
-          {loading ? (
-            <ActivityIndicator size="small" color="white" />
-          ) : (
-            <Text style={{ color: "white", fontWeight: "600" }}>Login</Text>
-          )}
+          <LinearGradient colors={['#b4f4ffff', '#d1f8ffff', '#b4f4ffff']}
+            style={{
+              paddingVertical: 15,
+              alignItems: "center",
+              borderRadius: 5,
+              marginHorizontal: 80,
+            }}>
+            {loading ? (
+              <ActivityIndicator size="small" color="white" />
+            ) : (
+              <Text style={{ fontWeight: "600" }}>Login</Text>
+            )}
+          </LinearGradient>
         </TouchableOpacity>
 
         <View style={{ marginTop: 20, alignItems: "center" }}>
@@ -217,7 +214,7 @@ const LoginScreen = () => {
           </Text>
         </View>
       </KeyboardAvoidingView>
-    </View>
+    </LinearGradient>
   );
 };
 
