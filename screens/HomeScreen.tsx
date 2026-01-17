@@ -345,6 +345,7 @@ const HomeScreen = () => {
             paddingHorizontal: 15,
             justifyContent: "space-between",
           }}
+          onPress={() => navigation.navigate('SearchScreen' as never)}
         >
           <View
             style={{
@@ -360,7 +361,7 @@ const HomeScreen = () => {
             />
           </View>
         </Pressable>
-        <TouchableOpacity onPress={() => navigation.navigate('Test' as never)}>
+        <TouchableOpacity>
           <Feather name="mic" size={20} color="black" />
         </TouchableOpacity>
       </View>

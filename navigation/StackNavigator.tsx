@@ -28,6 +28,7 @@ import Electronics from "../screens/categories/Electronics";
 import Mobiles from "../screens/categories/Mobiles";
 import Fashion from "../screens/categories/Fashion";
 import Test from "../screens/Test";
+import SearchScreen from "../screens/SearchScreen";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -359,6 +360,13 @@ const StackNavigator = () => {
               color: "#555",
             },
             headerTitleAlign: "center",
+          }}
+        />
+        <Stack.Screen
+          name="SearchScreen"
+          component={SearchScreen}
+          options={{
+            headerShown: false,
           }}
         />
       </Stack.Navigator>
