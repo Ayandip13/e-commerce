@@ -16,6 +16,7 @@ import { addToCart, decrement, removeCart } from "../redux/CartReducer";
 import { useNavigation } from "@react-navigation/native";
 import { StatusBar } from "expo-status-bar";
 import { LinearGradient } from "expo-linear-gradient";
+import ShimmerText from "../components/ShimmerText";
 
 const CartScreen = () => {
   const navigation = useNavigation();
@@ -155,10 +156,14 @@ const CartScreen = () => {
                     justifyContent: "center",
                     alignItems: "center",
                     marginTop: 30,
+                    flexDirection: "row",
                   }}
                 >
-                  <Text style={{ fontSize: 20, fontWeight: "bold" }}>
-                    No Items in Cart 🛒
+                  <ShimmerText
+                    text="No Items in Cart"
+                  />
+                  <Text style={{ fontSize: 20 }}>
+                    {" "}🛒
                   </Text>
                 </View>
               );

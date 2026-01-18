@@ -13,6 +13,7 @@ import { UserType } from "../UserContext";
 import axios from "axios";
 import { API_URL } from "../api";
 import { LinearGradient } from "expo-linear-gradient";
+import ShimmerText from "../components/ShimmerText";
 
 const BookmarkedItems = () => {
   const bookmarks = useSelector((state: any) => state.bookmark.bookmarks);
@@ -198,10 +199,13 @@ const BookmarkedItems = () => {
               flex: 1,
               justifyContent: "center",
               alignItems: "center",
+              flexDirection: "row",
             }}
           >
-            <Text style={{ fontSize: 18, color: "#999" }}>
-              No Bookmarked Items 😕
+            <ShimmerText text="No Bookmarked Items" />
+            <Text style={{ fontSize: 20 }}>
+              {" "}
+              🕵️
             </Text>
           </View>
         }

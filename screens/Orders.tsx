@@ -19,6 +19,7 @@ import { useNavigation, useFocusEffect } from "@react-navigation/native";
 import axios from "axios";
 import { UserType } from "../UserContext";
 import { API_URL } from "../api";
+import ShimmerText from "../components/ShimmerText";
 
 export default function Orders() {
   const { userId } = useContext(UserType);
@@ -160,17 +161,9 @@ export default function Orders() {
               marginTop: 50,
             }}
           >
-            <ActivityIndicator size="large" color="#00ced1" />
-            <Text
-              style={{
-                fontSize: 18,
-                fontWeight: "bold",
-                color: "#666",
-                marginTop: 10,
-              }}
-            >
-              Loading Orders...
-            </Text>
+            <ShimmerText
+              text="Loading Orders..."
+            />
           </View>
         ) : orders.length > 0 ? (
           <ScrollView

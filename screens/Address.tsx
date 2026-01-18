@@ -17,6 +17,8 @@ import { Toast } from "toastify-react-native";
 import { useNavigation } from "@react-navigation/native";
 import { API_URL } from "../api";
 import { StatusBar } from "expo-status-bar";
+import { LinearGradient } from "expo-linear-gradient";
+import ShimmerText from "../components/ShimmerText";
 
 const Address = () => {
   const navigation = useNavigation();
@@ -110,7 +112,7 @@ const Address = () => {
         keyboardVerticalOffset={Platform.OS === "ios" ? 100 : 0}
       >
         <ScrollView
-          style={{ paddingHorizontal: 15, paddingBottom: 100 }}
+          style={{ paddingHorizontal: 15, paddingBottom: 30 }}
           showsVerticalScrollIndicator={false}
         >
           <View style={{ marginTop: 15 }}>
@@ -257,20 +259,22 @@ const Address = () => {
         </ScrollView>
         <TouchableOpacity
           onPress={handleAddAddress}
-          style={{
-            backgroundColor: "#ffc72c",
-            padding: 15,
-            borderRadius: 5,
-            alignItems: "center",
-            position: "absolute",
-            bottom: 20,
-            left: 15,
-            right: 15,
-          }}
         >
-          <Text style={{ fontSize: 17, fontWeight: "500" }}>
-            {loading ? "Adding the data.." : "Add Address"}
-          </Text>
+          <LinearGradient
+            colors={["#ffc72c", "#ffefc2ff", "#ffc72c"]}
+            start={{ x: 0, y: 0 }}
+            end={{ x: 1, y: 0 }}
+            style={{
+              padding: 15,
+              borderRadius: 5,
+              alignItems: "center",
+              marginHorizontal: 15,
+            }}
+          >
+            {loading ? <ShimmerText text="Adding the data.." /> : <Text style={{ fontSize: 17, fontWeight: "500" }}>
+              Add Address
+            </Text>}
+          </LinearGradient>
         </TouchableOpacity>
       </KeyboardAvoidingView>
     </View>
