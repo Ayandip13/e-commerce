@@ -12,6 +12,7 @@ import axios from "axios";
 import { LinearGradient } from "expo-linear-gradient";
 import { useNavigation } from "@react-navigation/native";
 import { API_URL } from "../../api";
+import ShimmerText from "../../components/ShimmerText";
 
 interface itemData {
   id: number;
@@ -148,7 +149,7 @@ const Mobiles = () => {
         onEndReached={() => fetchData(page + 1)}
         onEndReachedThreshold={0.5}
         ListFooterComponent={
-          loading ? <ActivityIndicator size="large" color="#04cfd3" /> : null
+          loading ? <ShimmerText text="Loading..." /> : null
         }
       />
     </View>
