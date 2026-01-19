@@ -4,6 +4,7 @@ import { Feather } from '@expo/vector-icons'
 import axios from 'axios'
 import { API_URL } from '../api';
 import { useNavigation } from '@react-navigation/native';
+import ShimmerText from '../components/ShimmerText';
 
 interface Product {
     id: number;
@@ -278,12 +279,7 @@ const SearchScreen = () => {
                         alignItems: "center",
                         marginTop: '30%',
                     }}>
-                        <Text
-                            style={{
-                                fontSize: 18,
-                                fontWeight: "bold",
-                                color: "#999",
-                            }}>No results found</Text>
+                        <ShimmerText text="No results found..." />
                     </View>
                 }
                 renderItem={({ item }) => (

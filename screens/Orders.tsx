@@ -96,10 +96,12 @@ export default function Orders() {
             source={require("../assets/bell.png")}
             style={{ width: 25, height: 25, marginRight: 10 }}
           />
-          <Image
-            source={require("../assets/search.png")}
-            style={{ width: 25, height: 25, marginRight: 10 }}
-          />
+          <TouchableOpacity onPress={() => navigation.navigate("SearchScreen" as never)}>
+            <Image
+              source={require("../assets/search.png")}
+              style={{ width: 25, height: 25, marginRight: 10 }}
+            />
+          </TouchableOpacity>
         </>
       ),
     });
