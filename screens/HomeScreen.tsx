@@ -317,6 +317,7 @@ const HomeScreen = () => {
   //state is the store object, state.cart is the cart slice, state.cart.cart is the cart array
 
   // console.log(cart);
+  console.log(userId);
   return (
     <View style={{ backgroundColor: "white", flex: 1 }}>
       <StatusBar style="dark" />

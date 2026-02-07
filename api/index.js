@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
@@ -14,7 +16,7 @@ const { CloudinaryStorage } = require("multer-storage-cloudinary");
 const bcrypt = require("bcrypt");
 
 const app = express();
-const PORT = 8000;
+const PORT = process.env.PORT || 8000;
 const cors = require("cors");
 
 app.use(cors());
@@ -22,9 +24,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 cloudinary.config({
-  cloud_name: "dpsytr5aw",
-  api_key: "189517521759289",
-  api_secret: "YcmK7NRtRJGi1bSf5YpHGUtpIO8",
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
 const storage = new CloudinaryStorage({
@@ -38,7 +40,7 @@ const storage = new CloudinaryStorage({
 const upload = multer({ storage });
 
 mongoose
-  .connect("mongodb+srv://ayandip:darkKnight@cluster0.e9eufse.mongodb.net", {
+  .connect(process.env.MONGODB_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
@@ -81,12 +83,7 @@ app.post("/register", async (req, res) => {
   }
 });
 
-const generateSecretKey = () => {
-  const secretKey = crypto.randomBytes(32).toString("hex");
-  return secretKey;
-};
-
-const secretKey = generateSecretKey();
+const secretKey = process.env.JWT_SECRET;
 
 //endpoint to login the user
 app.post("/login", async (req, res) => {
