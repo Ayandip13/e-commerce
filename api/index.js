@@ -3,8 +3,6 @@ require("dotenv").config();
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
-const crypto = require("crypto");
-const nodemailer = require("nodemailer");
 const jwt = require("jsonwebtoken");
 const User = require("./models/user.model.js");
 const Order = require("./models/order.model.js");
