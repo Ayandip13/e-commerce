@@ -37,20 +37,11 @@ const storage = new CloudinaryStorage({
 
 const upload = multer({ storage });
 
-mongoose
-  .connect(process.env.MONGODB_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
-  .then(() => {
-    console.log("Connected to MongoDB");
-  })
-  .catch((err) => {
-    console.log("Error connecting to MongoDB:", err);
-  });
+const connectDB = require("./db");
 
-app.listen(PORT, "0.0.0.0", () => {
-  console.log(`Server running on http://0.0.0.0:${PORT}`);
+app.use(async (req, res, next) => {
+  await connectDB();
+  next();
 });
 
 //endpoints to register and login the user
