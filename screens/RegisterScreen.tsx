@@ -19,6 +19,7 @@ import axios from "axios";
 import { Toast } from "toastify-react-native";
 import { API_URL } from "../api";
 import { LinearGradient } from "expo-linear-gradient";
+import { StatusBar } from "expo-status-bar";
 
 const RegisterScreen = () => {
   const [name, setName] = useState<string>("");
@@ -67,6 +68,7 @@ const RegisterScreen = () => {
 
   return (
     <LinearGradient colors={['#e0f9ffff', '#fff', '#e0f9ffff']} style={{ flex: 1, alignItems: "center" }}>
+      <StatusBar style="dark" />
       <View style={{ marginTop: 100, marginBottom: 10 }}>
         <Image
           source={require("../assets/Bookosaurus.png")}
