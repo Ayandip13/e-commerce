@@ -5,75 +5,67 @@ import {
   TouchableOpacity,
   View,
   RefreshControl,
-  ToastAndroid,
-  ActivityIndicator,
 } from "react-native";
 import React, {
   useContext,
   useEffect,
   useLayoutEffect,
-  useState,
   useCallback,
+  useState,
 } from "react";
-import { useNavigation, useFocusEffect } from "@react-navigation/native";
+import { useNavigation } from "@react-navigation/native";
 import axios from "axios";
 import { UserType } from "../UserContext";
 import { API_URL } from "../api";
 import ShimmerText from "../components/ShimmerText";
+import { useQuery } from "@tanstack/react-query";
+
+/* ---------------- FETCH FUNCTIONS ---------------- */
+
+const fetchOrders = async (userId: string) => {
+  const res = await axios.get(`${API_URL}orders/${userId}`);
+  return res.data.orders || [];
+};
+
+const fetchUser = async (userId: string) => {
+  const res = await axios.get(`${API_URL}profile/${userId}`);
+  return res.data.user;
+};
+
+/* ---------------- COMPONENT ---------------- */
 
 export default function Orders() {
   const { userId } = useContext(UserType);
   const navigation = useNavigation();
-  const [user, setUser] = useState(null);
-  const [orders, setOrders] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [refreshing, setRefreshing] = useState(false);
+  const [user, setUser] = useState<any>(null);
 
-  const getOrders = async () => {
-    try {
-      setLoading(true);
-      const res = await axios.get(`${API_URL}orders/${userId}`);
-      if (res.data.orders) {
-        setOrders(res.data.orders);
-        // Debugging: Notify user of count
-        // ToastAndroid.show(`Fetched ${res.data.orders.length} orders`, ToastAndroid.SHORT);
-      }
-    } catch (error) {
-      console.log("error", error);
-      // ToastAndroid.show("Failed to fetch orders", ToastAndroid.SHORT);
-    } finally {
-      setLoading(false);
-      setRefreshing(false);
-    }
-  };
-
-  const getUser = async () => {
-    try {
-      const res = await axios.get(`${API_URL}profile/${userId}`);
-      setUser(res.data.user);
-    } catch (error) {
-      console.log("error", error);
-    }
-  };
-
-  const onRefresh = useCallback(() => {
-    setRefreshing(true);
-    getOrders();
-  }, [userId]);
+  /* ---------------- USER DATA ---------------- */
 
   useEffect(() => {
-    if (userId) {
-      getUser();
-    }
+    if (!userId) return;
+
+    fetchUser(userId).then(setUser).catch(console.log);
   }, [userId]);
 
-  useFocusEffect(
-    useCallback(() => {
-      if (userId) {
-        getOrders();
-      }
-    }, [userId])
-  );
+  /* ---------------- ORDERS WITH CACHE ---------------- */
+
+  const {
+    data: orders = [],
+    isLoading,
+    isFetching,
+    refetch,
+  } = useQuery({
+    queryKey: ["orders", userId],
+    queryFn: () => fetchOrders(userId as string),
+    enabled: !!userId,
+    staleTime: 1000 * 60 * 5, // 5 minutes cache
+  });
+
+  const onRefresh = useCallback(() => {
+    refetch();
+  }, []);
+
+  /* ---------------- HEADER ---------------- */
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -83,20 +75,22 @@ export default function Orders() {
         <Image
           source={require("../assets/Bookosaurus.png")}
           resizeMode="contain"
-          style={{
-            width: 130,
-            height: 60,
-            marginRight: 50,
-          }}
+          style={{ width: 130, height: 60, marginRight: 50 }}
         />
       ),
       headerRight: () => (
         <>
-          <Image
-            source={require("../assets/bell.png")}
-            style={{ width: 25, height: 25, marginRight: 10 }}
-          />
-          <TouchableOpacity onPress={() => navigation.navigate("SearchScreen" as never)}>
+          <TouchableOpacity
+            onPress={() => navigation.navigate("Notification" as never)}
+          >
+            <Image
+              source={require("../assets/bell.png")}
+              style={{ width: 25, height: 25, marginRight: 10 }}
+            />
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => navigation.navigate("SearchScreen" as never)}
+          >
             <Image
               source={require("../assets/search.png")}
               style={{ width: 25, height: 25, marginRight: 10 }}
@@ -107,14 +101,11 @@ export default function Orders() {
     });
   }, [navigation]);
 
+  /* ---------------- UI ---------------- */
+
   return (
-    <View
-      style={{
-        flex: 1,
-        paddingHorizontal: 20,
-        backgroundColor: "#fff",
-      }}
-    >
+    <View style={{ flex: 1, paddingHorizontal: 20, backgroundColor: "#fff" }}>
+      {/* Top buttons */}
       <View
         style={{
           flexDirection: "row",
@@ -136,6 +127,7 @@ export default function Orders() {
             Your Wishlist
           </Text>
         </TouchableOpacity>
+
         <TouchableOpacity
           onPress={() => navigation.navigate("HomeScreen" as never)}
           style={{
@@ -154,7 +146,8 @@ export default function Orders() {
           Your Orders
         </Text>
 
-        {loading && !refreshing ? (
+        {/* Loading */}
+        {isLoading ? (
           <View
             style={{
               flex: 1,
@@ -163,27 +156,21 @@ export default function Orders() {
               marginTop: 50,
             }}
           >
-            <ShimmerText
-              text="Loading Orders..."
-            />
+            <ShimmerText text="Loading Orders..." />
           </View>
         ) : orders.length > 0 ? (
           <ScrollView
             showsVerticalScrollIndicator={false}
             refreshControl={
-              <RefreshControl
-                refreshing={refreshing}
-                onRefresh={onRefresh}
-                progressBackgroundColor="#dafeffff"
-              />
+              <RefreshControl refreshing={isFetching} onRefresh={onRefresh} />
             }
           >
-            {orders.map((order, index) => (
+            {orders.map((order: any, index: number) => (
               <TouchableOpacity
+                key={order._id || index}
                 onPress={() =>
                   navigation.navigate("OrderedItem" as never, { order })
                 }
-                key={order._id || index}
                 style={{
                   paddingVertical: 15,
                   paddingHorizontal: 10,
@@ -214,6 +201,7 @@ export default function Orders() {
                       style={{ width: 100, height: 100 }}
                       resizeMode="contain"
                     />
+
                     <View
                       style={{
                         backgroundColor: "#30b3ff",
@@ -221,13 +209,14 @@ export default function Orders() {
                         height: 100,
                       }}
                     />
+
                     <Text
+                      numberOfLines={2}
                       style={{
                         fontSize: 12,
                         marginLeft: 10,
                         paddingRight: 150,
                       }}
-                      numberOfLines={2}
                     >
                       {product.name || "Product"}
                     </Text>
@@ -244,7 +233,7 @@ export default function Orders() {
               alignItems: "center",
             }}
             refreshControl={
-              <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+              <RefreshControl refreshing={isFetching} onRefresh={onRefresh} />
             }
           >
             <Text style={{ fontSize: 18, fontWeight: "bold", color: "#666" }}>

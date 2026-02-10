@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import StackNavigator from "./navigation/StackNavigator";
 import ToastManager from "toastify-react-native";
 import { Provider } from "react-redux";
@@ -7,8 +7,17 @@ import { BackHandler, View } from "react-native";
 import { UserContext } from "./UserContext";
 import { PersistGate } from "redux-persist/integration/react";
 import { persistor, store } from "./redux/store";
-
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import * as Notifications from "expo-notifications";
+import { Platform } from "react-native";
+
+Notifications.setNotificationHandler({
+  handleNotification: async () => ({
+    shouldShowAlert: true,
+    shouldPlaySound: true,
+    shouldSetBadge: false,
+  }),
+});
 
 // Temporary fix for react-native-modals BackHandler issue
 if (!BackHandler.removeEventListener) {
@@ -26,6 +35,16 @@ const queryClient = new QueryClient({
 });
 
 const App = () => {
+  useEffect(() => {
+    Notifications.requestPermissionsAsync();
+
+    if (Platform.OS === "android") {
+      Notifications.setNotificationChannelAsync("default", {
+        name: "default",
+        importance: Notifications.AndroidImportance.MAX,
+      });
+    }
+  }, []);
   return (
     <Provider store={store}>
       <QueryClientProvider client={queryClient}>

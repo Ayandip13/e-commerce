@@ -29,6 +29,7 @@ import Mobiles from "../screens/categories/Mobiles";
 import Fashion from "../screens/categories/Fashion";
 import Test from "../screens/Test";
 import SearchScreen from "../screens/SearchScreen";
+import Notification from "../screens/Notification";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -367,6 +368,20 @@ const StackNavigator = () => {
           component={SearchScreen}
           options={{
             headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name="Notification"
+          component={Notification}
+          options={{
+            headerTitle: "Notifications",
+            headerStyle: {
+              backgroundColor: "#00ced1",
+            },
+            headerTitleStyle: {
+              color: "#555",
+            },
+            headerTitleAlign: "center",
           }}
         />
       </Stack.Navigator>
