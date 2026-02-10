@@ -15,6 +15,7 @@ import { Entypo } from "@expo/vector-icons";
 import { addToBookmark, removeBookmark } from "../redux/BookmarkReducer";
 import { LinearGradient } from "expo-linear-gradient";
 const { width } = Dimensions.get("window");
+import * as Notifications from "expo-notifications";
 
 const OrderedItem = () => {
   const route = useRoute();
@@ -33,6 +34,16 @@ const OrderedItem = () => {
     minute: "2-digit",
     hour12: true,
   });
+
+  const handleOrderPlaced = async () => {
+    await Notifications.scheduleNotificationAsync({
+      content: {
+        title: "Order Cancellation 😐",
+        body: "Order can't be Cancelled, as it has already been Delivered!",
+      },
+      trigger: null,
+    });
+  };
 
   return (
     <View
@@ -173,10 +184,7 @@ const OrderedItem = () => {
             <View>
               <TouchableOpacity
                 onPress={() => {
-                  ToastAndroid.show(
-                    "Order can't be Cancelled, as it has already been Delivered",
-                    ToastAndroid.SHORT
-                  );
+                  handleOrderPlaced();
                 }}
               >
                 <LinearGradient
