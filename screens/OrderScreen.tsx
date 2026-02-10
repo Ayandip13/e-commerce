@@ -2,13 +2,25 @@ import { StyleSheet, Text, View } from "react-native";
 import React, { useEffect } from "react";
 import LottieView from "lottie-react-native";
 import { useNavigation } from "@react-navigation/native";
-
+import * as Notifications from "expo-notifications";
 const OrderScreen = () => {
   const navigation = useNavigation();
+  const handleOrderPlaced = async () => {
+    await Notifications.scheduleNotificationAsync({
+      content: {
+        title: "Order placed 📦",
+        body: "Your order was successful!",
+      },
+      trigger: null,
+    });
+  };
   useEffect(() => {
-    const timer = setTimeout(() => {
+    const placeFlow = async () => {
+      await handleOrderPlaced();
       navigation.navigate("Main" as never);
-    }, 2000);
+    };
+
+    const timer = setTimeout(placeFlow, 2000);
 
     return () => clearTimeout(timer);
   }, []);
@@ -47,7 +59,7 @@ const OrderScreen = () => {
           position: "absolute",
         }}
         speed={1}
-        // loop={false}
+      // loop={false}
       />
     </View>
   );
