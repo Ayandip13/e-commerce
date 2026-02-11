@@ -19,6 +19,7 @@ import { UserType } from "../UserContext";
 import { API_URL } from "../api";
 import ShimmerText from "../components/ShimmerText";
 import { useQuery } from "@tanstack/react-query";
+import Colors from "../constants/Colors";
 
 /* ---------------- FETCH FUNCTIONS ---------------- */
 
@@ -70,7 +71,7 @@ export default function Orders() {
   useLayoutEffect(() => {
     navigation.setOptions({
       title: "",
-      headerStyle: { backgroundColor: "#00ced1" },
+      headerStyle: { backgroundColor: Colors.primary },
       headerLeft: () => (
         <Image
           source={require("../assets/Bookosaurus.png")}
@@ -104,7 +105,7 @@ export default function Orders() {
   /* ---------------- UI ---------------- */
 
   return (
-    <View style={{ flex: 1, paddingHorizontal: 20, backgroundColor: "#fff" }}>
+    <View style={{ flex: 1, paddingHorizontal: 20, backgroundColor: Colors.background }}>
       {/* Top buttons */}
       <View
         style={{
@@ -176,9 +177,9 @@ export default function Orders() {
                   paddingHorizontal: 10,
                   borderRadius: 8,
                   borderWidth: 0.5,
-                  borderColor: "#30b3ff",
-                  backgroundColor: "#fff",
-                  shadowColor: "#30b3ff",
+                  borderColor: Colors.primary as any,
+                  backgroundColor: Colors.white as any,
+                  shadowColor: Colors.primary as any,
                   shadowOffset: { width: 0, height: 2 },
                   shadowOpacity: 0.1,
                   shadowRadius: 4,
@@ -204,7 +205,7 @@ export default function Orders() {
 
                     <View
                       style={{
-                        backgroundColor: "#30b3ff",
+                        backgroundColor: Colors.primary,
                         width: 0.5,
                         height: 100,
                       }}

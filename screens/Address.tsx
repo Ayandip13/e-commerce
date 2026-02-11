@@ -19,6 +19,7 @@ import { API_URL } from "../api";
 import { StatusBar } from "expo-status-bar";
 import { LinearGradient } from "expo-linear-gradient";
 import ShimmerText from "../components/ShimmerText";
+import Colors from "../constants/Colors";
 
 const Address = () => {
   const navigation = useNavigation();
@@ -98,180 +99,180 @@ const Address = () => {
   // console.log(userId);
 
   return (
-    <View style={{ marginTop: Platform.OS === "android" ? 0 : 0 }}>
+    <View style={{ flex: 1, backgroundColor: Colors.background }}>
       <StatusBar style="dark" />
-      <View
-        style={{
-          flexDirection: "row",
-          alignItems: "center",
-          paddingRight: 15,
-        }}
-      />
       <KeyboardAvoidingView
-        behavior={Platform.OS === "ios" ? "padding" : "height"}
-        keyboardVerticalOffset={Platform.OS === "ios" ? 100 : 0}
+        style={{ flex: 1 }}
+        behavior={Platform.OS === "ios" ? "padding" : undefined}
       >
         <ScrollView
-          style={{ paddingHorizontal: 15, paddingBottom: 30 }}
+          style={{ flex: 1 }}
+          contentContainerStyle={{ paddingHorizontal: 20, paddingBottom: 40 }}
           showsVerticalScrollIndicator={false}
         >
-          <View style={{ marginTop: 15 }}>
-            <Text style={{ fontSize: 17, fontWeight: "bold" }}>
-              Add a new Address
+          <View style={{ marginTop: 20 }}>
+            <Text style={{ fontSize: 13, color: Colors.textSecondary, marginBottom: 5 }}>
+              Country / Region
             </Text>
             <TextInput
               placeholder="India"
               readOnly
               style={{
-                borderWidth: 1,
-                borderColor: "#d0d0d0",
-                padding: 10,
-                marginTop: 10,
-                borderRadius: 5,
+                backgroundColor: Colors.white,
+                borderRadius: 12,
                 paddingHorizontal: 15,
+                paddingVertical: 12,
+                fontSize: 15,
+                color: Colors.textPrimary,
+                ...Colors.cardShadow,
               }}
-              placeholderTextColor={"#6b6b6bff"}
+              placeholderTextColor={Colors.gray}
             />
           </View>
 
-          <View style={{ marginTop: 15 }}>
-            <Text style={{ fontSize: 17, fontWeight: "bold" }}>
+          <View style={{ marginTop: 20 }}>
+            <Text style={{ fontSize: 13, fontWeight: "600", color: Colors.textSecondary, marginBottom: 5 }}>
               Full name (First and last name)
             </Text>
             <TextInput
               value={name}
               onChangeText={(text) => setName(text)}
-              placeholderTextColor={"#6b6b6bff"}
-              placeholder="enter full name"
+              placeholderTextColor={Colors.gray}
+              placeholder="Enter your full name"
               style={{
-                borderWidth: 1,
-                borderColor: "#d0d0d0",
-                padding: 10,
-                marginTop: 10,
-                borderRadius: 5,
+                backgroundColor: Colors.white,
+                borderRadius: 12,
                 paddingHorizontal: 15,
+                paddingVertical: 15,
+                fontSize: 15,
+                color: Colors.textPrimary,
+                ...Colors.cardShadow,
               }}
             />
           </View>
 
-          <View style={{ marginTop: 15 }}>
-            <Text style={{ fontSize: 17, fontWeight: "bold" }}>
+          <View style={{ marginTop: 20 }}>
+            <Text style={{ fontSize: 13, fontWeight: "600", color: Colors.textSecondary, marginBottom: 5 }}>
               Mobile number
             </Text>
             <TextInput
-              placeholderTextColor={"#6b6b6bff"}
+              placeholderTextColor={Colors.gray}
               value={phone}
-              onChangeText={(text) => setPhone(Number(text))}
-              placeholder="enter mobile number"
+              onChangeText={(text) => setPhone(text)}
+              placeholder="Enter your mobile number"
               style={{
-                borderWidth: 1,
-                borderColor: "#d0d0d0",
-                padding: 10,
-                marginTop: 10,
-                borderRadius: 5,
+                backgroundColor: Colors.white,
+                borderRadius: 12,
                 paddingHorizontal: 15,
-                color: "#000000",
+                paddingVertical: 15,
+                fontSize: 15,
+                color: Colors.textPrimary,
+                ...Colors.cardShadow,
               }}
               keyboardType="phone-pad"
             />
           </View>
 
-          <View style={{ marginTop: 15 }}>
-            <Text style={{ fontSize: 17, fontWeight: "bold" }}>
+          <View style={{ marginTop: 20 }}>
+            <Text style={{ fontSize: 13, fontWeight: "600", color: Colors.textSecondary, marginBottom: 5 }}>
               Flat, House no., Building, Company
             </Text>
             <TextInput
               value={housingNo}
               onChangeText={(text) => setHousingNo(text)}
-              placeholderTextColor={"#6b6b6bff"}
+              placeholderTextColor={Colors.gray}
               placeholder="..."
               style={{
-                borderWidth: 1,
-                borderColor: "#d0d0d0",
-                padding: 10,
-                marginTop: 10,
-                borderRadius: 5,
+                backgroundColor: Colors.white,
+                borderRadius: 12,
                 paddingHorizontal: 15,
+                paddingVertical: 15,
+                fontSize: 15,
+                color: Colors.textPrimary,
+                ...Colors.cardShadow,
               }}
-              keyboardType="phone-pad"
             />
           </View>
 
-          <View style={{ marginTop: 15 }}>
-            <Text style={{ fontSize: 17, fontWeight: "bold" }}>
+          <View style={{ marginTop: 20 }}>
+            <Text style={{ fontSize: 13, fontWeight: "600", color: Colors.textSecondary, marginBottom: 5 }}>
               Area, Street, Sector, Village
             </Text>
             <TextInput
               value={street}
               onChangeText={(text) => setStreet(text)}
-              placeholderTextColor={"#6b6b6bff"}
+              placeholderTextColor={Colors.gray}
               placeholder="..."
               style={{
-                borderWidth: 1,
-                borderColor: "#d0d0d0",
-                padding: 10,
-                marginTop: 10,
-                borderRadius: 5,
+                backgroundColor: Colors.white,
+                borderRadius: 12,
                 paddingHorizontal: 15,
+                paddingVertical: 15,
+                fontSize: 15,
+                color: Colors.textPrimary,
+                ...Colors.cardShadow,
               }}
               keyboardType="default"
             />
           </View>
 
-          <View style={{ marginTop: 15 }}>
-            <Text style={{ fontSize: 17, fontWeight: "bold" }}>Landmark</Text>
+          <View style={{ marginTop: 20 }}>
+            <Text style={{ fontSize: 13, fontWeight: "600", color: Colors.textSecondary, marginBottom: 5 }}>Landmark</Text>
             <TextInput
               value={landmark}
               onChangeText={(text) => setLandmark(text)}
-              placeholderTextColor={"#6b6b6bff"}
+              placeholderTextColor={Colors.gray}
               placeholder="Eg. Near Metro Station"
               style={{
-                borderWidth: 1,
-                borderColor: "#d0d0d0",
-                padding: 10,
-                marginTop: 10,
-                borderRadius: 5,
+                backgroundColor: Colors.white,
+                borderRadius: 12,
                 paddingHorizontal: 15,
+                paddingVertical: 15,
+                fontSize: 15,
+                color: Colors.textPrimary,
+                ...Colors.cardShadow,
               }}
               keyboardType="default"
             />
           </View>
 
-          <View style={{ marginTop: 15 }}>
-            <Text style={{ fontSize: 17, fontWeight: "bold" }}>Pincode</Text>
+          <View style={{ marginTop: 20 }}>
+            <Text style={{ fontSize: 13, fontWeight: "600", color: Colors.textSecondary, marginBottom: 5 }}>Pincode</Text>
             <TextInput
               value={pincode}
-              onChangeText={(text) => setPincode(Number(text))}
-              placeholderTextColor={"#6b6b6bff"}
-              placeholder="enter pincode"
+              onChangeText={(text) => setPincode(text)}
+              placeholderTextColor={Colors.gray}
+              placeholder="Enter pincode"
               style={{
-                borderWidth: 1,
-                borderColor: "#d0d0d0",
-                padding: 10,
-                marginTop: 10,
-                borderRadius: 5,
+                backgroundColor: Colors.white,
+                borderRadius: 12,
                 paddingHorizontal: 15,
-                color: "#000000",
+                paddingVertical: 15,
+                fontSize: 15,
+                color: Colors.textPrimary,
+                ...Colors.cardShadow,
               }}
               keyboardType="phone-pad"
             />
           </View>
         </ScrollView>
         <TouchableOpacity
+          activeOpacity={0.6}
           onPress={handleAddAddress}
+          style={{ paddingVertical: 20 }}
         >
           <LinearGradient
-            colors={["#ffc72c", "#ffefc2ff", "#ffc72c"]}
-            start={{ x: 0, y: 0 }}
-            end={{ x: 1, y: 0 }}
+            colors={Colors.buttonGradient as any}
             style={{
-              padding: 15,
-              borderRadius: 5,
+              paddingVertical: 14,
+              borderRadius: 8,
               alignItems: "center",
-              marginHorizontal: 15,
+              marginHorizontal: 20,
+              ...Colors.cardShadow,
+              marginBottom: '10%',
             }}
           >
-            {loading ? <ShimmerText text="Adding the data.." /> : <Text style={{ fontSize: 17, fontWeight: "500" }}>
+            {loading ? <ShimmerText text="Adding Address..." /> : <Text style={{ fontSize: 16, fontWeight: "700", color: Colors.white }}>
               Add Address
             </Text>}
           </LinearGradient>

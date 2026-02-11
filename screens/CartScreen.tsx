@@ -17,6 +17,7 @@ import { useNavigation } from "@react-navigation/native";
 import { StatusBar } from "expo-status-bar";
 import { LinearGradient } from "expo-linear-gradient";
 import ShimmerText from "../components/ShimmerText";
+import Colors from "../constants/Colors";
 
 const CartScreen = () => {
   const navigation = useNavigation();
@@ -41,18 +42,17 @@ const CartScreen = () => {
   // console.log(totalPrice);
   //state is the store object, state.cart is the cart slice, state.cart.cart is the cart array
   return (
-    <View style={{ flex: 1, backgroundColor: "white" }}>
+    <View style={{ flex: 1, backgroundColor: Colors.background }}>
       <StatusBar style="dark" />
       <TouchableOpacity
         activeOpacity={0.9}
         style={{
-          backgroundColor: "#00ced1",
-          paddingHorizontal: 10,
+          backgroundColor: Colors.primary,
+          paddingHorizontal: 15,
           paddingBottom: 15,
-          paddingTop: 47,
+          paddingTop: 50,
           flexDirection: "row",
           alignItems: "center",
-          paddingRight: 15,
         }}
         onPress={() => navigation.navigate('SearchScreen' as never)}
       >
@@ -60,14 +60,13 @@ const CartScreen = () => {
           style={{
             flexDirection: "row",
             alignItems: "center",
-            marginHorizontal: 7,
             backgroundColor: "white",
-            gap: 10,
-            borderRadius: 5,
-            height: 40,
+            gap: 12,
+            borderRadius: 8,
+            height: 42,
             flex: 1,
             paddingHorizontal: 15,
-            justifyContent: "space-between",
+            ...Colors.cardShadow,
           }}
         >
           <View
@@ -77,7 +76,7 @@ const CartScreen = () => {
               gap: 10,
             }}
           >
-            <Feather name="search" size={20} color="black" />
+            <Feather name="search" size={20} color={Colors.gray} />
             <TextInput
               placeholder="Search Bookosaurus.in"
               placeholderTextColor="#808080"
@@ -85,8 +84,8 @@ const CartScreen = () => {
             />
           </View>
         </View>
-        <Pressable>
-          <Feather name="mic" size={20} color="black" />
+        <Pressable style={{ marginLeft: 15 }}>
+          <Feather name="mic" size={20} color={Colors.textSecondary} />
         </Pressable>
       </TouchableOpacity>
       <View style={{ padding: 15 }}>
@@ -96,14 +95,15 @@ const CartScreen = () => {
             alignItems: "center",
           }}
         >
-          <Text style={{ fontWeight: "400", fontSize: 17 }}>Subtotal: </Text>
-          <Text style={{ fontWeight: "bold", fontSize: 17 }}>
-            {totalPrice.toFixed(2)} ₹
+          <Text style={{ fontWeight: "400", fontSize: 17, color: Colors.textSecondary }}>Subtotal: </Text>
+          <Text style={{ fontWeight: "700", fontSize: 18, color: Colors.textPrimary }}>
+            ₹{totalPrice.toFixed(2)}
           </Text>
         </View>
         <View style={{ marginTop: 10 }}>
-          <Text style={{ fontSize: 16 }}>EMI details Available</Text>
+          <Text style={{ fontSize: 15, color: Colors.textSecondary, marginBottom: 10 }}>EMI details Available</Text>
           <TouchableOpacity
+            activeOpacity={0.7}
             onPress={() => {
               if (cart.length > 0) {
                 navigation.navigate("Confirm" as never);
@@ -113,20 +113,20 @@ const CartScreen = () => {
             }}
           >
             <LinearGradient
-              colors={["#fcb900", "#ffe49b"]}
+              colors={Colors.buttonGradient as any}
               style={{
-                padding: 10,
-                borderRadius: 10,
+                paddingVertical: 12,
+                borderRadius: 8,
                 alignItems: "center",
-                marginTop: 10,
+                ...Colors.cardShadow,
               }}
             >
               {cart.length > 0 ? (
-                <Text style={{ fontSize: 16 }}>
+                <Text style={{ fontSize: 16, fontWeight: "700", color: Colors.white }}>
                   Proceed to Buy {cart.length} items
                 </Text>
               ) : (
-                <Text style={{ fontSize: 16 }}>Proceed to Buy</Text>
+                <Text style={{ fontSize: 16, fontWeight: "700", color: Colors.white }}>Proceed to Buy</Text>
               )}
             </LinearGradient>
           </TouchableOpacity>
@@ -173,10 +173,12 @@ const CartScreen = () => {
               return (
                 <View
                   style={{
-                    marginVertical: 10,
-                    borderBottomColor: "#ddd",
-                    borderBottomWidth: 0.5,
-                    marginRight: 15,
+                    marginVertical: 5,
+                    marginHorizontal: 2,
+                    backgroundColor: Colors.white,
+                    borderRadius: 12,
+                    padding: 10,
+                    ...Colors.cardShadow,
                   }}
                   key={index}
                 >
@@ -204,14 +206,15 @@ const CartScreen = () => {
                       <Text
                         style={{
                           fontSize: 16,
-                          fontWeight: "400",
+                          fontWeight: "500",
+                          color: Colors.textPrimary,
                         }}
                         numberOfLines={3}
                       >
                         {item?.title}
                       </Text>
-                      <Text style={{ fontSize: 18, fontWeight: "bold" }}>
-                        {item?.price} ₹
+                      <Text style={{ fontSize: 18, fontWeight: "700", color: Colors.accent, marginTop: 4 }}>
+                        ₹{item?.price}
                       </Text>
                       <Image
                         style={{ width: 30, height: 30 }}
@@ -221,9 +224,10 @@ const CartScreen = () => {
                       />
                       <Text
                         style={{
-                          fontSize: 16,
-                          fontWeight: "500",
-                          color: "green",
+                          fontSize: 14,
+                          fontWeight: "600",
+                          color: "#22C55E",
+                          marginTop: 4,
                         }}
                       >
                         In Stock
@@ -242,63 +246,61 @@ const CartScreen = () => {
                       <TouchableOpacity
                         onPress={() => removeFromCart(item)}
                         style={{
-                          backgroundColor: "#e5f5ffff",
-                          padding: 3,
-                          borderRadius: 5,
-                          width: 50,
+                          backgroundColor: Colors.lightGray,
+                          padding: 8,
+                          borderRadius: 20,
+                          width: 44,
+                          height: 44,
                           alignItems: "center",
-                          marginTop: 5,
-                          marginLeft: 15,
-                          marginBottom: 5,
+                          justifyContent: "center",
                         }}
                       >
-                        <AntDesign name="delete" size={22} color="black" />
+                        <AntDesign name="delete" size={20} color={Colors.textPrimary} />
                       </TouchableOpacity>
                     ) : (
                       <TouchableOpacity
                         onPress={() => decrementQuantity(item)}
                         style={{
-                          backgroundColor: "#e5f5ffff",
-                          padding: 3,
-                          borderRadius: 5,
-                          width: 50,
+                          backgroundColor: Colors.lightGray,
+                          padding: 8,
+                          borderRadius: 20,
+                          width: 44,
+                          height: 44,
                           alignItems: "center",
-                          marginTop: 5,
-                          marginLeft: 15,
-                          marginBottom: 5,
+                          justifyContent: "center",
                         }}
                       >
-                        <AntDesign name="minus" size={22} color="black" />
+                        <AntDesign name="minus" size={20} color={Colors.textPrimary} />
                       </TouchableOpacity>
                     )}
-                    <Text style={{ fontSize: 18, fontWeight: "bold" }}>
+                    <Text style={{ fontSize: 18, fontWeight: "700", minWidth: 20, textAlign: 'center' }}>
                       {item?.quantity}
                     </Text>
                     <TouchableOpacity
                       onPress={() => incrementQuantity(item)}
                       style={{
-                        backgroundColor: "#e5f5ffff",
-                        padding: 3,
-                        borderRadius: 5,
-                        width: 50,
+                        backgroundColor: Colors.lightGray,
+                        padding: 8,
+                        borderRadius: 20,
+                        width: 44,
+                        height: 44,
                         alignItems: "center",
-                        marginTop: 5,
-                        marginBottom: 5,
+                        justifyContent: "center",
                       }}
                     >
-                      <AntDesign name="plus" size={22} color="black" />
+                      <AntDesign name="plus" size={20} color={Colors.textPrimary} />
                     </TouchableOpacity>
                     <TouchableOpacity
                       onPress={() => removeFromCart(item)}
                       style={{
-                        borderWidth: 0.5,
-                        borderColor: "#bbe4ffff",
-                        paddingHorizontal: 7,
-                        paddingVertical: 5,
-                        borderRadius: 5,
+                        paddingHorizontal: 15,
+                        paddingVertical: 8,
+                        borderRadius: 20,
+                        backgroundColor: Colors.lightGray,
+                        marginLeft: 10,
                       }}
                     >
-                      <Text>Remove</Text>
+                      <Text style={{ fontSize: 14, color: Colors.textSecondary, fontWeight: "600" }}>Remove</Text>
                     </TouchableOpacity>
                   </View>
 
@@ -306,34 +308,30 @@ const CartScreen = () => {
                     style={{
                       flexDirection: "row",
                       columnGap: 10,
-                      marginTop: 5,
-                      marginBottom: 5,
-                      marginLeft: 15,
+                      marginTop: 15,
                     }}
                   >
                     <TouchableOpacity
                       style={{
-                        borderWidth: 0.5,
-                        borderColor: "#bbe4ffff",
-                        paddingHorizontal: 12,
-                        paddingVertical: 7,
-                        borderRadius: 5,
-                        backgroundColor: "#d3eeffff",
+                        paddingHorizontal: 15,
+                        paddingVertical: 8,
+                        borderRadius: 20,
+                        borderWidth: 1,
+                        borderColor: Colors.lightGray,
                       }}
                     >
-                      <Text>Save for later</Text>
+                      <Text style={{ fontSize: 13, color: Colors.textSecondary, fontWeight: "600" }}>Save for later</Text>
                     </TouchableOpacity>
                     <TouchableOpacity
                       style={{
-                        borderWidth: 0.5,
-                        borderColor: "#bbe4ffff",
-                        paddingHorizontal: 12,
-                        paddingVertical: 7,
-                        borderRadius: 5,
-                        backgroundColor: "#d3eeffff",
+                        paddingHorizontal: 15,
+                        paddingVertical: 8,
+                        borderRadius: 20,
+                        borderWidth: 1,
+                        borderColor: Colors.lightGray,
                       }}
                     >
-                      <Text>See more like this</Text>
+                      <Text style={{ fontSize: 13, color: Colors.textSecondary, fontWeight: "600" }}>See more like this</Text>
                     </TouchableOpacity>
                   </View>
                 </View>

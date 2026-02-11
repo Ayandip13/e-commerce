@@ -231,14 +231,16 @@ const offers: offer[] = [
   },
 ];
 
+import Colors from "../constants/Colors";
+
 const HomeScreen = () => {
   const { userId, setUserId } = useContext(UserType);
-  const [address, setAddress] = useState([]);
+  const [address, setAddress] = useState<any[]>([]);
   const [modalVisible, setModalVisible] = useState(false);
   const navigation = useNavigation();
   const [products, setProducts] = useState<ProductApi[]>([]);
   const [open, setOpen] = useState<boolean>(false);
-  const [selectedAddress, setSelectedAddress] = useState("");
+  const [selectedAddress, setSelectedAddress] = useState<any>(null);
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const [category, setCategory] = useState<string>("electronics");
   const [items, setItems] = useState([
@@ -319,34 +321,32 @@ const HomeScreen = () => {
   // console.log(cart);
   console.log(userId);
   return (
-    <View style={{ backgroundColor: "white", flex: 1 }}>
+    <View style={{ backgroundColor: Colors.background, flex: 1 }}>
       <StatusBar style="dark" />
 
       <TouchableOpacity
         activeOpacity={0.9}
         style={{
-          backgroundColor: "#00ced1",
-          paddingHorizontal: 10,
+          backgroundColor: Colors.primary,
+          paddingHorizontal: 15,
           paddingBottom: 15,
-          paddingTop: 47,
+          paddingTop: 50,
           flexDirection: "row",
           alignItems: "center",
-          paddingRight: 15,
         }}
-        onPress={() => navigation.navigate('SearchScreen' as never)}
+        onPress={() => navigation.navigate("SearchScreen" as never)}
       >
         <View
           style={{
             flexDirection: "row",
             alignItems: "center",
-            marginHorizontal: 7,
-            backgroundColor: "white",
-            gap: 10,
-            borderRadius: 5,
-            height: 40,
+            backgroundColor: Colors.white,
+            gap: 12,
+            borderRadius: 8,
+            height: 42,
             flex: 1,
             paddingHorizontal: 15,
-            justifyContent: "space-between",
+            ...Colors.cardShadow,
           }}
         >
           <View
@@ -356,16 +356,16 @@ const HomeScreen = () => {
               gap: 10,
             }}
           >
-            <Feather name="search" size={20} color="black" />
+            <Feather name="search" size={20} color={Colors.gray} />
             <TextInput
-              placeholder="Search Bookosaurus.in"
-              placeholderTextColor="#808080"
+              placeholder="Search Bookosaurus"
+              placeholderTextColor={Colors.gray}
               readOnly
             />
           </View>
         </View>
-        <Pressable>
-          <Feather name="mic" size={20} color="black" />
+        <Pressable style={{ marginLeft: 15 }}>
+          <Feather name="mic" size={20} color={Colors.textPrimary} />
         </Pressable>
       </TouchableOpacity>
       <ScrollView style={{ marginTop: Platform.OS === "android" ? 0 : 0 }}>
@@ -375,20 +375,23 @@ const HomeScreen = () => {
             flexDirection: "row",
             alignItems: "center",
             gap: 5,
-            padding: 10,
-            backgroundColor: "#afeeee",
+            paddingHorizontal: 15,
+            paddingVertical: 12,
+            backgroundColor: Colors.white,
+            borderBottomWidth: 1,
+            borderBottomColor: Colors.lightGray,
           }}
         >
           <Ionicons name="location-outline" size={24} color="black" />
           <View>
             {address ? (
-              <Text style={{ fontSize: 13, fontWeight: "500" }}>
+              <Text style={{ fontSize: 13, fontWeight: "500", color: Colors.textSecondary }}>
                 Deliver to{" "}
-                {selectedAddress ? selectedAddress?.name : address[0]?.name} -{" "}
-                {selectedAddress ? selectedAddress.street : address[0]?.street},
+                {selectedAddress ? selectedAddress?.name : (address as any)[0]?.name} -{" "}
+                {selectedAddress ? selectedAddress.street : (address as any)[0]?.street},
                 {selectedAddress
                   ? selectedAddress.postalCode
-                  : address[0]?.postalCode}
+                  : (address as any)[0]?.postalCode}
               </Text>
             ) : (
               <Text>Add Addresses</Text>
@@ -435,6 +438,7 @@ const HomeScreen = () => {
           )}
           horizontal
           showsHorizontalScrollIndicator={false}
+          style={{ backgroundColor: Colors.white, paddingVertical: 5 }}
         />
 
         <CustomSlider
@@ -444,8 +448,8 @@ const HomeScreen = () => {
           onImagePress={(index) => console.log("Pressed image:", index)}
         />
 
-        <Text style={{ fontSize: 18, fontWeight: "600", padding: 10 }}>
-          Trending Deals of the week
+        <Text style={{ fontSize: 18, fontWeight: "700", padding: 15, color: Colors.textPrimary }}>
+          Trending Deals of the Week
         </Text>
 
         <View
@@ -459,7 +463,7 @@ const HomeScreen = () => {
           {deals.map((item, index) => (
             <TouchableOpacity
               onPress={() =>
-                navigation.navigate("ProductInfoScreen", {
+                navigation.navigate("ProductInfoScreen" as any, {
                   id: item?.id,
                   title: item?.title,
                   price: item?.price,
@@ -475,9 +479,10 @@ const HomeScreen = () => {
                 width: "48%",
                 marginBottom: 15,
                 alignItems: "center",
-                backgroundColor: "#fff",
-                borderRadius: 8,
-                padding: 5,
+                backgroundColor: Colors.white,
+                borderRadius: 12,
+                padding: 10,
+                ...Colors.cardShadow,
               }}
             >
               <Image
@@ -505,7 +510,9 @@ const HomeScreen = () => {
           style={{
             paddingHorizontal: 20,
             fontSize: 18,
-            fontWeight: "600",
+            fontWeight: "700",
+            color: Colors.textPrimary,
+            marginTop: 10,
           }}
         >
           Today's Deals
@@ -522,7 +529,7 @@ const HomeScreen = () => {
               <TouchableOpacity
                 key={index}
                 onPress={() =>
-                  navigation.navigate("ProductInfoScreen", {
+                  navigation.navigate("ProductInfoScreen" as any, {
                     id: item?.id,
                     title: item?.title,
                     price: item?.price,
@@ -546,14 +553,15 @@ const HomeScreen = () => {
 
                 <View
                   style={{
-                    backgroundColor: "#e31837",
-                    paddingVertical: 5,
-                    width: 130,
+                    backgroundColor: Colors.accent,
+                    paddingVertical: 4,
+                    width: "auto",
+                    minWidth: 100,
                     justifyContent: "center",
                     alignItems: "center",
                     marginTop: 10,
-                    borderRadius: 5,
-                    paddingHorizontal: 20,
+                    borderRadius: 20,
+                    paddingHorizontal: 15,
                   }}
                 >
                   <Text
@@ -601,13 +609,13 @@ const HomeScreen = () => {
             setOpen={setOpen}
             setValue={setCategory}
             setItems={setItems}
-            placeholder="choose category"
-            placeholderStyle={{ color: "#B7B7B7" }}
+            placeholder="Choose Category"
+            placeholderStyle={{ color: Colors.gray }}
             zIndex={3000}
             zIndexInverse={1000}
             dropDownContainerStyle={{
-              borderColor: "#B7B7B7",
-              borderWidth: 0.5,
+              borderColor: Colors.primary,
+              borderWidth: 1,
             }}
           />
         </View>
@@ -672,7 +680,7 @@ const HomeScreen = () => {
                     activeIndex === index ? "#dbfaffff" : "#ffffff",
                 }}
               >
-                <View style={{ flexDirection: "row" }}>
+                <View style={{ flexDirection: "row", paddingHorizontal: 10 }}>
                   <Text
                     style={{
                       fontSize: 16,
@@ -764,24 +772,24 @@ const HomeScreen = () => {
             <View
               style={{ flexDirection: "row", alignItems: "center", gap: 5 }}
             >
-              <Entypo name="location-pin" color="#0066b2" size={22} />
-              <Text style={{ fontSize: 15, gap: 10, color: "#0066b2" }}>
+              <Entypo name="location-pin" color={Colors.accent} size={22} />
+              <Text style={{ fontSize: 15, gap: 10, color: Colors.accent }}>
                 Enter an Indian pincode
               </Text>
             </View>
             <View
               style={{ flexDirection: "row", alignItems: "center", gap: 5 }}
             >
-              <Ionicons name="locate-sharp" color="#0066b2" size={22} />
-              <Text style={{ fontSize: 15, gap: 10, color: "#0066b2" }}>
+              <Ionicons name="locate-sharp" color={Colors.accent} size={22} />
+              <Text style={{ fontSize: 15, gap: 10, color: Colors.accent }}>
                 Use my current location
               </Text>
             </View>
             <View
               style={{ flexDirection: "row", alignItems: "center", gap: 5 }}
             >
-              <Ionicons name="globe" color="#0066b2" size={22} />
-              <Text style={{ fontSize: 15, gap: 10, color: "#0066b2" }}>
+              <Ionicons name="globe" color={Colors.accent} size={22} />
+              <Text style={{ fontSize: 15, gap: 10, color: Colors.accent }}>
                 Deliver outside India
               </Text>
             </View>

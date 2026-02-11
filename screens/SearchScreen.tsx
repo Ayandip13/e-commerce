@@ -5,6 +5,8 @@ import axios from 'axios'
 import { API_URL } from '../api';
 import { useNavigation } from '@react-navigation/native';
 import ShimmerText from '../components/ShimmerText';
+import Colors from '../constants/Colors';
+import { LinearGradient } from 'expo-linear-gradient';
 
 interface Product {
     id: number;
@@ -215,32 +217,29 @@ const SearchScreen = () => {
         <View
             style={{
                 flex: 1,
-                backgroundColor: "#fff",
-                marginBottom: 40
+                backgroundColor: Colors.background,
             }}>
             <View
                 style={{
-                    backgroundColor: "#00ced1",
-                    paddingHorizontal: 10,
+                    backgroundColor: Colors.primary,
+                    paddingHorizontal: 15,
                     paddingBottom: 15,
-                    paddingTop: 47,
+                    paddingTop: 50,
                     flexDirection: "row",
                     alignItems: "center",
-                    paddingRight: 15,
                 }}
             >
-                <Pressable
+                <View
                     style={{
                         flexDirection: "row",
                         alignItems: "center",
-                        marginHorizontal: 7,
                         backgroundColor: "white",
-                        gap: 10,
-                        borderRadius: 5,
-                        height: 40,
+                        gap: 12,
+                        borderRadius: 8,
+                        height: 42,
                         flex: 1,
                         paddingHorizontal: 15,
-                        justifyContent: "space-between",
+                        ...Colors.cardShadow,
                     }}
                 >
                     <View
@@ -250,20 +249,22 @@ const SearchScreen = () => {
                             gap: 10,
                         }}
                     >
-                        <Feather name="search" size={20} color="black" />
+                        <Feather name="search" size={20} color={Colors.gray} />
                         <TextInput
                             placeholder="Search by product name"
-                            placeholderTextColor="#808080"
+                            placeholderTextColor={Colors.gray}
                             style={{
-                                color: "black",
+                                color: Colors.textPrimary,
+                                flex: 1,
+                                fontSize: 15,
                             }}
                             onChangeText={(text) => setSearchQuery(text)}
                             value={searchQuery}
                         />
                     </View>
-                </Pressable>
-                <TouchableOpacity>
-                    <Feather name="mic" size={20} color="black" />
+                </View>
+                <TouchableOpacity style={{ marginLeft: 15 }}>
+                    <Feather name="mic" size={20} color={Colors.textPrimary} />
                 </TouchableOpacity>
             </View>
             <FlatList
@@ -287,14 +288,12 @@ const SearchScreen = () => {
                         style={{
                             flexDirection: "row",
                             alignItems: "center",
-                            gap: 10,
-                            marginVertical: 2,
-                            marginHorizontal: 10,
-                            borderRadius: 10,
-                            padding: 10,
-                            borderWidth: 0.3,
-                            borderColor: "#00d9ffff",
-                            // marginBottom: 100,
+                            backgroundColor: Colors.white,
+                            marginVertical: 8,
+                            marginHorizontal: 15,
+                            borderRadius: 12,
+                            padding: 15,
+                            ...Colors.cardShadow,
                         }}
                     >
                         <View>
@@ -316,23 +315,29 @@ const SearchScreen = () => {
                                 numberOfLines={1}
                                 style={{
                                     fontSize: 16,
-                                    fontWeight: "bold",
-                                    color: "#000",
+                                    fontWeight: "600",
+                                    color: Colors.textPrimary,
                                 }}>{item.title}</Text>
                             <View
                                 style={{
                                     flexDirection: "row",
                                     alignItems: "center",
                                     gap: 10,
+                                    marginTop: 4,
                                 }}>
-                                <Text style={{ fontSize: 16 }}>{item.price} ₹</Text>
-                                {item.oldPrice ? <Text style={{ textDecorationLine: "line-through", color: "#f80202ff", fontSize: 16 }}>{item.oldPrice}
-                                    <Text style={{ color: "#fff" }}>{" "}</Text>
-                                    <Text style={{ color: "#000" }}>₹</Text>
-                                </Text> : null}
+                                <Text style={{ fontSize: 18, fontWeight: "700", color: Colors.accent }}>₹{item.price}</Text>
+                                {item.oldPrice ? (
+                                    <Text style={{ textDecorationLine: "line-through", color: Colors.gray, fontSize: 14 }}>
+                                        ₹{item.oldPrice}
+                                    </Text>
+                                ) : null}
                             </View>
                             {
-                                item.size ? <Text>{item.size}</Text> : <Text style={{ color: "#000" }}>Standard Size</Text>
+                                item.size ? (
+                                    <Text style={{ fontSize: 13, color: Colors.textSecondary, marginTop: 4 }}>{item.size}</Text>
+                                ) : (
+                                    <Text style={{ fontSize: 13, color: Colors.textSecondary, marginTop: 4 }}>Standard Size</Text>
+                                )
                             }
                             <TouchableOpacity
                                 onPress={() => (navigation as any).navigate("ProductInfoScreen", {
@@ -346,12 +351,14 @@ const SearchScreen = () => {
                                     item: item,
                                 })}
                                 style={{
-                                    marginLeft: '70%',
+                                    flex: 1,
+                                    alignItems: "flex-end",
                                 }}>
                                 <Text
                                     style={{
-                                        color: "#000",
-                                        fontWeight: "bold",
+                                        color: Colors.accent,
+                                        fontWeight: "600",
+                                        fontSize: 14,
                                     }}>See more ...</Text>
                             </TouchableOpacity>
                         </View>

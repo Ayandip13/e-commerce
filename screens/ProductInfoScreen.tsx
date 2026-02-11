@@ -15,13 +15,14 @@ import { addToCart } from "../redux/CartReducer";
 import { StatusBar } from "expo-status-bar";
 import { addToBookmark, removeBookmark } from "../redux/BookmarkReducer";
 import { LinearGradient } from "expo-linear-gradient";
+import Colors from "../constants/Colors";
 import { UserType } from "../UserContext";
 import axios from "axios";
 import { API_URL } from "../api";
 
 const ProductInfoScreen = () => {
   const routeParams = useRoute();
-  const route = routeParams.params;
+  const route = routeParams.params as any;
   const { width } = Dimensions.get("window");
   const height = width;
   const navigation = useNavigation();
@@ -80,7 +81,7 @@ const ProductInfoScreen = () => {
 
   return (
     <ScrollView
-      style={{ flex: 1, backgroundColor: "white" }}
+      style={{ flex: 1, backgroundColor: Colors.background }}
       showsVerticalScrollIndicator={false}
     >
       <StatusBar style="dark" />
@@ -89,21 +90,22 @@ const ProductInfoScreen = () => {
         <View
           style={{
             position: "absolute",
-            top: 35,
+            top: 40,
             left: 15,
-            backgroundColor: "#c60c31a8",
-            width: 45,
-            height: 45,
-            borderRadius: 22.5,
+            backgroundColor: Colors.accent,
+            paddingHorizontal: 12,
+            paddingVertical: 6,
+            borderRadius: 20,
             justifyContent: "center",
             zIndex: 10,
+            ...Colors.cardShadow,
           }}
         >
           <Text
             style={{
-              color: "#fff",
-              fontSize: 11,
-              fontWeight: "bold",
+              color: Colors.white,
+              fontSize: 12,
+              fontWeight: "700",
               textAlign: "center",
             }}
           >
@@ -114,12 +116,12 @@ const ProductInfoScreen = () => {
         <TouchableOpacity
           style={{
             position: "absolute",
-            top: 35,
+            top: 40,
             right: 15,
-            backgroundColor: "#0303032c",
-            width: 45,
-            height: 45,
-            borderRadius: 22.5,
+            backgroundColor: "rgba(0,0,0,0.1)",
+            width: 40,
+            height: 40,
+            borderRadius: 20,
             justifyContent: "center",
             alignItems: "center",
             zIndex: 10,
@@ -135,10 +137,10 @@ const ProductInfoScreen = () => {
             position: "absolute",
             bottom: 20,
             left: 15,
-            backgroundColor: "#0303032c",
-            width: 45,
-            height: 45,
-            borderRadius: 22.5,
+            backgroundColor: "rgba(0,0,0,0.1)",
+            width: 40,
+            height: 40,
+            borderRadius: 20,
             justifyContent: "center",
             alignItems: "center",
             zIndex: 10,
@@ -167,12 +169,11 @@ const ProductInfoScreen = () => {
       </View>
 
       {/* Product Details */}
-      <View style={{ padding: 10 }}>
-        <Text style={{ fontSize: 15, fontWeight: "500", marginBottom: 10 }}>
+      <View style={{ padding: 15 }}>
+        <Text style={{ fontSize: 18, fontWeight: "600", color: Colors.textPrimary, marginBottom: 8 }}>
           {route?.title}
         </Text>
-
-        <Text style={{ fontSize: 20, fontWeight: "500" }}>₹{route?.price}</Text>
+        <Text style={{ fontSize: 24, fontWeight: "700", color: Colors.accent }}>₹{route?.price}</Text>
 
         <View
           style={{
@@ -211,9 +212,8 @@ const ProductInfoScreen = () => {
         />
 
         <View style={{ marginTop: 10, marginBottom: 50 }}>
-          <Text style={{ fontSize: 15 }}>Total: ₹{route?.price}</Text>
-
-          <Text style={{ fontSize: 15, color: "#00ced1", marginTop: 5 }}>
+          <Text style={{ fontSize: 16, color: Colors.textSecondary }}>Total: ₹{route?.price}</Text>
+          <Text style={{ fontSize: 15, color: Colors.accent, marginTop: 8, fontWeight: "500" }}>
             Free delivery tomorrow by 3PM. Order within 10 hours 30 minutes
           </Text>
 
@@ -234,9 +234,9 @@ const ProductInfoScreen = () => {
           <Text
             style={{
               fontSize: 15,
-              fontWeight: "500",
-              color: "green",
-              marginVertical: 5,
+              fontWeight: "600",
+              color: "#22C55E", // Professional green
+              marginVertical: 10,
             }}
           >
             In Stock
@@ -244,15 +244,18 @@ const ProductInfoScreen = () => {
 
           <TouchableOpacity onPress={() => addItemToCart(route?.item)}>
             <LinearGradient
-              colors={["#fff672", "#ff9900"]}
+              colors={Colors.buttonGradient as any}
               style={{
-                padding: 10,
-                borderRadius: 10,
+                paddingVertical: 12,
+                borderRadius: 8,
                 alignItems: "center",
                 marginTop: 10,
+                ...Colors.cardShadow,
               }}
             >
-              <Text>{addedToCart ? "Added to Cart" : "Add to Cart"}</Text>
+              <Text style={{ color: Colors.white, fontWeight: "700", fontSize: 16 }}>
+                {addedToCart ? "Added to Cart" : "Add to Cart"}
+              </Text>
             </LinearGradient>
           </TouchableOpacity>
 
@@ -269,15 +272,16 @@ const ProductInfoScreen = () => {
             }}
           >
             <LinearGradient
-              colors={["#fff672", "#ff9900"]}
+              colors={Colors.buttonGradient as any}
               style={{
-                padding: 10,
-                borderRadius: 10,
+                paddingVertical: 12,
+                borderRadius: 8,
                 alignItems: "center",
                 marginTop: 10,
+                ...Colors.cardShadow,
               }}
             >
-              <Text>Buy Now</Text>
+              <Text style={{ color: Colors.white, fontWeight: "700", fontSize: 16 }}>Buy Now</Text>
             </LinearGradient>
           </TouchableOpacity>
         </View>
@@ -296,16 +300,17 @@ const ProductInfoScreen = () => {
             backgroundColor: "rgba(0, 0, 0, 0.14)",
           }}>
           <LinearGradient
-            colors={["#d4faffff", "#fff", "#d4faffff"]}
-            start={{ x: 1, y: 0 }}
-            end={{ x: 0, y: 1 }}
+            colors={Colors.screenGradient as any}
+            start={{ x: 0, y: 0 }}
+            end={{ x: 1, y: 1 }}
             style={{
-              width: "80%",
-              borderRadius: 10,
-              height: "20%",
-              borderWidth: 0.5,
-              borderColor: "#00ced1",
-              paddingHorizontal: 20,
+              width: "85%",
+              borderRadius: 20,
+              padding: 25,
+              borderWidth: 1,
+              borderColor: Colors.lightGray,
+              ...Colors.cardShadow,
+              backgroundColor: Colors.white,
             }}>
             <Text
               style={{
@@ -330,19 +335,19 @@ const ProductInfoScreen = () => {
                 onPress={() => setModalVisible(false)}
                 activeOpacity={0.8}
               >
-                <LinearGradient
-                  colors={["#fff787ff", "#ffb13dff"]}
+                <View
                   style={{
-                    height: 45,
-                    borderRadius: 10,
+                    height: 48,
+                    borderRadius: 24,
                     alignItems: "center",
                     justifyContent: "center",
+                    backgroundColor: Colors.lightGray,
                   }}
                 >
-                  <Text style={{ color: "#000", fontSize: 15, fontWeight: "600" }}>
+                  <Text style={{ color: Colors.textSecondary, fontSize: 16, fontWeight: "600" }}>
                     Cancel
                   </Text>
-                </LinearGradient>
+                </View>
               </TouchableOpacity>
 
               <TouchableOpacity
@@ -354,15 +359,15 @@ const ProductInfoScreen = () => {
                 }}
               >
                 <LinearGradient
-                  colors={["#fff787ff", "#ffb13dff"]}
+                  colors={Colors.buttonGradient as any}
                   style={{
-                    height: 45,
-                    borderRadius: 10,
+                    height: 48,
+                    borderRadius: 24,
                     alignItems: "center",
                     justifyContent: "center",
                   }}
                 >
-                  <Text style={{ color: "#000", fontSize: 15, fontWeight: "600" }}>
+                  <Text style={{ color: Colors.white, fontSize: 16, fontWeight: "600" }}>
                     Buy Again
                   </Text>
                 </LinearGradient>

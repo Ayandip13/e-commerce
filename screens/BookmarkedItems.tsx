@@ -14,6 +14,7 @@ import axios from "axios";
 import { API_URL } from "../api";
 import { LinearGradient } from "expo-linear-gradient";
 import ShimmerText from "../components/ShimmerText";
+import Colors from "../constants/Colors";
 
 const BookmarkedItems = () => {
   const bookmarks = useSelector((state: any) => state.bookmark.bookmarks);
@@ -66,12 +67,12 @@ const BookmarkedItems = () => {
       <View
         style={{
           flexDirection: "row",
-          backgroundColor: "#fff",
-          padding: 10,
-          marginVertical: 5,
-          marginHorizontal: 10,
-          borderRadius: 8,
-          elevation: 2,
+          backgroundColor: Colors.white,
+          padding: 15,
+          marginVertical: 8,
+          marginHorizontal: 15,
+          borderRadius: 12,
+          ...Colors.cardShadow,
         }}
       >
         <Image
@@ -87,8 +88,9 @@ const BookmarkedItems = () => {
           <Text
             numberOfLines={1}
             style={{
-              fontSize: 15,
+              fontSize: 16,
               fontWeight: "600",
+              color: Colors.textPrimary,
               marginTop: 10,
             }}
           >
@@ -98,9 +100,9 @@ const BookmarkedItems = () => {
           <Text
             style={{
               fontSize: 14,
-              color: "#888",
+              color: Colors.gray,
               textDecorationLine: "line-through",
-              marginTop: 6,
+              marginTop: 4,
             }}
           >
             ₹{oldPrice}
@@ -110,13 +112,15 @@ const BookmarkedItems = () => {
             style={{
               flexDirection: "row",
               gap: 10,
+              alignItems: "center",
+              marginTop: 4,
             }}
           >
             <Text
               style={{
-                fontSize: 15,
-                fontWeight: "600",
-                marginTop: 2,
+                fontSize: 18,
+                fontWeight: "700",
+                color: Colors.accent,
               }}
             >
               ₹{price}
@@ -126,9 +130,8 @@ const BookmarkedItems = () => {
               <Text
                 style={{
                   fontSize: 13,
-                  color: "green",
+                  color: "#22C55E",
                   fontWeight: "600",
-                  marginTop: 4,
                 }}
               >
                 {discountPercent}% OFF
@@ -142,24 +145,23 @@ const BookmarkedItems = () => {
                   "You have already ordered this item",
                   ToastAndroid.SHORT
                 )
-                : navigation.navigate("InfoScreenBookmark" as never, {
+                : (navigation as any).navigate("InfoScreenBookmark", {
                   item,
                   discountPercent,
                 });
             }}
           >
             <LinearGradient
-              colors={["#fffd71ff", "#feb47b"]}
+              colors={isAlreadyOrdered ? [Colors.lightGray, Colors.lightGray] as any : Colors.buttonGradient as any}
               style={{
-                marginTop: 10,
+                marginTop: 12,
                 width: "100%",
-                flex: 1,
-                padding: 10,
+                paddingVertical: 10,
                 borderRadius: 8,
                 alignItems: "center",
               }}
             >
-              <Text style={{ color: isAlreadyOrdered ? "#666" : "#000" }}>
+              <Text style={{ color: isAlreadyOrdered ? Colors.textSecondary : Colors.white, fontWeight: "bold" }}>
                 {isAlreadyOrdered ? "Already Bought" : "Wanna Buy?"}
               </Text>
             </LinearGradient>
@@ -170,22 +172,7 @@ const BookmarkedItems = () => {
   };
 
   return (
-    <View style={{ flex: 1, backgroundColor: "#fff" }}>
-      <View
-        style={{
-          alignItems: "center",
-          backgroundColor: "#fff",
-          elevation: 5,
-          padding: 15,
-          borderBottomEndRadius: 15,
-          borderBottomStartRadius: 15,
-        }}
-      >
-        <Text style={{ fontSize: 20, fontWeight: "600" }}>
-          Bookmarked Items
-        </Text>
-      </View>
-
+    <View style={{ flex: 1, backgroundColor: Colors.background }}>
       <FlatList
         data={bookmarks}
         keyExtractor={(item: any) => item.productId || item._id || item.id}

@@ -18,6 +18,7 @@ import RazorpayCheckout from "react-native-razorpay";
 import { StatusBar } from "expo-status-bar";
 import { API_URL } from "../api";
 import { LinearGradient } from "expo-linear-gradient";
+import Colors from "../constants/Colors";
 
 const ConfirmationScreen = () => {
   interface fetchedAddress {
@@ -39,7 +40,7 @@ const ConfirmationScreen = () => {
   const dispatch = useDispatch();
   const [addresses, setAddresses] = useState<any[]>([]);
   const { userId, setUserId } = useContext(UserType);
-  const [selectedAddress, setSelectedAddress] = useState<string | null>("");
+  const [selectedAddress, setSelectedAddress] = useState<any>("");
   const [options, setOptions] = useState<boolean>(false);
   const [selectedOption, setSelectedOption] = useState<string>("");
   const cartItems = useSelector((state: any) => state.cart.cart);
@@ -64,7 +65,7 @@ const ConfirmationScreen = () => {
   };
   const totalPrice = cartItems
     .map((item: any) => item.price * item.quantity)
-    .reduce((acc: string, curr: string) => acc + curr, 0)
+    .reduce((acc: number, curr: number) => acc + curr, 0)
     .toFixed(2);
 
   const handlePlaceOrder = async () => {
@@ -136,72 +137,40 @@ const ConfirmationScreen = () => {
   };
 
   return (
-    <ScrollView
-      style={{
-        paddingHorizontal: 15,
-        paddingTop: 50,
-        backgroundColor: "white",
-        flex: 1,
-      }}
-    >
+    <View style={{ flex: 1, backgroundColor: Colors.background }}>
       <StatusBar style="dark" />
-      <View>
-        <View
-          style={{
-            flexDirection: "row",
-            alignItems: "center",
-            marginBottom: 20,
-            justifyContent: "space-between",
-          }}
-        >
-          {steps?.map((step, index) => (
-            <View
-              style={{
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-            >
-              {index > 0 && (
-                <View
-                  style={[
-                    { position: "absolute" },
-                    index <= currentStep && {
-                      backgroundColor: "#ffffff",
-                      width: 50,
-                      height: 2,
-                      marginBottom: 5,
-                    },
-                  ]}
-                />
-              )}
+      <View
+        style={{
+          backgroundColor: Colors.white,
+          paddingTop: 50,
+          paddingBottom: 15,
+          paddingHorizontal: 15,
+          ...Colors.cardShadow,
+          zIndex: 10,
+        }}
+      >
+        <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
+          {steps.map((step, index) => (
+            <View key={index} style={{ alignItems: 'center', flex: 1 }}>
               <View
-                style={[
-                  {
-                    width: 30,
-                    height: 30,
-                    borderRadius: 15,
-                    backgroundColor: "#ccc",
-                    justifyContent: "center",
-                    alignItems: "center",
-                  },
-                  index < currentStep && { backgroundColor: "green" },
-                ]}
+                style={{
+                  width: 28,
+                  height: 28,
+                  borderRadius: 14,
+                  backgroundColor: index <= currentStep ? Colors.primary : Colors.lightGray,
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                }}
               >
                 {index < currentStep ? (
-                  <Text
-                    style={{ fontSize: 16, fontWeight: "bold", color: "white" }}
-                  >
-                    &#10003;
-                  </Text>
+                  <MaterialIcons name="check" size={16} color={Colors.white} />
                 ) : (
-                  <Text
-                    style={{ fontSize: 16, fontWeight: "bold", color: "white" }}
-                  >
+                  <Text style={{ color: index === currentStep ? Colors.white : Colors.gray, fontWeight: '700', fontSize: 12 }}>
                     {index + 1}
                   </Text>
                 )}
               </View>
-              <Text style={{ textAlign: "center", marginTop: 8 }}>
+              <Text style={{ fontSize: 10, fontWeight: '600', color: index <= currentStep ? Colors.textPrimary : Colors.gray, marginTop: 4 }}>
                 {step.title}
               </Text>
             </View>
@@ -209,435 +178,364 @@ const ConfirmationScreen = () => {
         </View>
       </View>
 
-      {currentStep === 0 && (
-        <View>
-          <Text
-            style={{
-              fontSize: 17,
-              fontWeight: "bold",
-            }}
-          >
-            Select delivery Address:
-          </Text>
-          <Pressable style={{ marginBottom: 50 }}>
-            {addresses.map((item, index) => {
-              return (
-                <TouchableOpacity
-                  activeOpacity={0.8}
-                  onPress={() => setSelectedAddress(item)}
-                  key={index}
-                  style={{
-                    flexDirection: "row",
-                    alignItems: "center",
-                    gap: 15,
-                    marginTop: 10,
-                    backgroundColor: "#ffffff",
-                    borderRadius: 10,
-                    paddingVertical: 8,
-                    elevation: 4,
-                    shadowColor: "#00b7ffff",
-                    paddingHorizontal: 10,
-                  }}
-                >
-                  {selectedAddress?._id === item._id ? (
-                    <FontAwesome
-                      name="dot-circle-o"
-                      size={27.5}
-                      color="#008e97"
-                    />
-                  ) : (
-                    <Entypo name="circle" size={24} color="#008e97" />
-                  )}
-                  <View
+      <ScrollView
+        style={{ flex: 1 }}
+        contentContainerStyle={{ paddingHorizontal: 15, paddingVertical: 20 }}
+        showsVerticalScrollIndicator={false}
+      >
+        {currentStep === 0 && (
+          <View>
+            <Text
+              style={{
+                fontSize: 18,
+                fontWeight: "700",
+                color: Colors.textPrimary,
+                marginBottom: 15,
+              }}
+            >
+              Where should we deliver?
+            </Text>
+            <Pressable style={{ marginBottom: 50 }}>
+              {addresses.map((item, index) => {
+                return (
+                  <TouchableOpacity
+                    activeOpacity={0.9}
+                    onPress={() => setSelectedAddress(item)}
+                    key={index}
                     style={{
-                      borderRadius: 5,
+                      backgroundColor: Colors.white,
+                      borderRadius: 15,
+                      padding: 15,
+                      marginBottom: 15,
+                      borderWidth: selectedAddress?._id === item._id ? 0.5 : 0,
+                      borderColor: Colors.primary,
+                      ...Colors.cardShadow,
                     }}
                   >
-                    <View
-                      style={{
-                        flexDirection: "row",
-                        alignItems: "center",
-                      }}
-                    >
-                      <Text style={{ fontWeight: "bold", fontSize: 17 }}>
-                        {item?.name}
-                      </Text>
-                      <Entypo size={25} name="location-pin" color="red" />
-                    </View>
-                    <Text style={{ fontSize: 15, color: "#181818" }}>
-                      <Text style={{ fontWeight: "500" }}>House No: </Text>#
-                      {item?.houseNo},
-                      <Text style={{ fontWeight: "500" }}> Landmark: </Text>
-                      {item?.landmark}
-                    </Text>
-                    <Text style={{ fontSize: 15, color: "#181818" }}>
-                      <Text style={{ fontWeight: "500" }}>Street: </Text>
-                      {item?.street}
-                    </Text>
-                    <Text style={{ fontSize: 15, color: "#181818" }}>
-                      India
-                    </Text>
-                    <Text style={{ fontSize: 15, color: "#181818" }}>
-                      <Text style={{ fontWeight: "500" }}>Mobile No: </Text>
-                      {item?.mobileNo}
-                    </Text>
-                    <Text style={{ fontSize: 15, color: "#181818" }}>
-                      <Text style={{ fontWeight: "500" }}>Postal Code: </Text>
-                      {item?.postalCode}
-                    </Text>
-                    <View style={{ flexDirection: "row" }}>
-                      <TouchableOpacity
-                        style={{
-                          marginVertical: 5,
-                          gap: 5,
-                          marginRight: 10,
-                          borderColor: "#435663",
-                          borderWidth: 0.5,
-                          paddingHorizontal: 20,
-                          borderRadius: 5,
-                          paddingVertical: 5,
-                        }}
-                      >
-                        <Text style={{ fontSize: 15 }}>Edit</Text>
-                      </TouchableOpacity>
-                      <TouchableOpacity
-                        style={{
-                          marginVertical: 5,
-                          gap: 5,
-                          marginRight: 10,
-                          borderColor: "#435663",
-                          borderWidth: 0.5,
-                          paddingHorizontal: 20,
-                          borderRadius: 5,
-                          paddingVertical: 5,
-                        }}
-                      >
-                        <Text style={{ fontSize: 15 }}>Remove</Text>
-                      </TouchableOpacity>
-                      <TouchableOpacity
-                        style={{
-                          marginVertical: 5,
-                          gap: 5,
-                          marginRight: 10,
-                          borderColor: "#435663",
-                          borderWidth: 0.5,
-                          paddingHorizontal: 20,
-                          borderRadius: 5,
-                          paddingVertical: 5,
-                        }}
-                      >
-                        <Text style={{ fontSize: 15 }}>Set as Default</Text>
-                      </TouchableOpacity>
-                    </View>
-                    {selectedAddress?._id === item._id && (
-                      <TouchableOpacity
-                        onPress={() => {
-                          selectedAddress
-                            ? setCurrentStep(1)
-                            : ToastAndroid.show(
-                              "Please select an address",
-                              ToastAndroid.SHORT
-                            );
-                        }}
-                      >
-                        <LinearGradient
-                          colors={["#00abb8", "#03dff3"]}
+                    <View style={{ flexDirection: 'row', alignItems: 'flex-start', gap: 10 }}>
+                      <View style={{ marginTop: 2 }}>
+                        {selectedAddress?._id === item._id ? (
+                          <FontAwesome
+                            name="dot-circle-o"
+                            size={22}
+                            color={Colors.primary}
+                          />
+                        ) : (
+                          <Entypo name="circle" size={20} color={Colors.lightGray} />
+                        )}
+                      </View>
+                      <View style={{ flex: 1 }}>
+                        <View
                           style={{
+                            flexDirection: "row",
                             alignItems: "center",
-                            paddingVertical: 10,
-                            borderRadius: 20,
-                            marginTop: 5,
-                            alignSelf: "center",
-                            paddingHorizontal: 30,
+                            marginBottom: 8,
                           }}
                         >
-                          <Text
-                            style={{ color: "#ffffff", fontWeight: "bold" }}
-                          >
-                            Deliver to this address
+                          <Text style={{ fontWeight: "700", fontSize: 16, color: Colors.textPrimary }}>
+                            {item?.name}
                           </Text>
-                        </LinearGradient>
-                      </TouchableOpacity>
-                    )}
-                  </View>
-                </TouchableOpacity>
-              );
-            })}
-          </Pressable>
-        </View>
-      )}
+                          <Entypo size={20} name="location-pin" color={Colors.primary} style={{ marginLeft: 4 }} />
+                        </View>
+                        <View style={{ gap: 2 }}>
+                          <Text style={{ fontSize: 14, color: Colors.textPrimary }}>#{item?.houseNo}, {item?.landmark}</Text>
+                          <Text style={{ fontSize: 14, color: Colors.textPrimary }}>{item?.street}</Text>
+                          <Text style={{ fontSize: 14, color: Colors.textPrimary }}>{item?.postalCode}, India</Text>
+                          <Text style={{ fontSize: 14, color: Colors.textSecondary, marginTop: 4 }}>Phone: {item?.mobileNo}</Text>
+                        </View>
+                        <View style={{ flexDirection: "row", marginTop: 12, gap: 10 }}>
+                          <TouchableOpacity
+                            style={{
+                              backgroundColor: Colors.background,
+                              paddingHorizontal: 15,
+                              paddingVertical: 6,
+                              borderRadius: 8,
+                            }}
+                          >
+                            <Text style={{ fontSize: 13, fontWeight: '600', color: Colors.textPrimary }}>Edit</Text>
+                          </TouchableOpacity>
+                        </View>
+                        {selectedAddress?._id === item._id && (
+                          <TouchableOpacity
+                            activeOpacity={0.7}
+                            onPress={() => {
+                              selectedAddress
+                                ? setCurrentStep(1)
+                                : ToastAndroid.show(
+                                  "Please select an address",
+                                  ToastAndroid.SHORT
+                                );
+                            }}
+                            style={{ marginTop: 15 }}
+                          >
+                            <LinearGradient
+                              colors={Colors.buttonGradient as any}
+                              style={{
+                                alignItems: "center",
+                                paddingVertical: 12,
+                                borderRadius: 8,
+                                ...Colors.cardShadow,
+                              }}
+                            >
+                              <Text
+                                style={{ color: Colors.white, fontWeight: "700", fontSize: 15 }}
+                              >
+                                Deliver to this address
+                              </Text>
+                            </LinearGradient>
+                          </TouchableOpacity>
+                        )}
+                      </View>
+                    </View>
+                  </TouchableOpacity>
+                );
+              })}
+            </Pressable>
+          </View>
+        )}
 
-      {currentStep === 1 && (
-        <View>
-          <Text style={{ fontSize: 18, fontWeight: "600" }}>
-            Choose your delivery options
-          </Text>
-
-          <TouchableOpacity
-            activeOpacity={0.8}
-            onPress={() => setOptions(!options)}
-            style={{
-              flexDirection: "row",
-              alignItems: "center",
-              marginTop: 20,
-              backgroundColor: "#ffffff",
-              padding: 10,
-              borderRadius: 5,
-              elevation: 5,
-              shadowColor: "#00b7ffff",
-              gap: 10,
-            }}
-          >
-            {options ? (
-              <FontAwesome name="dot-circle-o" size={27.5} color="#008e97" />
-            ) : (
-              <Entypo name="circle" size={24} color="#aaaaaa" />
-            )}
-
-            <Text style={{ flex: 1 }}>
-              <Text style={{ fontWeight: "500", color: "green" }}>
-                Tomorrow by 10:00 AM
-              </Text>
-              - Free Delivery with Prime membership
-            </Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity
-            onPress={() => {
-              options
-                ? setCurrentStep(2)
-                : ToastAndroid.show("Select an option", ToastAndroid.SHORT);
-            }}
-          >
-            <LinearGradient
-              colors={["#ffc72c", "#ffe291"]}
-              style={{
-                padding: 10,
-                borderRadius: 8,
-                alignItems: "center",
-                marginTop: 20,
-              }}
-            >
-              <Text>Continue</Text>
-            </LinearGradient>
-          </TouchableOpacity>
-        </View>
-      )}
-
-      {currentStep === 2 && (
-        <View style={{ marginBottom: 50 }}>
-          <Text style={{ fontSize: 18, fontWeight: "600" }}>
-            Select your payment method
-          </Text>
-
-          <TouchableOpacity
-            onPress={() => {
-              setSelectedOption("cash");
-            }}
-            style={{
-              flexDirection: "row",
-              gap: 10,
-              backgroundColor: "#ffffff",
-              padding: 10,
-              borderRadius: 5,
-              elevation: 5,
-              shadowColor: "#00b7ffff",
-              marginTop: 10,
-              alignItems: "center",
-            }}
-          >
-            {selectedOption === "cash" ? (
-              <FontAwesome name="dot-circle-o" size={27.5} color="#008e97" />
-            ) : (
-              <Entypo name="circle" size={24} color="#aaaaaa" />
-            )}
-            <Text>Cash on Delivery</Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity
-            onPress={() => {
-              setSelectedOption("upi/card");
-              Alert.alert("UPI / Debit or Credit Card", "Pay online", [
-                {
-                  text: "Cancel",
-                  onPress: () => {
-                    // console.log("Cancel Pressed");
-                  },
-                },
-                {
-                  text: "OK",
-                  onPress: () => pay(),
-                },
-              ]);
-            }}
-            style={{
-              flexDirection: "row",
-              gap: 10,
-              backgroundColor: "#ffffff",
-              padding: 10,
-              borderRadius: 5,
-              elevation: 5,
-              shadowColor: "#00b7ffff",
-              marginTop: 10,
-              alignItems: "center",
-            }}
-          >
-            {selectedOption === "upi/card" ? (
-              <FontAwesome name="dot-circle-o" size={27.5} color="#008e97" />
-            ) : (
-              <Entypo name="circle" size={24} color="#aaaaaa" />
-            )}
-            <Text>UPI / Debit or Credit Card</Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity
-            onPress={() => {
-              selectedOption
-                ? setCurrentStep(3)
-                : ToastAndroid.show("Select an option", ToastAndroid.SHORT);
-            }}
-          >
-            <LinearGradient
-              colors={["#ffc72c", "#ffe291"]}
-              style={{
-                padding: 10,
-                borderRadius: 8,
-                alignItems: "center",
-                marginTop: 20,
-              }}
-            >
-              <Text>Continue</Text>
-            </LinearGradient>
-          </TouchableOpacity>
-        </View>
-      )}
-
-      {currentStep === 3 && selectedOption === "cash" && (
-        <View>
-          <Text style={{ fontSize: 20, fontWeight: "700" }}>Order Now</Text>
+        {currentStep === 1 && (
           <View>
+            <Text style={{ fontSize: 18, fontWeight: "700", color: Colors.textPrimary, marginBottom: 20 }}>
+              Delivery Options
+            </Text>
+
             <TouchableOpacity
+              activeOpacity={0.9}
+              onPress={() => setOptions(!options)}
               style={{
-                padding: 10,
-                alignItems: "center",
-                marginTop: 10,
-                borderWidth: 1,
-                borderColor: "#aaaaaa",
-                flexDirection: "row",
-                alignSelf: "center",
-                width: "100%",
-                justifyContent: "space-between",
-                borderRadius: 4,
+                padding: 15,
+                backgroundColor: Colors.white,
+                borderRadius: 15,
+                flexDirection: 'row',
+                alignItems: 'center',
+                ...Colors.cardShadow,
+                borderWidth: options ? 0.5 : 0,
+                borderColor: Colors.primary,
               }}
             >
-              <View style={{ gap: 5 }}>
-                <Text style={{ fontWeight: "bold", fontSize: 16 }}>
-                  Save 5% and never run out
+              {options ? (
+                <FontAwesome name="dot-circle-o" size={24} color={Colors.primary} />
+              ) : (
+                <Entypo name="circle" size={20} color={Colors.lightGray} />
+              )}
+
+              <View style={{ flex: 1, marginLeft: 10 }}>
+                <Text style={{ fontSize: 15, fontWeight: "600", color: "#22C55E" }}>
+                  Tomorrow by 10:00 AM
                 </Text>
-                <Text style={{ color: "#999999" }}>
-                  Turn on auto deliveries
+                <Text style={{ fontSize: 13, color: Colors.textSecondary, marginTop: 2 }}>
+                  Free Express Delivery with Prime
                 </Text>
               </View>
-              <MaterialIcons
-                name="keyboard-arrow-right"
-                size={28}
-                color="#aaaaaa"
-              />
+            </TouchableOpacity>
+
+            <TouchableOpacity
+              activeOpacity={0.7}
+              onPress={() => {
+                options
+                  ? setCurrentStep(2)
+                  : ToastAndroid.show("Select an option", ToastAndroid.SHORT);
+              }}
+            >
+              <LinearGradient
+                colors={Colors.buttonGradient as any}
+                style={{
+                  paddingVertical: 12,
+                  borderRadius: 8,
+                  alignItems: "center",
+                  marginTop: 20,
+                }}
+              >
+                <Text style={{ color: Colors.white, fontWeight: "700" }}>Continue</Text>
+              </LinearGradient>
             </TouchableOpacity>
           </View>
-          <View
-            style={{
-              marginTop: 20,
-              padding: 10,
-              elevation: 5,
-              shadowColor: "#00b7ffff",
-              borderRadius: 4,
-              backgroundColor: "#ffffff",
-              borderWidth: 0.1,
-              borderColor: "#00b7ffff",
-            }}
-          >
-            <Text>Shipping to {selectedAddress?.name}</Text>
-            <View
-              style={{
-                flexDirection: "row",
-                justifyContent: "space-between",
-                marginTop: 20,
-              }}
-            >
-              <Text style={{ fontWeight: "400", fontSize: 16 }}>Items</Text>
-              <Text style={{ color: "#999999" }}>&#x20B9; {totalPrice}</Text>
-            </View>
+        )}
 
-            <View
-              style={{
-                flexDirection: "row",
-                justifyContent: "space-between",
-                marginTop: 20,
-              }}
-            >
-              <Text style={{ fontWeight: "400", fontSize: 16 }}>Delivery</Text>
-              <Text style={{ color: "#999999" }}>&#x20B9; 0</Text>
-            </View>
-
-            <View
-              style={{
-                flexDirection: "row",
-                justifyContent: "space-between",
-                marginTop: 20,
-              }}
-            >
-              <Text style={{ fontWeight: "700", fontSize: 16 }}>
-                Order Total
-              </Text>
-              <Text
-                style={{ color: "#c60c30", fontWeight: "bold", fontSize: 16 }}
-              >
-                &#x20B9; {totalPrice}
-              </Text>
-            </View>
-          </View>
-
-          <View
-            style={{
-              backgroundColor: "white",
-              padding: 10,
-              marginTop: 20,
-              borderRadius: 4,
-              elevation: 2,
-              shadowColor: "#00b7ffff",
-              gap: 8,
-            }}
-          >
-            <Text style={{ fontSize: 16, color: "#999999" }}>Pay With</Text>
-            <Text style={{ fontSize: 16, fontWeight: "600" }}>
-              Pay on Delivery (Cash)
+        {currentStep === 2 && (
+          <View style={{ marginBottom: 50 }}>
+            <Text style={{ fontSize: 18, fontWeight: "700", color: Colors.textPrimary, marginBottom: 20 }}>
+              Payment Method
             </Text>
-          </View>
 
-          <TouchableOpacity
-            onPress={handlePlaceOrder}
-          >
-
-            <LinearGradient
-              colors={["#ffc72c", "#ffe59fff"]}
+            <TouchableOpacity
+              activeOpacity={0.9}
+              onPress={() => setSelectedOption("cash")}
               style={{
-                padding: 10,
-                borderRadius: 8,
-                alignItems: "center",
-                marginTop: 20,
+                padding: 15,
+                backgroundColor: Colors.white,
+                borderRadius: 15,
+                flexDirection: 'row',
+                alignItems: 'center',
+                ...Colors.cardShadow,
+                borderWidth: selectedOption === "cash" ? 0.5 : 0,
+                borderColor: Colors.primary,
+                marginBottom: 5,
               }}
             >
-              {loading ? (
-                <Text>Placing order...</Text>
+              {selectedOption === "cash" ? (
+                <FontAwesome name="dot-circle-o" size={24} color={Colors.primary} />
               ) : (
-                <Text style={{ fontWeight: "600" }}>Place your order</Text>
+                <Entypo name="circle" size={20} color={Colors.lightGray} />
               )}
-            </LinearGradient>
-          </TouchableOpacity>
-        </View>
-      )}
-    </ScrollView>
+              <Text style={{ fontSize: 15, fontWeight: '600', color: Colors.textPrimary, marginLeft: 10 }}>Cash on Delivery</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity
+              activeOpacity={0.9}
+              onPress={() => {
+                setSelectedOption("upi/card");
+                Alert.alert("Pay Online", "Securely pay using UPI, Cards or Netbanking", [
+                  { text: "Cancel", style: 'cancel' },
+                  { text: "Proceed", onPress: () => pay() },
+                ]);
+              }}
+              style={{
+                padding: 15,
+                backgroundColor: Colors.white,
+                borderRadius: 15,
+                flexDirection: 'row',
+                alignItems: 'center',
+                ...Colors.cardShadow,
+                borderWidth: selectedOption === "upi/card" ? 0.5 : 0,
+                borderColor: Colors.primary,
+                marginBottom: 15,
+              }}
+            >
+              {selectedOption === "upi/card" ? (
+                <FontAwesome name="dot-circle-o" size={24} color={Colors.primary} />
+              ) : (
+                <Entypo name="circle" size={20} color={Colors.lightGray} />
+              )}
+              <Text style={{ fontSize: 15, fontWeight: '600', color: Colors.textPrimary, marginLeft: 10 }}>UPI / Debit or Credit Card</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity
+              activeOpacity={0.7}
+              onPress={() => {
+                selectedOption
+                  ? setCurrentStep(3)
+                  : ToastAndroid.show("Select an option", ToastAndroid.SHORT);
+              }}
+            >
+              <LinearGradient
+                colors={Colors.buttonGradient as any}
+                style={{
+                  paddingVertical: 15,
+                  borderRadius: 8,
+                  alignItems: "center",
+                  marginTop: 5,
+                }}
+              >
+                <Text style={{ color: Colors.white, fontWeight: "700", fontSize: 16 }}>Continue</Text>
+              </LinearGradient>
+            </TouchableOpacity>
+          </View>
+        )}
+
+        {
+          currentStep === 3 && (
+            <View style={{ marginBottom: 40 }}>
+              <Text style={{ fontSize: 20, fontWeight: "700", color: Colors.textPrimary, marginBottom: 15 }}>Order Summary</Text>
+              <View>
+                <TouchableOpacity
+                  style={{
+                    padding: 15,
+                    backgroundColor: Colors.white,
+                    borderRadius: 8,
+                    flexDirection: "row",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                    ...Colors.cardShadow,
+                    marginBottom: 20,
+                  }}
+                >
+                  <View>
+                    <Text style={{ fontWeight: "700", fontSize: 16, color: Colors.textPrimary }}>
+                      Save 5% on Future Orders
+                    </Text>
+                    <Text style={{ color: Colors.textSecondary, fontSize: 13, marginTop: 2 }}>
+                      Subscribe and save with auto-deliveries
+                    </Text>
+                  </View>
+                  <MaterialIcons
+                    name="keyboard-arrow-right"
+                    size={24}
+                    color={Colors.gray}
+                  />
+                </TouchableOpacity>
+              </View>
+              <View
+                style={{
+                  padding: 20,
+                  backgroundColor: Colors.white,
+                  borderRadius: 8,
+                  ...Colors.cardShadow,
+                }}
+              >
+                <Text style={{ fontSize: 15, fontWeight: '700', color: Colors.textPrimary, marginBottom: 15 }}>Shipping to {selectedAddress?.name}</Text>
+                <View
+                  style={{
+                    flexDirection: "row",
+                    justifyContent: "space-between",
+                    marginTop: 15,
+                    paddingTop: 15,
+                    borderTopWidth: 1,
+                    borderTopColor: Colors.lightGray,
+                  }}
+                >
+                  <Text style={{ fontWeight: "700", fontSize: 18, color: Colors.textPrimary }}>
+                    Order Total
+                  </Text>
+                  <Text
+                    style={{ color: Colors.accent, fontWeight: "800", fontSize: 18 }}
+                  >
+                    ₹ {totalPrice}
+                  </Text>
+                </View>
+              </View>
+
+              <View
+                style={{
+                  backgroundColor: "white",
+                  padding: 20,
+                  marginTop: 20,
+                  borderRadius: 8,
+                  ...Colors.cardShadow,
+                }}
+              >
+                <Text style={{ fontSize: 14, color: Colors.textSecondary, marginBottom: 5 }}>Payment Method</Text>
+                <Text style={{ fontSize: 16, fontWeight: "700", color: "#22C55E" }}>
+                  {selectedOption === 'cash' ? 'Cash on Delivery' : 'Paid via Online'}
+                </Text>
+              </View>
+
+              <TouchableOpacity
+                onPress={handlePlaceOrder}
+                style={{ marginTop: 30 }}
+                activeOpacity={0.7}
+              >
+                <LinearGradient
+                  colors={Colors.buttonGradient as any}
+                  style={{
+                    paddingVertical: 14,
+                    borderRadius: 8,
+                    alignItems: "center",
+                    ...Colors.cardShadow,
+                  }}
+                >
+                  {loading ? (
+                    <Text style={{ color: Colors.white, fontWeight: '700' }}>Placing order...</Text>
+                  ) : (
+                    <Text style={{ fontWeight: "700", color: Colors.white, fontSize: 16 }}>Place your order</Text>
+                  )}
+                </LinearGradient>
+              </TouchableOpacity>
+            </View>
+          )}
+      </ScrollView>
+    </View>
   );
 };
 

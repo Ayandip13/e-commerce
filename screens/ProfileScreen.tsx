@@ -13,9 +13,11 @@ import axios from "axios";
 import { API_URL } from "../api";
 import { UserType } from "../UserContext";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import Colors from "../constants/Colors";
+import { MaterialIcons } from "@expo/vector-icons";
 const ProfileScreen = () => {
   const navigation = useNavigation();
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState<any>({});
   const [logoutVisible, setLogoutVisible] = useState(false);
   const { userId } = useContext(UserType);
   const [loading, setLoading] = useState({
@@ -30,32 +32,22 @@ const ProfileScreen = () => {
 
   useLayoutEffect(() => {
     navigation.setOptions({
-      title: "Profile",
+      headerTitle: "My Profile",
+      headerTitleStyle: { fontWeight: '700', color: Colors.textPrimary },
       headerTitleAlign: "center",
-      headerStyle: { backgroundColor: "#00ced1" },
+      headerStyle: { backgroundColor: Colors.primary },
       headerLeft: () => (
         <Image
           source={require("../assets/Bookosaurus.png")}
           resizeMode="contain"
           style={{
-            width: 130,
-            height: 60,
-            marginRight: 50,
+            width: 100,
+            height: 40,
+            marginLeft: 15,
           }}
         />
       ),
-      headerRight: () => (
-        <>
-          <Image
-          // source={require("../assets/bell.png")}
-          // style={{ width: 25, height: 25, marginRight: 10 }}
-          />
-          <Image
-          // source={require("../assets/search.png")}
-          // style={{ width: 25, height: 25, marginRight: 10 }}
-          />
-        </>
-      ),
+      headerRight: () => null,
     });
   }, [navigation]);
 
@@ -105,7 +97,7 @@ const ProfileScreen = () => {
 
   return (
     <View
-      style={{ flex: 1, paddingHorizontal: 20, backgroundColor: "#ffffff" }}
+      style={{ flex: 1, paddingHorizontal: 20, backgroundColor: Colors.background }}
     >
       <View style={{ alignItems: "center", marginTop: 30 }}>
         <TouchableOpacity
@@ -129,86 +121,70 @@ const ProfileScreen = () => {
         <TouchableOpacity
           onPress={pressEdit}
           style={{
-            marginTop: 10,
-            backgroundColor: loading.pressEdit ? "#c3f6ffff" : "#ffffff",
-            borderWidth: loading.pressEdit ? 0 : 0.3,
-            paddingVertical: 5,
-            borderRadius: 20,
-            paddingHorizontal: 30,
-            borderColor: "#75dfffff",
-            shadowColor: "#c3f1ffff",
-            shadowOffset: { width: 0, height: 2 },
-            shadowOpacity: 0.3,
-            shadowRadius: 3,
-            elevation: 5,
+            marginTop: 15,
+            backgroundColor: loading.pressEdit ? '#77f0dcff' : Colors.white,
+            paddingVertical: 8,
+            borderRadius: 25,
+            paddingHorizontal: 25,
+            ...Colors.cardShadow,
+            borderWidth: 1,
+            borderColor: Colors.lightGray,
           }}
         >
           <Text
             style={{
               textAlign: "center",
-              color: '#000'
+              color: Colors.textPrimary,
+              fontWeight: '600',
+              fontSize: 14,
             }}
           >
-            Edit
+            Edit Profile
           </Text>
         </TouchableOpacity>
-        <Text style={{ fontSize: 18, fontWeight: "600", marginTop: 10 }}>
+        <Text style={{ fontSize: 20, fontWeight: "700", marginTop: 15, color: Colors.textPrimary }}>
           {user.name}
         </Text>
-        <View
-          style={{
-            marginTop: 3,
-            backgroundColor: "#d0f0f5",
-            height: 1,
-            width: "30%",
-            marginBottom: 10,
-          }}
-        />
+        <Text style={{ fontSize: 13, color: Colors.textSecondary, marginTop: 2 }}>
+          {user.email || 'Member since 2024'}
+        </Text>
       </View>
 
-      <View>
+      <View style={{ marginTop: 30, gap: 12 }}>
         {arr.map((item, index) => (
           <TouchableOpacity
             key={index}
             onPress={() => navigation.navigate(item.screen as never)}
             style={{
-              marginTop: 2,
-              borderRadius: 5,
-              padding: 10,
-              borderColor: "#75dfffff",
-              borderWidth: 0.3,
-              paddingVertical: 20,
-              // shadowColor: "#000000",
-              shadowOffset: { width: 0, height: 2 },
-              shadowOpacity: 0.3,
-              shadowRadius: 3,
+              backgroundColor: Colors.white,
+              borderRadius: 15,
+              padding: 15,
+              flexDirection: 'row',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              ...Colors.cardShadow,
             }}
           >
-            <Text style={{ fontSize: 16, fontWeight: "600" }}>
+            <Text style={{ fontSize: 15, fontWeight: "600", color: Colors.textPrimary }}>
               {item.title}
             </Text>
+            <MaterialIcons name="chevron-right" size={24} color={Colors.gray} />
           </TouchableOpacity>
         ))}
       </View>
 
-      <View
-        style={{
-          flexDirection: "row",
-          alignItems: "center",
-          gap: 10,
-          marginTop: 12,
-        }}
-      >
+      <View style={{ marginTop: 25 }}>
         <TouchableOpacity
           onPress={() => setLogoutVisible(true)}
           style={{
-            padding: 10,
-            backgroundColor: "#E0E0E0",
-            borderRadius: 25,
-            flex: 1,
+            paddingVertical: 14,
+            backgroundColor: '#FFF5F5',
+            borderRadius: 15,
+            alignItems: 'center',
+            marginBottom: 30,
           }}
         >
-          <Text style={{ textAlign: "center", fontSize: 14 }}>Logout</Text>
+          <Text style={{ fontSize: 15, fontWeight: '700', color: '#FF3B30' }}>Sign Out</Text>
         </TouchableOpacity>
       </View>
 
@@ -254,13 +230,13 @@ export default ProfileScreen;
 const styles = StyleSheet.create({
   overlay: {
     flex: 1,
-    backgroundColor: "rgba(0, 0, 0, 0.12)",
+    backgroundColor: "rgba(0, 0, 0, 0.5)",
     justifyContent: "center",
     alignItems: "center",
   },
   modal: {
     width: "80%",
-    backgroundColor: "#fff",
+    backgroundColor: Colors.white,
     borderRadius: 12,
     padding: 20,
   },
@@ -291,7 +267,7 @@ const styles = StyleSheet.create({
     marginRight: 10,
   },
   logout: {
-    backgroundColor: "#ff3b30",
+    backgroundColor: Colors.accent,
   },
   cancelText: {
     color: "#333",

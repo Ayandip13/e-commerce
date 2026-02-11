@@ -4,6 +4,7 @@ import axios from "axios";
 import { API_URL } from "../api";
 import { UserType } from "../UserContext";
 import { useNavigation } from "@react-navigation/native";
+import Colors from "../constants/Colors";
 
 const CheckCredentials = () => {
   const navigation = useNavigation();
@@ -26,18 +27,6 @@ const CheckCredentials = () => {
     <View>
       <View
         style={{
-          alignItems: "flex-start",
-          marginTop: 20,
-          marginHorizontal: 20,
-          marginBottom: 10,
-        }}
-      >
-        <Text style={{ fontSize: 20, fontWeight: "bold" }}>
-          Your Credentials:
-        </Text>
-      </View>
-      <View
-        style={{
           height: 1,
           width: "100%",
           backgroundColor: "#d3d3d3",
@@ -56,7 +45,7 @@ const CheckCredentials = () => {
       <TouchableOpacity
         style={{
           alignItems: "center",
-          backgroundColor: "#febe10",
+          backgroundColor: Colors.primary,
           padding: 10,
           width: "80%",
           alignSelf: "center",
@@ -73,7 +62,7 @@ const CheckCredentials = () => {
       >
         <Text
           style={{
-            color: "#000",
+            color: Colors.black,
             fontSize: 15,
           }}
         >

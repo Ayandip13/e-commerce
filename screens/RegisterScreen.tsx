@@ -20,6 +20,7 @@ import { Toast } from "toastify-react-native";
 import { API_URL } from "../api";
 import { LinearGradient } from "expo-linear-gradient";
 import { StatusBar } from "expo-status-bar";
+import Colors from "../constants/Colors";
 
 const RegisterScreen = () => {
   const [name, setName] = useState<string>("");
@@ -67,7 +68,7 @@ const RegisterScreen = () => {
   };
 
   return (
-    <LinearGradient colors={['#e0f9ffff', '#fff', '#e0f9ffff']} style={{ flex: 1, alignItems: "center" }}>
+    <LinearGradient colors={Colors.screenGradient as any} style={{ flex: 1, alignItems: "center" }}>
       <StatusBar style="dark" />
       <View style={{ marginTop: 100, marginBottom: 10 }}>
         <Image
@@ -91,7 +92,7 @@ const RegisterScreen = () => {
               flexDirection: "row",
               alignItems: "center",
               gap: 5,
-              backgroundColor: "#ecececff",
+              backgroundColor: Colors.lightGray,
               borderRadius: 5,
               marginTop: 10,
             }}
@@ -125,7 +126,7 @@ const RegisterScreen = () => {
               flexDirection: "row",
               alignItems: "center",
               gap: 5,
-              backgroundColor: "#ecececff",
+              backgroundColor: Colors.lightGray,
               borderRadius: 5,
               marginTop: 10,
             }}
@@ -159,7 +160,7 @@ const RegisterScreen = () => {
               flexDirection: "row",
               alignItems: "center",
               gap: 5,
-              backgroundColor: "#ecececff",
+              backgroundColor: Colors.lightGray,
               borderRadius: 5,
               marginTop: 10,
             }}
@@ -195,7 +196,7 @@ const RegisterScreen = () => {
         <TouchableOpacity
           onPress={handleRegister}
         >
-          <LinearGradient colors={['#b4f4ffff', '#d1f8ffff', '#b4f4ffff']}
+          <LinearGradient colors={Colors.buttonGradient as any}
             style={{
               paddingVertical: 15,
               alignItems: "center",

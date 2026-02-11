@@ -13,6 +13,7 @@ import { useFocusEffect, useNavigation } from "@react-navigation/native";
 import axios from "axios";
 import { UserType } from "../UserContext";
 import { API_URL } from "../api";
+import Colors from "../constants/Colors";
 
 const AddAddressScreen = () => {
   const { userId, setUserId } = useContext(UserType);
@@ -57,123 +58,130 @@ const AddAddressScreen = () => {
   // console.log(userId);
 
   return (
-    <ScrollView
-      style={{ marginTop: Platform.OS === "android" ? 0 : 0 }}
-      showsVerticalScrollIndicator={false}
-    >
-      <View>
-        <Text
-          style={{
-            fontSize: 20,
-            fontWeight: "bold",
-            marginTop: 10,
-            marginHorizontal: 10,
-            marginBottom: 5,
-          }}
-        >
-          Your Addresses
-        </Text>
+    <View style={{ flex: 1, backgroundColor: Colors.background }}>
+      <ScrollView
+        style={{ flex: 1 }}
+        contentContainerStyle={{ paddingHorizontal: 15, paddingBottom: 50 }}
+        showsVerticalScrollIndicator={false}
+      >
+        <View style={{ marginTop: 20, marginBottom: 10 }}>
+          <Text
+            style={{
+              fontSize: 18,
+              fontWeight: "700",
+              color: Colors.textPrimary,
+              marginHorizontal: 5,
+            }}
+          >
+            Saved Locations
+          </Text>
+          <Text style={{ fontSize: 13, color: Colors.textSecondary, marginHorizontal: 5, marginTop: 2 }}>
+            Manage where your orders are delivered
+          </Text>
+        </View>
         <TouchableOpacity
           onPress={() => navigation.navigate("Add" as never)}
           style={{
-            marginVertical: 5,
-            borderWidth: 1,
+            marginVertical: 8,
+            borderRadius: 15,
+            backgroundColor: Colors.white,
+            padding: 15,
             flexDirection: "row",
-            padding: 10,
-            borderColor: "#d0d0d0",
+            alignItems: "center",
             justifyContent: "space-between",
+            ...Colors.cardShadow,
+            borderWidth: 1,
+            borderColor: Colors.primary + '20', // Subtle primary border
           }}
         >
-          <Text>Add a new Address</Text>
-          <MaterialIcons name="keyboard-arrow-right" size={24} color="black" />
+          <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+            <Feather name="plus-circle" size={24} color={Colors.primary} />
+            <Text style={{ fontSize: 16, fontWeight: "600", color: Colors.textPrimary, marginLeft: 10 }}>
+              Add a new Address
+            </Text>
+          </View>
+          <MaterialIcons name="keyboard-arrow-right" size={24} color={Colors.gray} />
         </TouchableOpacity>
 
-        <View style={{ marginHorizontal: 10, marginBottom: 30 }}>
+        <View style={{ gap: 15 }}>
           {address.map((item, index) => (
             <Pressable
               key={index}
               style={{
-                marginVertical: 5,
-                borderRadius: 5,
-                borderWidth: 1,
-                padding: 10,
-                borderColor: "#d0d0d0",
+                backgroundColor: Colors.white,
+                borderRadius: 15,
+                padding: 15,
+                ...Colors.cardShadow,
               }}
             >
-              <View style={{ flexDirection: "row", alignItems: "center" }}>
-                <Text style={{ fontWeight: "bold", fontSize: 17 }}>
+              <View style={{ flexDirection: "row", alignItems: "center", marginBottom: 10 }}>
+                <Entypo size={22} name="location-pin" color={Colors.primary} />
+                <Text style={{ fontWeight: "700", fontSize: 16, color: Colors.textPrimary, marginLeft: 5 }}>
                   {item?.name}
                 </Text>
-                <Entypo size={25} name="location-pin" color="red" />
               </View>
-              <Text style={{ fontSize: 15, color: "#181818" }}>
-                <Text style={{ fontWeight: "500" }}>House No: </Text>#
-                {item?.houseNo},
-                <Text style={{ fontWeight: "500" }}> Landmark: </Text>
-                {item?.landmark}
-              </Text>
-              <Text style={{ fontSize: 15, color: "#181818" }}>
-                <Text style={{ fontWeight: "500" }}>Street: </Text>
-                {item?.street}
-              </Text>
-              <Text style={{ fontSize: 15, color: "#181818" }}>India</Text>
-              <Text style={{ fontSize: 15, color: "#181818" }}>
-                <Text style={{ fontWeight: "500" }}>Mobile No: </Text>
-                {item?.mobileNo}
-              </Text>
-              <Text style={{ fontSize: 15, color: "#181818" }}>
-                <Text style={{ fontWeight: "500" }}>Postal Code: </Text>
-                {item?.postalCode}
-              </Text>
-              <View style={{ flexDirection: "row" }}>
+              <View style={{ gap: 4 }}>
+                <Text style={{ fontSize: 14, color: Colors.textPrimary }}>
+                  <Text style={{ fontWeight: "600", color: Colors.textSecondary }}>House No: </Text>
+                  #{item?.houseNo}
+                </Text>
+                <Text style={{ fontSize: 14, color: Colors.textPrimary }}>
+                  <Text style={{ fontWeight: "600", color: Colors.textSecondary }}>Area: </Text>
+                  {item?.street}
+                </Text>
+                <Text style={{ fontSize: 14, color: Colors.textPrimary }}>
+                  <Text style={{ fontWeight: "600", color: Colors.textSecondary }}>Landmark: </Text>
+                  {item?.landmark}
+                </Text>
+                <Text style={{ fontSize: 14, color: Colors.textPrimary }}>
+                  <Text style={{ fontWeight: "600", color: Colors.textSecondary }}>Pincode: </Text>
+                  {item?.postalCode}
+                </Text>
+                <Text style={{ fontSize: 14, color: Colors.textPrimary }}>
+                  <Text style={{ fontWeight: "600", color: Colors.textSecondary }}>Phone: </Text>
+                  {item?.mobileNo}
+                </Text>
+              </View>
+              <View style={{ flexDirection: "row", marginTop: 15, paddingTop: 15, borderTopWidth: 1, borderTopColor: Colors.lightGray, gap: 10 }}>
                 <TouchableOpacity
                   style={{
-                    marginVertical: 5,
-                    gap: 5,
-                    marginRight: 10,
-                    borderColor: "#435663",
-                    borderWidth: 0.5,
-                    paddingHorizontal: 20,
-                    borderRadius: 5,
-                    paddingVertical: 5,
+                    flex: 1,
+                    backgroundColor: Colors.background,
+                    paddingVertical: 8,
+                    borderRadius: 8,
+                    alignItems: 'center',
                   }}
                 >
-                  <Text style={{ fontSize: 15 }}>Edit</Text>
+                  <Text style={{ fontSize: 14, fontWeight: '600', color: Colors.textPrimary }}>Edit</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
                   style={{
-                    marginVertical: 5,
-                    gap: 5,
-                    marginRight: 10,
-                    borderColor: "#435663",
-                    borderWidth: 0.5,
-                    paddingHorizontal: 20,
-                    borderRadius: 5,
-                    paddingVertical: 5,
+                    flex: 1,
+                    backgroundColor: '#FFF5F5',
+                    paddingVertical: 8,
+                    borderRadius: 8,
+                    alignItems: 'center',
                   }}
                 >
-                  <Text style={{ fontSize: 15 }}>Remove</Text>
+                  <Text style={{ fontSize: 14, fontWeight: '600', color: '#FF3B30' }}>Remove</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
                   style={{
-                    marginVertical: 5,
-                    gap: 5,
-                    marginRight: 10,
-                    borderColor: "#435663",
-                    borderWidth: 0.5,
-                    paddingHorizontal: 20,
-                    borderRadius: 5,
-                    paddingVertical: 5,
+                    flex: 1.5,
+                    backgroundColor: Colors.primary + '15',
+                    paddingVertical: 8,
+                    borderRadius: 8,
+                    alignItems: 'center',
                   }}
                 >
-                  <Text style={{ fontSize: 15 }}>Set as Default</Text>
+                  <Text style={{ fontSize: 12, fontWeight: '600', color: Colors.accent }}>Set as Default</Text>
                 </TouchableOpacity>
               </View>
             </Pressable>
           ))}
         </View>
-      </View>
-    </ScrollView>
+      </ScrollView>
+    </View>
   );
 };
 

@@ -1,4 +1,5 @@
 import { StyleSheet, Text, View } from "react-native";
+import Colors from "../constants/Colors";
 import React, { useEffect } from "react";
 import LottieView from "lottie-react-native";
 import { useNavigation } from "@react-navigation/native";
@@ -25,41 +26,50 @@ const OrderScreen = () => {
     return () => clearTimeout(timer);
   }, []);
   return (
-    <View style={{ flex: 1, backgroundColor: "white" }}>
+    <View style={{ flex: 1, backgroundColor: Colors.white, justifyContent: 'center', alignItems: 'center', paddingHorizontal: 30 }}>
       <LottieView
         style={{
-          height: 260,
-          width: 300,
-          alignSelf: "center",
-          marginTop: 40,
-          justifyContent: "center",
+          height: 200,
+          width: 200,
         }}
         autoPlay
         loop={false}
-        speed={0.5}
+        speed={0.8}
         source={require("../assets/thumbs.json")}
       />
       <Text
         style={{
-          fontSize: 20,
-          fontWeight: "600",
+          fontSize: 24,
+          fontWeight: "800",
           textAlign: "center",
+          color: Colors.textPrimary,
+          marginTop: 20,
         }}
       >
-        Your order has been placed
+        Order Successfully Placed!
+      </Text>
+      <Text
+        style={{
+          fontSize: 15,
+          color: Colors.textSecondary,
+          textAlign: "center",
+          marginTop: 10,
+          lineHeight: 22,
+        }}
+      >
+        Thank you for shopping with us. Your items are on the way!
       </Text>
       <LottieView
         source={require("../assets/sparkle.json")}
         autoPlay
         style={{
-          height: 300,
-          width: 300,
+          height: 400,
+          width: 400,
           alignSelf: "center",
-          top: 20,
+          top: 50,
           position: "absolute",
         }}
         speed={1}
-      // loop={false}
       />
     </View>
   );

@@ -30,6 +30,7 @@ import Fashion from "../screens/categories/Fashion";
 import Test from "../screens/Test";
 import SearchScreen from "../screens/SearchScreen";
 import Notification from "../screens/Notification";
+import Colors from "../constants/Colors";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -154,10 +155,10 @@ const StackNavigator = () => {
           options={{
             headerTitle: "",
             headerStyle: {
-              backgroundColor: "#00ced1",
+              backgroundColor: Colors.primary,
             },
             headerTitleStyle: {
-              color: "#555",
+              color: Colors.textPrimary,
             },
           }}
         />
@@ -165,26 +166,28 @@ const StackNavigator = () => {
           name="Address"
           component={AddAddressScreen}
           options={{
-            headerTitle: "",
+            headerTitle: "Your Addresses",
             headerStyle: {
-              backgroundColor: "#00ced1",
+              backgroundColor: Colors.primary,
             },
             headerTitleStyle: {
-              color: "#555",
+              color: Colors.textPrimary,
             },
+            headerTitleAlign: "center",
           }}
         />
         <Stack.Screen
           name="Add"
           component={Address}
           options={{
-            headerTitle: "",
+            headerTitle: "Add New Address",
             headerStyle: {
-              backgroundColor: "#00ced1",
+              backgroundColor: Colors.primary,
             },
             headerTitleStyle: {
-              color: "#555",
+              color: Colors.textPrimary,
             },
+            headerTitleAlign: "center",
           }}
         />
         <Stack.Screen
@@ -205,10 +208,10 @@ const StackNavigator = () => {
           options={{
             headerTitle: "",
             headerStyle: {
-              backgroundColor: "#00ced1",
+              backgroundColor: Colors.primary,
             },
             headerTitleStyle: {
-              color: "#555",
+              color: Colors.textPrimary,
             },
           }}
         />
@@ -216,13 +219,14 @@ const StackNavigator = () => {
           name="BookmarkedItems"
           component={BookmarkedItems}
           options={{
-            headerTitle: "",
+            headerTitle: "Bookmarked Items",
             headerStyle: {
-              backgroundColor: "#00ced1",
+              backgroundColor: Colors.primary,
             },
             headerTitleStyle: {
-              color: "#555",
+              color: Colors.textPrimary,
             },
+            headerTitleAlign: "center",
           }}
         />
         <Stack.Screen
@@ -232,10 +236,10 @@ const StackNavigator = () => {
             headerTitle: "Edit Profile",
             headerTitleAlign: "center",
             headerStyle: {
-              backgroundColor: "#00ced1",
+              backgroundColor: Colors.primary,
             },
             headerTitleStyle: {
-              color: "#555",
+              color: Colors.textPrimary,
             },
           }}
         />
@@ -243,12 +247,12 @@ const StackNavigator = () => {
           name="CheckCredentials"
           component={CheckCredentials}
           options={{
-            headerTitle: "",
+            headerTitle: "Your Credentials",
             headerStyle: {
-              backgroundColor: "#00ced1",
+              backgroundColor: Colors.primary,
             },
             headerTitleStyle: {
-              color: "#555",
+              color: Colors.textPrimary,
             },
           }}
         />
@@ -258,10 +262,10 @@ const StackNavigator = () => {
           options={{
             headerTitle: "",
             headerStyle: {
-              backgroundColor: "#00ced1",
+              backgroundColor: Colors.primary,
             },
             headerTitleStyle: {
-              color: "#555",
+              color: Colors.textPrimary,
             },
           }}
         />
@@ -271,10 +275,10 @@ const StackNavigator = () => {
           options={{
             headerTitle: "Home Appliances",
             headerStyle: {
-              backgroundColor: "#00ced1",
+              backgroundColor: Colors.primary,
             },
             headerTitleStyle: {
-              color: "#555",
+              color: Colors.textPrimary,
             },
             headerTitleAlign: "center",
           }}
@@ -285,10 +289,10 @@ const StackNavigator = () => {
           options={{
             headerTitle: "Books",
             headerStyle: {
-              backgroundColor: "#00ced1",
+              backgroundColor: Colors.primary,
             },
             headerTitleStyle: {
-              color: "#555",
+              color: Colors.textPrimary,
             },
             headerTitleAlign: "center",
           }}
@@ -299,10 +303,10 @@ const StackNavigator = () => {
           options={{
             headerTitle: "Electronics and Gadgets",
             headerStyle: {
-              backgroundColor: "#00ced1",
+              backgroundColor: Colors.primary,
             },
             headerTitleStyle: {
-              color: "#555",
+              color: Colors.textPrimary,
             },
             headerTitleAlign: "center",
           }}
@@ -313,10 +317,10 @@ const StackNavigator = () => {
           options={{
             headerTitle: "Mobiles",
             headerStyle: {
-              backgroundColor: "#00ced1",
+              backgroundColor: Colors.primary,
             },
             headerTitleStyle: {
-              color: "#555",
+              color: Colors.textPrimary,
             },
             headerTitleAlign: "center",
           }}
@@ -327,10 +331,10 @@ const StackNavigator = () => {
           options={{
             headerTitle: "Musical Instruments",
             headerStyle: {
-              backgroundColor: "#00ced1",
+              backgroundColor: Colors.primary,
             },
             headerTitleStyle: {
-              color: "#555",
+              color: Colors.textPrimary,
             },
             headerTitleAlign: "center",
           }}
@@ -341,10 +345,10 @@ const StackNavigator = () => {
           options={{
             headerTitle: "Fashion and Accessories",
             headerStyle: {
-              backgroundColor: "#00ced1",
+              backgroundColor: Colors.primary,
             },
             headerTitleStyle: {
-              color: "#555",
+              color: Colors.textPrimary,
             },
             headerTitleAlign: "center",
           }}
@@ -355,10 +359,10 @@ const StackNavigator = () => {
           options={{
             headerTitle: "Test",
             headerStyle: {
-              backgroundColor: "#00ced1",
+              backgroundColor: Colors.primary,
             },
             headerTitleStyle: {
-              color: "#555",
+              color: Colors.textPrimary,
             },
             headerTitleAlign: "center",
           }}
@@ -376,10 +380,10 @@ const StackNavigator = () => {
           options={{
             headerTitle: "Notifications",
             headerStyle: {
-              backgroundColor: "#00ced1",
+              backgroundColor: Colors.primary,
             },
             headerTitleStyle: {
-              color: "#555",
+              color: Colors.textPrimary,
             },
             headerTitleAlign: "center",
           }}

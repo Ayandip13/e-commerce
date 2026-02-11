@@ -20,6 +20,7 @@ import { API_URL } from "../api";
 import axios from "axios";
 import { UserType } from "../UserContext";
 import { LinearGradient } from "expo-linear-gradient";
+import Colors from "../constants/Colors";
 
 const EditProfile = () => {
   const [modalVisible, setModalVisible] = useState(false);
@@ -172,201 +173,182 @@ const EditProfile = () => {
     <View
       style={{
         flex: 1,
-        paddingHorizontal: 20,
-        backgroundColor: "#ffffff",
+        backgroundColor: Colors.background,
       }}
     >
-      <TouchableOpacity
-        style={{ alignItems: "center", marginTop: 20 }}
-        onPress={() => setModalVisible(true)}
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={{ paddingHorizontal: 20, paddingBottom: 40 }}
       >
-        <Image
-          source={
-            user?.profileImage
-              ? { uri: user?.profileImage }
-              : require("../assets/person.png")
-          }
-          style={{
-            width: 150,
-            height: 150,
-            borderRadius: 100,
-            marginTop: 20,
-          }}
-        />
-        <MaterialIcons
-          name="mode-edit"
-          size={28}
-          color="#999"
-          style={{
-            position: "absolute",
-            right: "30%",
-            bottom: 10,
-          }}
-        />
-        <ActivityIndicator
-          size="large"
-          color="#ffffff"
-          style={{
-            position: "absolute",
-            top: "50%",
-            display:
-              loading.fetchCameraPhoto || loading.fetchGalleryPhoto
-                ? "flex"
-                : "none",
-          }}
-        />
-      </TouchableOpacity>
+        <TouchableOpacity
+          style={{ alignItems: "center", marginTop: 20 }}
+          onPress={() => setModalVisible(true)}
+        >
+          <Image
+            source={
+              (user as any)?.profileImage
+                ? { uri: (user as any)?.profileImage }
+                : require("../assets/person.png")
+            }
+            style={{
+              width: 150,
+              height: 150,
+              borderRadius: 100,
+              marginTop: 20,
+            }}
+          />
+          <MaterialIcons
+            name="photo-camera"
+            size={24}
+            color={Colors.white}
+            style={{
+              position: "absolute",
+              right: 0,
+              bottom: 5,
+              backgroundColor: Colors.primary,
+              padding: 8,
+              borderRadius: 20,
+              ...Colors.cardShadow,
+            }}
+          />
+          <ActivityIndicator
+            size="large"
+            color="#ffffff"
+            style={{
+              position: "absolute",
+              top: "50%",
+              display:
+                loading.fetchCameraPhoto || loading.fetchGalleryPhoto
+                  ? "flex"
+                  : "none",
+            }}
+          />
+        </TouchableOpacity>
 
-      <Text style={{ fontSize: 18, fontWeight: "600", marginTop: 15 }}>
-        Edit Your Profile
-      </Text>
-      <View
-        style={{
-          height: 0.5,
-          backgroundColor: "#ccc",
-          marginTop: 5,
-          width: "45%",
-        }}
-      />
+        <View style={{ marginTop: 30 }}>
+          <Text style={{ fontSize: 18, fontWeight: "700", color: Colors.textPrimary }}>
+            Personal Information
+          </Text>
+          <Text style={{ fontSize: 13, color: Colors.textSecondary, marginTop: 4 }}>
+            Update your details below to keep your profile fresh
+          </Text>
+        </View>
 
-      <KeyboardAvoidingView
-        behavior={Platform.OS === "ios" ? "padding" : undefined}
-        style={{ flex: 1 }}
-        keyboardVerticalOffset={Platform.OS === "ios" ? 80 : 0}
-      >
-        <ScrollView
-          keyboardShouldPersistTaps="handled"
-          showsVerticalScrollIndicator={false}
-          contentContainerStyle={{ paddingBottom: 120 }}
+        <KeyboardAvoidingView
+          behavior={Platform.OS === "ios" ? "padding" : undefined}
+          style={{ flex: 1 }}
         >
           <View style={{ marginTop: 20 }}>
-            <Text style={{ fontSize: 16, fontWeight: "600" }}>
-              Update Full Name:
+            <Text style={{ fontSize: 14, fontWeight: "600", color: Colors.textSecondary, marginBottom: 8 }}>
+              Full Name
             </Text>
-            <View
+            <TextInput
+              placeholder="Enter your full name"
               style={{
-                flexDirection: "row",
-                alignItems: "center",
-                gap: 10,
-                marginTop: 10,
+                backgroundColor: Colors.white,
+                borderRadius: 12,
+                paddingHorizontal: 15,
+                paddingVertical: 12,
+                fontSize: 15,
+                color: Colors.textPrimary,
+                ...Colors.cardShadow,
               }}
-            >
-              <TextInput
-                placeholder="Enter your full name"
-                style={{
-                  flex: 1,
-                  borderWidth: 1,
-                  borderColor: "#ccc",
-                  borderRadius: 5,
-                  padding: 10,
-                  fontSize: 14,
-                  color: "#000",
-                }}
-                placeholderTextColor="#d0d0d0"
-                onChangeText={(text) => setName(text)}
-                value={name}
-              />
-            </View>
+              placeholderTextColor={Colors.gray}
+              onChangeText={(text) => setName(text)}
+              value={name}
+            />
           </View>
 
-          <View style={{ marginTop: 10 }}>
-            <Text style={{ fontSize: 16, fontWeight: "600" }}>
-              Update Email:
+          <View style={{ marginTop: 20 }}>
+            <Text style={{ fontSize: 14, fontWeight: "600", color: Colors.textSecondary, marginBottom: 8 }}>
+              Email Address
             </Text>
-            <View
+            <TextInput
+              placeholder="Enter your Email"
               style={{
-                flexDirection: "row",
-                alignItems: "center",
-                gap: 10,
-                marginTop: 10,
+                backgroundColor: Colors.white,
+                borderRadius: 12,
+                paddingHorizontal: 15,
+                paddingVertical: 12,
+                fontSize: 15,
+                color: Colors.textPrimary,
+                ...Colors.cardShadow,
               }}
-            >
-              <TextInput
-                placeholder="Enter your Email"
-                style={{
-                  flex: 1,
-                  borderWidth: 1,
-                  borderColor: "#ccc",
-                  borderRadius: 5,
-                  padding: 10,
-                  fontSize: 14,
-                }}
-                placeholderTextColor="#d0d0d0"
-                onChangeText={(text) => setEmail(text)}
-                value={email}
-                keyboardType="email-address"
-                autoCapitalize="none"
-              />
-            </View>
+              placeholderTextColor={Colors.gray}
+              onChangeText={(text) => setEmail(text)}
+              value={email}
+              keyboardType="email-address"
+              autoCapitalize="none"
+            />
           </View>
 
-          <View style={{ marginTop: 10 }}>
-            <Text style={{ fontSize: 16, fontWeight: "600" }}>
-              Update Password:
+          <View style={{ marginTop: 20 }}>
+            <Text style={{ fontSize: 14, fontWeight: "600", color: Colors.textSecondary, marginBottom: 8 }}>
+              New Password
             </Text>
             <View
               style={{
                 flexDirection: "row",
                 alignItems: "center",
-                gap: 10,
-                marginTop: 10,
-                borderWidth: 1,
-                borderColor: "#ccc",
-                borderRadius: 5,
-                paddingHorizontal: 10,
+                backgroundColor: Colors.white,
+                borderRadius: 12,
+                paddingHorizontal: 15,
+                ...Colors.cardShadow,
               }}
             >
-              <TouchableOpacity
-                onPress={() => setHidePassword((prev) => !prev)}
-              >
-                <Entypo
-                  name={hidePassword ? "eye" : "eye-with-line"}
-                  size={22}
-                  color="#888"
-                />
-              </TouchableOpacity>
               <TextInput
-                placeholder="Enter your Password"
+                placeholder="Enter new password"
                 style={{
                   flex: 1,
-                  fontSize: 14,
-                  color: "#000",
+                  paddingVertical: 12,
+                  fontSize: 15,
+                  color: Colors.textPrimary,
                 }}
-                placeholderTextColor="#d0d0d0"
+                placeholderTextColor={Colors.gray}
                 secureTextEntry={hidePassword}
                 onChangeText={(text) => setPassword(text)}
                 value={password}
               />
+              <TouchableOpacity
+                onPress={() => setHidePassword((prev) => !prev)}
+                style={{ padding: 5 }}
+              >
+                <Entypo
+                  name={hidePassword ? "eye" : "eye-with-line"}
+                  size={20}
+                  color={Colors.gray}
+                />
+              </TouchableOpacity>
             </View>
           </View>
 
           <TouchableOpacity
+            activeOpacity={0.6}
             onPress={handleUpdateProfile}
+            style={{ marginTop: 40 }}
           >
             <LinearGradient
-              colors={["#FAEB92", "#E5BA41", "#FAEB92"]}
-              start={{ x: 0, y: 0 }}
-              end={{ x: 1, y: 1 }}
+              colors={Colors.buttonGradient as any}
               style={{
-                padding: 13,
+                paddingVertical: 14,
                 borderRadius: 8,
-                marginTop: "15%",
                 alignItems: "center",
+                ...Colors.cardShadow,
               }}
             >
               <Text
                 style={{
-                  color: "#000",
+                  color: Colors.white,
                   fontSize: 16,
-                  fontWeight: "600",
+                  fontWeight: "700",
                 }}
               >
-                {loading.updateProfile ? "Updating..." : "Submit Changes"}
+                {loading.updateProfile ? "Updating..." : "Save Changes"}
               </Text>
             </LinearGradient>
           </TouchableOpacity>
-        </ScrollView>
-      </KeyboardAvoidingView>
+        </KeyboardAvoidingView>
+      </ScrollView>
 
       {/* Image Picker Modal */}
       <Modal
@@ -380,92 +362,101 @@ const EditProfile = () => {
         <View
           style={{
             flex: 1,
-            backgroundColor: "rgba(0,0,0,0.12)",
+            backgroundColor: "rgba(0,0,0,0.5)",
             justifyContent: "flex-end",
           }}
         >
           <View
             style={{
-              backgroundColor: "#fff",
-              height: "30%",
-              borderTopLeftRadius: 20,
-              borderTopRightRadius: 20,
-              justifyContent: "center",
+              backgroundColor: Colors.white,
+              paddingBottom: 30,
+              borderTopLeftRadius: 25,
+              borderTopRightRadius: 25,
+              ...Colors.cardShadow,
             }}
           >
+            <View style={{ width: 40, height: 4, backgroundColor: Colors.lightGray, borderRadius: 2, alignSelf: 'center', marginVertical: 15 }} />
             <Text
               style={{
-                fontSize: 16,
-                fontWeight: "600",
+                fontSize: 18,
+                fontWeight: "700",
                 textAlign: "center",
+                color: Colors.textPrimary,
+                marginBottom: 20,
               }}
             >
-              Change Profile Photo
+              Profile Photo
             </Text>
             <View
               style={{
                 flexDirection: "row",
-                gap: 10,
                 justifyContent: "space-evenly",
-                marginTop: 30,
+                marginBottom: 20,
               }}
             >
               <TouchableOpacity
                 style={{
                   alignItems: "center",
-                  gap: 12,
+                  backgroundColor: Colors.background,
+                  padding: 20,
+                  borderRadius: 15,
+                  width: '40%',
                 }}
                 onPress={pickFromCamera}
               >
-                <Ionicons name="camera" size={50} color="#008e97" />
+                <Ionicons name="camera" size={32} color={Colors.primary} />
                 <Text
                   style={{
-                    fontSize: 15,
-                    fontWeight: "500",
+                    fontSize: 14,
+                    fontWeight: "600",
+                    marginTop: 8,
+                    color: Colors.textPrimary,
                   }}
                 >
-                  Take Photo
+                  Camera
                 </Text>
               </TouchableOpacity>
 
               <TouchableOpacity
                 style={{
                   alignItems: "center",
-                  gap: 12,
+                  backgroundColor: Colors.background,
+                  padding: 20,
+                  borderRadius: 15,
+                  width: '40%',
                 }}
                 onPress={pickFromGallery}
               >
-                <Ionicons name="image" size={50} color="#008e97" />
+                <Ionicons name="image" size={32} color={Colors.primary} />
                 <Text
                   style={{
-                    fontSize: 15,
-                    fontWeight: "500",
-                    textAlign: "center",
+                    fontSize: 14,
+                    fontWeight: "600",
+                    marginTop: 8,
+                    color: Colors.textPrimary,
                   }}
                 >
-                  Choose from {"\n"} Gallery
+                  Gallery
                 </Text>
               </TouchableOpacity>
             </View>
 
             <TouchableOpacity
-              style={[
-                {
-                  flexDirection: "row",
-                  alignItems: "center",
-                  gap: 12,
-                  paddingVertical: 14,
-                },
-                styles.cancel,
-              ]}
+              style={{
+                paddingVertical: 15,
+                marginHorizontal: 20,
+                borderRadius: 15,
+                backgroundColor: '#FFF5F5',
+                alignItems: 'center',
+              }}
               onPress={() => setModalVisible(false)}
             >
-              <Text style={styles.cancelText}>Cancel</Text>
+              <Text style={{ color: '#FF3B30', fontWeight: '700', fontSize: 15 }}>Close</Text>
             </TouchableOpacity>
           </View>
         </View>
-      </Modal>
-    </View>
+      </Modal >
+    </View >
   );
 };
 

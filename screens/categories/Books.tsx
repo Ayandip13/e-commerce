@@ -13,6 +13,7 @@ import { LinearGradient } from "expo-linear-gradient";
 import { useNavigation } from "@react-navigation/native";
 import { API_URL } from "../../api";
 import ShimmerText from "../../components/ShimmerText";
+import Colors from "../../constants/Colors";
 
 interface itemData {
   id: number;
@@ -72,11 +73,11 @@ const Books = () => {
       <View
         style={{
           flexDirection: "row",
-          backgroundColor: "#fff",
-          padding: 10,
+          backgroundColor: Colors.white,
+          padding: 15,
           marginVertical: 5,
-          borderRadius: 8,
-          elevation: 2,
+          borderRadius: 12,
+          ...Colors.cardShadow,
         }}
       >
         <Image
@@ -86,26 +87,26 @@ const Books = () => {
         />
 
         <View style={{ flex: 1, marginLeft: 20 }}>
-          <Text style={{ fontSize: 15, fontWeight: "600", marginTop: 10 }}>
+          <Text style={{ fontSize: 16, fontWeight: "600", color: Colors.textPrimary }}>
             {item.title}
           </Text>
 
           <Text
             style={{
               fontSize: 14,
-              color: "#888",
+              color: Colors.gray,
               textDecorationLine: "line-through",
-              marginTop: 6,
+              marginTop: 4,
             }}
           >
             ₹{oldPrice}
           </Text>
 
-          <View style={{ flexDirection: "row", gap: 10 }}>
-            <Text style={{ fontSize: 15, fontWeight: "600" }}>₹{price}</Text>
+          <View style={{ flexDirection: "row", gap: 10, alignItems: "center", marginTop: 4 }}>
+            <Text style={{ fontSize: 18, fontWeight: "700", color: Colors.accent }}>₹{price}</Text>
 
             {discountPercent > 0 && (
-              <Text style={{ color: "green", fontWeight: "600" }}>
+              <Text style={{ color: "#22C55E", fontWeight: "600", fontSize: 13 }}>
                 {discountPercent}% OFF
               </Text>
             )}
@@ -117,16 +118,16 @@ const Books = () => {
             }
           >
             <LinearGradient
-              colors={["#8afdff", "#04cfd3"]}
-              start={{ x: 0, y: 0 }}
-              end={{ x: 1, y: 0 }}
+              colors={Colors.buttonGradient as any}
               style={{
                 alignItems: "center",
                 borderRadius: 8,
-                marginTop: 8,
+                marginTop: 12,
               }}
             >
-              <Text style={{ paddingVertical: 8 }}>See Details</Text>
+              <Text style={{ paddingVertical: 10, color: Colors.white, fontWeight: "600" }}>
+                See Details
+              </Text>
             </LinearGradient>
           </TouchableOpacity>
         </View>
@@ -135,7 +136,7 @@ const Books = () => {
   };
 
   return (
-    <View style={{ flex: 1, backgroundColor: "#fff", padding: 10 }}>
+    <View style={{ flex: 1, backgroundColor: Colors.background, paddingHorizontal: 15 }}>
       <FlatList
         data={data}
         keyExtractor={(item) => item.id.toString()}

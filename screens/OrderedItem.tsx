@@ -16,15 +16,16 @@ import { addToBookmark, removeBookmark } from "../redux/BookmarkReducer";
 import { LinearGradient } from "expo-linear-gradient";
 const { width } = Dimensions.get("window");
 import * as Notifications from "expo-notifications";
+import Colors from "../constants/Colors";
 
 const OrderedItem = () => {
   const route = useRoute();
-  const itemsWithProduct = route?.params?.order?.products || [];
+  const itemsWithProduct = (route?.params as any)?.order?.products || [];
   const dispatch = useDispatch();
   const bookmarks = useSelector((state: any) => state.bookmark.bookmarks);
 
   const formattedDate = new Date(
-    route?.params?.order?.createdAt
+    (route?.params as any)?.order?.createdAt
   ).toLocaleString("en-IN", {
     timeZone: "Asia/Kolkata",
     day: "numeric",
@@ -49,7 +50,7 @@ const OrderedItem = () => {
     <View
       style={{
         flex: 1,
-        backgroundColor: "#fff",
+        backgroundColor: Colors.background,
       }}
     >
       <FlatList
@@ -81,21 +82,22 @@ const OrderedItem = () => {
               <View
                 style={{
                   position: "absolute",
-                  bottom: "650%",
+                  top: 30,
                   left: 0,
-                  backgroundColor: "#c60c30",
-                  width: 45,
-                  height: 45,
-                  borderRadius: 22.5,
+                  backgroundColor: Colors.accent,
+                  paddingHorizontal: 12,
+                  paddingVertical: 6,
+                  borderRadius: 20,
                   justifyContent: "center",
                   zIndex: 10,
+                  ...Colors.cardShadow,
                 }}
               >
                 <Text
                   style={{
-                    color: "#fff",
-                    fontSize: 11,
-                    fontWeight: "bold",
+                    color: Colors.white,
+                    fontSize: 12,
+                    fontWeight: "700",
                     textAlign: "center",
                   }}
                 >
@@ -140,6 +142,7 @@ const OrderedItem = () => {
               style={{
                 fontSize: 18,
                 fontWeight: "600",
+                color: Colors.textPrimary,
               }}
             >
               {item?.name}
@@ -155,8 +158,9 @@ const OrderedItem = () => {
             >
               <Text
                 style={{
-                  fontSize: 20,
+                  fontSize: 22,
                   fontWeight: "700",
+                  color: Colors.accent,
                 }}
               >
                 ₹ {item?.price}
@@ -165,7 +169,7 @@ const OrderedItem = () => {
               <Text
                 style={{
                   fontSize: 16,
-                  color: "gray",
+                  color: Colors.textSecondary,
                 }}
               >
                 Qty: {item?.quantity}
@@ -188,20 +192,20 @@ const OrderedItem = () => {
                 }}
               >
                 <LinearGradient
-                  colors={["#E5BA41", "#FAEB92", "#E5BA41"]}
-                  start={{ x: 0, y: 0 }}
-                  end={{ x: 1, y: 1 }}
+                  colors={Colors.buttonGradient as any}
                   style={{
-                    padding: 13,
+                    paddingVertical: 14,
                     borderRadius: 8,
                     alignItems: "center",
+                    ...Colors.cardShadow,
                   }}
                 >
                   <Text
                     style={{
                       fontSize: 16,
-                      fontWeight: "600",
+                      fontWeight: "700",
                       textAlign: "center",
+                      color: Colors.white,
                     }}
                   >
                     Cancel Order
@@ -214,31 +218,31 @@ const OrderedItem = () => {
               <View
                 style={{ flexDirection: "row", gap: 5, alignItems: "center" }}
               >
-                <Text style={{ fontWeight: "bold", fontSize: 20 }}>
+                <Text style={{ fontWeight: "700", fontSize: 18, color: Colors.textPrimary }}>
                   Delivery Address:{" "}
                 </Text>
-                <Text style={{ fontSize: 17, fontWeight: "300" }}>
-                  {route?.params?.order?.shippingAddress?.landmark},{" "}
-                  {route?.params?.order?.shippingAddress?.street}
+                <Text style={{ fontSize: 16, color: Colors.textSecondary }}>
+                  {(route?.params as any)?.order?.shippingAddress?.landmark},{" "}
+                  {(route?.params as any)?.order?.shippingAddress?.street}
                 </Text>
               </View>
 
               <View style={{ flexDirection: "row", gap: 5, marginTop: 5 }}>
-                <Text style={{ fontSize: 17, fontWeight: "bold" }}>
+                <Text style={{ fontSize: 16, fontWeight: "700", color: Colors.textPrimary }}>
                   Pin Code:
                 </Text>
-                <Text style={{ fontSize: 17, fontWeight: "300" }}>
-                  {route?.params?.order?.shippingAddress?.postalCode}
+                <Text style={{ fontSize: 16, color: Colors.textSecondary }}>
+                  {(route?.params as any)?.order?.shippingAddress?.postalCode}
                 </Text>
               </View>
             </View>
 
             <View style={{ marginTop: 10, flexDirection: "row", gap: 5 }}>
-              <Text style={{ fontSize: 17, fontWeight: "bold" }}>
+              <Text style={{ fontSize: 16, fontWeight: "700", color: Colors.textPrimary }}>
                 Delivery to:{" "}
               </Text>
-              <Text style={{ fontSize: 17 }}>
-                {route?.params?.order?.shippingAddress?.name}
+              <Text style={{ fontSize: 16, color: Colors.textSecondary }}>
+                {(route?.params as any)?.order?.shippingAddress?.name}
               </Text>
             </View>
 
@@ -250,11 +254,11 @@ const OrderedItem = () => {
                 marginBottom: 10,
               }}
             >
-              <Text style={{ fontSize: 17, fontWeight: "bold" }}>
+              <Text style={{ fontSize: 16, fontWeight: "700", color: Colors.textPrimary }}>
                 Total amount:{" "}
               </Text>
-              <Text style={{ fontSize: 17 }}>
-                ₹ {route?.params?.order?.totalPrice}
+              <Text style={{ fontSize: 16, color: Colors.accent, fontWeight: "700" }}>
+                ₹ {(route?.params as any)?.order?.totalPrice}
               </Text>
             </View>
 
@@ -282,13 +286,13 @@ const OrderedItem = () => {
                 gap: 10,
               }}
             >
-              <Text style={{ fontSize: 17, fontWeight: "bold" }}>
+              <Text style={{ fontSize: 16, fontWeight: "700", color: Colors.textPrimary }}>
                 Payment Method:{" "}
               </Text>
-              <Text style={{ fontWeight: "400", fontSize: 20, color: "green" }}>
-                {route?.params?.order?.paymentMethod}
+              <Text style={{ fontWeight: "700", fontSize: 18, color: "#22C55E" }}>
+                {(route?.params as any)?.order?.paymentMethod}
               </Text>
-              <Entypo name="credit-card" size={20} color="black" />
+              <Entypo name="credit-card" size={20} color={Colors.textPrimary} />
             </View>
 
             <View style={{ marginTop: 10 }}>
