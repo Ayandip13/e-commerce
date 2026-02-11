@@ -196,7 +196,10 @@ const RegisterScreen = () => {
         <TouchableOpacity
           onPress={handleRegister}
         >
-          <LinearGradient colors={Colors.buttonGradient as any}
+          <LinearGradient
+            colors={["#85fce8ff", "#d3fff8ff", "#85fce8ff"]}
+            start={{ x: 0, y: 1 }}
+            end={{ x: 1, y: 0 }}
             style={{
               paddingVertical: 15,
               alignItems: "center",
@@ -206,7 +209,11 @@ const RegisterScreen = () => {
             {loading ? (
               <ActivityIndicator size="small" color="white" />
             ) : (
-              <Text style={{ fontWeight: "600" }}>Sign Up</Text>
+              <Text style={{
+                fontWeight: "bold",
+                fontSize: 16,
+                color: Colors.textSecondary
+              }}>Sign Up</Text>
             )}
           </LinearGradient>
         </TouchableOpacity>

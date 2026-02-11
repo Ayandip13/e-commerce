@@ -11,6 +11,8 @@ import { useNavigation, useRoute } from "@react-navigation/native";
 import { Ionicons } from "@expo/vector-icons";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../redux/CartReducer";
+import { LinearGradient } from "expo-linear-gradient";
+import Colors from "../constants/Colors";
 
 const InfoScreenBookmark = () => {
   const { width } = Dimensions.get("window");
@@ -136,32 +138,45 @@ const InfoScreenBookmark = () => {
             In Stock
           </Text>
 
-          <TouchableOpacity
-            onPress={() => addItemToCart(params.item)}
-            style={{
-              padding: 10,
-              marginTop: 10,
-              backgroundColor: "#ffc72c",
-              borderRadius: 10,
-              alignItems: "center",
-              zIndex: 5,
-            }}
-          >
-            <Text>{addedToCart ? "Added to Cart" : "Add to Cart"}</Text>
+          <TouchableOpacity onPress={() => addItemToCart(route?.item)}>
+            <LinearGradient
+              colors={Colors.buttonGradient as any}
+              style={{
+                paddingVertical: 12,
+                borderRadius: 8,
+                alignItems: "center",
+                marginTop: 10,
+                ...Colors.cardShadow,
+              }}
+            >
+              <Text style={{ color: Colors.white, fontWeight: "700", fontSize: 16 }}>
+                {addedToCart ? "Added to Cart" : "Add to Cart"}
+              </Text>
+            </LinearGradient>
           </TouchableOpacity>
 
           <TouchableOpacity
-            onPress={() => navigation.navigate("Confirm" as never)}
-            style={{
-              padding: 10,
-              marginTop: 15,
-              backgroundColor: "#ffac1c",
-              borderRadius: 10,
-              alignItems: "center",
-              zIndex: 5,
+            style={{ flex: 1 }}
+            activeOpacity={0.8}
+            onPress={() => {
+              navigation.navigate("Confirm" as never);
             }}
           >
-            <Text>Buy Now</Text>
+            <LinearGradient
+              colors={Colors.buttonGradient as any}
+              style={{
+                height: 48,
+                borderRadius: 10,
+                alignItems: "center",
+                justifyContent: "center",
+                marginTop: 10,
+                ...Colors.cardShadow,
+              }}
+            >
+              <Text style={{ color: Colors.white, fontSize: 16, fontWeight: "600" }}>
+                Buy Again
+              </Text>
+            </LinearGradient>
           </TouchableOpacity>
         </View>
       </View>

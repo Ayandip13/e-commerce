@@ -6,13 +6,13 @@ export default {
   black: "#000000",
   gray: "#808080",
   lightGray: "#F0F0F0",
-  darkSurface: "#1A202C", // Mature dark background
+  darkSurface: "#1A202C",
   textPrimary: "#1A202C",
   textSecondary: "#4A5568",
   textOnDark: "#F7FAFC",
   buttonGradient: ["#2ED3B7", "#0F766E"],
   subtleGradient: ["#F7F9F6", "#EDF2F7"],
-  screenGradient: ["#F7F9F6", "#FFFFFF", "#F7F9F6"],
+  screenGradient: ["#d0fcf4ff", "#FFFFFF", "#d0fcf4ff"],
   cardShadow: {
     shadowColor: "#000",
     shadowOffset: { width: 0, height: 2 },

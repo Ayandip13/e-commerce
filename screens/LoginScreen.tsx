@@ -184,7 +184,10 @@ const LoginScreen = () => {
         <TouchableOpacity
           onPress={handleLogin}
         >
-          <LinearGradient colors={Colors.buttonGradient as any}
+          <LinearGradient
+            colors={["#85fce8ff", "#d3fff8ff", "#85fce8ff"]}
+            start={{ x: 0, y: 1 }}
+            end={{ x: 1, y: 0 }}
             style={{
               paddingVertical: 15,
               alignItems: "center",
@@ -194,7 +197,7 @@ const LoginScreen = () => {
             {loading ? (
               <ActivityIndicator size="small" color="white" />
             ) : (
-              <Text style={{ fontWeight: "600" }}>Login</Text>
+              <Text style={{ fontWeight: "bold", fontSize: 16 }}>Login</Text>
             )}
           </LinearGradient>
         </TouchableOpacity>
