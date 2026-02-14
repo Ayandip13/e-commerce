@@ -78,7 +78,7 @@ const CartScreen = () => {
           >
             <Feather name="search" size={20} color={Colors.gray} />
             <TextInput
-              placeholder="Search Bookosaurus.in"
+              placeholder="Search Bookmart.in"
               placeholderTextColor="#808080"
               readOnly
             />

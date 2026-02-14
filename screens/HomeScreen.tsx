@@ -319,7 +319,7 @@ const HomeScreen = () => {
   //state is the store object, state.cart is the cart slice, state.cart.cart is the cart array
 
   // console.log(cart);
-  console.log(userId);
+  console.log("User Id", userId);
   return (
     <View style={{ backgroundColor: Colors.background, flex: 1 }}>
       <StatusBar style="dark" />
@@ -358,7 +358,7 @@ const HomeScreen = () => {
           >
             <Feather name="search" size={20} color={Colors.gray} />
             <TextInput
-              placeholder="Search Bookosaurus"
+              placeholder="Search Bookmart.in"
               placeholderTextColor={Colors.gray}
               readOnly
             />

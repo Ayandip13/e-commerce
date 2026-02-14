@@ -72,7 +72,7 @@ const RegisterScreen = () => {
       <StatusBar style="dark" />
       <View style={{ marginTop: 100, marginBottom: 10 }}>
         <Image
-          source={require("../assets/Bookosaurus.png")}
+          source={require("../assets/Bookmart.png")}
           style={{ width: 190, height: 100 }}
           resizeMode="contain"
         />

@@ -74,7 +74,7 @@ export default function Orders() {
       headerStyle: { backgroundColor: Colors.primary },
       headerLeft: () => (
         <Image
-          source={require("../assets/Bookosaurus.png")}
+          source={require("../assets/Bookmart.png")}
           resizeMode="contain"
           style={{ width: 130, height: 60, marginRight: 50 }}
         />

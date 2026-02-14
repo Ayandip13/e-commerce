@@ -1,10 +1,10 @@
 {
   "expo": {
-    "name": "Bookosaurus",
-    "slug": "bookosaurus",
+    "name": "Bookmart",
+    "slug": "Bookmart",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/Bookosaurus.png",
+    "icon": "./assets/Bookmart.png",
     "userInterfaceStyle": "light",
     "newArchEnabled": true,
     "splash": {
@@ -17,12 +17,12 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/Bookosaurus.png",
+        "foregroundImage": "./assets/Bookmart.png",
         "backgroundColor": "#ffffff"
       },
       "edgeToEdgeEnabled": true,
       "predictiveBackGestureEnabled": false,
-      "package": "com.ayandip02.bookosaurus"
+      "package": "com.ayandip02.Bookmart"
     },
     "web": {
       "favicon": "./assets/favicon.png"
